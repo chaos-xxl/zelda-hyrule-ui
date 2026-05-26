@@ -1,4 +1,6 @@
 # 🗡️ zelda-hyrule-ui
+<img width="4040" height="2360" alt="image" src="https://github.com/user-attachments/assets/36b61f20-7290-4455-85ec-860fa5c7d54a" />
+
 
 A React UI component library inspired by *The Legend of Zelda: Breath of the Wild*.
 
