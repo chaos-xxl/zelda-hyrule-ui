@@ -1,0 +1,46 @@
+@import './variables.less';
+
+// ============================================
+// Hyrule UI - Global Styles
+// ============================================
+
+.hyrule-ui {
+  font-family: @font-body;
+  font-weight: @font-weight-medium;
+  color: @text-color-main;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ---- Keyframe Animations ----
+
+@keyframes hyrule-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes hyrule-scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes hyrule-slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hyrule-glow-pulse {
+  0%, 100% { box-shadow: @glow-blue; }
+  50%      { box-shadow: @glow-sheikah; }
+}
+
+@keyframes hyrule-sheikah-scan {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes hyrule-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}

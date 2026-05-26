@@ -1,0 +1,21 @@
+@import '../../../styles/variables.less';
+
+// 精确还原 Figma node 3:234
+// 卢比图标 25×46px + 数字 Roboto Medium Italic 32px
+
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  filter: drop-shadow(-2px 2px 5px rgba(0, 0, 0, 0.15));
+}
+
+.amount {
+  font-family: @font-body;
+  font-size: 32px;
+  font-weight: @font-weight-medium;
+  font-style: italic;
+  color: @text-color-main;
+  letter-spacing: 0.96px;
+  line-height: 1;
+}

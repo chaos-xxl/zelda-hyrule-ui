@@ -1,0 +1,117 @@
+@import '../../../styles/variables.less';
+
+// 精确还原 Figma node 191:17721
+// 640×90px，双层边框，左侧图标 + 右侧文字
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  height: 90px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px 0 100px;
+  cursor: pointer;
+  transition: all @motion-duration-base @motion-ease;
+}
+
+.innerBorder {
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  pointer-events: none;
+  transition: border-color @motion-duration-base @motion-ease;
+}
+
+.icon {
+  position: absolute;
+  left: 18px;
+  top: 6px;
+  width: 77px;
+  height: 77px;
+  border-radius: 50%;
+  background: rgba(60, 211, 252, 0.15);
+  box-shadow: 0 0 23px rgba(84, 192, 253, 0.5), 0 0 18px black;
+}
+
+.icon_main {
+  background: rgba(255, 234, 46, 0.15);
+  box-shadow: 0 0 23px rgba(255, 234, 46, 0.5), 0 0 18px black;
+}
+
+.icon_side { /* default blue */ }
+.icon_shrine { /* default blue */ }
+
+.icon_memory {
+  background: rgba(252, 196, 19, 0.15);
+  box-shadow: 0 0 23px rgba(252, 196, 19, 0.3), 0 0 18px black;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-family: @font-body;
+  font-size: 38px;
+  font-weight: @font-weight-bold;
+  font-style: italic;
+  color: @zelda-tan;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+}
+
+.location {
+  font-family: @font-body;
+  font-size: 22px;
+  font-weight: @font-weight-bold;
+  font-style: italic;
+  color: @text-color-yellow;
+  line-height: 1;
+}
+
+.marker {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(60, 211, 252, 0.2);
+  border: 2px solid rgba(60, 211, 252, 0.5);
+  flex-shrink: 0;
+}
+
+.checkmark {
+  font-size: 24px;
+  color: @text-color-green;
+  flex-shrink: 0;
+}
+
+// ---- States ----
+.hovered {
+  .innerBorder {
+    border-color: rgba(226, 222, 211, 0.5);
+  }
+}
+
+.marked {
+  // 有 marker 图标
+}
+
+.completed {
+  opacity: 0.6;
+  .title {
+    text-decoration: line-through;
+  }
+}
+
+.unmarked {
+  opacity: 0.7;
+}

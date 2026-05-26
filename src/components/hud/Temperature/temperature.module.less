@@ -1,0 +1,14 @@
+// 精确还原 Figma node 8:913 — 50×50px 温度计
+
+.container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.content { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; }
+.thermometer { width: 50%; height: 70%; }

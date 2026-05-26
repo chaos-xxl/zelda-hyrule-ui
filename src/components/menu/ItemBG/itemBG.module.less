@@ -1,0 +1,101 @@
+@import '../../../styles/variables.less';
+
+// 精确还原 Figma node 6:704 / 6:722
+// 130×130px 物品格子，双层边框结构
+
+.container {
+  position: relative;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all @motion-duration-base @motion-ease;
+}
+
+.innerBorder {
+  position: absolute;
+  inset: 3px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  transition: border-color @motion-duration-base @motion-ease;
+}
+
+.content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ---- States ----
+.empty {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.filled {
+  background: rgba(0, 0, 0, 0.6);
+
+  .innerBorder {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.selected {
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 12px 1px rgba(227, 227, 200, 0.8);
+
+  .innerBorder {
+    border-color: @zelda-tan;
+    box-shadow: inset 0 0 7px 3px rgba(246, 231, 152, 0.5);
+  }
+}
+
+.equipped {
+  background: rgba(0, 0, 0, 0.7);
+
+  .innerBorder {
+    border-color: rgba(226, 222, 211, 0.5);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: @sheikah-blue;
+    box-shadow: 0 0 4px @sheikah-blue;
+  }
+}
+
+.sheikahSelect {
+  background: rgba(10, 20, 40, 0.9);
+  box-shadow: @glow-blue;
+
+  .innerBorder {
+    border-color: @sheikah-blue;
+    box-shadow: inset 0 0 7px 3px rgba(60, 211, 252, 0.2);
+  }
+}
+
+// ---- Corner decorations ----
+.cornerTR, .cornerTL, .cornerBL, .cornerBR {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  z-index: 1;
+}
+
+.cornerTR { top: 0; right: 0; }
+.cornerTL { top: 0; left: 0; }
+.cornerBL { bottom: 0; left: 0; }
+.cornerBR { bottom: 0; right: 0; }
+
+// ---- Hover ----
+.container:hover {
+  .innerBorder {
+    border-color: rgba(226, 222, 211, 0.5);
+  }
+}

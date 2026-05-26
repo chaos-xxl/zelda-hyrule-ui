@@ -1,0 +1,36 @@
+// 精确还原 Figma node 21:777 — 300×60px 计时器
+
+.container {
+  position: relative;
+  width: 300px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.innerBorder {
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(226, 222, 211, 0.3);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.time {
+  font-family: 'Roboto', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #E9E1D1;
+  letter-spacing: 2px;
+}
+
+.red {
+  .innerBorder { border-color: rgba(241, 80, 80, 0.5); }
+  .time { color: #F15050; }
+  animation: timer-flash 0.8s ease-in-out infinite;
+}
+
+@keyframes timer-flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }

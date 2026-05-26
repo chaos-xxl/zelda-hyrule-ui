@@ -1,0 +1,9 @@
+.dialog { position: relative; width: 100%; max-width: 910px; min-height: 185px; display: flex; flex-direction: column; justify-content: center; padding: 40px 80px; }
+.bg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.speech { }
+.written { .bg { opacity: 0.85; } }
+.sheikah { .bg path { fill: rgba(10, 20, 40, 0.7); } &::after { content: ''; position: absolute; inset: 0; border: 1px solid rgba(60, 211, 252, 0.3); border-radius: 92px; pointer-events: none; } box-shadow: 0 0 8px #4FC0FF; }
+.speaker { position: relative; z-index: 1; margin-top: -20px; margin-bottom: 4px; font-family: 'Roboto', sans-serif; font-size: 28px; font-weight: 500; font-style: italic; color: #E9E1D1; text-shadow: 0 0 14px rgba(0, 0, 0, 0.8); }
+.content { position: relative; z-index: 1; font-family: 'Roboto', sans-serif; font-size: 36px; font-weight: 700; font-style: italic; color: #E9E1D1; line-height: 1.2; }
+.continueArrow { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); z-index: 1; animation: hyrule-blink 1.2s step-end infinite; }
+@keyframes hyrule-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }

@@ -1,0 +1,21 @@
+@import '../../../styles/variables.less';
+
+// 精确还原 Figma node 24:800
+// 居中布局，左右装饰 + 中间文字
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.name {
+  font-family: @font-body;
+  font-size: 30px;
+  font-weight: @font-weight-medium;
+  color: @text-color-main;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.12;
+}

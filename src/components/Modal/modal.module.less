@@ -1,0 +1,140 @@
+@import '../../styles/variables.less';
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: @z-modal-backdrop;
+  animation: hyrule-fade-in 0.2s ease;
+  backdrop-filter: blur(2px);
+}
+
+.modal {
+  position: relative;
+  background: rgba(20, 20, 18, 0.95);
+  border: 1px solid @border-color;
+  border-radius: @radius-lg;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 64px);
+  overflow: hidden;
+  z-index: @z-modal;
+  animation: hyrule-scale-in 0.3s @motion-ease;
+  box-shadow: @shadow-dark, 0 0 40px rgba(0, 0, 0, 0.5);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, @zelda-tan, transparent);
+    opacity: 0.4;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: @spacing-xl @spacing-xl @spacing-lg;
+  border-bottom: 1px solid rgba(226, 222, 211, 0.1);
+}
+
+.title {
+  font-family: @font-title;
+  font-size: 22px;
+  font-weight: @font-weight-regular;
+  color: @zelda-tan;
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+.closeBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: @text-color-muted;
+  font-size: 16px;
+  border-radius: @radius-round;
+  cursor: pointer;
+  transition: all @motion-duration-fast;
+
+  &:hover {
+    background: rgba(226, 222, 211, 0.1);
+    color: @text-color-main;
+  }
+}
+
+.body {
+  padding: @spacing-xl;
+  font-size: 15px;
+  line-height: 1.7;
+  color: @text-color-main;
+  overflow-y: auto;
+  max-height: 60vh;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: @spacing-md;
+  padding: @spacing-lg @spacing-xl @spacing-xl;
+  border-top: 1px solid rgba(226, 222, 211, 0.1);
+}
+
+.cancelBtn {
+  height: 36px;
+  padding: 0 20px;
+  border: 1px solid @border-color;
+  border-radius: @radius-md;
+  background: transparent;
+  color: @text-color-main;
+  font-family: @font-body;
+  font-size: 14px;
+  font-weight: @font-weight-medium;
+  cursor: pointer;
+  transition: all @motion-duration-fast;
+
+  &:hover {
+    border-color: @zelda-tan;
+    background: rgba(226, 222, 211, 0.08);
+  }
+}
+
+.confirmBtn {
+  height: 36px;
+  padding: 0 20px;
+  border: 1px solid @effect-orange;
+  border-radius: @radius-md;
+  background: rgba(252, 196, 19, 0.12);
+  color: @effect-orange;
+  font-family: @font-body;
+  font-size: 14px;
+  font-weight: @font-weight-medium;
+  cursor: pointer;
+  transition: all @motion-duration-fast;
+
+  &:hover {
+    background: rgba(252, 196, 19, 0.2);
+    box-shadow: 0 0 8px rgba(252, 196, 19, 0.3);
+  }
+}
+
+@keyframes hyrule-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes hyrule-scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}

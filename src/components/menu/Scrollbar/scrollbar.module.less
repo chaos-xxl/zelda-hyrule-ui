@@ -1,0 +1,22 @@
+// 精确还原 Figma node 7:1009 — 500×2px 水平滚动条
+
+.container {
+  position: relative;
+  height: 2px;
+}
+
+.track {
+  position: absolute;
+  inset: 0;
+  background: rgba(226, 222, 211, 0.2);
+  border-radius: 1px;
+}
+
+.thumb {
+  position: absolute;
+  top: 0;
+  height: 2px;
+  background: #E2DED3;
+  border-radius: 1px;
+  transition: left 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,0 +1,14 @@
+// 精确还原 Figma node 258:26055 — 178×178px 图鉴条目
+
+.container {
+  position: relative; width: 178px; height: 178px; background: rgba(10, 20, 40, 0.8);
+  border-radius: 4px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.innerBorder { position: absolute; inset: 3px; border: 1px solid rgba(60, 211, 252, 0.2); border-radius: 2px; pointer-events: none; transition: border-color 0.25s; }
+.hovered .innerBorder { border-color: #3CD3FC; }
+.hovered { box-shadow: 0 0 8px #4FC0FF; }
+.image { width: 80%; height: 80%; display: flex; align-items: center; justify-content: center; }
+.unknown { font-size: 48px; color: rgba(60, 211, 252, 0.3); font-weight: 700; }
+.revealed .unknown { display: none; }
+.number { position: absolute; bottom: 6px; right: 8px; font-family: 'Roboto', sans-serif; font-size: 12px; font-weight: 500; color: rgba(60, 211, 252, 0.5); }

@@ -1,0 +1,101 @@
+// ============================================
+// Hyrule UI - Design Tokens
+// Extracted from Zelda BOTW UI Kit Figma
+// ============================================
+
+// ---- Core Colors ----
+@zelda-tan:              #E2DED3;    // Main UI tan/border color
+@zelda-dark-bg:          #66645D;    // Dark background
+@zelda-black:            #000000;    // Pure black (scrim)
+@zelda-white:            #FFFFFF;
+@zelda-loading-white:    #FFFDE4;    // Warm yellowish white
+
+// ---- Text Colors ----
+@text-color-main:        #E9E1D1;    // Primary text (warm white)
+@text-color-yellow:      #E2D146;    // Yellow accent text
+@text-color-red:         #F15050;    // Red/danger text
+@text-color-green:       #6FD49C;    // Green/success text
+@text-color-muted:       rgba(233, 225, 209, 0.6);  // Muted text
+
+// ---- Sheikah Colors ----
+@sheikah-blue:           #3CD3FC;    // Core Sheikah blue
+@sheikah-blue-dark:      #0A8DD7;    // Darker Sheikah blue
+@sheikah-blue-glow:      #4FC0FF;    // Sheikah glow color
+@sheikah-yellow:         #FFE460;    // Sheikah yellow
+@sheikah-white-glow:     #BAEFFB;    // White-blue glow
+
+// ---- Effect Colors ----
+@effect-orange:          #FCC413;    // Golden/orange effect
+@golden-glow-1:          #FFB800;
+@golden-glow-2:          #FFDB7E;
+@golden-glow-3:          #FFB904;
+
+// ---- Divine Beast Colors ----
+@beast-water:            #27CBFF;    // Vah Ruta (water)
+@beast-wind:             #7CFF4E;    // Vah Medoh (wind)
+@beast-thunder:          #FCC63D;    // Vah Naboris (thunder)
+@beast-fire:             #EB4713;    // Vah Rudania (fire)
+@beast-recharge:         #FF0000;    // Recharging state
+
+// ---- Backgrounds ----
+@bg-dark:                #1a1a1a;    // Darkest background
+@bg-menu:               rgba(0, 0, 0, 0.85);  // Menu overlay
+@bg-card:               rgba(30, 30, 28, 0.9); // Card background
+@bg-item-slot:          rgba(60, 58, 52, 0.8); // Item slot background
+@bg-item-slot-selected: rgba(226, 222, 211, 0.15); // Selected item slot
+
+// ---- Borders ----
+@border-color:           rgba(226, 222, 211, 0.3);
+@border-color-active:    @zelda-tan;
+@border-color-sheikah:   rgba(60, 211, 252, 0.5);
+
+// ---- Shadows & Glows ----
+@shadow-dark:            0 0 11px rgba(0, 0, 0, 0.8);
+@shadow-subtle:          -2px 2px 10px rgba(0, 0, 0, 0.15);
+@shadow-tan:             0 0 20px #000, 0 0 14px @zelda-tan;
+@glow-blue:              0 0 8px @sheikah-blue-glow;
+@glow-sheikah:           0 0 10px @sheikah-blue-glow, 0 1px 11px @sheikah-blue-dark;
+@glow-golden:            0 0 6px @golden-glow-1, 0 0 8px @golden-glow-2, 0 0 10px @golden-glow-3;
+@glow-hover:             inset 0 0 7px 3px rgba(246, 231, 152, 0.5), 0 0 12px 1px rgba(227, 227, 200, 0.8);
+@glow-wide-blue:         0 0 34px rgba(255, 255, 255, 0.4), 0 0 30px #32A7E9;
+
+// ---- Typography ----
+// Hylia Serif 是塞尔达专用字体（已安装到 src/assets/fonts/HyliaSerif.ttf）
+// Cinzel 是 Google Fonts 中的 fallback
+@font-title:             'Hylia Serif', 'Cinzel', Georgia, serif;
+@font-body:              'Roboto', -apple-system, 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+@font-mono:              'Roboto Mono', 'SF Mono', Consolas, monospace;
+
+@font-weight-regular:    400;
+@font-weight-medium:     500;
+@font-weight-bold:       700;
+
+// ---- Spacing ----
+@spacing-xs:             4px;
+@spacing-sm:             8px;
+@spacing-md:             12px;
+@spacing-lg:             16px;
+@spacing-xl:             24px;
+@spacing-2xl:            32px;
+@spacing-3xl:            48px;
+
+// ---- Border Radius ----
+@radius-sm:              4px;
+@radius-md:              8px;
+@radius-lg:              12px;
+@radius-xl:              16px;
+@radius-round:           50%;
+
+// ---- Animation ----
+@motion-duration-fast:   0.15s;
+@motion-duration-base:   0.25s;
+@motion-duration-slow:   0.4s;
+@motion-ease:            cubic-bezier(0.4, 0, 0.2, 1);
+@motion-ease-out:        cubic-bezier(0, 0, 0.2, 1);
+@motion-ease-in:         cubic-bezier(0.4, 0, 1, 1);
+
+// ---- Z-Index ----
+@z-dropdown:             100;
+@z-modal-backdrop:       900;
+@z-modal:                1000;
+@z-toast:                1100;

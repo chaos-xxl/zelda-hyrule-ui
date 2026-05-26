@@ -1,0 +1,41 @@
+// 精确还原 Figma node 5:154
+// 操作提示组合：标签 + 按钮图标，右对齐
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 55px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  font-style: italic;
+  color: #E9E1D1;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #000;
+  border: 2px solid #E2DED3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #E2DED3;
+  flex-shrink: 0;
+}

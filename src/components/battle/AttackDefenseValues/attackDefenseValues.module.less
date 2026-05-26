@@ -1,0 +1,62 @@
+@import '../../../styles/variables.less';
+
+.container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: @spacing-sm;
+  padding: @spacing-sm @spacing-md;
+  background: rgba(0, 0, 0, 0.6);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid @border-color;
+    pointer-events: none;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: @zelda-tan;
+}
+
+.value {
+  font-family: @font-body;
+  font-weight: @font-weight-bold;
+  font-style: italic;
+  font-size: 22px;
+  color: @text-color-main;
+  line-height: 1;
+}
+
+// ---- Variants ----
+.attack {
+  .icon {
+    color: @text-color-red;
+  }
+}
+
+.defense {
+  .icon {
+    color: @sheikah-blue;
+  }
+}
+
+// ---- Bonus State ----
+.bonus {
+  .value {
+    color: @text-color-green;
+  }
+}
+
+.penalty {
+  .value {
+    color: @text-color-red;
+  }
+}

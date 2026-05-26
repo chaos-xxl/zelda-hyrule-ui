@@ -1,0 +1,158 @@
+@import '../../../styles/variables.less';
+
+.container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  aspect-ratio: 16 / 9;
+  background: #1a1a18;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: @font-body;
+  color: @text-color-main;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid @border-color;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: @spacing-xl @spacing-2xl;
+  border-bottom: 1px solid @border-color;
+  flex-shrink: 0;
+}
+
+.shopName {
+  font-family: @font-title;
+  font-size: 28px;
+  font-weight: @font-weight-regular;
+  color: @text-color-main;
+  margin: 0;
+}
+
+.rupeeDisplay {
+  display: flex;
+  align-items: center;
+  gap: @spacing-sm;
+}
+
+.rupeeIcon {
+  width: 20px;
+  height: 20px;
+  background: @text-color-green;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.rupeeAmount {
+  font-family: @font-body;
+  font-size: 18px;
+  font-weight: @font-weight-medium;
+  color: @text-color-main;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.itemList {
+  width: 380px;
+  flex-shrink: 0;
+  border-right: 1px solid @border-color;
+  overflow-y: auto;
+}
+
+.listContent {
+  display: flex;
+  flex-direction: column;
+  padding: @spacing-md 0;
+}
+
+.itemDetail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: @spacing-2xl;
+  gap: @spacing-xl;
+}
+
+.itemPreview {
+  width: 200px;
+  height: 200px;
+  background: @bg-item-slot;
+  border: 1px solid @border-color;
+  border-radius: @radius-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: @spacing-sm;
+  text-align: center;
+}
+
+.itemName {
+  font-family: @font-title;
+  font-size: 20px;
+  color: @text-color-main;
+  min-height: 28px;
+}
+
+.itemDescription {
+  font-style: italic;
+  font-size: 14px;
+  color: @text-color-muted;
+  max-width: 300px;
+  line-height: 1.5;
+  min-height: 40px;
+}
+
+.priceArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: @spacing-md;
+  margin-top: auto;
+}
+
+.priceTag {
+  display: flex;
+  align-items: center;
+  gap: @spacing-sm;
+  font-size: 24px;
+  font-weight: @font-weight-bold;
+  color: @effect-orange;
+  min-height: 32px;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: @spacing-md;
+  min-height: 40px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: @spacing-md @spacing-2xl;
+  border-top: 1px solid @border-color;
+  flex-shrink: 0;
+  min-height: 48px;
+}

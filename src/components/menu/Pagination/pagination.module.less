@@ -1,0 +1,23 @@
+@import '../../../styles/variables.less';
+
+// 精确还原 Figma node 7:677
+// 点状分页指示器，5px 圆点，4px gap
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: @zelda-dark-bg;
+  transition: background @motion-duration-fast @motion-ease;
+}
+
+.active {
+  background: @zelda-tan;
+}
