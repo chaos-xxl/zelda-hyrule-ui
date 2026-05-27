@@ -16,6 +16,7 @@ import {
   ShopListItem, ShopPriceQuantity, NumberInput,
   SettingsToggle,
   TitleOrnament, DirectionalArrow, Starburst, TextOrnamentCorner, TimerOrnament, Logo,
+  Illustration,
 } from '../src'
 import '../src/styles/global.less'
 
@@ -648,7 +649,9 @@ const LandingPage: React.FC = () => (
     </section>
 
     {/* ═══════ FEATURES ═══════ */}
-    <section style={{ maxWidth: 960, margin: '0 auto', padding: '64px 24px' }}>
+    <section style={{ position: 'relative', overflow: 'hidden' }}>
+      <Illustration illustration="rupee" opacity={0.08} style={{ position: 'absolute', inset: 0 }} />
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: 960, margin: '0 auto', padding: '64px 24px' }}>
       <SheikahTextTitle title="Features" description="Why choose zelda-hyrule-ui?" />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16, marginTop: 32 }}>
         <Card variant="sheikah" title="84 Components">
@@ -670,6 +673,7 @@ const LandingPage: React.FC = () => (
           ~112KB ESM, tree-shakeable. Assets externalized via vite-plugin-lib-assets.
         </Card>
       </div>
+      </div>
     </section>
 
     <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 24px' }}>
@@ -677,7 +681,9 @@ const LandingPage: React.FC = () => (
     </div>
 
     {/* ═══════ LIVE COMPONENT PREVIEW ═══════ */}
-    <section style={{ maxWidth: 960, margin: '0 auto', padding: '48px 24px' }}>
+    <section style={{ position: 'relative', overflow: 'hidden' }}>
+      <Illustration illustration="slate" opacity={0.06} style={{ position: 'absolute', inset: 0 }} />
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: 960, margin: '0 auto', padding: '48px 24px' }}>
       <SheikahTextTitle title="Component Preview" description="Real components rendered live" />
 
       {/* HUD Row */}
@@ -737,6 +743,7 @@ const LandingPage: React.FC = () => (
           <TitleLocation name="Hateno Village" />
         </div>
       </div>
+      </div>
     </section>
 
     {/* ═══════ VIEW ALL COMPONENTS BUTTON ═══════ */}
@@ -770,7 +777,9 @@ const LandingPage: React.FC = () => (
     </div>
 
     {/* ═══════ AI USAGE ═══════ */}
-    <section style={{ maxWidth: 960, margin: '0 auto', padding: '48px 24px' }}>
+    <section style={{ position: 'relative', overflow: 'hidden' }}>
+      <Illustration illustration="memories" opacity={0.07} style={{ position: 'absolute', inset: 0 }} />
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: 960, margin: '0 auto', padding: '48px 24px' }}>
       <SheikahTextTitle title="AI-Powered" description="Works with Cursor, Copilot, and v0" />
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 32 }}>
         <QuestListItem
@@ -791,6 +800,7 @@ const LandingPage: React.FC = () => (
           questType="shrine"
           state="default"
         />
+      </div>
       </div>
     </section>
 
