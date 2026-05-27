@@ -87,6 +87,7 @@ export { default as DirectionalArrow } from './components/decorations/Directiona
 export { default as Starburst } from './components/decorations/Starburst'
 export { default as TextOrnamentCorner } from './components/decorations/TextOrnamentCorner'
 export { default as TimerOrnament } from './components/decorations/TimerOrnament'
+export { default as Illustration } from './components/decorations/Illustration'
 
 // --- Brand Components ---
 export { default as Logo } from './components/brand/Logo'
@@ -205,3 +206,5 @@ export type { SystemScreenProps } from './components/screens/SystemScreen/System
 export type { ShopScreenProps } from './components/screens/ShopScreen/ShopScreen'
 export type { SheikahMapScreenProps } from './components/screens/SheikahMapScreen/SheikahMapScreen'
 export type { QuickSelectorScreenProps } from './components/screens/QuickSelectorScreen/QuickSelectorScreen'
+
+export type { IllustrationProps, IllustrationType } from './components/decorations/Illustration/Illustration'
