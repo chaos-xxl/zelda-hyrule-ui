@@ -1,5 +1,4 @@
 # 🗡️ zelda-hyrule-ui
-<img width="3582" height="1916" alt="image" src="https://github.com/user-attachments/assets/af8fcaf2-18fc-40b8-9846-03e74ed137a1" />
 
 
 
@@ -9,7 +8,6 @@ Dark theme, Sheikah glow effects, and the visual language of Hyrule — packaged
 一套受《塞尔达传说：旷野之息》启发的 React UI 组件库。
 暗色主题、希卡之石辉光效果、海拉鲁的视觉语言——封装为可复用的 React 组件 + AI 可消费的设计规范。
 
-<img width="3592" height="1890" alt="image" src="https://github.com/user-attachments/assets/ba6be6dd-bf23-4c04-969d-948888e049fb" />
 
 
 
