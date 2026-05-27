@@ -611,7 +611,7 @@ const SettingsPage: React.FC = () => {
     <div>
       <SectionTitle>Settings</SectionTitle>
       <Block label="SettingsToggle">
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 400 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <SettingsToggle label="Pro HUD Mode" options={['On', 'Off']} value={proMode} onChange={setProMode} selected />
           <SettingsToggle label="Language" options={['English', '日本語', '中文']} value={lang} onChange={setLang} />
           <SettingsToggle label="Minimap" options={['On', 'Off']} value="Off" />
