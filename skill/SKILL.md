@@ -1232,6 +1232,23 @@ export default MyComponent
 /* left 态 */ transform: scaleX(-1);
 ```
 
+#### Illustration
+```css
+/* 容器 */ position: relative; width: 100%; height: 100%; overflow: hidden;
+/* 图片 */ position: absolute; inset: -10%; width: 120%; height: 120%; object-fit: contain;
+         mix-blend-mode: screen; pointer-events: none; opacity: 0.6 (默认);
+/* 4 种变体 */
+  sword    — 大师之剑 + 海利亚鸟翼（166KB SVG）
+  rupee    — 卢比宝石图案（31KB SVG）
+  slate    — 希卡之石古代纹路（134KB SVG）
+  memories — 回忆花/沉默公主（43KB SVG）
+/* 用法：作为页面/区块背景装饰 */
+  <div style={{ position: 'relative', height: '100vh', background: '#66645D' }}>
+    <Illustration illustration="sword" opacity={0.4} />
+    <div style={{ position: 'relative', zIndex: 1 }}>{内容}</div>
+  </div>
+```
+
 ### 设置组件（1 个）
 
 #### SettingsToggle
