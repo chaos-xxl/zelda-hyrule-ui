@@ -1,6 +1,10 @@
 import React from 'react'
 import classNames from 'classnames'
 import styles from './divineBeast.module.less'
+import beastRutaSvg from '../../../assets/svg/beast-ruta.svg'
+import beastMedohSvg from '../../../assets/svg/beast-medoh.svg'
+import beastNaborisSvg from '../../../assets/svg/beast-naboris.svg'
+import beastRudaniaSvg from '../../../assets/svg/beast-rudania.svg'
 
 export type BeastType = 'ruta' | 'medoh' | 'naboris' | 'rudania'
 
@@ -19,11 +23,19 @@ export interface DivineBeastProps {
   style?: React.CSSProperties
 }
 
-const BEAST_COLORS: Record<BeastType, string> = {
-  ruta: '#27CBFF',
-  medoh: '#7CFF4E',
-  naboris: '#FCC63D',
-  rudania: '#EB4713',
+const BEAST_SVGS: Record<BeastType, string> = {
+  ruta: beastRutaSvg,
+  medoh: beastMedohSvg,
+  naboris: beastNaborisSvg,
+  rudania: beastRudaniaSvg,
+}
+
+/** 精确还原 Figma 中的神兽辉光色 */
+const BEAST_SHADOWS: Record<BeastType, string> = {
+  ruta: '0 0 4px #27CBFF, 0 0 5px #27CBFF, 0 0 15px #27CBFF',
+  medoh: '0 0 4px #7CFF4E, 0 0 5px #7CFF4E, 0 0 15px #7CFF4E',
+  naboris: '0 0 4px #FCC63D, 0 0 5px #F8AF42, 0 0 15px #BD8B28',
+  rudania: '0 0 4px #EB4713, 0 0 5px #EB4815, 0 0 15px #EC4916',
 }
 
 const DivineBeast: React.FC<DivineBeastProps> = ({
@@ -34,29 +46,16 @@ const DivineBeast: React.FC<DivineBeastProps> = ({
   className,
   style,
 }) => {
-  const color = recharging ? '#FF0000' : BEAST_COLORS[beast]
+  const shadow = recharging
+    ? '0 0 4px #FF0000, 0 0 5px #FF0000, 0 0 15px #FF0000'
+    : BEAST_SHADOWS[beast]
 
   return (
     <div
       className={classNames(styles.container, { [styles.recharging]: recharging }, className)}
-      style={{
-        width: size,
-        height: size,
-        '--beast-color': color,
-        ...style,
-      } as React.CSSProperties}
+      style={{ width: size, height: size, boxShadow: shadow, ...style }}
     >
-      <svg
-        className={styles.icon}
-        viewBox="0 0 75 75"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* 简化的神兽轮廓 — 用圆形 + 内部图标表示 */}
-        <circle cx="37.5" cy="37.5" r="30" fill="none" stroke={color} strokeWidth="2" opacity="0.6" />
-        <circle cx="37.5" cy="37.5" r="20" fill="none" stroke={color} strokeWidth="1.5" opacity="0.4" />
-        <circle cx="37.5" cy="37.5" r="8" fill={color} opacity="0.8" />
-      </svg>
+      <img src={BEAST_SVGS[beast]} alt="" className={styles.icon} />
       {charges > 0 && (
         <span className={styles.charges}>
           <span className={styles.times}>×</span>

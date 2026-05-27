@@ -13,10 +13,19 @@ const FLOATING_BG_PATH = 'M35.0534 0C15.7235 0 0.0534337 15.67 0.0534337 35C0.05
 
 const DialogFloating: React.FC<DialogFloatingProps> = ({ text, type = 'dialog', className, style }) => (
   <div className={classNames(styles.container, styles[type], className)} style={style}>
-    <svg viewBox="0 0 310 70" fill="none" className={styles.bg} preserveAspectRatio="none">
-      <path fillRule="evenodd" clipRule="evenodd" d={FLOATING_BG_PATH} fill="black" fillOpacity="0.5" />
-    </svg>
-    <span className={styles.text}>{text}</span>
+    {type === 'dialog' ? (
+      <>
+        <svg viewBox="0 0 310 70" fill="none" className={styles.bg} preserveAspectRatio="none">
+          <path fillRule="evenodd" clipRule="evenodd" d={FLOATING_BG_PATH} fill="black" fillOpacity="0.5" />
+        </svg>
+        <span className={styles.text}>{text}</span>
+      </>
+    ) : (
+      <>
+        <span className={styles.nameText}>{text}</span>
+        <span className={styles.arrow}>▼</span>
+      </>
+    )}
   </div>
 )
 

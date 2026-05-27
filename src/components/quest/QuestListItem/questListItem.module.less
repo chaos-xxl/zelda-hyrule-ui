@@ -1,7 +1,5 @@
-@import '../../../styles/variables.less';
-
 // 精确还原 Figma node 191:17721
-// 640×90px，双层边框，左侧图标 + 右侧文字
+// 640×90px 任务列表项
 
 .container {
   position: relative;
@@ -12,9 +10,8 @@
   border-radius: 4px;
   display: flex;
   align-items: center;
-  padding: 0 20px 0 100px;
   cursor: pointer;
-  transition: all @motion-duration-base @motion-ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .innerBorder {
@@ -23,95 +20,86 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 2px;
   pointer-events: none;
-  transition: border-color @motion-duration-base @motion-ease;
+  transition: border-color 0.25s;
 }
 
+// ---- 左侧图标 ----
 .icon {
-  position: absolute;
-  left: 18px;
-  top: 6px;
   width: 77px;
   height: 77px;
-  border-radius: 50%;
-  background: rgba(60, 211, 252, 0.15);
-  box-shadow: 0 0 23px rgba(84, 192, 253, 0.5), 0 0 18px black;
+  margin-left: 18px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.icon_main {
-  background: rgba(255, 234, 46, 0.15);
-  box-shadow: 0 0 23px rgba(255, 234, 46, 0.5), 0 0 18px black;
-}
-
-.icon_side { /* default blue */ }
-.icon_shrine { /* default blue */ }
-
-.icon_memory {
-  background: rgba(252, 196, 19, 0.15);
-  box-shadow: 0 0 23px rgba(252, 196, 19, 0.3), 0 0 18px black;
-}
-
+// ---- 文字内容 ----
 .content {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  margin-left: 5px;
   flex: 1;
   min-width: 0;
 }
 
 .title {
-  font-family: @font-body;
+  font-family: 'Roboto', sans-serif;
   font-size: 38px;
-  font-weight: @font-weight-bold;
+  font-weight: 700;
   font-style: italic;
-  color: @zelda-tan;
+  color: #E2DED3;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .location {
-  font-family: @font-body;
+  font-family: 'Roboto', sans-serif;
   font-size: 22px;
-  font-weight: @font-weight-bold;
+  font-weight: 700;
   font-style: italic;
-  color: @text-color-yellow;
-  line-height: 1;
+  color: #E1C139;
+  line-height: 1.2;
 }
 
+// ---- 右侧标记 ----
 .marker {
+  position: absolute;
+  right: 0;
+  top: 20px;
   width: 50px;
   height: 50px;
+  filter: drop-shadow(0 0 8px rgba(255, 184, 0, 0.6));
+}
+
+.dot {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: rgba(60, 211, 252, 0.2);
-  border: 2px solid rgba(60, 211, 252, 0.5);
-  flex-shrink: 0;
+  background: rgba(226, 222, 211, 0.4);
 }
 
-.checkmark {
-  font-size: 24px;
-  color: @text-color-green;
-  flex-shrink: 0;
-}
-
-// ---- States ----
+// ---- 状态 ----
 .hovered {
   .innerBorder {
-    border-color: rgba(226, 222, 211, 0.5);
+    border-color: rgba(255, 255, 255, 0.4);
   }
-}
-
-.marked {
-  // 有 marker 图标
 }
 
 .completed {
-  opacity: 0.6;
-  .title {
-    text-decoration: line-through;
-  }
+  opacity: 0.4;
 }
 
 .unmarked {
-  opacity: 0.7;
+  // 有小灰点
+}
+
+.marked {
+  // 有金色圆环
 }

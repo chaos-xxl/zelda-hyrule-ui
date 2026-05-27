@@ -1,3 +1,30 @@
-.container { position: relative; display: inline-flex; align-items: center; justify-content: center; }
-.icon { font-size: 24px; }
-.quantity { position: absolute; bottom: -2px; right: -4px; font-family: 'Roboto', sans-serif; font-size: 12px; font-weight: 700; color: #E9E1D1; }
+// 精确还原 Figma node 75:1559 — 40×40px 加载图标
+
+.container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+// 不同图标类型用 CSS filter 变色
+.orb .icon { filter: hue-rotate(40deg) saturate(2); }
+.rupee .icon { filter: hue-rotate(100deg) saturate(1.5); }
+.korok .icon { filter: hue-rotate(80deg) saturate(1.5); }
+.stamina .icon { filter: hue-rotate(100deg) brightness(1.2); }
+
+.quantity {
+  position: absolute;
+  bottom: -2px;
+  right: -4px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #E9E1D1;
+}

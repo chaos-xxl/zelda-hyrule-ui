@@ -1,7 +1,4 @@
-@import '../../../styles/variables.less';
-
-// 精确还原 Figma node 8:864
-// 70×70px 希卡能力图标
+// 精确还原 Figma node 8:864 — 70×70px 希卡能力图标
 
 .container {
   position: relative;
@@ -11,26 +8,27 @@
 }
 
 .icon {
-  width: 100%;
-  height: 100%;
+  width: 76%;
+  height: 76%;
+  object-fit: contain;
 }
 
 .plusBadge {
   position: absolute;
   top: 2px;
   right: 2px;
-  font-family: @font-body;
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  font-weight: @font-weight-bold;
-  color: @sheikah-yellow;
+  font-weight: 700;
+  color: #FFE460;
   line-height: 1;
 }
 
 .rechargeOverlay {
   position: absolute;
-  inset: 0;
+  inset: 10%;
   border-radius: 50%;
-  border: 2px solid @beast-recharge;
+  border: 2px solid #FF0000;
   border-right-color: transparent;
   animation: recharge-spin 1.5s linear infinite;
 }
