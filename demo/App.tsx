@@ -16,7 +16,6 @@ import {
   ShopListItem, ShopPriceQuantity, NumberInput,
   SettingsToggle,
   TitleOrnament, DirectionalArrow, Starburst, TextOrnamentCorner, TimerOrnament, Logo,
-  Illustration,
 } from '../src'
 import '../src/styles/global.less'
 
@@ -599,22 +598,6 @@ const DocsPage: React.FC = () => {
               <Logo variant="mark" width={40} />
               <Logo variant="full" width={200} />
             </DemoSection>
-            <DemoSection id="illustration" title="Illustration">
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-                <div style={{ position: 'relative', height: 150, background: '#66645D', borderRadius: 4, overflow: 'hidden' }}>
-                  <Illustration illustration="sword" opacity={0.5} />
-                </div>
-                <div style={{ position: 'relative', height: 150, background: '#66645D', borderRadius: 4, overflow: 'hidden' }}>
-                  <Illustration illustration="rupee" opacity={0.5} />
-                </div>
-                <div style={{ position: 'relative', height: 150, background: '#66645D', borderRadius: 4, overflow: 'hidden' }}>
-                  <Illustration illustration="slate" opacity={0.5} />
-                </div>
-                <div style={{ position: 'relative', height: 150, background: '#66645D', borderRadius: 4, overflow: 'hidden' }}>
-                  <Illustration illustration="memories" opacity={0.5} />
-                </div>
-              </div>
-            </DemoSection>
           </div>
         </div>
       </main>
@@ -631,7 +614,6 @@ const LandingPage: React.FC = () => (
     <section style={{ position: 'relative', width: '100%', height: '70vh', minHeight: 500, overflow: 'hidden' }}>
       <SheikahBackground color="darkBlue">
         <SheikahScanlines animated opacity={0.08} />
-        <Illustration illustration="sword" opacity={0.15} />
         <div style={{
           position: 'relative', zIndex: 1, height: '100%',
           display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
