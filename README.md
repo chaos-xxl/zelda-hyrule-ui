@@ -8,6 +8,10 @@ Dark theme, Sheikah glow effects, and the visual language of Hyrule — packaged
 一套受《塞尔达传说：旷野之息》启发的 React UI 组件库。
 暗色主题、希卡之石辉光效果、海拉鲁的视觉语言——封装为可复用的 React 组件 + AI 可消费的设计规范。
 
+![HUD Components](docs/img/readme-hud.png)
+
+![Dialog System](docs/img/readme-dialog.png)
+
 ---
 
 ## Installation / 安装
