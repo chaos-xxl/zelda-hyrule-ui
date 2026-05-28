@@ -1,5 +1,10 @@
 /* ─── Demo Responsive Styles ─────────────────────────────────────────────── */
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 /* Docs Page - Sidebar */
 .docs-sidebar {
   position: fixed;
@@ -342,4 +347,124 @@
   color: rgba(233, 225, 209, 0.4);
   font-family: 'SF Mono', 'Fira Code', monospace;
   font-size: 12px;
+}
+
+
+/* ─── Mobile Page ─────────────────────────────────────────────────────────── */
+
+.mobile-page {
+  background: #66645D;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.mobile-header {
+  text-align: center;
+  padding: 32px 16px 24px;
+}
+
+.mobile-header h1 {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 24px;
+  color: #E2DED3;
+  margin: 12px 0 4px;
+  letter-spacing: 0.04em;
+}
+
+.mobile-header p {
+  font-size: 13px;
+  color: rgba(233, 225, 209, 0.55);
+  margin-bottom: 16px;
+}
+
+.mobile-header-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mobile-content {
+  padding: 0 16px 32px;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+.mobile-section {
+  margin-bottom: 28px;
+}
+
+.mobile-section-title {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 13px;
+  color: rgba(233, 225, 209, 0.55);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(233, 225, 209, 0.08);
+}
+
+/* Component card — wraps each demo to constrain width */
+.mobile-demo-card {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(233, 225, 209, 0.06);
+  border-radius: 6px;
+  padding: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* For wide components (full-width strips like Dialog, QuestListItem, HealthBar) */
+.mobile-wide-scroll {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(233, 225, 209, 0.06);
+  border-radius: 6px;
+  padding: 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-wide-scroll-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: max-content;
+}
+
+/* Scale wrapper — wraps oversized components to fit screen */
+.mobile-scale-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(233, 225, 209, 0.06);
+  border-radius: 6px;
+  padding: 14px;
+}
+
+.mobile-scale-wrap > * {
+  transform-origin: center center;
+}
+
+.mobile-divider {
+  margin: 24px 0;
+}
+
+.mobile-footer {
+  text-align: center;
+  padding: 24px 16px;
+  border-top: 1px solid rgba(233, 225, 209, 0.06);
+  margin-top: 16px;
+}
+
+.mobile-footer p {
+  font-size: 11px;
+  color: rgba(233, 225, 209, 0.35);
+  line-height: 1.6;
 }

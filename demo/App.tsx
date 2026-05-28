@@ -1615,66 +1615,76 @@ const LandingPage: React.FC = () => (
 
 // ─── Mobile Page ─────────────────────────────────────────────────────────────
 
-const MobileSection: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
-  <div style={{ marginBottom: 32 }}>
-    <h3 style={{ fontFamily: "'Hylia Serif', 'Cinzel', serif", fontSize: 14, color: 'rgba(233,225,209,0.4)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12 }}>{title}</h3>
-    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>{children}</div>
+const MobileSection: React.FC<{ title: string; titleZh?: string; wide?: boolean; scale?: number; children: React.ReactNode }> = ({ title, titleZh, wide, scale, children }) => (
+  <div className="mobile-section">
+    <div className="mobile-section-title">{title} {titleZh && <span style={{ textTransform: 'none', letterSpacing: 0, opacity: 0.85 }}>{titleZh}</span>}</div>
+    {wide ? (
+      <div className="mobile-wide-scroll">
+        <div className="mobile-wide-scroll-inner">{children}</div>
+      </div>
+    ) : scale ? (
+      <div className="mobile-scale-wrap">
+        <div style={{ transform: `scale(${scale})`, transformOrigin: 'center center' }}>{children}</div>
+      </div>
+    ) : (
+      <div className="mobile-demo-card">{children}</div>
+    )}
   </div>
 )
 
 const MobilePage: React.FC = () => (
-  <div style={{ background: '#66645D', minHeight: '100vh', padding: '24px 16px' }}>
+  <div className="mobile-page">
     {/* Header */}
-    <div style={{ textAlign: 'center', marginBottom: 32 }}>
+    <div className="mobile-header">
       <SheikahSymbol size={48} outline={false} />
-      <h1 style={{ fontFamily: "'Hylia Serif', 'Cinzel', serif", fontSize: 24, color: '#E2DED3', margin: '12px 0 4px' }}>
-        zelda-hyrule-ui
-      </h1>
-      <p style={{ fontSize: 13, color: 'rgba(233,225,209,0.5)', fontStyle: 'italic', marginBottom: 16 }}>
-        84 React components · BOTW style
-      </p>
-      <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
+      <h1>zelda-hyrule-ui</h1>
+      <p>84 React components · BOTW style</p>
+      <p style={{ fontSize: 12, opacity: 0.7, marginBottom: 16 }}>84 个塞尔达风格 React 组件</p>
+      <div className="mobile-header-buttons">
         <Button variant="sheikah" size="small" onClick={() => window.open('https://github.com/chaos-xxl/zelda-hyrule-ui')}>GitHub</Button>
         <Button variant="primary" size="small" onClick={() => window.open('https://www.npmjs.com/package/zelda-hyrule-ui')}>npm</Button>
-        <Button variant="ghost" size="small" onClick={() => { window.location.hash = '#/docs' }}>Full Docs</Button>
+        <Button variant="ghost" size="small" onClick={() => { window.location.hash = '#/docs' }}>Docs</Button>
       </div>
     </div>
 
-    <Divider variant="sheikah" />
-
-    {/* HUD */}
-    <div style={{ marginTop: 24 }}>
-      <MobileSection title="HUD 抬头显示">
-        <HealthBar current={10} max={13} bonus={3} />
+    <div className="mobile-content">
+      {/* HUD - HealthBar is wide, scroll horizontally */}
+      <MobileSection title="HUD" titleZh="抬头显示" wide>
+        <HealthBar current={8} max={10} bonus={2} />
         <StaminaWheel value={0.75} size={56} />
         <RupeeCounter amount={13878} />
       </MobileSection>
 
-      <MobileSection title="Weather & Environment 天气环境">
+      <MobileSection title="Weather" titleZh="天气">
         <WeatherIcon weather="clear" />
         <WeatherIcon weather="rain" />
+        <WeatherIcon weather="cloudy" />
         <WeatherIcon weather="storm" />
+      </MobileSection>
+
+      <MobileSection title="Temperature & Sound" titleZh="温度与声音">
         <Temperature value="cold" />
+        <Temperature value="regular" />
         <Temperature value="hot" />
         <SoundMeter level="low" />
         <SoundMeter level="high" />
       </MobileSection>
 
-      <MobileSection title="Divine Beasts 神兽">
+      <MobileSection title="Divine Beasts" titleZh="神兽">
         <DivineBeast beast="ruta" charges={1} />
         <DivineBeast beast="medoh" charges={3} />
         <DivineBeast beast="naboris" charges={2} />
         <DivineBeast beast="rudania" charges={1} />
       </MobileSection>
 
-      <MobileSection title="Sheikah Abilities 希卡能力">
+      <MobileSection title="Sheikah Abilities" titleZh="希卡能力">
         <SheikahAbility ability="roundBomb" plus />
         <SheikahAbility ability="magnesis" />
         <SheikahAbility ability="stasis" plus />
         <SheikahAbility ability="cryonis" />
       </MobileSection>
 
-      <MobileSection title="Rupees 卢比">
+      <MobileSection title="Rupees" titleZh="卢比">
         <RupeeType type="green" />
         <RupeeType type="blue" />
         <RupeeType type="red" />
@@ -1683,107 +1693,115 @@ const MobilePage: React.FC = () => (
         <RupeeType type="gold" />
       </MobileSection>
 
-      <Divider variant="golden" />
-
-      <MobileSection title="Titles 标题">
-        <div style={{ width: '100%' }}>
-          <TitleLocation name="Hateno Village" />
-          <div style={{ marginTop: 12 }}>
-            <TitleQuest name="Destroy Ganon" questType="main" />
-          </div>
-        </div>
+      <MobileSection title="Bonus Effects" titleZh="增益效果">
+        <BonusEffectIcon icon="attackUp" arrow />
+        <BonusEffectIcon icon="defenseUp" />
+        <BonusEffectIcon icon="speedUp" arrow />
+        <BonusEffectIcon icon="coldResist" />
+        <BonusEffectIcon icon="heatResist" />
       </MobileSection>
 
-      <MobileSection title="Dialog 对话框">
-        <div style={{ width: '100%' }}>
-          <Dialog type="speech" speaker="Old Man">It is cold here.</Dialog>
-          <div style={{ marginTop: 12 }}>
-            <DialogFloating text="Shala-kah!" />
-          </div>
-        </div>
+      <div className="mobile-divider"><Divider variant="golden" /></div>
+
+      {/* Titles - very wide, need scroll */}
+      <MobileSection title="Titles" titleZh="标题" wide>
+        <TitleLocation name="Hateno Village" />
+        <TitleQuest name="Destroy Ganon" questType="main" />
+        <TitleShrine name="Oman Au Shrine" subtitle="Magnesis Trial" />
       </MobileSection>
 
-      <MobileSection title="Quest 任务">
-        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <QuestListItem title="Destroy Ganon" location="Hyrule Castle" questType="main" state="marked" />
-          <QuestListItem title="Robbie's Research" location="Akkala" questType="side" state="default" />
-          <QuestListItem title="The Stolen Heirloom" location="Kakariko" questType="shrine" state="completed" />
-        </div>
+      <MobileSection title="Dialog" titleZh="对话框" wide>
+        <Dialog type="speech" speaker="Old Man">It is cold here. Find warm clothes.</Dialog>
+        <Dialog type="sheikah" speaker="Sheikah Slate" showContinue={false}>Scope confirmed.</Dialog>
+        <DialogFloating text="Shala-kah! You found me!" />
       </MobileSection>
 
-      <Divider variant="ornament" />
+      <MobileSection title="Quest" titleZh="任务" wide>
+        <QuestListItem title="Destroy Ganon" location="Hyrule Castle" questType="main" state="marked" />
+        <QuestListItem title="Robbie's Research" location="Akkala Lab" questType="side" state="default" />
+        <QuestListItem title="The Stolen Heirloom" location="Kakariko" questType="shrine" state="completed" />
+      </MobileSection>
 
-      <MobileSection title="Buttons 按钮">
+      <MobileSection title="Quest Icons" titleZh="任务图标">
+        <QuestTypeIcon type="main" size={40} />
+        <QuestTypeIcon type="side" size={40} />
+        <QuestTypeIcon type="shrine" size={40} />
+        <QuestTypeIcon type="memory" size={40} />
+      </MobileSection>
+
+      <div className="mobile-divider"><Divider variant="ornament" /></div>
+
+      <MobileSection title="Buttons" titleZh="按钮">
         <Button variant="primary" size="small">Primary</Button>
         <Button variant="sheikah" size="small">Sheikah</Button>
         <Button variant="ghost" size="small">Ghost</Button>
         <Button variant="danger" size="small">Danger</Button>
       </MobileSection>
 
-      <MobileSection title="Cards 卡片">
-        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <MobileSection title="Cards" titleZh="卡片">
+        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 10 }}>
           <Card variant="sheikah" title="Sheikah Card">Glowing borders</Card>
           <Card variant="golden" title="Golden Card">Royal style</Card>
         </div>
       </MobileSection>
 
-      <MobileSection title="Controls 控制器">
+      <MobileSection title="Controls" titleZh="控制器">
         <ControllerButton button="A" label="Confirm" />
         <ControllerButton button="B" label="Cancel" />
         <ControllerButton button="X" label="Jump" />
         <ControllerButton button="Y" label="Attack" />
       </MobileSection>
 
-      <MobileSection title="Map 地图">
+      <MobileSection title="Map" titleZh="地图">
         <MapIcon icon="shrine" size={36} />
         <MapIcon icon="tower" size={36} />
         <MapIcon icon="lab" size={36} />
         <MapBeacon color="blue" flare />
         <MapBeacon color="red" />
         <MapBeacon color="yellow" />
+        <MapBeacon color="green" flare />
       </MobileSection>
 
-      <Divider variant="sheikah" />
+      <div className="mobile-divider"><Divider variant="sheikah" /></div>
 
-      <MobileSection title="Menu 菜单">
-        <ItemBG state="filled" size={50} />
-        <ItemBG state="selected" size={50} />
-        <ItemBG state="equipped" size={50} />
-        <ItemBG state="empty" size={50} />
+      <MobileSection title="Menu" titleZh="菜单">
+        <ItemBG state="filled" size={48} />
+        <ItemBG state="selected" size={48} />
+        <ItemBG state="equipped" size={48} />
+        <ItemBG state="empty" size={48} />
       </MobileSection>
 
-      <MobileSection title="Battle 战斗">
+      <MobileSection title="Battle" titleZh="战斗">
         <ItemEnchantment quality={1} />
         <ItemEnchantment quality={2} />
         <ItemEnchantment quality={3} />
-        <BonusEffectIcon icon="attackUp" arrow />
-        <BonusEffectIcon icon="defenseUp" />
-        <BonusEffectIcon icon="speedUp" arrow />
       </MobileSection>
 
-      <MobileSection title="Settings 设置">
-        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <SettingsToggle label="HUD" options={['ON', 'OFF']} value="ON" selected />
-          <SettingsToggle label="Sensitivity" options={['Low', 'Normal', 'High']} value="Normal" />
-        </div>
+      <MobileSection title="Sheikah" titleZh="希卡之石">
+        <SheikahSymbol size={40} outline={false} />
+        <SheikahSymbol size={40} outline />
+        <SheikahCompendiumEntry revealed number={1} />
+        <SheikahCompendiumEntry number={2} />
       </MobileSection>
 
-      <MobileSection title="Decorations 装饰">
+      <MobileSection title="Settings" titleZh="设置" wide>
+        <SettingsToggle label="HUD" options={['ON', 'OFF']} value="ON" selected />
+        <SettingsToggle label="Sensitivity" options={['Low', 'Normal', 'High']} value="Normal" />
+      </MobileSection>
+
+      <MobileSection title="Decorations" titleZh="装饰">
         <Logo variant="mark" width={32} />
-        <Starburst size={60} />
+        <Starburst size={48} />
         <DirectionalArrow direction="up" size={20} />
         <DirectionalArrow direction="right" size={20} />
         <DirectionalArrow direction="down" size={20} />
         <DirectionalArrow direction="left" size={20} />
       </MobileSection>
 
-      <Divider variant="golden" />
-
       {/* Footer */}
-      <div style={{ textAlign: 'center', marginTop: 24 }}>
-        <p style={{ fontSize: 11, color: 'rgba(233,225,209,0.3)' }}>
-          MIT License · Fan creation · 粉丝创作仅供学习
-        </p>
+      <div className="mobile-footer">
+        <p>MIT License · Fan creation</p>
+        <p>粉丝创作仅供学习 · 商标归任天堂</p>
       </div>
     </div>
   </div>
