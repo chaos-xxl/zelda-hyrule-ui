@@ -79,25 +79,55 @@ const COMPONENT_ZH: Record<string, string> = {
 const CODE_EXAMPLES: Record<string, string> = {
   HealthBar: `import { HealthBar } from 'zelda-hyrule-ui'
 
+// Full health
+<HealthBar current={13} max={13} />
+
+// Partial damage
+<HealthBar current={8} max={13} />
+
+// With bonus hearts (yellow)
 <HealthBar current={10} max={13} bonus={3} />`,
   StaminaWheel: `import { StaminaWheel } from 'zelda-hyrule-ui'
 
-<StaminaWheel value={0.75} size={70} />`,
+// Full stamina
+<StaminaWheel value={1} size={80} />
+
+// Partial
+<StaminaWheel value={0.6} size={80} />
+
+// Critical low
+<StaminaWheel value={0.15} size={80} />`,
   WeatherIcon: `import { WeatherIcon } from 'zelda-hyrule-ui'
 
+// All four weather types
 <WeatherIcon weather="clear" />
-<WeatherIcon weather="rain" />`,
+<WeatherIcon weather="cloudy" />
+<WeatherIcon weather="rain" />
+<WeatherIcon weather="storm" />`,
   RupeeCounter: `import { RupeeCounter } from 'zelda-hyrule-ui'
 
+// Different amounts
+<RupeeCounter amount={0} />
+<RupeeCounter amount={999} />
 <RupeeCounter amount={13878} />`,
   DivineBeast: `import { DivineBeast } from 'zelda-hyrule-ui'
 
+// All four divine beasts
 <DivineBeast beast="ruta" charges={1} />
-<DivineBeast beast="medoh" charges={3} />`,
+<DivineBeast beast="medoh" charges={3} />
+<DivineBeast beast="naboris" charges={2} />
+<DivineBeast beast="rudania" charges={1} />`,
   SheikahAbility: `import { SheikahAbility } from 'zelda-hyrule-ui'
 
+// Base abilities
+<SheikahAbility ability="roundBomb" />
+<SheikahAbility ability="magnesis" />
+<SheikahAbility ability="stasis" />
+<SheikahAbility ability="cryonis" />
+
+// Plus variants (upgraded)
 <SheikahAbility ability="roundBomb" plus />
-<SheikahAbility ability="magnesis" />`,
+<SheikahAbility ability="stasis" plus />`,
   RupeeType: `import { RupeeType } from 'zelda-hyrule-ui'
 
 <RupeeType type="green" />
@@ -162,13 +192,23 @@ const CODE_EXAMPLES: Record<string, string> = {
 <TitlePointOfInterest title="Bokoblin Camp" variant="poi" />`,
   Dialog: `import { Dialog } from 'zelda-hyrule-ui'
 
+// Speech dialog with continue arrow
 <Dialog type="speech" speaker="Old Man">
   It is cold here. You should find warm clothes.
+</Dialog>
+
+// Sheikah Slate dialog
+<Dialog type="sheikah" speaker="Sheikah Slate" showContinue={false}>
+  Scope confirmed. Marker set.
 </Dialog>`,
   DialogChoice: `import { DialogChoice } from 'zelda-hyrule-ui'
 
 <DialogChoice
-  options={[{ label: 'Yes', value: 'yes' }, { label: 'No', value: 'no' }]}
+  options={[
+    { label: 'Yes', value: 'yes' },
+    { label: 'No', value: 'no' },
+    { label: 'Maybe later', value: 'later' },
+  ]}
   selectedIndex={0}
 />`,
   DialogFloating: `import { DialogFloating } from 'zelda-hyrule-ui'
@@ -176,11 +216,26 @@ const CODE_EXAMPLES: Record<string, string> = {
 <DialogFloating text="Shala-kah! You found me!" />`,
   QuestListItem: `import { QuestListItem } from 'zelda-hyrule-ui'
 
+// Three quest types with different states
 <QuestListItem
   title="Destroy Ganon"
   location="Hyrule Castle"
   questType="main"
   state="marked"
+/>
+
+<QuestListItem
+  title="Robbie's Research"
+  location="Akkala Ancient Tech Lab"
+  questType="side"
+  state="default"
+/>
+
+<QuestListItem
+  title="The Stolen Heirloom"
+  location="Kakariko Village"
+  questType="shrine"
+  state="completed"
 />`,
   QuestDescription: `import { QuestDescription } from 'zelda-hyrule-ui'
 
@@ -252,18 +307,55 @@ const CODE_EXAMPLES: Record<string, string> = {
 <SheikahAlbumButton label="Compendium" selected />`,
   Button: `import { Button } from 'zelda-hyrule-ui'
 
+// Variants
 <Button variant="primary">Primary</Button>
-<Button variant="sheikah">Sheikah</Button>`,
+<Button variant="sheikah">Sheikah</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="danger">Danger</Button>
+
+// Sizes
+<Button variant="primary" size="small">Small</Button>
+<Button variant="primary" size="middle">Middle</Button>
+<Button variant="primary" size="large">Large</Button>
+
+// States
+<Button variant="primary" loading>Loading</Button>
+<Button variant="primary" disabled>Disabled</Button>`,
   Card: `import { Card } from 'zelda-hyrule-ui'
 
-<Card variant="sheikah" title="Sheikah Card">
-  Content here
-</Card>`,
-  Modal: `import { Modal } from 'zelda-hyrule-ui'
+// Three card variants
+<Card variant="default" title="Default Card">
+  Standard dark card with subtle border
+</Card>
 
-<Modal open={isOpen} onClose={() => setOpen(false)} title="Title">
-  Modal content
-</Modal>`,
+<Card variant="sheikah" title="Sheikah Card">
+  Glowing blue Sheikah-style borders
+</Card>
+
+<Card variant="golden" title="Golden Card">
+  Royal golden ornament style
+</Card>`,
+  Modal: `import { useState } from 'react'
+import { Modal, Button } from 'zelda-hyrule-ui'
+
+function App() {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Modal</Button>
+
+      <Modal
+        open={open}
+        title="Confirm Action"
+        onClose={() => setOpen(false)}
+        onOk={() => setOpen(false)}
+      >
+        <p>Are you sure you want to proceed?</p>
+      </Modal>
+    </>
+  )
+}`,
   Divider: `import { Divider } from 'zelda-hyrule-ui'
 
 <Divider variant="sheikah" />
@@ -298,11 +390,19 @@ const CODE_EXAMPLES: Record<string, string> = {
 <NumberInput value={1} min={1} max={99} />`,
   SettingsToggle: `import { SettingsToggle } from 'zelda-hyrule-ui'
 
+// Two-option toggle (selected row highlighted)
 <SettingsToggle
   label="HUD Display"
   options={['ON', 'OFF']}
   value="ON"
   selected
+/>
+
+// Multi-option toggle
+<SettingsToggle
+  label="Camera Sensitivity"
+  options={['Low', 'Normal', 'High']}
+  value="Normal"
 />`,
   TitleOrnament: `import { TitleOrnament } from 'zelda-hyrule-ui'
 
@@ -742,7 +842,9 @@ const PropsTable: React.FC<{ componentName: string }> = ({ componentName }) => {
 
 const DemoSection: React.FC<{ id: string; title: string; children: React.ReactNode }> = ({ id, title, children }) => (
   <section id={`section-${id}`} style={{ marginBottom: 56 }}>
-    <h3 style={{ fontFamily: "'Hylia Serif', 'Cinzel', serif", fontSize: 20, color: '#E9E1D1', marginBottom: 20 }}>{title}</h3>
+    <h3 style={{ fontFamily: "'Hylia Serif', 'Cinzel', serif", fontSize: 22, color: '#E9E1D1', marginBottom: 8 }}>
+      {title} {COMPONENT_ZH[title] && <span style={{ fontFamily: "'Roboto', sans-serif", fontSize: 16, color: 'rgba(233,225,209,0.55)', fontWeight: 400, marginLeft: 8 }}>{COMPONENT_ZH[title]}</span>}
+    </h3>
     <div style={{ background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(233,225,209,0.1)', borderRadius: 6, padding: 32, marginBottom: 20 }}>
       <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>{children}</div>
     </div>
@@ -821,15 +923,17 @@ const DocsPage: React.FC = () => {
       {/* Main Content */}
       <main className="docs-main">
         <h1 style={{ fontFamily: "'Hylia Serif', 'Cinzel', serif", fontSize: 32, color: '#E9E1D1', marginBottom: 8 }}>
-          Component Documentation
+          Component Documentation 组件文档
         </h1>
-        <p style={{ color: 'rgba(233,225,209,0.5)', fontStyle: 'italic', marginBottom: 40 }}>
-          All 84 components with live demos and code examples
+        <p style={{ color: 'rgba(233,225,209,0.5)', marginBottom: 40 }}>
+          All 84 components with live demos, usage examples, and API references.
+          <br />
+          全部 84 个组件，含实时预览、使用示例与 API 参考。
         </p>
 
         {/* ═══ HUD ═══ */}
         <div id="category-hud">
-          <SheikahTextTitle title="HUD" description="Heads-up display elements" />
+          <SheikahTextTitle title="HUD 抬头显示" description="Heads-up display elements / 游戏内信息显示" />
           <div style={{ marginTop: 24 }}>
             <DemoSection id="healthbar" title="HealthBar">
               <HealthBar current={13} max={13} bonus={0} />
@@ -905,7 +1009,7 @@ const DocsPage: React.FC = () => {
 
         {/* ═══ MENU ═══ */}
         <div id="category-menu" style={{ marginTop: 48 }}>
-          <SheikahTextTitle title="Menu" description="Inventory and menu UI elements" />
+          <SheikahTextTitle title="Menu 菜单" description="Inventory and menu UI / 物品栏与菜单界面" />
           <div style={{ marginTop: 24 }}>
             <DemoSection id="menusections" title="MenuSections">
               <MenuSections activeSection="weapons" />
@@ -946,7 +1050,7 @@ const DocsPage: React.FC = () => {
 
         {/* ═══ TITLES ═══ */}
         <div id="category-titles" style={{ marginTop: 48 }}>
-          <SheikahTextTitle title="Titles" description="Location and quest title overlays" />
+          <SheikahTextTitle title="Titles 标题" description="Location and quest title overlays / 地点与任务标题" />
           <div style={{ marginTop: 24 }}>
             <DemoSection id="titlelocation" title="TitleLocation">
               <TitleLocation name="Hateno Village" />
@@ -974,7 +1078,7 @@ const DocsPage: React.FC = () => {
 
         {/* ═══ DIALOG ═══ */}
         <div id="category-dialog" style={{ marginTop: 48 }}>
-          <SheikahTextTitle title="Dialog" description="Speech and system dialogs" />
+          <SheikahTextTitle title="Dialog 对话框" description="Speech and system dialogs / 对话与系统弹窗" />
           <div style={{ marginTop: 24 }}>
             <DemoSection id="dialog" title="Dialog">
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '100%' }}>
@@ -997,7 +1101,7 @@ const DocsPage: React.FC = () => {
 
         {/* ═══ QUEST ═══ */}
         <div id="category-quest" style={{ marginTop: 48 }}>
-          <SheikahTextTitle title="Quest" description="Quest tracking and notifications" />
+          <SheikahTextTitle title="Quest 任务" description="Quest tracking and notifications / 任务追踪与通知" />
           <div style={{ marginTop: 24 }}>
             <DemoSection id="questlistitem" title="QuestListItem">
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%' }}>
@@ -1029,7 +1133,7 @@ const DocsPage: React.FC = () => {
 
         {/* ═══ CONTROLS ═══ */}
         <div id="category-controls" style={{ marginTop: 48 }}>
-          <SheikahTextTitle title="Controls" description="Controller button prompts" />
+          <SheikahTextTitle title="Controls 控制器" description="Controller button prompts / 手柄按键提示" />
           <div style={{ marginTop: 24 }}>
             <DemoSection id="controllerbutton" title="ControllerButton">
               <ControllerButton button="A" label="Confirm" />
@@ -1051,7 +1155,7 @@ const DocsPage: React.FC = () => {
 
         {/* ═══ MAP ═══ */}
         <div id="category-map" style={{ marginTop: 48 }}>
-          <SheikahTextTitle title="Map" description="Map markers and navigation" />
+          <SheikahTextTitle title="Map 地图" description="Map markers and navigation / 地图标记与导航" />
           <div style={{ marginTop: 24 }}>
             <DemoSection id="mapicon" title="MapIcon">
               <MapIcon icon="shrine" size={40} />
@@ -1088,7 +1192,7 @@ const DocsPage: React.FC = () => {
 
         {/* ═══ SHEIKAH ═══ */}
         <div id="category-sheikah" style={{ marginTop: 48 }}>
-          <SheikahTextTitle title="Sheikah" description="Sheikah Slate themed components" />
+          <SheikahTextTitle title="Sheikah 希卡之石" description="Sheikah Slate themed components / 希卡之石主题组件" />
           <div style={{ marginTop: 24 }}>
             <DemoSection id="sheikahsymbol" title="SheikahSymbol">
               <SheikahSymbol size={60} outline={false} />
@@ -1133,7 +1237,7 @@ const DocsPage: React.FC = () => {
 
         {/* ═══ COMMON ═══ */}
         <div id="category-common" style={{ marginTop: 48 }}>
-          <SheikahTextTitle title="Common" description="General-purpose UI components" />
+          <SheikahTextTitle title="Common 通用" description="General-purpose UI components / 通用 UI 组件" />
           <div style={{ marginTop: 24 }}>
             <DemoSection id="button" title="Button">
               <Button variant="primary">Primary</Button>
@@ -1172,7 +1276,7 @@ const DocsPage: React.FC = () => {
 
         {/* ═══ BATTLE ═══ */}
         <div id="category-battle" style={{ marginTop: 48 }}>
-          <SheikahTextTitle title="Battle" description="Combat-related UI elements" />
+          <SheikahTextTitle title="Battle 战斗" description="Combat-related UI elements / 战斗相关界面" />
           <div style={{ marginTop: 24 }}>
             <DemoSection id="itemenchantment" title="ItemEnchantment">
               <ItemEnchantment quality={1} />
@@ -1199,7 +1303,7 @@ const DocsPage: React.FC = () => {
 
         {/* ═══ SHOP ═══ */}
         <div id="category-shop" style={{ marginTop: 48 }}>
-          <SheikahTextTitle title="Shop" description="Shop and trading UI" />
+          <SheikahTextTitle title="Shop 商店" description="Shop and trading UI / 商店与交易界面" />
           <div style={{ marginTop: 24 }}>
             <DemoSection id="shoplistitem" title="ShopListItem">
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%' }}>
@@ -1222,7 +1326,7 @@ const DocsPage: React.FC = () => {
 
         {/* ═══ SETTINGS ═══ */}
         <div id="category-settings" style={{ marginTop: 48 }}>
-          <SheikahTextTitle title="Settings" description="System settings controls" />
+          <SheikahTextTitle title="Settings 设置" description="System settings controls / 系统设置控件" />
           <div style={{ marginTop: 24 }}>
             <DemoSection id="settingstoggle" title="SettingsToggle">
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%' }}>
@@ -1236,7 +1340,7 @@ const DocsPage: React.FC = () => {
 
         {/* ═══ DECORATIONS ═══ */}
         <div id="category-decorations" style={{ marginTop: 48 }}>
-          <SheikahTextTitle title="Decorations" description="Ornamental and decorative elements" />
+          <SheikahTextTitle title="Decorations 装饰" description="Ornamental and decorative elements / 装饰与点缀元素" />
           <div style={{ marginTop: 24 }}>
             <DemoSection id="titleornament" title="TitleOrnament">
               <TitleOrnament side="left" />
@@ -1289,11 +1393,14 @@ const LandingPage: React.FC = () => (
             zelda-hyrule-ui
           </h1>
           <p style={{
-            fontSize: 18, fontWeight: 500, fontStyle: 'italic',
-            color: 'rgba(233,225,209,0.7)', maxWidth: 600, lineHeight: 1.6, margin: '0 0 32px',
+            fontSize: 17, fontWeight: 500,
+            color: 'rgba(233,225,209,0.7)', maxWidth: 640, lineHeight: 1.7, margin: '0 0 32px',
           }}>
             84 React components inspired by The Legend of Zelda: Breath of the Wild.
-            Dark theme, Sheikah glow effects, and AI-consumable design specs.
+            <br />
+            <span style={{ fontSize: 15, opacity: 0.85 }}>
+              受《塞尔达传说：旷野之息》启发的 84 个 React 组件 · 暗色主题 + 希卡之石辉光 + AI 设计规范
+            </span>
           </p>
           <div className="landing-buttons">
             <Button variant="sheikah" size="small" onClick={() => window.open('https://www.npmjs.com/package/zelda-hyrule-ui')}>
@@ -1311,25 +1418,37 @@ const LandingPage: React.FC = () => (
     <section style={{ position: 'relative', overflow: 'hidden' }}>
       <Illustration illustration="rupee" opacity={0.08} style={{ position: 'absolute', inset: 0 }} />
       <div className="landing-section" style={{ position: 'relative', zIndex: 1 }}>
-        <SheikahTextTitle title="Features" description="Why choose zelda-hyrule-ui?" />
+        <SheikahTextTitle title="Features 特性" description="Why choose zelda-hyrule-ui? / 为什么选择这套组件库？" />
         <div className="landing-features-grid">
-          <Card variant="sheikah" title="84 Components">
-            Full coverage of the BOTW UI Kit — HUD, menus, dialogs, maps, quests, and more.
+          <Card variant="sheikah" title="84 Components / 84 个组件">
+            Full coverage of the BOTW UI Kit — HUD, menus, dialogs, maps, and more.
+            <br />
+            <span style={{ opacity: 0.7 }}>覆盖 BOTW UI Kit 全部组件</span>
           </Card>
-          <Card variant="golden" title="AI-Ready">
-            Drop SKILL.md into Cursor and say &quot;build in Zelda style&quot; — pixel-perfect output.
+          <Card variant="golden" title="AI-Ready / AI 友好">
+            Drop SKILL.md into Cursor and say "build in Zelda style" — pixel-perfect output.
+            <br />
+            <span style={{ opacity: 0.7 }}>SKILL.md 丢给 AI 即可生成像素级代码</span>
           </Card>
-          <Card variant="default" title="Dark Theme">
-            Sheikah blue glows, double-border structure, warm-white text on dark backgrounds.
+          <Card variant="default" title="Dark Theme / 暗色主题">
+            Sheikah blue glows, double-border structure, warm-white text.
+            <br />
+            <span style={{ opacity: 0.7 }}>希卡蓝辉光 + 双层边框 + 暖白色文字</span>
           </Card>
-          <Card variant="sheikah" title="Figma Precision">
+          <Card variant="sheikah" title="Figma Precision / 像素级还原">
             Every SVG path exported directly from the community Figma UI Kit.
+            <br />
+            <span style={{ opacity: 0.7 }}>所有 SVG 从 Figma 精确导出</span>
           </Card>
-          <Card variant="golden" title="TypeScript">
+          <Card variant="golden" title="TypeScript / 全量类型">
             Full type definitions for all 84 components. IntelliSense out of the box.
+            <br />
+            <span style={{ opacity: 0.7 }}>完整 TS 类型定义，IntelliSense 即用</span>
           </Card>
-          <Card variant="default" title="Lightweight">
-            ~112KB ESM, tree-shakeable. Assets externalized via vite-plugin-lib-assets.
+          <Card variant="default" title="Lightweight / 轻量">
+            ~115KB ESM, tree-shakeable. Assets externalized via vite-plugin-lib-assets.
+            <br />
+            <span style={{ opacity: 0.7 }}>~115KB ESM，支持摇树优化</span>
           </Card>
         </div>
       </div>
@@ -1343,7 +1462,7 @@ const LandingPage: React.FC = () => (
     <section style={{ position: 'relative', overflow: 'hidden' }}>
       <Illustration illustration="slate" opacity={0.06} style={{ position: 'absolute', inset: 0 }} />
       <div className="landing-section" style={{ position: 'relative', zIndex: 1 }}>
-        <SheikahTextTitle title="Component Preview" description="Real components rendered live" />
+        <SheikahTextTitle title="Component Preview 组件预览" description="Real components rendered live / 真实组件实时渲染" />
 
         {/* HUD Row */}
         <div style={{ marginTop: 32, marginBottom: 24 }}>
@@ -1408,7 +1527,7 @@ const LandingPage: React.FC = () => (
     {/* ═══════ VIEW ALL COMPONENTS BUTTON ═══════ */}
     <section className="landing-section" style={{ textAlign: 'center', paddingBottom: 48 }}>
       <Button variant="sheikah" onClick={() => { window.location.hash = '#/docs' }}>
-        View All Components →
+        View All Components 查看全部组件 →
       </Button>
     </section>
 
@@ -1418,7 +1537,7 @@ const LandingPage: React.FC = () => (
 
     {/* ═══════ INSTALLATION ═══════ */}
     <section className="landing-section">
-      <SheikahTextTitle title="Installation" description="Get started in 30 seconds" />
+      <SheikahTextTitle title="Installation 安装" description="Get started in 30 seconds / 30 秒上手" />
       <div style={{ marginTop: 32 }}>
         <Dialog type="sheikah" speaker="Terminal" showContinue={false}>
           <span style={{ color: '#6FD49C' }}>npm install</span> zelda-hyrule-ui
@@ -1439,22 +1558,22 @@ const LandingPage: React.FC = () => (
     <section style={{ position: 'relative', overflow: 'hidden' }}>
       <Illustration illustration="memories" opacity={0.07} style={{ position: 'absolute', inset: 0 }} />
       <div className="landing-section" style={{ position: 'relative', zIndex: 1 }}>
-        <SheikahTextTitle title="AI-Powered" description="Works with Cursor, Copilot, and v0" />
+        <SheikahTextTitle title="AI-Powered AI 加持" description="Works with Cursor, Copilot, and v0 / 兼容 Cursor、Copilot、v0" />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 32 }}>
           <QuestListItem
-            title="Drop SKILL.md into Cursor"
+            title="Drop SKILL.md into Cursor / 把 SKILL.md 丢给 Cursor"
             location="Copy to .cursorrules"
             questType="main"
             state="marked"
           />
           <QuestListItem
-            title='Say "Build in Zelda style"'
+            title='Say "Build in Zelda style" / 说"用塞尔达风格做"'
             location="AI generates pixel-perfect code"
             questType="side"
             state="default"
           />
           <QuestListItem
-            title="Ship your Zelda-themed app"
+            title="Ship your Zelda-themed app / 完成你的塞尔达风格应用"
             location="Dark theme + Sheikah glow"
             questType="shrine"
             state="default"
@@ -1476,9 +1595,11 @@ const LandingPage: React.FC = () => (
       }}>
         zelda-hyrule-ui
       </p>
-      <p style={{ fontSize: 13, color: 'rgba(233,225,209,0.4)', fontStyle: 'italic', marginBottom: 24 }}>
+      <p style={{ fontSize: 13, color: 'rgba(233,225,209,0.4)', marginBottom: 8 }}>
         MIT License — Fan creation for learning purposes only.
-        All Zelda trademarks belong to Nintendo.
+      </p>
+      <p style={{ fontSize: 12, color: 'rgba(233,225,209,0.35)', marginBottom: 24 }}>
+        粉丝创作仅供学习 · 所有塞尔达相关商标归任天堂所有
       </p>
       <div className="landing-buttons">
         <Button variant="sheikah" size="small" onClick={() => window.open('https://github.com/chaos-xxl/zelda-hyrule-ui')}>
@@ -1523,13 +1644,13 @@ const MobilePage: React.FC = () => (
 
     {/* HUD */}
     <div style={{ marginTop: 24 }}>
-      <MobileSection title="HUD">
+      <MobileSection title="HUD 抬头显示">
         <HealthBar current={10} max={13} bonus={3} />
         <StaminaWheel value={0.75} size={56} />
         <RupeeCounter amount={13878} />
       </MobileSection>
 
-      <MobileSection title="Weather & Environment">
+      <MobileSection title="Weather & Environment 天气环境">
         <WeatherIcon weather="clear" />
         <WeatherIcon weather="rain" />
         <WeatherIcon weather="storm" />
@@ -1539,21 +1660,21 @@ const MobilePage: React.FC = () => (
         <SoundMeter level="high" />
       </MobileSection>
 
-      <MobileSection title="Divine Beasts">
+      <MobileSection title="Divine Beasts 神兽">
         <DivineBeast beast="ruta" charges={1} />
         <DivineBeast beast="medoh" charges={3} />
         <DivineBeast beast="naboris" charges={2} />
         <DivineBeast beast="rudania" charges={1} />
       </MobileSection>
 
-      <MobileSection title="Sheikah Abilities">
+      <MobileSection title="Sheikah Abilities 希卡能力">
         <SheikahAbility ability="roundBomb" plus />
         <SheikahAbility ability="magnesis" />
         <SheikahAbility ability="stasis" plus />
         <SheikahAbility ability="cryonis" />
       </MobileSection>
 
-      <MobileSection title="Rupees">
+      <MobileSection title="Rupees 卢比">
         <RupeeType type="green" />
         <RupeeType type="blue" />
         <RupeeType type="red" />
@@ -1564,7 +1685,7 @@ const MobilePage: React.FC = () => (
 
       <Divider variant="golden" />
 
-      <MobileSection title="Titles">
+      <MobileSection title="Titles 标题">
         <div style={{ width: '100%' }}>
           <TitleLocation name="Hateno Village" />
           <div style={{ marginTop: 12 }}>
@@ -1573,7 +1694,7 @@ const MobilePage: React.FC = () => (
         </div>
       </MobileSection>
 
-      <MobileSection title="Dialog">
+      <MobileSection title="Dialog 对话框">
         <div style={{ width: '100%' }}>
           <Dialog type="speech" speaker="Old Man">It is cold here.</Dialog>
           <div style={{ marginTop: 12 }}>
@@ -1582,7 +1703,7 @@ const MobilePage: React.FC = () => (
         </div>
       </MobileSection>
 
-      <MobileSection title="Quest">
+      <MobileSection title="Quest 任务">
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 8 }}>
           <QuestListItem title="Destroy Ganon" location="Hyrule Castle" questType="main" state="marked" />
           <QuestListItem title="Robbie's Research" location="Akkala" questType="side" state="default" />
@@ -1592,28 +1713,28 @@ const MobilePage: React.FC = () => (
 
       <Divider variant="ornament" />
 
-      <MobileSection title="Buttons">
+      <MobileSection title="Buttons 按钮">
         <Button variant="primary" size="small">Primary</Button>
         <Button variant="sheikah" size="small">Sheikah</Button>
         <Button variant="ghost" size="small">Ghost</Button>
         <Button variant="danger" size="small">Danger</Button>
       </MobileSection>
 
-      <MobileSection title="Cards">
+      <MobileSection title="Cards 卡片">
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 12 }}>
           <Card variant="sheikah" title="Sheikah Card">Glowing borders</Card>
           <Card variant="golden" title="Golden Card">Royal style</Card>
         </div>
       </MobileSection>
 
-      <MobileSection title="Controls">
+      <MobileSection title="Controls 控制器">
         <ControllerButton button="A" label="Confirm" />
         <ControllerButton button="B" label="Cancel" />
         <ControllerButton button="X" label="Jump" />
         <ControllerButton button="Y" label="Attack" />
       </MobileSection>
 
-      <MobileSection title="Map">
+      <MobileSection title="Map 地图">
         <MapIcon icon="shrine" size={36} />
         <MapIcon icon="tower" size={36} />
         <MapIcon icon="lab" size={36} />
@@ -1624,14 +1745,14 @@ const MobilePage: React.FC = () => (
 
       <Divider variant="sheikah" />
 
-      <MobileSection title="Menu">
+      <MobileSection title="Menu 菜单">
         <ItemBG state="filled" size={50} />
         <ItemBG state="selected" size={50} />
         <ItemBG state="equipped" size={50} />
         <ItemBG state="empty" size={50} />
       </MobileSection>
 
-      <MobileSection title="Battle">
+      <MobileSection title="Battle 战斗">
         <ItemEnchantment quality={1} />
         <ItemEnchantment quality={2} />
         <ItemEnchantment quality={3} />
@@ -1640,14 +1761,14 @@ const MobilePage: React.FC = () => (
         <BonusEffectIcon icon="speedUp" arrow />
       </MobileSection>
 
-      <MobileSection title="Settings">
+      <MobileSection title="Settings 设置">
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 8 }}>
           <SettingsToggle label="HUD" options={['ON', 'OFF']} value="ON" selected />
           <SettingsToggle label="Sensitivity" options={['Low', 'Normal', 'High']} value="Normal" />
         </div>
       </MobileSection>
 
-      <MobileSection title="Decorations">
+      <MobileSection title="Decorations 装饰">
         <Logo variant="mark" width={32} />
         <Starburst size={60} />
         <DirectionalArrow direction="up" size={20} />
@@ -1660,8 +1781,8 @@ const MobilePage: React.FC = () => (
 
       {/* Footer */}
       <div style={{ textAlign: 'center', marginTop: 24 }}>
-        <p style={{ fontSize: 11, color: 'rgba(233,225,209,0.3)', fontStyle: 'italic' }}>
-          MIT License · Fan creation · All Zelda trademarks belong to Nintendo
+        <p style={{ fontSize: 11, color: 'rgba(233,225,209,0.3)' }}>
+          MIT License · Fan creation · 粉丝创作仅供学习
         </p>
       </div>
     </div>
