@@ -90,7 +90,7 @@ export default function App() {
 
 ## 🧭 AI 决策导航
 
-收到用户需求时，按下表查找对应章节，避免盲读 1500+ 行：
+收到用户需求时，按下表查找对应章节，避免盲读 2000+ 行：
 
 | 用户问 | 查这里 |
 |--------|-------|
@@ -361,10 +361,28 @@ zelda-hyrule-ui 是一套受《塞尔达传说：旷野之息》启发的 React 
 
 ### 间距 / 圆角 / 边框
 
-```
-间距：xs=4px  sm=8px  md=12px  lg=16px  xl=24px  2xl=32px  3xl=48px
-圆角：sm=4px  md=8px  lg=12px  xl=16px  round=50%
-边框：默认内层 1px solid rgba(226,222,211,0.3)，外层容器 background rgba(0,0,0,0.6)
+```less
+// 间距（来自 variables.less）
+@spacing-xs:   4px;
+@spacing-sm:   8px;
+@spacing-md:   12px;
+@spacing-lg:   16px;
+@spacing-xl:   24px;
+@spacing-2xl:  32px;
+@spacing-3xl:  48px;
+
+// 圆角
+@radius-sm:    4px;
+@radius-md:    8px;
+@radius-lg:    12px;
+@radius-xl:    16px;
+@radius-round: 50%;
+
+// 边框
+@border-color:         rgba(226, 222, 211, 0.3);  // 默认内层
+@border-color-active:  #E2DED3;                    // 激活态
+@border-color-sheikah: rgba(60, 211, 252, 0.5);   // 希卡蓝
+// 外层容器 background：rgba(0, 0, 0, 0.6) 或 @bg-card
 ```
 
 ### 动效
@@ -465,7 +483,7 @@ zelda-hyrule-ui 是一套受《塞尔达传说：旷野之息》启发的 React 
 
 ## 3. 核心组件深度示例
 
-> 本节为 6 个最常用组件的深度示例（Button / Card / Dialog / HealthBar / StaminaWheel / Modal / Divider / Loading）。
+> 本节为 8 个最常用组件的深度示例（Button / Card / Dialog / HealthBar / StaminaWheel / Modal / Divider / Loading）。
 > 完整 84 个组件的精确样式规范见 [§10](#10-全量组件精确样式规范84-个组件)。
 
 ### Button
@@ -857,7 +875,7 @@ large: ring 60×60px
 4. **Italic 正文** — 对话/按钮/正文使用 Roboto Medium Italic。标题用 Hylia Serif（normal）。
 5. **禁止纯白** — 文字用暖白 `#E9E1D1`，边框用米色 `#E2DED3`。禁止 `#FFFFFF` 或 `#000000` 作为文字色。
 6. **禁止冷色** — 不用冷蓝（`#0066ff`）、冷灰（`#666`）。所有灰色带暖色调。唯一的蓝色是希卡蓝 `#3CD3FC`。
-7. **SVG 优先** — 图标/装饰使用 inline SVG（`<svg><path>`），保证矢量清晰。禁止用 `<img src>` 加载 SVG。
+7. **SVG 优先** — **小图标和装饰**（按钮里的图标、心心、箭头等）使用 inline SVG（`<svg><path>`），保证矢量清晰、可用 `currentColor` 着色。**大尺寸装饰图**（如 `Illustration` 组件里的剑、回忆花，~30-160KB）可用 `<img src>` 引入 SVG URL，避免拖慢首屏。判断标准：可着色 / 需动画 → inline；纯展示大图 → `<img>`。
 8. **焦点色** — focus-visible 用希卡蓝 `#3CD3FC`（outline: 2px solid）。禁止浏览器默认蓝色焦点环。
 
 ---
@@ -951,7 +969,10 @@ export default MyComponent
 
 ## 7. 新组件 Checklist
 
-- [ ] 字体已正确加载（Hylia Serif + Roboto）
+> 项目级前置（一次性，不在每个组件 checklist 里重复）：字体加载、`variables.less` 引入、Vite 配置。详见 §1 字体小节。
+
+每个新组件必须确保：
+
 - [ ] Props interface 从组件文件导出，所有 props 有 JSDoc 注释
 - [ ] 使用双层边框结构（外层 bg + 内层 ::after border）
 - [ ] 颜色引用 `variables.less` token，不硬编码 hex（除非 token 中没有）
@@ -960,10 +981,11 @@ export default MyComponent
 - [ ] disabled 态：opacity 0.4 + cursor: not-allowed
 - [ ] 焦点：outline 2px solid #3CD3FC, outline-offset 2px
 - [ ] 动画使用 `@motion-duration-*` 和 `@motion-ease` token
-- [ ] SVG 使用 inline 方式（JSX 中直接写 `<svg><path>`）
-- [ ] 组件从 `src/index.ts` 导出
+- [ ] 小图标 inline SVG（可 `currentColor` 着色），大尺寸装饰图可 `<img>`
+- [ ] 组件设置 `displayName`
+- [ ] 组件从 `src/index.ts` 导出，类型也从源文件 re-export
 - [ ] Demo 页创建于 `demo/` 对应分类
-- [ ] SKILL.md 补充该组件的精确样式值
+- [ ] SKILL.md §10 补充该组件的精确样式值
 - [ ] AI_USAGE.md 补充该组件的 API 文档
 
 ---
@@ -1041,11 +1063,15 @@ export default MyComponent
 ### SVG 加载
 
 ```
-✗ <img src="/icon.svg" />          // 模糊、无法着色
-✗ background-image: url(icon.svg)  // 一样的问题
+✗ <img src="/icon.svg" />          // 小图标用 img 时模糊、无法着色
+✗ background-image: url(icon.svg)  // 同样问题
 
 ✓ <svg viewBox="0 0 24 24"><path d="..." fill="currentColor" /></svg>
-   // 用 currentColor 跟随 CSS color，矢量清晰
+   // 小图标用 inline SVG：用 currentColor 跟随 CSS color，矢量清晰
+
+✓ <img src={largeDecorationSvg} alt="" />
+   // 大尺寸装饰图（Illustration 组件那种 30-160KB 的）用 img 即可
+   // 例外场景：纯展示、不需要着色、不需要动画
 ```
 
 ### 用 Tailwind？
@@ -2020,34 +2046,62 @@ margin-bottom: 48px;
 
 ## 13. 主题定制
 
-如果用户想轻度修改主题（不重做组件库），覆盖 Less 变量是最简方式。
+⚠️ **重要前提**：本组件库已编译成 CSS，运行时不能改 Less 变量。要换主题色，必须 fork 源码后修改 `src/styles/variables.less` 重新编译。
 
-### 可覆盖的核心 tokens
+### 方式 A — Fork 后改 Less 变量（最干净）
 
-```less
-// 在你的项目 entry 之前 import 一个覆盖文件
-// my-theme.less
-@sheikah-blue: #FF5577;       // 改希卡蓝为粉红
-@sheikah-blue-glow: #FF88AA;  // 同步辉光色
-@text-color-yellow: #FFA500;  // 改黄色强调为橙色
-@zelda-dark-bg: #2A2A3A;      // 改页面背景
+```bash
+git clone https://github.com/chaos-xxl/zelda-hyrule-ui.git my-zelda-theme
+cd my-zelda-theme
+# 编辑 src/styles/variables.less
+npm run build
+# 用本地包链接到你的项目
+npm link
+cd /path/to/your/project && npm link my-zelda-theme
+```
 
-// 然后 import 库样式
-@import 'zelda-hyrule-ui/style';
+### 方式 B — 用 CSS 变量覆盖（运行时，部分组件支持）
+
+由于库内只有部分关键色用了 CSS 变量回退，你可以在外层覆盖一些颜色：
+
+```css
+/* 在你的应用 entry 里 import 之后 */
+:root {
+  --zelda-sheikah-blue: #FF5577;       /* 改希卡蓝为粉红 */
+  --zelda-text-yellow: #FFA500;        /* 改黄色强调为橙色 */
+  --zelda-bg-page: #2A2A3A;            /* 改页面背景 */
+}
+```
+
+注意：这种方式只对 §4 列出的 CSS 变量生效。Less 编译时已固化的色值（大多数组件内部）改不了。
+
+### 方式 C — 用 className/style 局部覆盖
+
+最简单的局部主题定制——直接给单个组件传 `style` 或 `className`：
+
+```tsx
+<Button style={{ borderColor: '#FF5577' }}>Custom</Button>
+
+<div className="my-custom-theme">
+  <Card>...</Card>
+</div>
+
+// my-custom-theme.css
+.my-custom-theme [class*='zelda-card'] { background: rgba(40, 0, 30, 0.6); }
 ```
 
 ### 三种常见定制方向
 
 | 方向 | 改哪些 token | 视觉效果 |
 |------|------------|---------|
-| 暖色调（火焰王国风） | `@sheikah-blue` → 橙红，`@beast-fire` 系列 | 红橙黄主导 |
-| 黑暗模式（只改强调色） | `@sheikah-blue` → 紫色 `#A855F7` | 暗紫主题 |
-| 高对比（无障碍） | 提高所有 `rgba(...)` 透明度，文字色 → `#FFFFFF` | WCAG AAA |
+| 暖色调（火焰王国风） | `@sheikah-blue` → 橙红 | 红橙黄主导 |
+| 暗紫主题 | `@sheikah-blue` → `#A855F7` | 神秘紫 |
+| 高对比（无障碍） | `@text-color-main` → `#FFFFFF`，提升所有 `rgba` 透明度 | WCAG AAA |
 
 ### 注意事项
 
 - ✗ 不要直接改组件源码 — 升级时会被覆盖
-- ✓ 用 Less 变量覆盖 — 升级安全
+- ✓ Fork 后改 Less，或用 CSS 变量/className 覆盖
 - ✗ 不要把希卡蓝改成冷蓝（如 `#0066FF`）— 会破坏整体风格
 - ✓ 改色时保持"暖色调"原则（饱和度足够、不死板）
 
@@ -2105,13 +2159,15 @@ margin-bottom: 48px;
 
 ### 颜色对比度
 
-| 组合 | 对比度 | WCAG |
-|------|--------|------|
-| `#E9E1D1` on `#66645D` | 4.5:1 | AA Pass |
-| `#3CD3FC` on `rgba(0,0,0,0.6)` | 7+:1 | AAA Pass |
-| `#E2D146` on `rgba(0,0,0,0.6)` | 6+:1 | AA Pass |
+下表为根据 hex 值估算的对比度，**未经实际辅助技术工具验证**。生产环境请用 axe DevTools / Stark / WebAIM Contrast Checker 实测。
 
-⚠️ 完整 WCAG 验证仍需人工辅助技术测试和无障碍专家评审。本组件库目标是 WCAG AA 基础合规。
+| 组合 | 估算对比度 | 估算等级 |
+|------|--------|------|
+| `#E9E1D1` on `#66645D` | ~4.5:1 | AA Pass |
+| `#3CD3FC` on `rgba(0,0,0,0.6)` | ~7+:1 | AAA Pass |
+| `#E2D146` on `rgba(0,0,0,0.6)` | ~6+:1 | AA Pass |
+
+⚠️ 完整 WCAG 验证需要人工辅助技术测试（屏幕阅读器、键盘导航）和无障碍专家评审。本组件库目标是 WCAG AA 基础合规，不保证 AAA。
 
 ---
 
