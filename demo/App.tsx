@@ -610,6 +610,83 @@ const PROPS_DATA: Record<string, PropDef[]> = {
   ],
 }
 
+// ─── Syntax Highlighting ─────────────────────────────────────────────────────
+
+function highlightCode(code: string): React.ReactNode[] {
+  const lines = code.split('\n')
+  return lines.map((line, i) => {
+    const parts: React.ReactNode[] = []
+    let remaining = line
+    let key = 0
+
+    while (remaining.length > 0) {
+      // Comments: // ... or {/* ... */}
+      let match = remaining.match(/^(\/\/.*|\/\*[\s\S]*?\*\/|\{\/\*[\s\S]*?\*\/\})/)
+      if (match) {
+        parts.push(<span key={key++} style={{ color: 'rgba(233,225,209,0.35)' }}>{match[0]}</span>)
+        remaining = remaining.slice(match[0].length)
+        continue
+      }
+      // Strings: '...' or "..."
+      match = remaining.match(/^('[^']*'|"[^"]*")/)
+      if (match) {
+        parts.push(<span key={key++} style={{ color: '#E2D146' }}>{match[0]}</span>)
+        remaining = remaining.slice(match[0].length)
+        continue
+      }
+      // Keywords
+      match = remaining.match(/^(import|from|export|default|const|let|return|function)\b/)
+      if (match) {
+        parts.push(<span key={key++} style={{ color: '#6FD49C' }}>{match[0]}</span>)
+        remaining = remaining.slice(match[0].length)
+        continue
+      }
+      // JSX tags: <ComponentName or </ComponentName
+      match = remaining.match(/^(<\/?)([A-Z][A-Za-z]*)/)
+      if (match) {
+        parts.push(<span key={key++} style={{ color: 'rgba(233,225,209,0.5)' }}>{match[1]}</span>)
+        parts.push(<span key={key++} style={{ color: '#FF9E64' }}>{match[2]}</span>)
+        remaining = remaining.slice(match[0].length)
+        continue
+      }
+      // HTML-like tags: <div, </div, <p, <span
+      match = remaining.match(/^(<\/?)([a-z][a-zA-Z]*)/)
+      if (match) {
+        parts.push(<span key={key++} style={{ color: 'rgba(233,225,209,0.5)' }}>{match[1]}</span>)
+        parts.push(<span key={key++} style={{ color: '#7DCFFF' }}>{match[2]}</span>)
+        remaining = remaining.slice(match[0].length)
+        continue
+      }
+      // Props/attributes: word=
+      match = remaining.match(/^([a-zA-Z][a-zA-Z0-9]*)(?==)/)
+      if (match) {
+        parts.push(<span key={key++} style={{ color: '#BB9AF7' }}>{match[0]}</span>)
+        remaining = remaining.slice(match[0].length)
+        continue
+      }
+      // Numbers
+      match = remaining.match(/^\d+/)
+      if (match) {
+        parts.push(<span key={key++} style={{ color: '#FF9E64' }}>{match[0]}</span>)
+        remaining = remaining.slice(match[0].length)
+        continue
+      }
+      // Braces and operators
+      match = remaining.match(/^[{}()[\]<>\/=,;.]+/)
+      if (match) {
+        parts.push(<span key={key++} style={{ color: 'rgba(233,225,209,0.5)' }}>{match[0]}</span>)
+        remaining = remaining.slice(match[0].length)
+        continue
+      }
+      // Default: single char
+      parts.push(<span key={key++}>{remaining[0]}</span>)
+      remaining = remaining.slice(1)
+    }
+
+    return <div key={i}>{parts.length > 0 ? parts : ' '}</div>
+  })
+}
+
 // ─── Code Example Component ──────────────────────────────────────────────────
 
 const CodeExample: React.FC<{ componentName: string }> = ({ componentName }) => {
@@ -620,7 +697,7 @@ const CodeExample: React.FC<{ componentName: string }> = ({ componentName }) => 
     <div className="doc-section">
       <div className="doc-section-badge">Usage</div>
       <div className="doc-code-block">
-        <pre>{code}</pre>
+        <pre>{highlightCode(code)}</pre>
       </div>
     </div>
   )

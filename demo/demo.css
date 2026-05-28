@@ -265,15 +265,15 @@
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(60, 211, 252, 0.12);
   border-radius: 0 6px 6px 6px;
-  padding: 20px 24px;
+  padding: 24px 28px;
   overflow-x: auto;
 }
 
 .doc-code-block pre {
   margin: 0;
   font-family: 'SF Mono', 'Fira Code', 'Menlo', monospace;
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: 13.5px;
+  line-height: 1.8;
   color: #E9E1D1;
   white-space: pre;
 }
