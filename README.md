@@ -1,5 +1,18 @@
 # 🗡️ zelda-hyrule-ui
 
+[![npm version](https://img.shields.io/npm/v/zelda-hyrule-ui?color=cb3837&labelColor=222)](https://www.npmjs.com/package/zelda-hyrule-ui)
+[![npm downloads](https://img.shields.io/npm/dm/zelda-hyrule-ui?color=5fa04e&labelColor=222)](https://www.npmjs.com/package/zelda-hyrule-ui)
+[![GitHub stars](https://img.shields.io/github/stars/chaos-xxl/zelda-hyrule-ui?color=ffd700&labelColor=222)](https://github.com/chaos-xxl/zelda-hyrule-ui/stargazers)
+[![License](https://img.shields.io/badge/license-MIT-3CD3FC?labelColor=222)](LICENSE)
+
+[![Components](https://img.shields.io/badge/Components-84-3CD3FC?labelColor=222)](https://chaos-xxl.github.io/zelda-hyrule-ui/#/docs)
+[![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react&labelColor=222)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5+-3178C6?logo=typescript&logoColor=fff&labelColor=222)](https://typescriptlang.org)
+[![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=fff&labelColor=222)](https://vitejs.dev)
+[![Cursor Ready](https://img.shields.io/badge/Cursor-Ready-A0A0A0?labelColor=222)](skill/SKILL.md)
+[![BOTW Style](https://img.shields.io/badge/Style-BOTW-E2D146?labelColor=222)](#)
+[![Bilingual](https://img.shields.io/badge/docs-EN%20%2F%20%E4%B8%AD%E6%96%87-FF9E64?labelColor=222)](#)
+
 A React UI component library inspired by *The Legend of Zelda: Breath of the Wild*.
 84 components with dark theme, Sheikah glow effects, and AI-consumable design specs.
 
