@@ -32,7 +32,7 @@ const Toast: React.FC<ToastProps> = ({ message, visible = true, duration = 3000,
   if (!show) return null
 
   return (
-    <div className={classNames(styles.container, className)} style={style}>
+    <div className={classNames(styles.container, className)} style={style} role="alert" aria-live="polite">
       <div className={styles.innerBorder} />
       <span className={styles.message}>{message}</span>
     </div>

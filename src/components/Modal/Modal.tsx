@@ -55,16 +55,19 @@ const Modal: React.FC<ModalProps> = ({
   )
 
   return (
-    <div className={styles.overlay} onClick={handleMaskClick}>
+    <div className={styles.overlay} onClick={handleMaskClick} role="presentation">
       <div
         className={classNames(styles.modal, className)}
         style={{ width }}
         onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={title ? 'modal-title' : undefined}
       >
         {title && (
           <div className={styles.header}>
-            <h3 className={styles.title}>{title}</h3>
-            <button className={styles.closeBtn} onClick={onClose}>✕</button>
+            <h3 className={styles.title} id="modal-title">{title}</h3>
+            <button className={styles.closeBtn} onClick={onClose} aria-label="Close">✕</button>
           </div>
         )}
         <div className={styles.body}>{children}</div>

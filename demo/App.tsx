@@ -298,6 +298,291 @@ const CODE_EXAMPLES: Record<string, string> = {
 <Logo variant="full" width={200} />`,
 }
 
+// ─── Props Data ──────────────────────────────────────────────────────────────
+
+interface PropDef {
+  name: string
+  type: string
+  default?: string
+  desc: string
+}
+
+const PROPS_DATA: Record<string, PropDef[]> = {
+  HealthBar: [
+    { name: 'current', type: 'number', desc: 'Current hearts' },
+    { name: 'max', type: 'number', desc: 'Maximum hearts' },
+    { name: 'bonus', type: 'number', default: '0', desc: 'Bonus (yellow) hearts' },
+  ],
+  StaminaWheel: [
+    { name: 'value', type: 'number', desc: 'Fill ratio (0–1)' },
+    { name: 'size', type: 'number', default: '80', desc: 'Diameter in px' },
+  ],
+  WeatherIcon: [
+    { name: 'weather', type: "'clear'|'rain'|'cloudy'|'storm'", desc: 'Weather type' },
+  ],
+  RupeeCounter: [
+    { name: 'amount', type: 'number', desc: 'Rupee count to display' },
+  ],
+  DivineBeast: [
+    { name: 'beast', type: "'ruta'|'medoh'|'naboris'|'rudania'", desc: 'Beast type' },
+    { name: 'charges', type: 'number', default: '0', desc: 'Available charges (0–3)' },
+  ],
+  SheikahAbility: [
+    { name: 'ability', type: "'roundBomb'|'magnesis'|'stasis'|'cryonis'|...", desc: 'Ability type' },
+    { name: 'plus', type: 'boolean', default: 'false', desc: 'Plus variant' },
+    { name: 'recharging', type: 'boolean', default: 'false', desc: 'Recharging state' },
+  ],
+  RupeeType: [
+    { name: 'type', type: "'green'|'blue'|'red'|'purple'|'silver'|'gold'", desc: 'Rupee color variant' },
+  ],
+  Temperature: [
+    { name: 'value', type: "'regular'|'cold'|'hot'", default: "'regular'", desc: 'Temperature state' },
+  ],
+  SoundMeter: [
+    { name: 'level', type: "'low'|'high'", default: "'low'", desc: 'Noise level' },
+  ],
+  Sensor: [
+    { name: 'active', type: 'boolean', default: 'false', desc: 'Whether sensor is active' },
+    { name: 'plus', type: 'boolean', default: 'false', desc: 'Sensor+ variant' },
+    { name: 'size', type: 'number', default: '40', desc: 'Size in px' },
+  ],
+  EffectDuration: [
+    { name: 'name', type: 'string', desc: 'Effect name' },
+    { name: 'timeRemaining', type: 'string', desc: 'Time display (e.g. "2:30")' },
+  ],
+  BonusEffectIcon: [
+    { name: 'icon', type: "'attackUp'|'defenseUp'|'speedUp'|...", desc: 'Effect type' },
+    { name: 'arrow', type: 'boolean', default: 'false', desc: 'Show arrow indicator' },
+  ],
+  MenuSections: [
+    { name: 'activeSection', type: "'weapons'|'bows'|'shields'|'clothing'|...", desc: 'Active tab' },
+  ],
+  ItemBG: [
+    { name: 'state', type: "'empty'|'filled'|'selected'|'equipped'", default: "'empty'", desc: 'Slot state' },
+    { name: 'size', type: 'number', default: '80', desc: 'Size in px' },
+  ],
+  Pagination: [
+    { name: 'totalPages', type: 'number', desc: 'Total pages (1–6)' },
+    { name: 'currentPage', type: 'number', desc: 'Current page' },
+  ],
+  ModalButton: [
+    { name: 'selected', type: 'boolean', default: 'false', desc: 'Selected state' },
+    { name: 'children', type: 'ReactNode', desc: 'Button label' },
+  ],
+  Scrollbar: [
+    { name: 'location', type: 'number', desc: 'Current position (1-based)' },
+    { name: 'maxSections', type: 'number', desc: 'Total sections' },
+    { name: 'width', type: 'number', default: '200', desc: 'Width in px' },
+  ],
+  ModalTimer: [
+    { name: 'time', type: 'string', desc: 'Time text (e.g. "2:30")' },
+    { name: 'red', type: 'boolean', default: 'false', desc: 'Red warning state' },
+  ],
+  StatsStack: [
+    { name: 'type', type: "'weapon'|'armor'|'shield'|'healing'", desc: 'Stat type' },
+    { name: 'value', type: 'number', desc: 'Current value' },
+    { name: 'comparison', type: 'number', desc: 'Comparison value (optional)' },
+    { name: 'trait', type: 'string', desc: 'Bonus trait text' },
+  ],
+  TitleLocation: [
+    { name: 'name', type: 'string', desc: 'Location name' },
+  ],
+  TitleQuest: [
+    { name: 'name', type: 'string', desc: 'Quest name' },
+    { name: 'questType', type: "'main'|'side'|'shrine'", desc: 'Quest type' },
+    { name: 'complete', type: 'boolean', default: 'false', desc: 'Completed state' },
+  ],
+  TitleShrine: [
+    { name: 'name', type: 'string', desc: 'Shrine name' },
+    { name: 'subtitle', type: 'string', desc: 'Trial subtitle' },
+  ],
+  TitleLocationLarge: [
+    { name: 'name', type: 'string', desc: 'Location name (large)' },
+  ],
+  TitlePointOfInterest: [
+    { name: 'title', type: 'string', desc: 'POI title' },
+    { name: 'variant', type: "'poi'|'bossName'|'poiWithHealth'", desc: 'Display variant' },
+    { name: 'subtitle', type: 'string', desc: 'Subtitle text' },
+    { name: 'healthPercent', type: 'number', desc: 'Health bar (0–100)' },
+  ],
+  Dialog: [
+    { name: 'type', type: "'speech'|'sheikah'", desc: 'Dialog style' },
+    { name: 'speaker', type: 'string', desc: 'Speaker name' },
+    { name: 'showContinue', type: 'boolean', default: 'true', desc: 'Show continue indicator' },
+    { name: 'children', type: 'ReactNode', desc: 'Dialog content' },
+  ],
+  DialogChoice: [
+    { name: 'options', type: '{ label, value }[]', desc: 'Choice options' },
+    { name: 'selectedIndex', type: 'number', default: '0', desc: 'Selected option index' },
+  ],
+  DialogFloating: [
+    { name: 'text', type: 'string', desc: 'Floating text' },
+    { name: 'type', type: "'speech'|'name'", default: "'speech'", desc: 'Bubble type' },
+  ],
+  QuestListItem: [
+    { name: 'title', type: 'string', desc: 'Quest title' },
+    { name: 'location', type: 'string', desc: 'Location text' },
+    { name: 'questType', type: "'main'|'side'|'shrine'", desc: 'Quest type' },
+    { name: 'state', type: "'default'|'marked'|'completed'", desc: 'Item state' },
+  ],
+  QuestDescription: [
+    { name: 'title', type: 'string', desc: 'Quest title' },
+    { name: 'description', type: 'string', desc: 'Quest description text' },
+    { name: 'location', type: 'string', desc: 'Location' },
+    { name: 'npc', type: 'string', desc: 'NPC name' },
+  ],
+  QuestTypeIcon: [
+    { name: 'type', type: "'main'|'side'|'shrine'|'memory'", desc: 'Quest type' },
+    { name: 'size', type: 'number', default: '40', desc: 'Size in px' },
+  ],
+  QuestNotification: [
+    { name: 'showLabel', type: 'boolean', default: 'false', desc: 'Show label text' },
+    { name: 'label', type: 'string', desc: 'Notification label' },
+  ],
+  ControllerButton: [
+    { name: 'button', type: "'A'|'B'|'X'|'Y'|'L'|'R'|'ZL'|'ZR'", desc: 'Button type' },
+    { name: 'label', type: 'string', desc: 'Action label' },
+  ],
+  ActionSet: [
+    { name: 'actions', type: '{ button, label }[]', desc: 'Array of button actions' },
+  ],
+  MapIcon: [
+    { name: 'icon', type: "'shrine'|'tower'|'lab'|'resurrection'", desc: 'Map icon type' },
+    { name: 'size', type: 'number', default: '32', desc: 'Size in px' },
+  ],
+  MapBeacon: [
+    { name: 'color', type: "'red'|'blue'|'yellow'|'green'|'pink'", desc: 'Beacon color' },
+    { name: 'flare', type: 'boolean', default: 'false', desc: 'Show flare animation' },
+  ],
+  MapQuestMarker: [
+    { name: 'size', type: 'number', default: '40', desc: 'Size in px' },
+    { name: 'pulse', type: 'boolean', default: 'false', desc: 'Pulse animation' },
+  ],
+  MapLocationName: [
+    { name: 'name', type: 'string', desc: 'Location name' },
+    { name: 'size', type: "'small'|'medium'|'large'", default: "'medium'", desc: 'Text size' },
+  ],
+  MapCursor: [
+    { name: 'locationName', type: 'string', desc: 'Location name tooltip' },
+    { name: 'action', type: 'boolean', default: 'false', desc: 'Action state' },
+  ],
+  MapHeroLocation: [
+    { name: 'rotation', type: 'number', default: '0', desc: 'Rotation in degrees' },
+    { name: 'vision', type: 'boolean', default: 'false', desc: 'Show vision cone' },
+  ],
+  SheikahSymbol: [
+    { name: 'size', type: 'number', default: '60', desc: 'Size in px' },
+    { name: 'outline', type: 'boolean', default: 'false', desc: 'Outline-only mode' },
+  ],
+  SheikahBackground: [
+    { name: 'color', type: "'darkBlue'|'blueGrey'", default: "'darkBlue'", desc: 'Background color' },
+    { name: 'children', type: 'ReactNode', desc: 'Content' },
+  ],
+  SheikahScanlines: [
+    { name: 'opacity', type: 'number', default: '0.1', desc: 'Scanline opacity (0–1)' },
+    { name: 'animated', type: 'boolean', default: 'false', desc: 'Animate scanlines' },
+  ],
+  SheikahRune: [
+    { name: 'activeRune', type: "'roundBomb'|'magnesis'|'stasis'|'cryonis'|...", desc: 'Active rune' },
+  ],
+  SheikahCompendiumEntry: [
+    { name: 'revealed', type: 'boolean', default: 'false', desc: 'Entry discovered' },
+    { name: 'hovered', type: 'boolean', default: 'false', desc: 'Hover state' },
+    { name: 'number', type: 'number', desc: 'Entry number' },
+  ],
+  SheikahTextTitle: [
+    { name: 'title', type: 'string', desc: 'Title text' },
+    { name: 'description', type: 'string', desc: 'Subtitle text' },
+  ],
+  SheikahCompendiumFilters: [
+    { name: 'activeFilter', type: "'creatures'|'materials'|'enemies'|...", desc: 'Active filter' },
+  ],
+  SheikahAlbumButton: [
+    { name: 'label', type: 'string', desc: 'Button label' },
+    { name: 'selected', type: 'boolean', default: 'false', desc: 'Selected state' },
+  ],
+  Button: [
+    { name: 'variant', type: "'primary'|'sheikah'|'ghost'|'danger'", default: "'primary'", desc: 'Button style' },
+    { name: 'size', type: "'small'|'middle'|'large'", default: "'middle'", desc: 'Button size' },
+    { name: 'onClick', type: '() => void', desc: 'Click handler' },
+  ],
+  Card: [
+    { name: 'variant', type: "'default'|'sheikah'|'golden'", default: "'default'", desc: 'Card style' },
+    { name: 'title', type: 'string', desc: 'Card title' },
+    { name: 'children', type: 'ReactNode', desc: 'Card content' },
+  ],
+  Modal: [
+    { name: 'open', type: 'boolean', desc: 'Visibility' },
+    { name: 'onClose', type: '() => void', desc: 'Close handler' },
+    { name: 'title', type: 'string', desc: 'Modal title' },
+    { name: 'children', type: 'ReactNode', desc: 'Modal content' },
+  ],
+  Divider: [
+    { name: 'variant', type: "'sheikah'|'golden'|'subtle'|'ornament'", default: "'sheikah'", desc: 'Divider style' },
+  ],
+  Loading: [],
+  Toast: [
+    { name: 'visible', type: 'boolean', desc: 'Show/hide' },
+    { name: 'message', type: 'string', desc: 'Toast message' },
+    { name: 'onClose', type: '() => void', desc: 'Close callback' },
+  ],
+  ItemEnchantment: [
+    { name: 'quality', type: '1|2|3', desc: 'Enchantment level' },
+  ],
+  StatusHealing: [
+    { name: 'type', type: "'3Hearts'|'fullRecovery'|'bonusHearts'|'stamina'", desc: 'Healing type' },
+  ],
+  AimingReticle: [
+    { name: 'variant', type: "'bow'|'sheikahAbility'", desc: 'Reticle style' },
+    { name: 'size', type: 'number', default: '64', desc: 'Size in px' },
+  ],
+  AttackDefenseValues: [
+    { name: 'type', type: "'attack'|'defense'", desc: 'Value type' },
+    { name: 'value', type: 'number', desc: 'Numeric value' },
+    { name: 'modifier', type: "'bonus'|'penalty'", desc: 'Color modifier' },
+  ],
+  ShopListItem: [
+    { name: 'name', type: 'string', desc: 'Item name' },
+    { name: 'price', type: 'number', desc: 'Price in rupees' },
+    { name: 'hovered', type: 'boolean', default: 'false', desc: 'Hover state' },
+  ],
+  ShopPriceQuantity: [
+    { name: 'price', type: 'number', desc: 'Unit price' },
+    { name: 'quantity', type: 'number', desc: 'Quantity' },
+  ],
+  NumberInput: [
+    { name: 'value', type: 'number', desc: 'Current value' },
+    { name: 'min', type: 'number', desc: 'Minimum value' },
+    { name: 'max', type: 'number', desc: 'Maximum value' },
+  ],
+  SettingsToggle: [
+    { name: 'label', type: 'string', desc: 'Setting label' },
+    { name: 'options', type: 'string[]', desc: 'Toggle options' },
+    { name: 'value', type: 'string', desc: 'Current value' },
+    { name: 'selected', type: 'boolean', default: 'false', desc: 'Row selected' },
+  ],
+  TitleOrnament: [
+    { name: 'side', type: "'left'|'right'", desc: 'Ornament side' },
+  ],
+  DirectionalArrow: [
+    { name: 'direction', type: "'up'|'right'|'down'|'left'", desc: 'Arrow direction' },
+    { name: 'size', type: 'number', default: '24', desc: 'Size in px' },
+  ],
+  Starburst: [
+    { name: 'size', type: 'number', default: '80', desc: 'Size in px' },
+  ],
+  TextOrnamentCorner: [
+    { name: 'position', type: "'topLeft'|'topRight'|'bottomLeft'|'bottomRight'", desc: 'Corner position' },
+  ],
+  TimerOrnament: [
+    { name: 'side', type: "'left'|'right'", desc: 'Ornament side' },
+  ],
+  Logo: [
+    { name: 'variant', type: "'mark'|'full'", desc: 'Logo variant' },
+    { name: 'width', type: 'number', desc: 'Width in px' },
+  ],
+}
+
 // ─── Code Example Component ──────────────────────────────────────────────────
 
 const CodeExample: React.FC<{ componentName: string }> = ({ componentName }) => {
@@ -319,6 +604,46 @@ const CodeExample: React.FC<{ componentName: string }> = ({ componentName }) => 
   )
 }
 
+// ─── Props Table Component ───────────────────────────────────────────────────
+
+const PropsTable: React.FC<{ componentName: string }> = ({ componentName }) => {
+  const [open, setOpen] = useState(false)
+  const props = PROPS_DATA[componentName]
+  if (!props || props.length === 0) return null
+
+  return (
+    <div className="code-example" style={{ marginTop: 4 }}>
+      <button className="code-example-toggle" onClick={() => setOpen(!open)}>
+        {open ? '▾' : '▸'} Props
+      </button>
+      {open && (
+        <div style={{ padding: '12px 16px', borderTop: '1px solid rgba(60,211,252,0.08)', overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+            <thead>
+              <tr style={{ borderBottom: '1px solid rgba(233,225,209,0.15)' }}>
+                <th style={{ textAlign: 'left', padding: '6px 8px', color: '#3CD3FC', fontWeight: 500 }}>Prop</th>
+                <th style={{ textAlign: 'left', padding: '6px 8px', color: '#3CD3FC', fontWeight: 500 }}>Type</th>
+                <th style={{ textAlign: 'left', padding: '6px 8px', color: '#3CD3FC', fontWeight: 500 }}>Default</th>
+                <th style={{ textAlign: 'left', padding: '6px 8px', color: '#3CD3FC', fontWeight: 500 }}>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {props.map((p) => (
+                <tr key={p.name} style={{ borderBottom: '1px solid rgba(233,225,209,0.05)' }}>
+                  <td style={{ padding: '6px 8px', color: '#E2D146', fontFamily: "'SF Mono','Fira Code',monospace" }}>{p.name}</td>
+                  <td style={{ padding: '6px 8px', color: 'rgba(233,225,209,0.7)', fontFamily: "'SF Mono','Fira Code',monospace", fontSize: 11 }}>{p.type}</td>
+                  <td style={{ padding: '6px 8px', color: 'rgba(233,225,209,0.4)' }}>{p.default || '—'}</td>
+                  <td style={{ padding: '6px 8px', color: '#E9E1D1' }}>{p.desc}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  )
+}
+
 // ─── Demo Section Renderer ───────────────────────────────────────────────────
 
 const DemoSection: React.FC<{ id: string; title: string; children: React.ReactNode }> = ({ id, title, children }) => (
@@ -328,6 +653,7 @@ const DemoSection: React.FC<{ id: string; title: string; children: React.ReactNo
       <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>{children}</div>
     </div>
     <CodeExample componentName={title} />
+    <PropsTable componentName={title} />
   </section>
 )
 

@@ -34,7 +34,7 @@ const SettingsToggle: React.FC<SettingsToggleProps> = ({
   const activeIndex = value ? options.indexOf(value) : 0
 
   return (
-    <div className={classNames(styles.container, { [styles.selected]: selected }, className)} style={style}>
+    <div className={classNames(styles.container, { [styles.selected]: selected }, className)} style={style} role="group" aria-label={label || 'Settings toggle'}>
       {/* 选中态外边框 + 角落装饰 */}
       {selected && (
         <>
@@ -58,9 +58,9 @@ const SettingsToggle: React.FC<SettingsToggleProps> = ({
         {isMultiOption ? (
           /* 多选模式：◀ 文字 ▶ */
           <div className={styles.multiOption}>
-            <button className={styles.arrowBtn} onClick={() => onChange?.(options[Math.max(0, activeIndex - 1)])}>◀</button>
+            <button className={styles.arrowBtn} onClick={() => onChange?.(options[Math.max(0, activeIndex - 1)])} aria-label="Previous option">◀</button>
             <span className={styles.optionValue}>{value || options[0]}</span>
-            <button className={styles.arrowBtn} onClick={() => onChange?.(options[Math.min(options.length - 1, activeIndex + 1)])}>▶</button>
+            <button className={styles.arrowBtn} onClick={() => onChange?.(options[Math.min(options.length - 1, activeIndex + 1)])} aria-label="Next option">▶</button>
           </div>
         ) : (
           /* 二选模式：ON | OFF */
