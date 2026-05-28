@@ -7,8 +7,11 @@
   left: 0;
   bottom: 0;
   width: 260px;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
+  background-color: #0a1628;
+  background-image: url('../src/assets/img/sheikah-bg-dark.png');
+  background-size: cover;
+  background-position: top left;
+  background-attachment: fixed;
   overflow-y: auto;
   z-index: 100;
   border-right: 1px solid rgba(60, 211, 252, 0.15);

@@ -687,9 +687,6 @@ const DocsPage: React.FC = () => {
 
       {/* Sidebar */}
       <nav className={`docs-sidebar ${sidebarOpen ? 'open' : ''}`}>
-        <SheikahBackground color="darkBlue" style={{ position: 'fixed', top: 0, left: 0, bottom: 0, width: 260, zIndex: -1 }}>
-          <SheikahScanlines opacity={0.04} />
-        </SheikahBackground>
         <button
           style={{
             display: 'block', padding: '16px 20px', color: '#3CD3FC',
