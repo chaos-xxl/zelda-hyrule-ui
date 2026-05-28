@@ -841,12 +841,12 @@ const PropsTable: React.FC<{ componentName: string }> = ({ componentName }) => {
 // ─── Demo Section Renderer ───────────────────────────────────────────────────
 
 const DemoSection: React.FC<{ id: string; title: string; children: React.ReactNode }> = ({ id, title, children }) => (
-  <section id={`section-${id}`} style={{ marginBottom: 56 }}>
-    <h3 style={{ fontFamily: "'Hylia Serif', 'Cinzel', serif", fontSize: 22, color: '#E9E1D1', marginBottom: 8 }}>
-      {title} {COMPONENT_ZH[title] && <span style={{ fontFamily: "'Roboto', sans-serif", fontSize: 16, color: 'rgba(233,225,209,0.55)', fontWeight: 400, marginLeft: 8 }}>{COMPONENT_ZH[title]}</span>}
+  <section id={`section-${id}`} className="docs-demo-section">
+    <h3 className="docs-demo-title">
+      {title} {COMPONENT_ZH[title] && <span className="docs-demo-title-zh">{COMPONENT_ZH[title]}</span>}
     </h3>
-    <div style={{ background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(233,225,209,0.1)', borderRadius: 6, padding: 32, marginBottom: 20 }}>
-      <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>{children}</div>
+    <div className="docs-demo-card">
+      <div className="docs-demo-card-inner">{children}</div>
     </div>
     <CodeExample componentName={title} />
     <PropsTable componentName={title} />

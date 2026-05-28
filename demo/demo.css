@@ -481,3 +481,147 @@ html, body {
   .mobile-hero h1 { font-size: 24px; }
   .mobile-content { padding: 0 12px 24px; }
 }
+
+
+/* ─── Docs Demo Section ───────────────────────────────────────────────────── */
+
+.docs-demo-section {
+  margin-bottom: 56px;
+}
+
+.docs-demo-title {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 22px;
+  color: #E9E1D1;
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+
+.docs-demo-title-zh {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: rgba(233, 225, 209, 0.55);
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+.docs-demo-card {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(233, 225, 209, 0.1);
+  border-radius: 6px;
+  padding: 32px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.docs-demo-card-inner {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ─── Docs Page Mobile Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .docs-main h1 {
+    font-size: 24px !important;
+  }
+
+  .docs-demo-section {
+    margin-bottom: 36px;
+  }
+
+  .docs-demo-title {
+    font-size: 18px;
+  }
+
+  .docs-demo-title-zh {
+    font-size: 13px;
+    margin-left: 6px;
+  }
+
+  /* Demo card on mobile: less padding, allow horizontal scroll */
+  .docs-demo-card {
+    padding: 14px;
+  }
+
+  .docs-demo-card-inner {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    /* Prevent flex children from shrinking */
+    justify-content: flex-start;
+  }
+
+  .docs-demo-card-inner > * {
+    flex-shrink: 0;
+  }
+
+  /* Code block adjustments */
+  .doc-section-badge {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+
+  .doc-code-block {
+    padding: 14px 16px;
+  }
+
+  .doc-code-block pre {
+    font-size: 11.5px;
+    line-height: 1.65;
+  }
+
+  /* API table - horizontal scroll, compact */
+  .doc-api-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .doc-api-table table {
+    font-size: 12px;
+    min-width: 520px;
+  }
+
+  .doc-api-table th,
+  .doc-api-table td {
+    padding: 8px 10px;
+  }
+
+  .doc-api-table .prop-desc {
+    min-width: 140px;
+  }
+
+  /* Category section header */
+  .docs-main > div > [class*="sheikahTextTitle"] {
+    transform: scale(0.85);
+    transform-origin: left top;
+    margin-bottom: -8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .docs-main {
+    padding: 16px 12px;
+    padding-top: 60px;
+  }
+
+  .docs-main h1 {
+    font-size: 22px !important;
+  }
+
+  .docs-demo-title {
+    font-size: 16px;
+  }
+
+  .docs-demo-title-zh {
+    font-size: 12px;
+  }
+
+  .docs-demo-card {
+    padding: 12px;
+  }
+}
