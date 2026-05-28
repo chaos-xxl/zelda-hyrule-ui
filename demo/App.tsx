@@ -26,25 +26,26 @@ import './demo.css'
 interface CategoryDef {
   id: string
   label: string
+  labelZh: string
   components: string[]
 }
 
 // ─── Categories ──────────────────────────────────────────────────────────────
 
 const CATEGORIES: CategoryDef[] = [
-  { id: 'hud', label: 'HUD', components: ['HealthBar', 'StaminaWheel', 'WeatherIcon', 'RupeeCounter', 'DivineBeast', 'SheikahAbility', 'RupeeType', 'Temperature', 'SoundMeter', 'Sensor', 'EffectDuration', 'BonusEffectIcon'] },
-  { id: 'menu', label: 'Menu', components: ['MenuSections', 'ItemBG', 'Pagination', 'ModalButton', 'Scrollbar', 'ModalTimer', 'StatsStack'] },
-  { id: 'titles', label: 'Titles', components: ['TitleLocation', 'TitleQuest', 'TitleShrine', 'TitleLocationLarge', 'TitlePointOfInterest'] },
-  { id: 'dialog', label: 'Dialog', components: ['Dialog', 'DialogChoice', 'DialogFloating'] },
-  { id: 'quest', label: 'Quest', components: ['QuestListItem', 'QuestDescription', 'QuestTypeIcon', 'QuestNotification'] },
-  { id: 'controls', label: 'Controls', components: ['ControllerButton', 'ActionSet'] },
-  { id: 'map', label: 'Map', components: ['MapIcon', 'MapBeacon', 'MapQuestMarker', 'MapLocationName', 'MapCursor', 'MapHeroLocation'] },
-  { id: 'sheikah', label: 'Sheikah', components: ['SheikahSymbol', 'SheikahBackground', 'SheikahScanlines', 'SheikahRune', 'SheikahCompendiumEntry', 'SheikahTextTitle', 'SheikahCompendiumFilters', 'SheikahAlbumButton'] },
-  { id: 'common', label: 'Common', components: ['Button', 'Card', 'Modal', 'Divider', 'Loading', 'Toast'] },
-  { id: 'battle', label: 'Battle', components: ['ItemEnchantment', 'StatusHealing', 'AimingReticle', 'AttackDefenseValues'] },
-  { id: 'shop', label: 'Shop', components: ['ShopListItem', 'ShopPriceQuantity', 'NumberInput'] },
-  { id: 'settings', label: 'Settings', components: ['SettingsToggle'] },
-  { id: 'decorations', label: 'Decorations', components: ['TitleOrnament', 'DirectionalArrow', 'Starburst', 'TextOrnamentCorner', 'TimerOrnament', 'Logo'] },
+  { id: 'hud', label: 'HUD', labelZh: '抬头显示', components: ['HealthBar', 'StaminaWheel', 'WeatherIcon', 'RupeeCounter', 'DivineBeast', 'SheikahAbility', 'RupeeType', 'Temperature', 'SoundMeter', 'Sensor', 'EffectDuration', 'BonusEffectIcon'] },
+  { id: 'menu', label: 'Menu', labelZh: '菜单', components: ['MenuSections', 'ItemBG', 'Pagination', 'ModalButton', 'Scrollbar', 'ModalTimer', 'StatsStack'] },
+  { id: 'titles', label: 'Titles', labelZh: '标题', components: ['TitleLocation', 'TitleQuest', 'TitleShrine', 'TitleLocationLarge', 'TitlePointOfInterest'] },
+  { id: 'dialog', label: 'Dialog', labelZh: '对话框', components: ['Dialog', 'DialogChoice', 'DialogFloating'] },
+  { id: 'quest', label: 'Quest', labelZh: '任务', components: ['QuestListItem', 'QuestDescription', 'QuestTypeIcon', 'QuestNotification'] },
+  { id: 'controls', label: 'Controls', labelZh: '控制器', components: ['ControllerButton', 'ActionSet'] },
+  { id: 'map', label: 'Map', labelZh: '地图', components: ['MapIcon', 'MapBeacon', 'MapQuestMarker', 'MapLocationName', 'MapCursor', 'MapHeroLocation'] },
+  { id: 'sheikah', label: 'Sheikah', labelZh: '希卡之石', components: ['SheikahSymbol', 'SheikahBackground', 'SheikahScanlines', 'SheikahRune', 'SheikahCompendiumEntry', 'SheikahTextTitle', 'SheikahCompendiumFilters', 'SheikahAlbumButton'] },
+  { id: 'common', label: 'Common', labelZh: '通用', components: ['Button', 'Card', 'Modal', 'Divider', 'Loading', 'Toast'] },
+  { id: 'battle', label: 'Battle', labelZh: '战斗', components: ['ItemEnchantment', 'StatusHealing', 'AimingReticle', 'AttackDefenseValues'] },
+  { id: 'shop', label: 'Shop', labelZh: '商店', components: ['ShopListItem', 'ShopPriceQuantity', 'NumberInput'] },
+  { id: 'settings', label: 'Settings', labelZh: '设置', components: ['SettingsToggle'] },
+  { id: 'decorations', label: 'Decorations', labelZh: '装饰', components: ['TitleOrnament', 'DirectionalArrow', 'Starburst', 'TextOrnamentCorner', 'TimerOrnament', 'Logo'] },
 ]
 
 // ─── Code Examples ───────────────────────────────────────────────────────────
@@ -694,7 +695,7 @@ const DocsPage: React.FC = () => {
               fontFamily: "'Hylia Serif', 'Cinzel', serif", fontSize: 11,
               color: 'rgba(233,225,209,0.4)', letterSpacing: '0.12em',
               textTransform: 'uppercase', padding: '16px 20px 6px',
-            }}>{cat.label}</div>
+            }}>{cat.label} <span style={{ fontSize: 10, opacity: 0.6, textTransform: 'none', letterSpacing: 0 }}>{cat.labelZh}</span></div>
             {cat.components.map((comp) => (
               <button
                 key={comp}
