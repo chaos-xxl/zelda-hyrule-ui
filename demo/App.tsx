@@ -1617,31 +1617,64 @@ const LandingPage: React.FC = () => (
 
 // ─── Mobile Page ─────────────────────────────────────────────────────────────
 
-const MobileSection: React.FC<{ title: string; titleZh?: string; wide?: boolean; scale?: number; children: React.ReactNode }> = ({ title, titleZh, wide, scale, children }) => (
-  <div className="mobile-section">
-    <div className="mobile-section-title">{title} {titleZh && <span style={{ textTransform: 'none', letterSpacing: 0, opacity: 0.85 }}>{titleZh}</span>}</div>
-    {wide ? (
-      <div className="mobile-wide-scroll">
-        <div className="mobile-wide-scroll-inner">{children}</div>
+/**
+ * Auto-fit wrapper: measures parent width and scales children down proportionally.
+ * Use this for wide components (Dialog, QuestListItem, Title*, etc.) so they
+ * visually fit the mobile viewport without horizontal scroll or overflow.
+ */
+const AutoFit: React.FC<{ designWidth: number; children: React.ReactNode }> = ({ designWidth, children }) => {
+  const containerRef = React.useRef<HTMLDivElement>(null)
+  const innerRef = React.useRef<HTMLDivElement>(null)
+  const [scale, setScale] = React.useState(1)
+  const [innerHeight, setInnerHeight] = React.useState<number | undefined>(undefined)
+
+  React.useEffect(() => {
+    const measure = () => {
+      const containerWidth = containerRef.current?.offsetWidth ?? 0
+      if (!containerWidth) return
+      const newScale = Math.min(1, containerWidth / designWidth)
+      setScale(newScale)
+      const naturalHeight = innerRef.current?.offsetHeight ?? 0
+      setInnerHeight(naturalHeight * newScale)
+    }
+    measure()
+    const ro = new ResizeObserver(measure)
+    if (containerRef.current) ro.observe(containerRef.current)
+    if (innerRef.current) ro.observe(innerRef.current)
+    return () => ro.disconnect()
+  }, [designWidth])
+
+  return (
+    <div ref={containerRef} style={{ width: '100%', height: innerHeight, overflow: 'hidden' }}>
+      <div
+        ref={innerRef}
+        style={{
+          width: designWidth,
+          transform: `scale(${scale})`,
+          transformOrigin: 'top left',
+        }}
+      >
+        {children}
       </div>
-    ) : scale ? (
-      <div className="mobile-scale-wrap">
-        <div style={{ transform: `scale(${scale})`, transformOrigin: 'center center' }}>{children}</div>
-      </div>
-    ) : (
-      <div className="mobile-demo-card">{children}</div>
-    )}
+    </div>
+  )
+}
+
+const MobileSectionHeader: React.FC<{ en: string; zh?: string }> = ({ en, zh }) => (
+  <div className="mobile-section-header">
+    <span className="mobile-section-en">{en}</span>
+    {zh && <span className="mobile-section-zh">{zh}</span>}
   </div>
 )
 
 const MobilePage: React.FC = () => (
   <div className="mobile-page">
-    {/* Header */}
-    <div className="mobile-header">
-      <SheikahSymbol size={48} outline={false} />
+    {/* Hero */}
+    <div className="mobile-hero">
+      <SheikahSymbol size={56} outline={false} />
       <h1>zelda-hyrule-ui</h1>
-      <p>84 React components · BOTW style</p>
-      <p style={{ fontSize: 12, opacity: 0.7, marginBottom: 16 }}>84 个塞尔达风格 React 组件</p>
+      <p className="mobile-hero-tagline">84 React components · BOTW style</p>
+      <p className="mobile-hero-tagline-zh">塞尔达旷野之息风格 · 84 个 React 组件</p>
       <div className="mobile-header-buttons">
         <Button variant="sheikah" size="small" onClick={() => window.open('https://github.com/chaos-xxl/zelda-hyrule-ui')}>GitHub</Button>
         <Button variant="primary" size="small" onClick={() => window.open('https://www.npmjs.com/package/zelda-hyrule-ui')}>npm</Button>
@@ -1650,160 +1683,222 @@ const MobilePage: React.FC = () => (
     </div>
 
     <div className="mobile-content">
-      {/* HUD - HealthBar is wide, scroll horizontally */}
-      <MobileSection title="HUD" titleZh="抬头显示" wide>
-        <HealthBar current={8} max={10} bonus={2} />
-        <StaminaWheel value={0.75} size={56} />
-        <RupeeCounter amount={13878} />
-      </MobileSection>
+      {/* HUD */}
+      <section className="mobile-section">
+        <MobileSectionHeader en="HUD" zh="抬头显示" />
+        <div className="mobile-fit-card">
+          <AutoFit designWidth={320}>
+            <HealthBar current={8} max={10} bonus={2} />
+          </AutoFit>
+          <div style={{ display: 'flex', gap: 14, alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <StaminaWheel value={0.75} size={64} />
+            <RupeeCounter amount={13878} />
+          </div>
+        </div>
+      </section>
 
-      <MobileSection title="Weather" titleZh="天气">
-        <WeatherIcon weather="clear" />
-        <WeatherIcon weather="rain" />
-        <WeatherIcon weather="cloudy" />
-        <WeatherIcon weather="storm" />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Weather" zh="天气" />
+        <div className="mobile-demo-card">
+          <WeatherIcon weather="clear" />
+          <WeatherIcon weather="rain" />
+          <WeatherIcon weather="cloudy" />
+          <WeatherIcon weather="storm" />
+        </div>
+      </section>
 
-      <MobileSection title="Temperature & Sound" titleZh="温度与声音">
-        <Temperature value="cold" />
-        <Temperature value="regular" />
-        <Temperature value="hot" />
-        <SoundMeter level="low" />
-        <SoundMeter level="high" />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Temperature & Sound" zh="温度与声音" />
+        <div className="mobile-demo-card">
+          <Temperature value="cold" />
+          <Temperature value="regular" />
+          <Temperature value="hot" />
+          <SoundMeter level="low" />
+          <SoundMeter level="high" />
+        </div>
+      </section>
 
-      <MobileSection title="Divine Beasts" titleZh="神兽">
-        <DivineBeast beast="ruta" charges={1} />
-        <DivineBeast beast="medoh" charges={3} />
-        <DivineBeast beast="naboris" charges={2} />
-        <DivineBeast beast="rudania" charges={1} />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Divine Beasts" zh="神兽" />
+        <div className="mobile-demo-card">
+          <DivineBeast beast="ruta" charges={1} />
+          <DivineBeast beast="medoh" charges={3} />
+          <DivineBeast beast="naboris" charges={2} />
+          <DivineBeast beast="rudania" charges={1} />
+        </div>
+      </section>
 
-      <MobileSection title="Sheikah Abilities" titleZh="希卡能力">
-        <SheikahAbility ability="roundBomb" plus />
-        <SheikahAbility ability="magnesis" />
-        <SheikahAbility ability="stasis" plus />
-        <SheikahAbility ability="cryonis" />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Sheikah Abilities" zh="希卡能力" />
+        <div className="mobile-demo-card">
+          <SheikahAbility ability="roundBomb" plus />
+          <SheikahAbility ability="magnesis" />
+          <SheikahAbility ability="stasis" plus />
+          <SheikahAbility ability="cryonis" />
+        </div>
+      </section>
 
-      <MobileSection title="Rupees" titleZh="卢比">
-        <RupeeType type="green" />
-        <RupeeType type="blue" />
-        <RupeeType type="red" />
-        <RupeeType type="purple" />
-        <RupeeType type="silver" />
-        <RupeeType type="gold" />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Rupees" zh="卢比" />
+        <div className="mobile-demo-card">
+          <RupeeType type="green" />
+          <RupeeType type="blue" />
+          <RupeeType type="red" />
+          <RupeeType type="purple" />
+          <RupeeType type="silver" />
+          <RupeeType type="gold" />
+        </div>
+      </section>
 
-      <MobileSection title="Bonus Effects" titleZh="增益效果">
-        <BonusEffectIcon icon="attackUp" arrow />
-        <BonusEffectIcon icon="defenseUp" />
-        <BonusEffectIcon icon="speedUp" arrow />
-        <BonusEffectIcon icon="coldResist" />
-        <BonusEffectIcon icon="heatResist" />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Bonus Effects" zh="增益效果" />
+        <div className="mobile-demo-card">
+          <BonusEffectIcon icon="attackUp" arrow />
+          <BonusEffectIcon icon="defenseUp" />
+          <BonusEffectIcon icon="speedUp" arrow />
+          <BonusEffectIcon icon="coldResist" />
+          <BonusEffectIcon icon="heatResist" />
+        </div>
+      </section>
 
       <div className="mobile-divider"><Divider variant="golden" /></div>
 
-      {/* Titles - very wide, need scroll */}
-      <MobileSection title="Titles" titleZh="标题" wide>
-        <TitleLocation name="Hateno Village" />
-        <TitleQuest name="Destroy Ganon" questType="main" />
-        <TitleShrine name="Oman Au Shrine" subtitle="Magnesis Trial" />
-      </MobileSection>
+      {/* Wide components — auto-scaled to fit */}
+      <section className="mobile-section">
+        <MobileSectionHeader en="Titles" zh="标题" />
+        <div className="mobile-fit-card">
+          <AutoFit designWidth={500}><TitleLocation name="Hateno Village" /></AutoFit>
+          <AutoFit designWidth={500}><TitleQuest name="Destroy Ganon" questType="main" /></AutoFit>
+          <AutoFit designWidth={500}><TitleShrine name="Oman Au Shrine" subtitle="Magnesis Trial" /></AutoFit>
+        </div>
+      </section>
 
-      <MobileSection title="Dialog" titleZh="对话框" wide>
-        <Dialog type="speech" speaker="Old Man">It is cold here. Find warm clothes.</Dialog>
-        <Dialog type="sheikah" speaker="Sheikah Slate" showContinue={false}>Scope confirmed.</Dialog>
-        <DialogFloating text="Shala-kah! You found me!" />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Dialog" zh="对话框" />
+        <div className="mobile-fit-card">
+          <AutoFit designWidth={910}><Dialog type="speech" speaker="Old Man">It is cold here. Find warm clothes.</Dialog></AutoFit>
+          <AutoFit designWidth={910}><Dialog type="sheikah" speaker="Sheikah Slate" showContinue={false}>Scope confirmed.</Dialog></AutoFit>
+          <AutoFit designWidth={400}><DialogFloating text="Shala-kah! You found me!" /></AutoFit>
+        </div>
+      </section>
 
-      <MobileSection title="Quest" titleZh="任务" wide>
-        <QuestListItem title="Destroy Ganon" location="Hyrule Castle" questType="main" state="marked" />
-        <QuestListItem title="Robbie's Research" location="Akkala Lab" questType="side" state="default" />
-        <QuestListItem title="The Stolen Heirloom" location="Kakariko" questType="shrine" state="completed" />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Quest" zh="任务" />
+        <div className="mobile-fit-card">
+          <AutoFit designWidth={600}><QuestListItem title="Destroy Ganon" location="Hyrule Castle" questType="main" state="marked" /></AutoFit>
+          <AutoFit designWidth={600}><QuestListItem title="Robbie's Research" location="Akkala Lab" questType="side" state="default" /></AutoFit>
+          <AutoFit designWidth={600}><QuestListItem title="The Stolen Heirloom" location="Kakariko" questType="shrine" state="completed" /></AutoFit>
+        </div>
+      </section>
 
-      <MobileSection title="Quest Icons" titleZh="任务图标">
-        <QuestTypeIcon type="main" size={40} />
-        <QuestTypeIcon type="side" size={40} />
-        <QuestTypeIcon type="shrine" size={40} />
-        <QuestTypeIcon type="memory" size={40} />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Quest Icons" zh="任务图标" />
+        <div className="mobile-demo-card">
+          <QuestTypeIcon type="main" size={40} />
+          <QuestTypeIcon type="side" size={40} />
+          <QuestTypeIcon type="shrine" size={40} />
+          <QuestTypeIcon type="memory" size={40} />
+        </div>
+      </section>
 
       <div className="mobile-divider"><Divider variant="ornament" /></div>
 
-      <MobileSection title="Buttons" titleZh="按钮">
-        <Button variant="primary" size="small">Primary</Button>
-        <Button variant="sheikah" size="small">Sheikah</Button>
-        <Button variant="ghost" size="small">Ghost</Button>
-        <Button variant="danger" size="small">Danger</Button>
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Buttons" zh="按钮" />
+        <div className="mobile-demo-card">
+          <Button variant="primary" size="small">Primary</Button>
+          <Button variant="sheikah" size="small">Sheikah</Button>
+          <Button variant="ghost" size="small">Ghost</Button>
+          <Button variant="danger" size="small">Danger</Button>
+        </div>
+      </section>
 
-      <MobileSection title="Cards" titleZh="卡片">
-        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 10 }}>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Cards" zh="卡片" />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <Card variant="sheikah" title="Sheikah Card">Glowing borders</Card>
           <Card variant="golden" title="Golden Card">Royal style</Card>
         </div>
-      </MobileSection>
+      </section>
 
-      <MobileSection title="Controls" titleZh="控制器">
-        <ControllerButton button="A" label="Confirm" />
-        <ControllerButton button="B" label="Cancel" />
-        <ControllerButton button="X" label="Jump" />
-        <ControllerButton button="Y" label="Attack" />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Controls" zh="控制器" />
+        <div className="mobile-demo-card">
+          <ControllerButton button="A" label="Confirm" />
+          <ControllerButton button="B" label="Cancel" />
+          <ControllerButton button="X" label="Jump" />
+          <ControllerButton button="Y" label="Attack" />
+        </div>
+      </section>
 
-      <MobileSection title="Map" titleZh="地图">
-        <MapIcon icon="shrine" size={36} />
-        <MapIcon icon="tower" size={36} />
-        <MapIcon icon="lab" size={36} />
-        <MapBeacon color="blue" flare />
-        <MapBeacon color="red" />
-        <MapBeacon color="yellow" />
-        <MapBeacon color="green" flare />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Map" zh="地图" />
+        <div className="mobile-demo-card">
+          <MapIcon icon="shrine" size={36} />
+          <MapIcon icon="tower" size={36} />
+          <MapIcon icon="lab" size={36} />
+          <MapBeacon color="blue" flare />
+          <MapBeacon color="red" />
+          <MapBeacon color="yellow" />
+          <MapBeacon color="green" flare />
+        </div>
+      </section>
 
       <div className="mobile-divider"><Divider variant="sheikah" /></div>
 
-      <MobileSection title="Menu" titleZh="菜单">
-        <ItemBG state="filled" size={48} />
-        <ItemBG state="selected" size={48} />
-        <ItemBG state="equipped" size={48} />
-        <ItemBG state="empty" size={48} />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Menu" zh="菜单" />
+        <div className="mobile-demo-card">
+          <ItemBG state="filled" size={48} />
+          <ItemBG state="selected" size={48} />
+          <ItemBG state="equipped" size={48} />
+          <ItemBG state="empty" size={48} />
+        </div>
+      </section>
 
-      <MobileSection title="Battle" titleZh="战斗">
-        <ItemEnchantment quality={1} />
-        <ItemEnchantment quality={2} />
-        <ItemEnchantment quality={3} />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Battle" zh="战斗" />
+        <div className="mobile-demo-card">
+          <ItemEnchantment quality={1} />
+          <ItemEnchantment quality={2} />
+          <ItemEnchantment quality={3} />
+        </div>
+      </section>
 
-      <MobileSection title="Sheikah" titleZh="希卡之石">
-        <SheikahSymbol size={40} outline={false} />
-        <SheikahSymbol size={40} outline />
-        <SheikahCompendiumEntry revealed number={1} />
-        <SheikahCompendiumEntry number={2} />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Sheikah" zh="希卡之石" />
+        <div className="mobile-demo-card">
+          <SheikahSymbol size={40} outline={false} />
+          <SheikahSymbol size={40} outline />
+          <SheikahCompendiumEntry revealed number={1} />
+          <SheikahCompendiumEntry number={2} />
+        </div>
+      </section>
 
-      <MobileSection title="Settings" titleZh="设置" wide>
-        <SettingsToggle label="HUD" options={['ON', 'OFF']} value="ON" selected />
-        <SettingsToggle label="Sensitivity" options={['Low', 'Normal', 'High']} value="Normal" />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Settings" zh="设置" />
+        <div className="mobile-fit-card">
+          <AutoFit designWidth={500}><SettingsToggle label="HUD" options={['ON', 'OFF']} value="ON" selected /></AutoFit>
+          <AutoFit designWidth={500}><SettingsToggle label="Sensitivity" options={['Low', 'Normal', 'High']} value="Normal" /></AutoFit>
+        </div>
+      </section>
 
-      <MobileSection title="Decorations" titleZh="装饰">
-        <Logo variant="mark" width={32} />
-        <Starburst size={48} />
-        <DirectionalArrow direction="up" size={20} />
-        <DirectionalArrow direction="right" size={20} />
-        <DirectionalArrow direction="down" size={20} />
-        <DirectionalArrow direction="left" size={20} />
-      </MobileSection>
+      <section className="mobile-section">
+        <MobileSectionHeader en="Decorations" zh="装饰" />
+        <div className="mobile-demo-card">
+          <Logo variant="mark" width={32} />
+          <Starburst size={48} />
+          <DirectionalArrow direction="up" size={20} />
+          <DirectionalArrow direction="right" size={20} />
+          <DirectionalArrow direction="down" size={20} />
+          <DirectionalArrow direction="left" size={20} />
+        </div>
+      </section>
 
       {/* Footer */}
       <div className="mobile-footer">
-        <p>MIT License · Fan creation</p>
-        <p>粉丝创作仅供学习 · 商标归任天堂</p>
+        <p>MIT License · Fan creation for learning purposes only</p>
+        <p>粉丝创作仅供学习 · 商标归任天堂所有</p>
       </div>
     </div>
   </div>
