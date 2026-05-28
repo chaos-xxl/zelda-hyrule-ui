@@ -1559,21 +1559,21 @@ const LandingPage: React.FC = () => (
       <Illustration illustration="memories" opacity={0.07} style={{ position: 'absolute', inset: 0 }} />
       <div className="landing-section" style={{ position: 'relative', zIndex: 1 }}>
         <SheikahTextTitle title="AI-Powered AI 加持" description="Works with Cursor, Copilot, and v0 / 兼容 Cursor、Copilot、v0" />
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 32 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 32, maxWidth: 600, margin: '32px auto 0' }}>
           <QuestListItem
-            title="Drop SKILL.md into Cursor / 把 SKILL.md 丢给 Cursor"
+            title="Drop SKILL.md into Cursor"
             location="Copy to .cursorrules"
             questType="main"
             state="marked"
           />
           <QuestListItem
-            title='Say "Build in Zelda style" / 说"用塞尔达风格做"'
+            title='Say "Build in Zelda style"'
             location="AI generates pixel-perfect code"
             questType="side"
             state="default"
           />
           <QuestListItem
-            title="Ship your Zelda-themed app / 完成你的塞尔达风格应用"
+            title="Ship your Zelda-themed app"
             location="Dark theme + Sheikah glow"
             questType="shrine"
             state="default"
