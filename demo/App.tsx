@@ -1538,11 +1538,13 @@ const LandingPage: React.FC = () => (
     {/* ═══════ INSTALLATION ═══════ */}
     <section className="landing-section">
       <SheikahTextTitle title="Installation 安装" description="Get started in 30 seconds / 30 秒上手" />
-      <div style={{ maxWidth: 640, margin: '32px auto 0' }}>
-        <Dialog type="sheikah" speaker="Terminal" showContinue={false}>
-          <span style={{ color: '#6FD49C' }}>npm install</span> zelda-hyrule-ui
-        </Dialog>
-        <div style={{ marginTop: 24 }}>
+      <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+        <div style={{ transform: 'scale(0.7)', transformOrigin: 'center top' }}>
+          <Dialog type="sheikah" speaker="Terminal" showContinue={false}>
+            <span style={{ color: '#6FD49C' }}>npm install</span> zelda-hyrule-ui
+          </Dialog>
+        </div>
+        <div style={{ transform: 'scale(0.7)', transformOrigin: 'center top', marginTop: -40 }}>
           <Dialog type="speech" speaker="App.tsx" showContinue={false}>
             <span style={{ color: '#6FD49C' }}>import</span> {'{ Button, Card }'} <span style={{ color: '#6FD49C' }}>from</span> <span style={{ color: '#E2D146' }}>&apos;zelda-hyrule-ui&apos;</span>
           </Dialog>
