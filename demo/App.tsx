@@ -48,6 +48,32 @@ const CATEGORIES: CategoryDef[] = [
   { id: 'decorations', label: 'Decorations', labelZh: '装饰', components: ['TitleOrnament', 'DirectionalArrow', 'Starburst', 'TextOrnamentCorner', 'TimerOrnament', 'Logo'] },
 ]
 
+// ─── Component Chinese Names ─────────────────────────────────────────────────
+
+const COMPONENT_ZH: Record<string, string> = {
+  HealthBar: '生命条', StaminaWheel: '精力轮', WeatherIcon: '天气图标', RupeeCounter: '卢比计数',
+  DivineBeast: '神兽', SheikahAbility: '希卡能力', RupeeType: '卢比类型', Temperature: '温度计',
+  SoundMeter: '声音探测', Sensor: '感应器', EffectDuration: '效果时长', BonusEffectIcon: '增益图标',
+  MenuSections: '菜单分类', ItemBG: '物品格子', Pagination: '分页', ModalButton: '弹窗按钮',
+  Scrollbar: '滚动条', ModalTimer: '弹窗计时', StatsStack: '属性面板',
+  TitleLocation: '地点标题', TitleQuest: '任务标题', TitleShrine: '神庙标题',
+  TitleLocationLarge: '大号地点', TitlePointOfInterest: '兴趣点',
+  Dialog: '对话框', DialogChoice: '对话选项', DialogFloating: '浮动气泡',
+  QuestListItem: '任务列表', QuestDescription: '任务描述', QuestTypeIcon: '任务图标', QuestNotification: '任务通知',
+  ControllerButton: '控制按钮', ActionSet: '操作提示',
+  MapIcon: '地图图标', MapBeacon: '地图信标', MapQuestMarker: '任务标记',
+  MapLocationName: '地点名称', MapCursor: '地图光标', MapHeroLocation: '英雄位置',
+  SheikahSymbol: '希卡符号', SheikahBackground: '希卡背景', SheikahScanlines: '扫描线',
+  SheikahRune: '希卡符文', SheikahCompendiumEntry: '图鉴条目', SheikahTextTitle: '希卡标题',
+  SheikahCompendiumFilters: '图鉴过滤', SheikahAlbumButton: '相册按钮',
+  Button: '按钮', Card: '卡片', Modal: '弹窗', Divider: '分割线', Loading: '加载', Toast: '通知',
+  ItemEnchantment: '附魔', StatusHealing: '治疗状态', AimingReticle: '瞄准', AttackDefenseValues: '攻防数值',
+  ShopListItem: '商品列表', ShopPriceQuantity: '价格数量', NumberInput: '数字输入',
+  SettingsToggle: '设置开关',
+  TitleOrnament: '标题装饰', DirectionalArrow: '方向箭头', Starburst: '星芒',
+  TextOrnamentCorner: '角落装饰', TimerOrnament: '计时装饰', Logo: '标志',
+}
+
 // ─── Code Examples ───────────────────────────────────────────────────────────
 
 const CODE_EXAMPLES: Record<string, string> = {
@@ -695,20 +721,20 @@ const DocsPage: React.FC = () => {
               fontFamily: "'Hylia Serif', 'Cinzel', serif", fontSize: 11,
               color: 'rgba(233,225,209,0.4)', letterSpacing: '0.12em',
               textTransform: 'uppercase', padding: '16px 20px 6px',
-            }}>{cat.label} <span style={{ fontSize: 10, opacity: 0.6, textTransform: 'none', letterSpacing: 0 }}>{cat.labelZh}</span></div>
+            }}>{cat.label} {cat.labelZh}</div>
             {cat.components.map((comp) => (
               <button
                 key={comp}
                 style={{
                   display: 'block', padding: '8px 20px', color: '#E9E1D1',
-                  fontSize: 13, fontStyle: 'italic', cursor: 'pointer',
+                  fontSize: 13, cursor: 'pointer',
                   background: 'none', border: 'none', borderLeft: '2px solid transparent',
                   width: '100%', textAlign: 'left', transition: 'all 0.15s',
                   ...(activeCategory === cat.id ? { borderLeft: '2px solid #3CD3FC', background: 'rgba(60,211,252,0.1)', color: '#3CD3FC' } : {}),
                 }}
                 onClick={() => scrollToCategory(cat.id)}
               >
-                {comp}
+                {comp} {COMPONENT_ZH[comp] || ''}
               </button>
             ))}
           </div>
