@@ -1,0 +1,238 @@
+/* ─── Demo Responsive Styles ─────────────────────────────────────────────── */
+
+/* Docs Page - Sidebar */
+.docs-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 260px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  overflow-y: auto;
+  z-index: 100;
+  border-right: 1px solid rgba(60, 211, 252, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.docs-main {
+  margin-left: 260px;
+  padding: 32px 40px;
+  min-height: 100vh;
+}
+
+/* Mobile menu toggle */
+.mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(60, 211, 252, 0.3);
+  border-radius: 4px;
+  color: #3CD3FC;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+/* Landing Page */
+.landing-hero {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.landing-hero-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.landing-hero-title {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 56px;
+  color: #E2DED3;
+  margin: 24px 0 8px;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 14px rgba(226, 222, 211, 0.3);
+}
+
+.landing-section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.landing-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.landing-preview-row {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.landing-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* Code example block */
+.code-example {
+  margin-top: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(60, 211, 252, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.code-example-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  color: rgba(233, 225, 209, 0.5);
+  font-size: 12px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: color 0.15s;
+}
+
+.code-example-toggle:hover {
+  color: #3CD3FC;
+}
+
+.code-example-content {
+  padding: 12px 16px;
+  border-top: 1px solid rgba(60, 211, 252, 0.08);
+  overflow-x: auto;
+}
+
+.code-example-content pre {
+  margin: 0;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #E9E1D1;
+  white-space: pre;
+}
+
+.code-example-content .code-keyword {
+  color: #6FD49C;
+}
+
+.code-example-content .code-string {
+  color: #E2D146;
+}
+
+.code-example-content .code-comment {
+  color: rgba(233, 225, 209, 0.35);
+}
+
+/* ─── Responsive: Tablet (≤ 768px) ───────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  /* Docs sidebar becomes overlay */
+  .docs-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .docs-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .docs-main {
+    margin-left: 0;
+    padding: 24px 16px;
+    padding-top: 60px;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Sidebar overlay backdrop */
+  .sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+  }
+
+  .sidebar-backdrop.open {
+    display: block;
+  }
+
+  /* Landing page */
+  .landing-hero {
+    height: auto;
+    min-height: 400px;
+    padding: 60px 0;
+  }
+
+  .landing-hero-title {
+    font-size: 36px;
+  }
+
+  .landing-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-section {
+    padding: 32px 16px;
+  }
+
+  .landing-preview-row {
+    gap: 12px;
+  }
+
+  .landing-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ─── Responsive: Small phone (≤ 480px) ───────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .landing-hero-title {
+    font-size: 28px;
+  }
+
+  .landing-hero-content {
+    padding: 32px 16px;
+  }
+
+  .landing-section {
+    padding: 24px 12px;
+  }
+
+  .docs-main {
+    padding: 16px 12px;
+    padding-top: 56px;
+  }
+}
