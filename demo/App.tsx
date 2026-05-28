@@ -1398,24 +1398,206 @@ const LandingPage: React.FC = () => (
   </div>
 )
 
+// ─── Mobile Page ─────────────────────────────────────────────────────────────
+
+const MobileSection: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
+  <div style={{ marginBottom: 32 }}>
+    <h3 style={{ fontFamily: "'Hylia Serif', 'Cinzel', serif", fontSize: 14, color: 'rgba(233,225,209,0.4)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12 }}>{title}</h3>
+    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>{children}</div>
+  </div>
+)
+
+const MobilePage: React.FC = () => (
+  <div style={{ background: '#66645D', minHeight: '100vh', padding: '24px 16px' }}>
+    {/* Header */}
+    <div style={{ textAlign: 'center', marginBottom: 32 }}>
+      <SheikahSymbol size={48} outline={false} />
+      <h1 style={{ fontFamily: "'Hylia Serif', 'Cinzel', serif", fontSize: 24, color: '#E2DED3', margin: '12px 0 4px' }}>
+        zelda-hyrule-ui
+      </h1>
+      <p style={{ fontSize: 13, color: 'rgba(233,225,209,0.5)', fontStyle: 'italic', marginBottom: 16 }}>
+        84 React components · BOTW style
+      </p>
+      <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
+        <Button variant="sheikah" size="small" onClick={() => window.open('https://github.com/chaos-xxl/zelda-hyrule-ui')}>GitHub</Button>
+        <Button variant="primary" size="small" onClick={() => window.open('https://www.npmjs.com/package/zelda-hyrule-ui')}>npm</Button>
+        <Button variant="ghost" size="small" onClick={() => { window.location.hash = '#/docs' }}>Full Docs</Button>
+      </div>
+    </div>
+
+    <Divider variant="sheikah" />
+
+    {/* HUD */}
+    <div style={{ marginTop: 24 }}>
+      <MobileSection title="HUD">
+        <HealthBar current={10} max={13} bonus={3} />
+        <StaminaWheel value={0.75} size={56} />
+        <RupeeCounter amount={13878} />
+      </MobileSection>
+
+      <MobileSection title="Weather & Environment">
+        <WeatherIcon weather="clear" />
+        <WeatherIcon weather="rain" />
+        <WeatherIcon weather="storm" />
+        <Temperature value="cold" />
+        <Temperature value="hot" />
+        <SoundMeter level="low" />
+        <SoundMeter level="high" />
+      </MobileSection>
+
+      <MobileSection title="Divine Beasts">
+        <DivineBeast beast="ruta" charges={1} />
+        <DivineBeast beast="medoh" charges={3} />
+        <DivineBeast beast="naboris" charges={2} />
+        <DivineBeast beast="rudania" charges={1} />
+      </MobileSection>
+
+      <MobileSection title="Sheikah Abilities">
+        <SheikahAbility ability="roundBomb" plus />
+        <SheikahAbility ability="magnesis" />
+        <SheikahAbility ability="stasis" plus />
+        <SheikahAbility ability="cryonis" />
+      </MobileSection>
+
+      <MobileSection title="Rupees">
+        <RupeeType type="green" />
+        <RupeeType type="blue" />
+        <RupeeType type="red" />
+        <RupeeType type="purple" />
+        <RupeeType type="silver" />
+        <RupeeType type="gold" />
+      </MobileSection>
+
+      <Divider variant="golden" />
+
+      <MobileSection title="Titles">
+        <div style={{ width: '100%' }}>
+          <TitleLocation name="Hateno Village" />
+          <div style={{ marginTop: 12 }}>
+            <TitleQuest name="Destroy Ganon" questType="main" />
+          </div>
+        </div>
+      </MobileSection>
+
+      <MobileSection title="Dialog">
+        <div style={{ width: '100%' }}>
+          <Dialog type="speech" speaker="Old Man">It is cold here.</Dialog>
+          <div style={{ marginTop: 12 }}>
+            <DialogFloating text="Shala-kah!" />
+          </div>
+        </div>
+      </MobileSection>
+
+      <MobileSection title="Quest">
+        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <QuestListItem title="Destroy Ganon" location="Hyrule Castle" questType="main" state="marked" />
+          <QuestListItem title="Robbie's Research" location="Akkala" questType="side" state="default" />
+          <QuestListItem title="The Stolen Heirloom" location="Kakariko" questType="shrine" state="completed" />
+        </div>
+      </MobileSection>
+
+      <Divider variant="ornament" />
+
+      <MobileSection title="Buttons">
+        <Button variant="primary" size="small">Primary</Button>
+        <Button variant="sheikah" size="small">Sheikah</Button>
+        <Button variant="ghost" size="small">Ghost</Button>
+        <Button variant="danger" size="small">Danger</Button>
+      </MobileSection>
+
+      <MobileSection title="Cards">
+        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 12 }}>
+          <Card variant="sheikah" title="Sheikah Card">Glowing borders</Card>
+          <Card variant="golden" title="Golden Card">Royal style</Card>
+        </div>
+      </MobileSection>
+
+      <MobileSection title="Controls">
+        <ControllerButton button="A" label="Confirm" />
+        <ControllerButton button="B" label="Cancel" />
+        <ControllerButton button="X" label="Jump" />
+        <ControllerButton button="Y" label="Attack" />
+      </MobileSection>
+
+      <MobileSection title="Map">
+        <MapIcon icon="shrine" size={36} />
+        <MapIcon icon="tower" size={36} />
+        <MapIcon icon="lab" size={36} />
+        <MapBeacon color="blue" flare />
+        <MapBeacon color="red" />
+        <MapBeacon color="yellow" />
+      </MobileSection>
+
+      <Divider variant="sheikah" />
+
+      <MobileSection title="Menu">
+        <ItemBG state="filled" size={50} />
+        <ItemBG state="selected" size={50} />
+        <ItemBG state="equipped" size={50} />
+        <ItemBG state="empty" size={50} />
+      </MobileSection>
+
+      <MobileSection title="Battle">
+        <ItemEnchantment quality={1} />
+        <ItemEnchantment quality={2} />
+        <ItemEnchantment quality={3} />
+        <BonusEffectIcon icon="attackUp" arrow />
+        <BonusEffectIcon icon="defenseUp" />
+        <BonusEffectIcon icon="speedUp" arrow />
+      </MobileSection>
+
+      <MobileSection title="Settings">
+        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <SettingsToggle label="HUD" options={['ON', 'OFF']} value="ON" selected />
+          <SettingsToggle label="Sensitivity" options={['Low', 'Normal', 'High']} value="Normal" />
+        </div>
+      </MobileSection>
+
+      <MobileSection title="Decorations">
+        <Logo variant="mark" width={32} />
+        <Starburst size={60} />
+        <DirectionalArrow direction="up" size={20} />
+        <DirectionalArrow direction="right" size={20} />
+        <DirectionalArrow direction="down" size={20} />
+        <DirectionalArrow direction="left" size={20} />
+      </MobileSection>
+
+      <Divider variant="golden" />
+
+      {/* Footer */}
+      <div style={{ textAlign: 'center', marginTop: 24 }}>
+        <p style={{ fontSize: 11, color: 'rgba(233,225,209,0.3)', fontStyle: 'italic' }}>
+          MIT License · Fan creation · All Zelda trademarks belong to Nintendo
+        </p>
+      </div>
+    </div>
+  </div>
+)
+
 // ─── App with Hash Routing ───────────────────────────────────────────────────
 
 const App: React.FC = () => {
-  const [page, setPage] = useState<'landing' | 'docs'>(() => {
+  const [page, setPage] = useState<'landing' | 'docs' | 'mobile'>(() => {
     const hash = window.location.hash
-    return hash === '#/docs' ? 'docs' : 'landing'
+    if (hash === '#/docs') return 'docs'
+    if (hash === '#/mobile') return 'mobile'
+    return 'landing'
   })
 
   useEffect(() => {
     const onHashChange = () => {
       const hash = window.location.hash
-      setPage(hash === '#/docs' ? 'docs' : 'landing')
+      if (hash === '#/docs') setPage('docs')
+      else if (hash === '#/mobile') setPage('mobile')
+      else setPage('landing')
     }
     window.addEventListener('hashchange', onHashChange)
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
-  return page === 'docs' ? <DocsPage /> : <LandingPage />
+  if (page === 'docs') return <DocsPage />
+  if (page === 'mobile') return <MobilePage />
+  return <LandingPage />
 }
 
 export default App

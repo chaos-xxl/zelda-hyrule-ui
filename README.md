@@ -10,9 +10,17 @@ A React UI component library inspired by *The Legend of Zelda: Breath of the Wil
 
 ![Demo Components](docs/img/demo-component.png)
 
-🔗 **[Live Demo & Docs](https://chaos-xxl.github.io/zelda-hyrule-ui/)** — All 84 components with live previews, code examples, and props tables.
+### 🔗 Preview
 
-在线演示和文档——全部 84 个组件的实时预览、代码示例和 Props 表格。
+- **Online Preview (PC):** [zelda-hyrule-ui](https://chaos-xxl.github.io/zelda-hyrule-ui/)
+- **Online Preview (Mobile):** [zelda-hyrule-ui-mobile](https://chaos-xxl.github.io/zelda-hyrule-ui/#/mobile)
+- **Component Docs:** [All 84 components](https://chaos-xxl.github.io/zelda-hyrule-ui/#/docs) — live previews, code examples, and props tables
+
+### 🔗 预览
+
+- **在线预览（PC）：** [zelda-hyrule-ui](https://chaos-xxl.github.io/zelda-hyrule-ui/)
+- **在线预览（Mobile）：** [zelda-hyrule-ui-mobile](https://chaos-xxl.github.io/zelda-hyrule-ui/#/mobile)
+- **组件文档：** [全部 84 个组件](https://chaos-xxl.github.io/zelda-hyrule-ui/#/docs)——实时预览、代码示例和 Props 表格
 
 ---
 
