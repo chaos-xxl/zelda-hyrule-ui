@@ -4,11 +4,245 @@
 
 # zelda-hyrule-ui 设计风格指南
 
+> Last updated: 2025-01 · Validated against `zelda-hyrule-ui@0.1.x`
+
 三文档分工（生成代码 / 调样式时按需查阅，避免互相翻查）：
 
 • `AI_USAGE.md` — API 手册：每个组件的 props、类型、默认值、合法取值、禁用用法。写代码优先查这里。
 • `skill/SKILL.md`（本文档）— 像素级样式：设计 token、每组件精确 CSS（hex/px/keyframe）、Demo 布局、新组件开发模板。要自己实现/扩展样式时查这里。
 • `DESIGN_PROMPT.md` — 给外部工具（v0 / Figma AI / Midjourney / DALL-E）的提示词包，含色板速查、禁用清单。只在喂别的 AI 时用。
+
+---
+
+## 📑 Table of Contents
+
+- [🚀 30 秒快速开始](#-30-秒快速开始)
+- [🧭 AI 决策导航](#-ai-决策导航)
+- [📦 常见配方](#-常见配方)
+- [概述](#概述)
+- [1. Design Tokens](#1-design-tokens)
+- [2. 核心设计模式](#2-核心设计模式)
+- [3. 核心组件深度示例](#3-核心组件深度示例)
+- [4. CSS 变量完整模板](#4-css-变量完整模板)
+- [5. 设计铁律（8 条）](#5-设计铁律8-条)
+- [6. 新组件文件结构模板](#6-新组件文件结构模板)
+- [7. 新组件 Checklist](#7-新组件-checklist)
+- [8. 禁止模式与正确示例](#8-禁止模式与正确示例)
+- [9. 完整界面案例](#9-完整界面案例)
+- [10. 全量组件精确样式规范（84 个组件）](#10-全量组件精确样式规范84-个组件)
+- [11. 全量组件清单（84 个）](#11-全量组件清单84-个)
+- [12. Demo 布局精确规范](#12-demo-布局精确规范)
+- [13. 主题定制](#13-主题定制)
+- [14. 无障碍（A11y）](#14-无障碍a11y)
+- [15. 完整 SVG Path 数据索引](#15-完整-svg-path-数据索引)
+
+---
+
+## 🚀 30 秒快速开始
+
+最常用的 import + 一段可运行的 JSX。直接复制就能跑。
+
+```tsx
+import {
+  Button, Card, Dialog, HealthBar, StaminaWheel,
+  RupeeCounter, SheikahBackground, SheikahScanlines, SheikahTextTitle,
+} from 'zelda-hyrule-ui'
+import 'zelda-hyrule-ui/style'
+
+export default function App() {
+  return (
+    <div style={{ background: '#66645D', minHeight: '100vh', padding: 40 }}>
+      {/* 希卡之石面板：暗色 + 扫描线 */}
+      <SheikahBackground color="darkBlue">
+        <SheikahScanlines animated opacity={0.08} />
+        <div style={{ position: 'relative', zIndex: 1, padding: 40 }}>
+          <SheikahTextTitle title="Hyrule" description="The Legend Continues" />
+
+          {/* HUD 三件套：心心 / 精力 / 卢比 */}
+          <div style={{ display: 'flex', gap: 24, marginTop: 32 }}>
+            <HealthBar current={10} max={13} bonus={3} />
+            <StaminaWheel value={0.75} size={70} />
+            <RupeeCounter amount={13878} />
+          </div>
+
+          {/* 对话框 + 按钮 */}
+          <Dialog type="speech" speaker="Old Man">
+            It is dangerous to go alone. Take this.
+          </Dialog>
+
+          <div style={{ display: 'flex', gap: 12, marginTop: 24 }}>
+            <Button variant="sheikah">Activate</Button>
+            <Button variant="primary">Continue</Button>
+          </div>
+        </div>
+      </SheikahBackground>
+    </div>
+  )
+}
+```
+
+记住三件事：
+1. 页面背景永远是 `#66645D` 或更深
+2. 对话/按钮文字必须 italic
+3. 用 `<SheikahBackground>` 做暗色科技感面板，里面套 `<SheikahScanlines>` 加扫描线
+
+---
+
+## 🧭 AI 决策导航
+
+收到用户需求时，按下表查找对应章节，避免盲读 1500+ 行：
+
+| 用户问 | 查这里 |
+|--------|-------|
+| "做一个登录页/首页/任务面板" | [§9 完整界面案例](#9-完整界面案例) |
+| "用什么组件做 X 场景" | [📦 常见配方](#-常见配方) |
+| "Button 怎么用" / "Card 有几种 variant" | `AI_USAGE.md` |
+| "希卡蓝是什么颜色" / "字号多少" | [§1 Design Tokens](#1-design-tokens) |
+| "为什么我的按钮看起来不对" | [§5 设计铁律](#5-设计铁律8-条) + [§8 禁止模式](#8-禁止模式与正确示例) |
+| "怎么自己做一个新组件" | [§6 文件结构模板](#6-新组件文件结构模板) + [§7 Checklist](#7-新组件-checklist) |
+| "想换主题色" | [§13 主题定制](#13-主题定制) |
+| "Modal 的 ARIA 怎么处理" | [§14 无障碍](#14-无障碍a11y) |
+| 单个组件的精确 CSS 值 | [§10 全量组件规范](#10-全量组件精确样式规范84-个组件) |
+
+**AI 卡住时怎么办：**
+- 不确定用哪个 variant → 默认用 `sheikah`（暗色科技感最强）
+- 不确定尺寸 → 默认 `middle`
+- 不确定颜色 → 用 `@text-color-main` (`#E9E1D1`) 写文字，`@sheikah-blue` (`#3CD3FC`) 做强调
+- 用户没说要不要双语 → 默认只英文，要中文时主动加（不要默认双语，会撑爆布局）
+
+---
+
+## 📦 常见配方
+
+把"用户场景 → 组件组合"写成查询表，AI 不用再凭空发明。
+
+### 游戏 HUD（屏幕 overlay）
+
+```tsx
+// 左上角：心心 + 精力
+<div style={{ position: 'fixed', top: 24, left: 24, display: 'flex', gap: 16 }}>
+  <HealthBar current={10} max={13} bonus={3} />
+  <StaminaWheel value={0.75} size={60} />
+</div>
+
+// 右上角：卢比
+<div style={{ position: 'fixed', top: 24, right: 24 }}>
+  <RupeeCounter amount={13878} />
+</div>
+
+// 右下角：天气 + 温度 + 噪音
+<div style={{ position: 'fixed', bottom: 24, right: 24, display: 'flex', gap: 12 }}>
+  <WeatherIcon weather="rain" />
+  <Temperature value="cold" />
+  <SoundMeter level="low" />
+</div>
+```
+
+### 任务追踪面板
+
+```tsx
+<Card variant="sheikah" title="Active Quests">
+  <QuestListItem title="Destroy Ganon" location="Hyrule Castle" questType="main" state="marked" />
+  <QuestListItem title="Robbie's Research" location="Akkala Lab" questType="side" />
+  <QuestListItem title="The Stolen Heirloom" location="Kakariko" questType="shrine" state="completed" />
+</Card>
+```
+
+### 对话场景（NPC）
+
+```tsx
+<div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '0 80px 40px' }}>
+  <Dialog type="speech" speaker="Old Man">
+    It is cold here. You should find warm clothes.
+  </Dialog>
+  <DialogChoice
+    options={[
+      { label: 'Yes, please', value: 'yes' },
+      { label: 'No, I\'m fine', value: 'no' },
+    ]}
+    selectedIndex={0}
+  />
+</div>
+```
+
+### 库存/物品菜单
+
+```tsx
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)', gap: 6 }}>
+  <ItemBG state="filled" />
+  <ItemBG state="selected" />
+  <ItemBG state="equipped" />
+  <ItemBG state="empty" />
+  {/* ... 重复填满 */}
+</div>
+<MenuSections activeSection="weapons" />
+<Pagination totalPages={4} currentPage={1} />
+```
+
+### 商店界面
+
+```tsx
+<Card variant="default" title="Beedle's Shop">
+  <ShopListItem name="Hylian Shield" price={3000} />
+  <ShopListItem name="Ancient Arrow" price={90} hovered />
+  <ShopListItem name="Mighty Elixir" price={150} />
+</Card>
+<RupeeCounter amount={13878} />
+```
+
+### 神兽 / 能力栏
+
+```tsx
+<div style={{ display: 'flex', gap: 16 }}>
+  <DivineBeast beast="ruta" charges={1} />
+  <DivineBeast beast="medoh" charges={3} />
+  <DivineBeast beast="naboris" charges={2} />
+  <DivineBeast beast="rudania" charges={1} />
+</div>
+<div style={{ display: 'flex', gap: 12, marginTop: 12 }}>
+  <SheikahAbility ability="roundBomb" plus />
+  <SheikahAbility ability="magnesis" />
+  <SheikahAbility ability="stasis" plus />
+  <SheikahAbility ability="cryonis" />
+</div>
+```
+
+### 设置页
+
+```tsx
+<Card variant="sheikah" title="System Settings">
+  <SettingsToggle label="HUD Display" options={['ON', 'OFF']} value="ON" selected />
+  <SettingsToggle label="Camera Sensitivity" options={['Low', 'Normal', 'High']} value="Normal" />
+  <SettingsToggle label="Motion Controls" options={['ON', 'OFF']} value="OFF" />
+</Card>
+```
+
+### 加载/启动屏
+
+```tsx
+<SheikahBackground color="darkBlue">
+  <SheikahScanlines animated opacity={0.12} />
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
+    <SheikahSymbol size={120} />
+    <Loading />
+    <p style={{ color: '#E9E1D1', fontStyle: 'italic', marginTop: 24 }}>Loading Hyrule...</p>
+  </div>
+</SheikahBackground>
+```
+
+### 地图标记群
+
+```tsx
+<div style={{ position: 'relative', width: 800, height: 600, background: '#66645D' }}>
+  <MapHeroLocation rotation={45} vision style={{ position: 'absolute', top: '50%', left: '50%' }} />
+  <MapBeacon color="blue" flare style={{ position: 'absolute', top: 100, left: 200 }} />
+  <MapIcon icon="shrine" style={{ position: 'absolute', top: 300, left: 450 }} />
+  <MapIcon icon="tower" style={{ position: 'absolute', top: 150, left: 600 }} />
+  <MapQuestMarker pulse style={{ position: 'absolute', top: 400, left: 300 }} />
+</div>
+```
+
+---
 
 ## 概述
 
@@ -229,7 +463,10 @@ zelda-hyrule-ui 是一套受《塞尔达传说：旷野之息》启发的 React 
 
 ---
 
-## 3. 组件精确样式规范
+## 3. 核心组件深度示例
+
+> 本节为 6 个最常用组件的深度示例（Button / Card / Dialog / HealthBar / StaminaWheel / Modal / Divider / Loading）。
+> 完整 84 个组件的精确样式规范见 [§10](#10-全量组件精确样式规范84-个组件)。
 
 ### Button
 
@@ -731,24 +968,329 @@ export default MyComponent
 
 ---
 
-## 8. 禁止模式清单
+## 8. 禁止模式与正确示例
+
+下面每条都是 ✗ 错误 + ✓ 正确的对照，AI 生成代码时按 ✓ 来。
+
+### 配色
 
 ```
-✗ 亮色/白色背景（#fff, #f8f8f0, rgb(247,243,223) 等）
-✗ 纯黑文字 #000 或纯白文字 #fff
-✗ 冷蓝色焦点环（#0066ff, #2196f3 等）
-✗ 冷灰色（#666, #999, #ccc）— 必须带暖色调
-✗ 圆角 > 16px 的交互元素（塞尔达 UI 偏方正，不是 pill 形）
-✗ 无双层边框的容器（所有容器必须有 ::after 内层边框）
-✗ font-weight < 400
-✗ 非 italic 的按钮/对话文字
-✗ 用 <img src> 加载 SVG（必须 inline）
-✗ 使用 Tailwind 类名（本项目用 Less Modules）
-✗ 发明不存在的 props（必须查 AI_USAGE.md）
-✗ 使用 box-shadow 做 3D 按键效果（那是 animal-island-ui 的风格，不是塞尔达的）
+✗ background: #fff;
+✓ background: #66645D;  // 页面用 dark-bg
+✓ background: rgba(0, 0, 0, 0.6);  // 容器用半透明黑
+
+✗ color: #000;
+✓ color: #E9E1D1;  // 暖白主文字
+
+✗ color: #fff;
+✓ color: #E9E1D1;  // 不要纯白
+
+✗ color: #666;  // 冷灰
+✓ color: rgba(233, 225, 209, 0.6);  // 米色 + 透明度 = 暖灰
 ```
 
+### 焦点态
 
+```
+✗ outline: 2px solid #0066ff;  // 浏览器默认冷蓝
+✓ outline: 2px solid #3CD3FC;  // 希卡蓝
+✓ outline-offset: 2px;
+```
+
+### 圆角
+
+```
+✗ border-radius: 24px;  // 太圆，像 pill
+✓ border-radius: 4px;   // 塞尔达 UI 偏方正
+✓ border-radius: 8px;   // 卡片最大也就这个值
+```
+
+### 容器边框
+
+```
+✗ <div style={{ background: '#000', border: '1px solid #fff' }}>
+   // 单层边框 = 不是塞尔达风
+
+✓ <div className={styles.container}>
+.container {
+  background: rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+.container::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(226, 222, 211, 0.3);
+  pointer-events: none;
+}
+   // 双层边框是核心视觉特征
+```
+
+### 字体
+
+```
+✗ font-family: 'Helvetica';
+✗ font-weight: 300;
+✗ <button>Click me</button>  // 默认非 italic
+
+✓ font-family: 'Roboto', sans-serif;
+✓ font-weight: 500;
+✓ font-style: italic;  // 按钮/对话/正文都要 italic
+```
+
+### SVG 加载
+
+```
+✗ <img src="/icon.svg" />          // 模糊、无法着色
+✗ background-image: url(icon.svg)  // 一样的问题
+
+✓ <svg viewBox="0 0 24 24"><path d="..." fill="currentColor" /></svg>
+   // 用 currentColor 跟随 CSS color，矢量清晰
+```
+
+### 用 Tailwind？
+
+```
+✗ <button className="bg-black text-white p-4 rounded-lg">
+✓ // 本项目用 Less Modules，不是 Tailwind
+✓ <Button variant="sheikah">Click</Button>  // 直接用现成组件
+```
+
+### 自创 props
+
+```
+✗ <Button color="purple" size="huge">  // color/huge 不存在
+✓ <Button variant="sheikah" size="large">  // 查 AI_USAGE.md 确认
+```
+
+### 3D 按键效果
+
+```
+✗ box-shadow: 0 4px 0 #333, 0 6px 8px rgba(0,0,0,0.3);
+   // 这是 animal-island-ui 的"凸起按键"风格，不是塞尔达的
+
+✓ background: rgba(0, 0, 0, 0.6);
+   border: none;  // 塞尔达按钮是扁平的，靠 ::after 双层边框 + hover 辉光
+```
+
+---
+
+## 9. 完整界面案例
+
+5 个真实场景的完整组合代码。AI 接到"做一个 X 页"的需求，先看这里有没有现成模板。
+
+### 9.1 标题屏（启动页）
+
+```tsx
+import { SheikahBackground, SheikahScanlines, SheikahSymbol, Button, Logo } from 'zelda-hyrule-ui'
+
+export function TitleScreen({ onStart }: { onStart: () => void }) {
+  return (
+    <SheikahBackground color="darkBlue">
+      <SheikahScanlines animated opacity={0.12} />
+      <div style={{
+        position: 'relative', zIndex: 1, minHeight: '100vh',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+        gap: 32,
+      }}>
+        <SheikahSymbol size={140} />
+        <Logo variant="full" width={400} />
+        <p style={{
+          fontFamily: "'Hylia Serif', serif", fontSize: 18,
+          color: 'rgba(233,225,209,0.6)', fontStyle: 'italic',
+        }}>
+          The Legend of Zelda: Breath of the Wild
+        </p>
+        <div style={{ display: 'flex', gap: 16, marginTop: 24 }}>
+          <Button variant="sheikah" size="large" onClick={onStart}>Start Game</Button>
+          <Button variant="primary" size="large">Continue</Button>
+        </div>
+      </div>
+    </SheikahBackground>
+  )
+}
+```
+
+### 9.2 暂停菜单（HUD overlay）
+
+```tsx
+import {
+  HealthBar, StaminaWheel, RupeeCounter, WeatherIcon, Temperature,
+  DivineBeast, SheikahAbility, MenuSections, Modal, Button,
+} from 'zelda-hyrule-ui'
+
+export function PauseMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
+  return (
+    <Modal open={open} onClose={onClose} title="Paused" width={720}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+        {/* 顶部状态栏 */}
+        <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
+          <HealthBar current={10} max={13} bonus={3} />
+          <StaminaWheel value={0.75} size={60} />
+          <RupeeCounter amount={13878} />
+          <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
+            <WeatherIcon weather="rain" />
+            <Temperature value="cold" />
+          </div>
+        </div>
+
+        {/* 神兽 + 能力 */}
+        <div>
+          <p style={{ color: 'rgba(233,225,209,0.5)', fontSize: 11, letterSpacing: '0.1em', marginBottom: 8 }}>
+            DIVINE BEASTS &amp; ABILITIES
+          </p>
+          <div style={{ display: 'flex', gap: 16 }}>
+            <DivineBeast beast="ruta" charges={1} />
+            <DivineBeast beast="medoh" charges={3} />
+            <DivineBeast beast="naboris" charges={2} />
+            <DivineBeast beast="rudania" charges={1} />
+            <div style={{ width: 1, height: 50, background: 'rgba(226,222,211,0.1)', margin: '0 8px' }} />
+            <SheikahAbility ability="roundBomb" plus />
+            <SheikahAbility ability="magnesis" />
+            <SheikahAbility ability="stasis" plus />
+            <SheikahAbility ability="cryonis" />
+          </div>
+        </div>
+
+        {/* 菜单分类 */}
+        <MenuSections activeSection="weapons" />
+
+        {/* 操作按钮 */}
+        <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end' }}>
+          <Button variant="ghost" onClick={onClose}>Resume</Button>
+          <Button variant="sheikah">Save</Button>
+          <Button variant="danger">Quit</Button>
+        </div>
+      </div>
+    </Modal>
+  )
+}
+```
+
+### 9.3 库存/物品页
+
+```tsx
+import { Card, MenuSections, ItemBG, Pagination, ItemEnchantment, Scrollbar, StatsStack } from 'zelda-hyrule-ui'
+
+export function InventoryPage() {
+  return (
+    <Card variant="sheikah" title="Weapons">
+      <MenuSections activeSection="weapons" />
+
+      {/* 8x4 物品网格 */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(8, 60px)', gap: 6, marginTop: 16 }}>
+        <ItemBG state="filled" size={60} />
+        <ItemBG state="selected" size={60} />
+        <ItemBG state="equipped" size={60} />
+        <ItemBG state="filled" size={60} />
+        <ItemBG state="filled" size={60} />
+        <ItemBG state="filled" size={60} />
+        <ItemBG state="empty" size={60} />
+        <ItemBG state="empty" size={60} />
+        {/* ... 重复 */}
+      </div>
+
+      {/* 选中物品的属性 */}
+      <div style={{ display: 'flex', gap: 16, marginTop: 24 }}>
+        <StatsStack type="weapon" value={32} />
+        <StatsStack type="armor" value={24} comparison={28} />
+        <ItemEnchantment quality={3} />
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 16 }}>
+        <Pagination totalPages={4} currentPage={1} />
+        <Scrollbar location={1} maxSections={5} width={200} />
+      </div>
+    </Card>
+  )
+}
+```
+
+### 9.4 NPC 对话场景
+
+```tsx
+import { Dialog, DialogChoice, ControllerButton, ActionSet, TitleLocation } from 'zelda-hyrule-ui'
+import { useState } from 'react'
+
+export function DialogScene() {
+  const [step, setStep] = useState(0)
+
+  return (
+    <div style={{ position: 'relative', minHeight: '100vh' }}>
+      {/* 顶部地点提示 */}
+      <div style={{ position: 'absolute', top: 24, left: '50%', transform: 'translateX(-50%)' }}>
+        <TitleLocation name="Hateno Village" />
+      </div>
+
+      {/* 底部对话区 */}
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '0 80px 40px' }}>
+        {step === 0 && (
+          <Dialog type="speech" speaker="Old Man">
+            It is dangerous to go alone. Take this.
+          </Dialog>
+        )}
+        {step === 1 && (
+          <>
+            <Dialog type="speech" speaker="Old Man">
+              Will you accept this gift?
+            </Dialog>
+            <DialogChoice
+              options={[
+                { label: 'Yes, thank you', value: 'yes' },
+                { label: 'No, I cannot', value: 'no' },
+              ]}
+              selectedIndex={0}
+            />
+          </>
+        )}
+
+        {/* 底部操作提示 */}
+        <div style={{ marginTop: 16, display: 'flex', justifyContent: 'flex-end' }}>
+          <ActionSet actions={[
+            { button: 'A', label: 'Continue' },
+            { button: 'B', label: 'Skip' },
+          ]} />
+        </div>
+      </div>
+    </div>
+  )
+}
+```
+
+### 9.5 设置页
+
+```tsx
+import { Card, SettingsToggle, Divider, Button } from 'zelda-hyrule-ui'
+
+export function SettingsPage() {
+  return (
+    <div style={{ maxWidth: 720, margin: '0 auto', padding: 40 }}>
+      <Card variant="sheikah" title="System Settings">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <SettingsToggle label="HUD Display" options={['ON', 'OFF']} value="ON" selected />
+          <SettingsToggle label="Mini-map" options={['ON', 'OFF']} value="ON" />
+          <SettingsToggle label="Camera Sensitivity" options={['Low', 'Normal', 'High']} value="Normal" />
+        </div>
+
+        <Divider variant="sheikah" />
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <SettingsToggle label="Motion Controls" options={['ON', 'OFF']} value="OFF" />
+          <SettingsToggle label="Vibration" options={['ON', 'OFF']} value="ON" />
+          <SettingsToggle label="Subtitles" options={['ON', 'OFF']} value="ON" />
+        </div>
+
+        <Divider variant="golden" />
+
+        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 12 }}>
+          <Button variant="ghost">Reset</Button>
+          <Button variant="sheikah">Save</Button>
+        </div>
+      </Card>
+    </div>
+  )
+}
+```
 
 ---
 
@@ -1476,7 +2018,104 @@ margin-bottom: 48px;
 
 ---
 
-## 13. 完整 SVG Path 数据索引
+## 13. 主题定制
+
+如果用户想轻度修改主题（不重做组件库），覆盖 Less 变量是最简方式。
+
+### 可覆盖的核心 tokens
+
+```less
+// 在你的项目 entry 之前 import 一个覆盖文件
+// my-theme.less
+@sheikah-blue: #FF5577;       // 改希卡蓝为粉红
+@sheikah-blue-glow: #FF88AA;  // 同步辉光色
+@text-color-yellow: #FFA500;  // 改黄色强调为橙色
+@zelda-dark-bg: #2A2A3A;      // 改页面背景
+
+// 然后 import 库样式
+@import 'zelda-hyrule-ui/style';
+```
+
+### 三种常见定制方向
+
+| 方向 | 改哪些 token | 视觉效果 |
+|------|------------|---------|
+| 暖色调（火焰王国风） | `@sheikah-blue` → 橙红，`@beast-fire` 系列 | 红橙黄主导 |
+| 黑暗模式（只改强调色） | `@sheikah-blue` → 紫色 `#A855F7` | 暗紫主题 |
+| 高对比（无障碍） | 提高所有 `rgba(...)` 透明度，文字色 → `#FFFFFF` | WCAG AAA |
+
+### 注意事项
+
+- ✗ 不要直接改组件源码 — 升级时会被覆盖
+- ✓ 用 Less 变量覆盖 — 升级安全
+- ✗ 不要把希卡蓝改成冷蓝（如 `#0066FF`）— 会破坏整体风格
+- ✓ 改色时保持"暖色调"原则（饱和度足够、不死板）
+
+---
+
+## 14. 无障碍（A11y）
+
+组件库已为以下组件添加 ARIA 属性，二次封装时保留即可：
+
+| 组件 | ARIA 属性 |
+|------|----------|
+| Modal | `role="dialog"`, `aria-modal="true"`, `aria-labelledby` |
+| Toast | `role="alert"`, `aria-live="polite"` |
+| Dialog | `role="region"`, `aria-label={speaker}` |
+| SettingsToggle | `role="group"`, 箭头按钮 `aria-label` |
+| Button | 继承 `React.ButtonHTMLAttributes`，可传任意 `aria-*` |
+
+### AI 生成代码时的 a11y 检查
+
+```tsx
+// ✗ 没有 alt / aria-label
+<button onClick={...}><Icon /></button>
+
+// ✓ 给纯图标按钮加 aria-label
+<button onClick={...} aria-label="Close menu">
+  <Icon aria-hidden="true" />
+</button>
+
+// ✗ 装饰性 SVG 没有 aria-hidden
+<svg><path d="..." /></svg>
+
+// ✓ 装饰性 SVG 标记为隐藏
+<svg aria-hidden="true"><path d="..." /></svg>
+
+// ✗ 用 div 做点击
+<div onClick={...}>Click</div>
+
+// ✓ 用 button + 类名重置默认样式
+<button className={styles.linkLike} onClick={...}>Click</button>
+```
+
+### 焦点环
+
+```less
+// 所有可交互元素必须有可见焦点态
+.button:focus-visible {
+  outline: 2px solid @sheikah-blue;
+  outline-offset: 2px;
+}
+
+// 禁止移除焦点环（除非提供替代）
+✗ outline: none;
+✓ outline: 2px solid #3CD3FC; outline-offset: 2px;
+```
+
+### 颜色对比度
+
+| 组合 | 对比度 | WCAG |
+|------|--------|------|
+| `#E9E1D1` on `#66645D` | 4.5:1 | AA Pass |
+| `#3CD3FC` on `rgba(0,0,0,0.6)` | 7+:1 | AAA Pass |
+| `#E2D146` on `rgba(0,0,0,0.6)` | 6+:1 | AA Pass |
+
+⚠️ 完整 WCAG 验证仍需人工辅助技术测试和无障碍专家评审。本组件库目标是 WCAG AA 基础合规。
+
+---
+
+## 15. 完整 SVG Path 数据索引
 
 以下 SVG path 数据从 Figma 精确导出，可直接在 JSX 中使用：
 
