@@ -239,3 +239,107 @@
     padding-top: 56px;
   }
 }
+
+
+/* ─── Doc Section (Usage / API) ───────────────────────────────────────────── */
+
+.doc-section {
+  margin-top: 16px;
+}
+
+.doc-section-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(60, 211, 252, 0.15);
+  border: 1px solid rgba(60, 211, 252, 0.3);
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: #3CD3FC;
+  letter-spacing: 0.05em;
+}
+
+.doc-code-block {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(60, 211, 252, 0.12);
+  border-radius: 0 6px 6px 6px;
+  padding: 20px 24px;
+  overflow-x: auto;
+}
+
+.doc-code-block pre {
+  margin: 0;
+  font-family: 'SF Mono', 'Fira Code', 'Menlo', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #E9E1D1;
+  white-space: pre;
+}
+
+.doc-api-table {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(60, 211, 252, 0.12);
+  border-radius: 0 6px 6px 6px;
+  overflow-x: auto;
+}
+
+.doc-api-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.doc-api-table thead tr {
+  border-bottom: 1px solid rgba(233, 225, 209, 0.12);
+}
+
+.doc-api-table th {
+  text-align: left;
+  padding: 12px 16px;
+  color: rgba(233, 225, 209, 0.5);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+}
+
+.doc-api-table tbody tr {
+  border-bottom: 1px solid rgba(233, 225, 209, 0.05);
+  transition: background 0.15s;
+}
+
+.doc-api-table tbody tr:hover {
+  background: rgba(60, 211, 252, 0.03);
+}
+
+.doc-api-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.doc-api-table td {
+  padding: 10px 16px;
+}
+
+.doc-api-table .prop-name {
+  color: #E2D146;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.doc-api-table .prop-desc {
+  color: #E9E1D1;
+}
+
+.doc-api-table .prop-type {
+  color: #6FD49C;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px;
+}
+
+.doc-api-table .prop-default {
+  color: rgba(233, 225, 209, 0.4);
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 12px;
+}

@@ -586,20 +586,15 @@ const PROPS_DATA: Record<string, PropDef[]> = {
 // ─── Code Example Component ──────────────────────────────────────────────────
 
 const CodeExample: React.FC<{ componentName: string }> = ({ componentName }) => {
-  const [open, setOpen] = useState(false)
   const code = CODE_EXAMPLES[componentName]
   if (!code) return null
 
   return (
-    <div className="code-example">
-      <button className="code-example-toggle" onClick={() => setOpen(!open)}>
-        {open ? '▾' : '▸'} Code
-      </button>
-      {open && (
-        <div className="code-example-content">
-          <pre>{code}</pre>
-        </div>
-      )}
+    <div className="doc-section">
+      <div className="doc-section-badge">Usage</div>
+      <div className="doc-code-block">
+        <pre>{code}</pre>
+      </div>
     </div>
   )
 }
@@ -607,39 +602,34 @@ const CodeExample: React.FC<{ componentName: string }> = ({ componentName }) => 
 // ─── Props Table Component ───────────────────────────────────────────────────
 
 const PropsTable: React.FC<{ componentName: string }> = ({ componentName }) => {
-  const [open, setOpen] = useState(false)
   const props = PROPS_DATA[componentName]
   if (!props || props.length === 0) return null
 
   return (
-    <div className="code-example" style={{ marginTop: 4 }}>
-      <button className="code-example-toggle" onClick={() => setOpen(!open)}>
-        {open ? '▾' : '▸'} Props
-      </button>
-      {open && (
-        <div style={{ padding: '12px 16px', borderTop: '1px solid rgba(60,211,252,0.08)', overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
-            <thead>
-              <tr style={{ borderBottom: '1px solid rgba(233,225,209,0.15)' }}>
-                <th style={{ textAlign: 'left', padding: '6px 8px', color: '#3CD3FC', fontWeight: 500 }}>Prop</th>
-                <th style={{ textAlign: 'left', padding: '6px 8px', color: '#3CD3FC', fontWeight: 500 }}>Type</th>
-                <th style={{ textAlign: 'left', padding: '6px 8px', color: '#3CD3FC', fontWeight: 500 }}>Default</th>
-                <th style={{ textAlign: 'left', padding: '6px 8px', color: '#3CD3FC', fontWeight: 500 }}>Description</th>
+    <div className="doc-section">
+      <div className="doc-section-badge">API</div>
+      <div className="doc-api-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Default</th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.map((p) => (
+              <tr key={p.name}>
+                <td className="prop-name">{p.name}</td>
+                <td className="prop-desc">{p.desc}</td>
+                <td className="prop-type">{p.type}</td>
+                <td className="prop-default">{p.default || '-'}</td>
               </tr>
-            </thead>
-            <tbody>
-              {props.map((p) => (
-                <tr key={p.name} style={{ borderBottom: '1px solid rgba(233,225,209,0.05)' }}>
-                  <td style={{ padding: '6px 8px', color: '#E2D146', fontFamily: "'SF Mono','Fira Code',monospace" }}>{p.name}</td>
-                  <td style={{ padding: '6px 8px', color: 'rgba(233,225,209,0.7)', fontFamily: "'SF Mono','Fira Code',monospace", fontSize: 11 }}>{p.type}</td>
-                  <td style={{ padding: '6px 8px', color: 'rgba(233,225,209,0.4)' }}>{p.default || '—'}</td>
-                  <td style={{ padding: '6px 8px', color: '#E9E1D1' }}>{p.desc}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }
@@ -647,9 +637,9 @@ const PropsTable: React.FC<{ componentName: string }> = ({ componentName }) => {
 // ─── Demo Section Renderer ───────────────────────────────────────────────────
 
 const DemoSection: React.FC<{ id: string; title: string; children: React.ReactNode }> = ({ id, title, children }) => (
-  <section id={`section-${id}`} style={{ marginBottom: 48 }}>
-    <h3 style={{ fontFamily: "'Hylia Serif', 'Cinzel', serif", fontSize: 18, color: '#E9E1D1', marginBottom: 16 }}>{title}</h3>
-    <div style={{ background: 'rgba(0,0,0,0.25)', border: '1px solid rgba(233,225,209,0.08)', borderRadius: 4, padding: 24, marginBottom: 8 }}>
+  <section id={`section-${id}`} style={{ marginBottom: 56 }}>
+    <h3 style={{ fontFamily: "'Hylia Serif', 'Cinzel', serif", fontSize: 20, color: '#E9E1D1', marginBottom: 20 }}>{title}</h3>
+    <div style={{ background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(233,225,209,0.1)', borderRadius: 6, padding: 32, marginBottom: 20 }}>
       <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>{children}</div>
     </div>
     <CodeExample componentName={title} />
