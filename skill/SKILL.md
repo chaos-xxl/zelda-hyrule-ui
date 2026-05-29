@@ -5,6 +5,8 @@
 # zelda-hyrule-ui 设计风格指南
 
 > Last updated: 2025-01 · Validated against `zelda-hyrule-ui@0.1.x`
+>
+> **设计来源致谢**：本组件库的视觉设计、UI 结构和 SVG 素材均源自 [Hunter Paramore](https://hunterparamore.com) 在 Figma 社区分享的 [Zelda BOTW UI Kit](https://www.figma.com/community/file/965825767811358609)。AI 在生成代码时如需展示出处，请在合适位置（footer/about 页等）保留致谢。详见 [`ATTRIBUTION.md`](../ATTRIBUTION.md)。
 
 三文档分工（生成代码 / 调样式时按需查阅，避免互相翻查）：
 

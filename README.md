@@ -241,6 +241,24 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ---
 
+## Credits / 致谢
+
+This project is built on top of the [**Zelda BOTW UI Kit**](https://www.figma.com/community/file/965825767811358609) by [**Hunter Paramore**](https://hunterparamore.com), shared on the Figma Community. All UI elements, icons, and visual structure originate from this kit. The Figma file is the foundation of every component in this library — all SVGs were exported node-by-node from the original work.
+
+本项目基于 [**Hunter Paramore**](https://hunterparamore.com) 在 Figma 社区分享的 [**Zelda BOTW UI Kit**](https://www.figma.com/community/file/965825767811358609) 构建。所有 UI 元素、图标和视觉结构都源自该素材包。本组件库的全部 SVG 都是从原始 Figma 文件中逐节点精确导出的。
+
+If you use this library or the original UI kit, please credit Hunter Paramore.
+
+如果你使用本库或原始素材，请同时致谢 Hunter Paramore。
+
+| Resource | Link |
+|----------|------|
+| Original Figma file | https://www.figma.com/community/file/965825767811358609 |
+| Author profile | https://hunterparamore.com |
+| Author's Figma | [Hunter Paramore on Figma](https://www.figma.com/@hunterparamore) |
+
+---
+
 ## License / 许可证
 
 MIT — For learning and personal use only. This is a fan-creation project. All Zelda-related trademarks belong to Nintendo.
