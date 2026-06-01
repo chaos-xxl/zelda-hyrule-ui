@@ -28,7 +28,7 @@ docs/             # Project documentation
 2. Create files: `Name.tsx`, `name.module.less`, `index.ts`
 3. Export from `src/index.ts`
 4. Add demo in `demo/App.tsx`
-5. Follow the checklist in `skill/SKILL.md` Section 7
+5. Follow the checklist in `skill/references/new-component.md`
 
 ## Design Rules
 

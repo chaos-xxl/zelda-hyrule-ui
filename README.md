@@ -146,13 +146,13 @@ The simplest way to use this library with AI:
 
 | File | For | Purpose |
 |------|-----|---------|
-| [`skill/SKILL.md`](skill/SKILL.md) | Cursor / Copilot | 1500+ line pixel-level CSS spec — AI can self-implement without installing the package |
+| [`skill/SKILL.md`](skill/SKILL.md) | Cursor / Copilot | Routing-layer skill (progressive disclosure) — design rules + load-on-demand `references/` for pixel-level specs |
 | [`AI_USAGE.md`](AI_USAGE.md) | AI assistants | Complete API reference — all props, types, defaults |
 | [`DESIGN_PROMPT.md`](DESIGN_PROMPT.md) | v0 / Figma AI / MJ | One-click design generation prompts |
 
 | 文件 | 面向 | 用途 |
 |------|-----|---------|
-| [`skill/SKILL.md`](skill/SKILL.md) | Cursor / Copilot | 1500+ 行像素级 CSS 规范——AI 无需安装包即可自行实现 |
+| [`skill/SKILL.md`](skill/SKILL.md) | Cursor / Copilot | 路由层 skill（渐进披露）——设计铁律 + 按需加载的 `references/` 像素级规范 |
 | [`AI_USAGE.md`](AI_USAGE.md) | AI 编程助手 | 完整 API 手册——所有 props、类型、默认值 |
 | [`DESIGN_PROMPT.md`](DESIGN_PROMPT.md) | v0 / Figma AI / MJ | 一键设计生成提示词 |
 
