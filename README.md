@@ -256,7 +256,7 @@ If you use this library or the original UI kit, please credit Hunter Paramore.
 |----------|------|
 | Original Figma file | https://www.figma.com/community/file/965825767811358609 |
 | Author profile | https://hunterparamore.com |
-| Author's Figma | [Hunter Paramore on Figma](https://www.figma.com/@hunterparamore) |
+| Author's Figma | [Hunter Paramore on Figma](https://www.figma.com/@hparamore) |
 
 ---
 

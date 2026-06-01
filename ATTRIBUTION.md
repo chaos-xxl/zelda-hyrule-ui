@@ -10,9 +10,31 @@ This project's visual design, UI structure, icons, and SVG assets are all derive
 |------|--------|
 | **Original Author** | Hunter Paramore |
 | **Author Website** | https://hunterparamore.com |
-| **Author Figma Profile** | https://www.figma.com/@hunterparamore |
+| **Author Figma Profile** | https://www.figma.com/@hparamore |
 | **Original Figma File** | https://www.figma.com/community/file/965825767811358609 |
-| **License (Figma Community)** | Free to use with credit attribution to the original author |
+| **License** | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (Creative Commons Attribution 4.0 International) |
+
+## License Compliance / 许可证合规
+
+The original Zelda BOTW UI Kit is licensed under **[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)**. This license permits commercial use, modification, and redistribution — including releasing derivative works under a different license (such as this project's MIT) — provided that **proper attribution** is given.
+
+This project satisfies the CC BY 4.0 attribution requirements by providing:
+
+- **Title / Creator**: Hunter Paramore (named above and in `README.md`)
+- **Source**: link to the original Figma file (above)
+- **License**: CC BY 4.0 with link (this section)
+- **Modifications**: stated below — the original Figma vectors were exported and re-implemented as React + TypeScript components; no original visual design was altered in substance, only translated to code
+
+原始 Zelda BOTW UI Kit 采用 **[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)**（知识共享署名 4.0 国际）许可。该许可允许商用、修改与再分发——包括以不同许可证（如本项目的 MIT）发布衍生作品——前提是**给出恰当的署名**。
+
+本项目通过以下方式满足 CC BY 4.0 的署名要求：
+
+- **作者**：Hunter Paramore（上方及 `README.md` 中均已注明）
+- **来源**：原始 Figma 文件链接（见上方表格）
+- **许可证**：CC BY 4.0 及其链接（本节）
+- **修改说明**：见下方——原始 Figma 矢量被导出并重新实现为 React + TypeScript 组件；未对原始视觉设计做实质性改动，仅将其翻译为代码
+
+> 本项目（代码层）以 MIT 许可发布；原始设计素材的 CC BY 4.0 许可继续适用于其视觉设计部分。两者并行不冲突。
 
 ## What This Project Does
 
@@ -50,9 +72,9 @@ Implementation via [zelda-hyrule-ui](https://github.com/chaos-xxl/zelda-hyrule-u
 
 ## Trademark Notice
 
-*The Legend of Zelda*, *Breath of the Wild*, the Sheikah Slate iconography, the Triforce, and all related characters, names, and visual elements are trademarks of **Nintendo**. This project is a non-commercial fan creation for educational purposes only and is not affiliated with, endorsed by, or sponsored by Nintendo.
+*The Legend of Zelda*, *Breath of the Wild*, the Sheikah Slate iconography, the Triforce, and all related characters, names, and visual elements are trademarks of **Nintendo**. This project is a fan creation for learning and demonstration purposes, and is not affiliated with, endorsed by, or sponsored by Nintendo. Although the underlying design assets are CC BY 4.0 licensed, the Zelda/Nintendo trademarks and game IP remain the property of Nintendo — do not use this project in a way that implies official association or infringes Nintendo's rights.
 
-《塞尔达传说》、《旷野之息》、希卡之石图标、三角力量等所有相关角色、名称及视觉元素均为**任天堂**的商标。本项目为非商业的粉丝创作，仅供学习用途，与任天堂无任何隶属、背书或赞助关系。
+《塞尔达传说》、《旷野之息》、希卡之石图标、三角力量等所有相关角色、名称及视觉元素均为**任天堂**的商标。本项目为粉丝创作，仅供学习与演示用途，与任天堂无任何隶属、背书或赞助关系。尽管底层设计素材采用 CC BY 4.0 许可，塞尔达/任天堂的商标与游戏 IP 仍归任天堂所有——请勿以暗示官方关联或侵犯任天堂权利的方式使用本项目。
 
 ## Other Acknowledgments
 
