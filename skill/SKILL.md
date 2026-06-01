@@ -281,8 +281,8 @@ export default function App() {
 | `references/core-patterns.md` | 双层边框结构、希卡蓝变体 |
 | `references/recipes.md` | 9 个场景配方（HUD / 任务 / 对话 / 商店 / 设置 / 加载 / 地图等） |
 | `references/components-core.md` | 8 个核心组件深度示例（Button / Card / Dialog / HealthBar / StaminaWheel / Modal / Divider / Loading） |
-| `references/components-full.md` | 全部 84 个组件的精确样式规范 |
-| `references/component-list.md` | 84 个组件的完整 export 清单 |
+| `references/components-full.md` | 全部 83 个组件的精确样式规范 |
+| `references/component-list.md` | 83 个组件的完整 export 清单 |
 | `references/ui-cases.md` | 5 个完整界面案例（标题屏 / 暂停菜单 / 库存 / 对话 / 设置） |
 | `references/new-component.md` | 新组件文件结构模板 + 开发 checklist |
 | `references/demo-layout.md` | demo 页面布局精确规范 |

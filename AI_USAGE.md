@@ -374,7 +374,7 @@ Repo-only (NOT published to npm — read on GitHub):
 • `skill/SKILL.md` — exhaustive style spec, every hex / px / keyframe
 • `DESIGN_PROMPT.md` — prompts for v0 / Figma AI / MJ / DALL-E
 • `FIGMA_REFERENCE.md` — complete Figma node ID index
-• GitHub: https://github.com/chaosflutter/zelda-hyrule-ui
+• GitHub: https://github.com/chaos-xxl/zelda-hyrule-ui
 
 When to use which: API shape / legal prop values → this file. Pixel-exact CSS → `SKILL.md`. Feeding another design AI → `DESIGN_PROMPT.md`.
 

@@ -926,9 +926,9 @@ const DocsPage: React.FC = () => {
           Component Documentation 组件文档
         </h1>
         <p style={{ color: 'rgba(233,225,209,0.5)', marginBottom: 40 }}>
-          All 84 components with live demos, usage examples, and API references.
+          All 83 components with live demos, usage examples, and API references.
           <br />
-          全部 84 个组件，含实时预览、使用示例与 API 参考。
+          全部 83 个组件，含实时预览、使用示例与 API 参考。
         </p>
 
         {/* ═══ HUD ═══ */}
@@ -1396,10 +1396,10 @@ const LandingPage: React.FC = () => (
             fontSize: 17, fontWeight: 500,
             color: 'rgba(233,225,209,0.7)', maxWidth: 640, lineHeight: 1.7, margin: '0 0 32px',
           }}>
-            84 React components inspired by The Legend of Zelda: Breath of the Wild.
+            83 React components inspired by The Legend of Zelda: Breath of the Wild.
             <br />
             <span style={{ fontSize: 15, opacity: 0.85 }}>
-              受《塞尔达传说：旷野之息》启发的 84 个 React 组件 · 暗色主题 + 希卡之石辉光 + AI 设计规范
+              受《塞尔达传说：旷野之息》启发的 83 个 React 组件 · 暗色主题 + 希卡之石辉光 + AI 设计规范
             </span>
           </p>
           <div className="landing-buttons">
@@ -1420,7 +1420,7 @@ const LandingPage: React.FC = () => (
       <div className="landing-section" style={{ position: 'relative', zIndex: 1 }}>
         <SheikahTextTitle title="Features 特性" description="Why choose zelda-hyrule-ui? / 为什么选择这套组件库？" />
         <div className="landing-features-grid">
-          <Card variant="sheikah" title="84 Components / 84 个组件">
+          <Card variant="sheikah" title="83 Components / 83 个组件">
             Full coverage of the BOTW UI Kit — HUD, menus, dialogs, maps, and more.
             <br />
             <span style={{ opacity: 0.7 }}>覆盖 BOTW UI Kit 全部组件</span>
@@ -1441,7 +1441,7 @@ const LandingPage: React.FC = () => (
             <span style={{ opacity: 0.7 }}>所有 SVG 从 Figma 精确导出</span>
           </Card>
           <Card variant="golden" title="TypeScript / 全量类型">
-            Full type definitions for all 84 components. IntelliSense out of the box.
+            Full type definitions for all 83 components. IntelliSense out of the box.
             <br />
             <span style={{ opacity: 0.7 }}>完整 TS 类型定义，IntelliSense 即用</span>
           </Card>
@@ -1673,8 +1673,8 @@ const MobilePage: React.FC = () => (
     <div className="mobile-hero">
       <SheikahSymbol size={56} outline={false} />
       <h1>zelda-hyrule-ui</h1>
-      <p className="mobile-hero-tagline">84 React components · BOTW style</p>
-      <p className="mobile-hero-tagline-zh">塞尔达旷野之息风格 · 84 个 React 组件</p>
+      <p className="mobile-hero-tagline">83 React components · BOTW style</p>
+      <p className="mobile-hero-tagline-zh">塞尔达旷野之息风格 · 83 个 React 组件</p>
       <div className="mobile-header-buttons">
         <Button variant="sheikah" size="small" onClick={() => window.open('https://github.com/chaos-xxl/zelda-hyrule-ui')}>GitHub</Button>
         <Button variant="primary" size="small" onClick={() => window.open('https://www.npmjs.com/package/zelda-hyrule-ui')}>npm</Button>

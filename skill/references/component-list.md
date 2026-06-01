@@ -1,13 +1,10 @@
-# 全量组件清单（84 个）
+# 全量组件清单（83 个）
 
-> Reference for `skill/SKILL.md`. 从 `src/index.ts` 导出的完整组件列表，按分类。
+> Reference for `skill/SKILL.md`. 从 `src/index.ts` 导出的完整组件列表，按分类。各分类互斥不重复，合计 83。
 
 从 `src/index.ts` 导出：
 
 ```ts
-// Common (6)
-Button, Card, Dialog, Modal, Divider, Loading
-
 // HUD (16)
 HealthBar, StaminaWheel, WeatherIcon, RupeeCounter, DivineBeast, SheikahAbility,
 RupeeType, Temperature, SoundMeter, Sensor, EffectDuration, BonusEffectIcon,
@@ -35,23 +32,23 @@ MapIcon, MapBeacon, MapQuestMarker, MapLocationName, MapCursor, MapHeroLocation,
 SheikahSymbol, SheikahBackground, SheikahScanlines, SheikahRune,
 SheikahCompendiumEntry, SheikahTextTitle, SheikahCompendiumFilters, SheikahAlbumButton
 
-// Feedback (1)
-Toast
-
-// Decorations (5)
-TitleOrnament, DirectionalArrow, Starburst, TextOrnamentCorner, TimerOrnament
-
-// Settings (1)
-SettingsToggle
-
 // Battle (4)
 ItemEnchantment, StatusHealing, AimingReticle, AttackDefenseValues
 
 // Shop (3)
 ShopListItem, ShopPriceQuantity, NumberInput
 
+// Settings (1)
+SettingsToggle
+
+// Decorations (6)
+TitleOrnament, DirectionalArrow, Starburst, TextOrnamentCorner, TimerOrnament, Illustration
+
 // Brand (1)
 Logo
+
+// Common (6)
+Button, Card, Modal, Divider, Loading, Toast
 
 // Screens (9)
 MenuScreen, QuestScreen, LoadingScreen, TitleScreen, GameOverScreen,

@@ -1,6 +1,6 @@
 # 核心组件深度示例
 
-> Reference for `skill/SKILL.md`. 8 个最常用组件（Button / Card / Dialog / HealthBar / StaminaWheel / Modal / Divider / Loading）的深度样式示例。完整 84 个组件见 `components-full.md`。
+> Reference for `skill/SKILL.md`. 8 个最常用组件（Button / Card / Dialog / HealthBar / StaminaWheel / Modal / Divider / Loading）的深度样式示例。完整 83 个组件见 `components-full.md`。
 
 ### Button
 

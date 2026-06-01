@@ -5,7 +5,7 @@ Thanks for your interest in contributing!
 ## Development Setup
 
 ```bash
-git clone https://github.com/chaosflutter/zelda-hyrule-ui.git
+git clone https://github.com/chaos-xxl/zelda-hyrule-ui.git
 cd zelda-hyrule-ui
 npm install
 npm run dev

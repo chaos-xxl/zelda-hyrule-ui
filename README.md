@@ -7,7 +7,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/chaos-xxl/zelda-hyrule-ui?color=ffd700&labelColor=222)](https://github.com/chaos-xxl/zelda-hyrule-ui/stargazers)
 [![License](https://img.shields.io/badge/license-MIT-3CD3FC?labelColor=222)](LICENSE)
 
-[![Components](https://img.shields.io/badge/Components-84-3CD3FC?labelColor=222)](https://chaos-xxl.github.io/zelda-hyrule-ui/#/docs)
+[![Components](https://img.shields.io/badge/Components-83-3CD3FC?labelColor=222)](https://chaos-xxl.github.io/zelda-hyrule-ui/#/docs)
 [![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react&labelColor=222)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5+-3178C6?logo=typescript&logoColor=fff&labelColor=222)](https://typescriptlang.org)
 [![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=fff&labelColor=222)](https://vitejs.dev)
@@ -18,10 +18,10 @@
 </div>
 
 A React UI component library inspired by *The Legend of Zelda: Breath of the Wild*.
-84 components with dark theme, Sheikah glow effects, and AI-consumable design specs.
+83 components with dark theme, Sheikah glow effects, and AI-consumable design specs.
 
 一套受《塞尔达传说：旷野之息》启发的 React UI 组件库。
-84 个组件，暗色主题 + 希卡之石辉光效果，附带 AI 可消费的设计规范。
+83 个组件，暗色主题 + 希卡之石辉光效果，附带 AI 可消费的设计规范。
 
 ![Demo Home](docs/img/demo-home.png)
 
@@ -31,13 +31,13 @@ A React UI component library inspired by *The Legend of Zelda: Breath of the Wil
 
 - **Online Preview (PC):** [zelda-hyrule-ui](https://chaos-xxl.github.io/zelda-hyrule-ui/)
 - **Online Preview (Mobile):** [zelda-hyrule-ui-mobile](https://chaos-xxl.github.io/zelda-hyrule-ui/#/mobile)
-- **Component Docs:** [All 84 components](https://chaos-xxl.github.io/zelda-hyrule-ui/#/docs) — live previews, code examples, and props tables
+- **Component Docs:** [All 83 components](https://chaos-xxl.github.io/zelda-hyrule-ui/#/docs) — live previews, code examples, and props tables
 
 ### 🔗 预览
 
 - **在线预览（PC）：** [zelda-hyrule-ui](https://chaos-xxl.github.io/zelda-hyrule-ui/)
 - **在线预览（Mobile）：** [zelda-hyrule-ui-mobile](https://chaos-xxl.github.io/zelda-hyrule-ui/#/mobile)
-- **组件文档：** [全部 84 个组件](https://chaos-xxl.github.io/zelda-hyrule-ui/#/docs)——实时预览、代码示例和 Props 表格
+- **组件文档：** [全部 83 个组件](https://chaos-xxl.github.io/zelda-hyrule-ui/#/docs)——实时预览、代码示例和 Props 表格
 
 ---
 
@@ -158,7 +158,7 @@ The simplest way to use this library with AI:
 
 ---
 
-## Components (84) / 组件
+## Components (83) / 组件
 
 | Category | Count | Components |
 |----------|-------|------------|
@@ -173,9 +173,10 @@ The simplest way to use this library with AI:
 | **Controls** | 2 | ControllerButton, ActionSet |
 | **Shop** | 3 | ShopListItem, ShopPriceQuantity, NumberInput |
 | **Settings** | 1 | SettingsToggle |
-| **Decorations** | 6 | TitleOrnament, DirectionalArrow, Starburst, TextOrnamentCorner, TimerOrnament, Logo, Illustration |
-| **Common** | 7 | Button, Card, Modal, Divider, Loading, Toast |
-| **Screens** | 9 | MenuScreen, QuestScreen, LoadingScreen, TitleScreen, GameOverScreen, SystemScreen, ShopScreen, MapScreen, QuickSelectorScreen |
+| **Decorations** | 6 | TitleOrnament, DirectionalArrow, Starburst, TextOrnamentCorner, TimerOrnament, Illustration |
+| **Brand** | 1 | Logo |
+| **Common** | 6 | Button, Card, Modal, Divider, Loading, Toast |
+| **Screens** | 9 | MenuScreen, QuestScreen, LoadingScreen, TitleScreen, GameOverScreen, SystemScreen, ShopScreen, SheikahMapScreen, QuickSelectorScreen |
 
 > 📖 Full interactive docs with code examples and props tables: **[Online Documentation](https://chaos-xxl.github.io/zelda-hyrule-ui/#/docs)**
 >

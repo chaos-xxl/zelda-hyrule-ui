@@ -1,6 +1,6 @@
 {
   "name": "zelda-hyrule-ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A React UI component library inspired by The Legend of Zelda: Breath of the Wild",
   "type": "module",
   "main": "dist/cjs/index.cjs",
@@ -26,11 +26,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/chaosflutter/zelda-hyrule-ui"
+    "url": "https://github.com/chaos-xxl/zelda-hyrule-ui"
   },
-  "homepage": "https://github.com/chaosflutter/zelda-hyrule-ui#readme",
+  "homepage": "https://github.com/chaos-xxl/zelda-hyrule-ui#readme",
   "bugs": {
-    "url": "https://github.com/chaosflutter/zelda-hyrule-ui/issues"
+    "url": "https://github.com/chaos-xxl/zelda-hyrule-ui/issues"
   },
   "author": "Chaos",
   "license": "MIT",
