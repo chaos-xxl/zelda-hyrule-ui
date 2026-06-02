@@ -1904,13 +1904,246 @@ const MobilePage: React.FC = () => (
   </div>
 )
 
+// ─── Showcase Page (宣传素材成品图) ──────────────────────────────────────────
+
+const ShowcaseShot: React.FC<{ label: string; ratio?: '16x9' | '4x3'; children: React.ReactNode }> = ({ label, ratio = '16x9', children }) => (
+  <div className="showcase-shot">
+    <div className="showcase-shot-label">{label}</div>
+    <div className={`showcase-frame showcase-frame-${ratio}`}>{children}</div>
+  </div>
+)
+
+const ShowcasePage: React.FC = () => (
+  <div className="showcase-page">
+    <div className="showcase-header">
+      <SheikahSymbol size={56} outline={false} />
+      <h1>zelda-hyrule-ui · Showcase</h1>
+      <p>Real interfaces built with the component library. Screenshot any frame below.</p>
+    </div>
+
+    <div className="showcase-grid">
+
+      {/* ═══ SHOT 1: 启动 / 封面页 ═══ */}
+      <ShowcaseShot label="01 — Title / Cover Screen" ratio="16x9">
+        <SheikahBackground color="darkBlue">
+          <SheikahScanlines animated opacity={0.1} />
+          <div style={{
+            position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column',
+            alignItems: 'center', justifyContent: 'center', gap: 20, padding: 40,
+          }}>
+            <SheikahSymbol size={96} outline={false} />
+            <h1 style={{
+              fontFamily: "'Hylia Serif', serif", fontSize: 52, color: '#E2DED3',
+              letterSpacing: '0.06em', textShadow: '0 0 24px rgba(0,0,0,0.6)', margin: 0,
+            }}>
+              Hyrule
+            </h1>
+            <p style={{ fontSize: 16, fontStyle: 'italic', color: 'rgba(233,225,209,0.65)', margin: 0 }}>
+              A React UI library in the style of Breath of the Wild
+            </p>
+            <div style={{ display: 'flex', gap: 14, marginTop: 12, transform: 'scale(0.8)' }}>
+              <Button variant="sheikah">Start</Button>
+              <Button variant="primary">Continue</Button>
+            </div>
+          </div>
+        </SheikahBackground>
+      </ShowcaseShot>
+
+      {/* ═══ SHOT 2: 完整 HUD overlay ═══ */}
+      <ShowcaseShot label="02 — In-Game HUD Overlay" ratio="16x9">
+        <SheikahBackground color="blueGrey">
+          <div style={{ position: 'absolute', inset: 0 }}>
+            {/* 左上：心心 + 精力 */}
+            <div style={{ position: 'absolute', top: 28, left: 32, display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <HealthBar current={11} max={13} bonus={3} />
+              <StaminaWheel value={0.7} size={64} />
+            </div>
+            {/* 右上：卢比 + 天气温度 */}
+            <div style={{ position: 'absolute', top: 28, right: 32, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 14 }}>
+              <RupeeCounter amount={13878} />
+              <div style={{ display: 'flex', gap: 10 }}>
+                <WeatherIcon weather="rain" />
+                <Temperature value="cold" />
+                <SoundMeter level="low" />
+              </div>
+            </div>
+            {/* 左下：神兽 + 能力 */}
+            <div style={{ position: 'absolute', bottom: 28, left: 32, display: 'flex', gap: 14, alignItems: 'center' }}>
+              <DivineBeast beast="ruta" charges={1} />
+              <DivineBeast beast="medoh" charges={3} />
+              <div style={{ width: 1, height: 44, background: 'rgba(226,222,211,0.15)' }} />
+              <SheikahAbility ability="magnesis" />
+              <SheikahAbility ability="stasis" plus />
+            </div>
+            {/* 右下：操作提示 */}
+            <div style={{ position: 'absolute', bottom: 28, right: 32 }}>
+              <ActionSet actions={[
+                { button: 'A', label: 'Talk' },
+                { button: 'B', label: 'Back' },
+                { button: 'X', label: 'Jump' },
+              ]} />
+            </div>
+            {/* 中部：地点标题（独立位置，不贴顶栏） */}
+            <div style={{ position: 'absolute', top: '32%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+              <TitleLocation name="Hateno Village" />
+            </div>
+          </div>
+        </SheikahBackground>
+      </ShowcaseShot>
+
+      {/* ═══ SHOT 3: 任务管理 App ═══ */}
+      <ShowcaseShot label="03 — Quest Tracker App" ratio="4x3">
+        <SheikahBackground color="darkBlue">
+          <SheikahScanlines opacity={0.05} />
+          <div style={{ position: 'absolute', inset: 0, padding: 40, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div style={{ width: '100%', maxWidth: 560, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 24 }}>
+              <SheikahTextTitle title="Adventure Log" description="3 active quests" />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <QuestListItem title="Destroy Ganon" location="Hyrule Castle" questType="main" state="marked" />
+                <QuestListItem title="Robbie's Research" location="Akkala Ancient Tech Lab" questType="side" state="default" />
+                <QuestListItem title="The Stolen Heirloom" location="Kakariko Village" questType="shrine" state="completed" />
+              </div>
+              <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end' }}>
+                <Button variant="ghost" size="small">Filter</Button>
+                <Button variant="sheikah" size="small">Add Quest</Button>
+              </div>
+            </div>
+          </div>
+        </SheikahBackground>
+      </ShowcaseShot>
+
+      {/* ═══ SHOT 4: 网站着陆页 ═══ */}
+      <ShowcaseShot label="04 — Website Landing Page" ratio="16x9">
+        <SheikahBackground color="darkBlue">
+          <SheikahScanlines opacity={0.06} />
+          <div style={{ position: 'absolute', inset: 0, padding: 48, display: 'flex', flexDirection: 'column' }}>
+            {/* 顶部导航 */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Logo variant="full" width={150} />
+              <div style={{ display: 'flex', gap: 10 }}>
+                <Button variant="ghost" size="small">Work</Button>
+                <Button variant="ghost" size="small">About</Button>
+                <Button variant="sheikah" size="small">Contact</Button>
+              </div>
+            </div>
+            {/* 主标题 */}
+            <div style={{ marginTop: 'auto', marginBottom: 'auto' }}>
+              <h1 style={{ fontFamily: "'Hylia Serif', serif", fontSize: 44, color: '#E2DED3', margin: 0, lineHeight: 1.2 }}>
+                Link Anderson
+              </h1>
+              <p style={{ fontSize: 17, fontStyle: 'italic', color: 'rgba(233,225,209,0.6)', maxWidth: 420, marginTop: 12 }}>
+                Product designer & adventurer. Crafting interfaces worth exploring.
+              </p>
+            </div>
+            {/* 卡片行 */}
+            <div style={{ display: 'flex', gap: 16 }}>
+              <Card variant="sheikah" title="Design">UI / UX systems</Card>
+              <Card variant="golden" title="Build">React & TypeScript</Card>
+              <Card variant="default" title="Explore">Side quests welcome</Card>
+            </div>
+          </div>
+        </SheikahBackground>
+      </ShowcaseShot>
+
+      {/* ═══ SHOT 5: 对话场景 ═══ */}
+      <ShowcaseShot label="05 — Dialogue Scene" ratio="16x9">
+        <SheikahBackground color="blueGrey">
+          <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center', padding: '0 60px 40px' }}>
+            <div style={{ transform: 'scale(0.5)', transformOrigin: 'bottom center', width: '100%' }}>
+              <Dialog type="speech" speaker="Old Man">
+                It is dangerous to go alone. Take this UI kit with you.
+              </Dialog>
+            </div>
+            <div style={{ marginTop: 16, alignSelf: 'flex-end' }}>
+              <ActionSet actions={[{ button: 'A', label: 'Continue' }, { button: 'B', label: 'Skip' }]} />
+            </div>
+          </div>
+        </SheikahBackground>
+      </ShowcaseShot>
+
+    </div>
+  </div>
+)
+
+// ─── Poster Page (品牌宣传海报) ──────────────────────────────────────────────
+
+const PosterPage: React.FC = () => (
+  <div className="poster-page">
+    <div className="poster-stack">
+
+      {/* ═══ 21:9 横版头图（X / 公众号头图） ═══ */}
+      <div>
+        <div className="poster-block-label">21:9 — X / WeChat Header</div>
+        <div className="poster-21x9">
+          <div className="poster-bg">
+            <SheikahBackground color="darkBlue">
+              <SheikahScanlines animated opacity={0.07} />
+            </SheikahBackground>
+          </div>
+          {/* 右侧大尺寸希卡之眼作为唯一视觉焦点 */}
+          <div style={{
+            position: 'absolute', right: '6%', top: '50%', transform: 'translateY(-50%)',
+            zIndex: 2, opacity: 0.92,
+          }}>
+            <SheikahSymbol size={300} outline={false} />
+          </div>
+          {/* 左侧：大标题为绝对重心 */}
+          <div className="poster-focus">
+            <div className="poster-kicker">React UI Library</div>
+            <h1 className="poster-h1">zelda-<br />hyrule-ui</h1>
+            <p className="poster-sub">
+              The visual language of Hyrule, as production-ready React components.
+            </p>
+            <div className="poster-meta-row">
+              <span>83 Components</span>
+              <span className="dot" />
+              <span>Sheikah Glow</span>
+              <span className="dot" />
+              <span>AI-Ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ═══ 1:1 分享卡（小红书 / 朋友圈） ═══ */}
+      <div>
+        <div className="poster-block-label">1:1 — Share Card</div>
+        <div className="poster-1x1">
+          <div className="poster-bg">
+            <SheikahBackground color="darkBlue">
+              <SheikahScanlines animated opacity={0.08} />
+            </SheikahBackground>
+          </div>
+          <div className="poster-focus center">
+            <SheikahSymbol size={110} outline={false} />
+            <h1 className="poster-h1" style={{ marginTop: 28 }}>zelda-hyrule-ui</h1>
+            <p className="poster-sub" style={{ textAlign: 'center' }}>
+              A React UI library in the style of<br />Breath of the Wild
+            </p>
+            <div className="poster-meta-row" style={{ justifyContent: 'center' }}>
+              <span>83 Components</span>
+              <span className="dot" />
+              <span>AI-Ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p className="poster-caption">github.com/chaos-xxl/zelda-hyrule-ui · npm i zelda-hyrule-ui</p>
+  </div>
+)
+
 // ─── App with Hash Routing ───────────────────────────────────────────────────
 
 const App: React.FC = () => {
-  const [page, setPage] = useState<'landing' | 'docs' | 'mobile'>(() => {
+  const [page, setPage] = useState<'landing' | 'docs' | 'mobile' | 'showcase' | 'poster'>(() => {
     const hash = window.location.hash
     if (hash === '#/docs') return 'docs'
     if (hash === '#/mobile') return 'mobile'
+    if (hash === '#/showcase') return 'showcase'
+    if (hash === '#/poster') return 'poster'
     return 'landing'
   })
 
@@ -1919,6 +2152,8 @@ const App: React.FC = () => {
       const hash = window.location.hash
       if (hash === '#/docs') setPage('docs')
       else if (hash === '#/mobile') setPage('mobile')
+      else if (hash === '#/showcase') setPage('showcase')
+      else if (hash === '#/poster') setPage('poster')
       else setPage('landing')
     }
     window.addEventListener('hashchange', onHashChange)
@@ -1927,6 +2162,8 @@ const App: React.FC = () => {
 
   if (page === 'docs') return <DocsPage />
   if (page === 'mobile') return <MobilePage />
+  if (page === 'showcase') return <ShowcasePage />
+  if (page === 'poster') return <PosterPage />
   return <LandingPage />
 }
 

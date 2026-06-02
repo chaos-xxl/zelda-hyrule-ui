@@ -23,21 +23,21 @@ A React UI component library inspired by *The Legend of Zelda: Breath of the Wil
 一套受《塞尔达传说：旷野之息》启发的 React UI 组件库。
 83 个组件，暗色主题 + 希卡之石辉光效果，附带 AI 可消费的设计规范。
 
-![Demo Home](docs/img/demo-home.png)
-
-![Demo Components](docs/img/demo-component.png)
+![Showcase](docs/img/showcase.png)
 
 ### 🔗 Preview
 
 - **Online Preview (PC):** [zelda-hyrule-ui](https://chaos-xxl.github.io/zelda-hyrule-ui/)
 - **Online Preview (Mobile):** [zelda-hyrule-ui-mobile](https://chaos-xxl.github.io/zelda-hyrule-ui/#/mobile)
 - **Component Docs:** [All 83 components](https://chaos-xxl.github.io/zelda-hyrule-ui/#/docs) — live previews, code examples, and props tables
+- **Showcase:** [Real-world UI examples](https://chaos-xxl.github.io/zelda-hyrule-ui/#/showcase) — title screens, HUD overlays, quest trackers, and more
 
 ### 🔗 预览
 
 - **在线预览（PC）：** [zelda-hyrule-ui](https://chaos-xxl.github.io/zelda-hyrule-ui/)
 - **在线预览（Mobile）：** [zelda-hyrule-ui-mobile](https://chaos-xxl.github.io/zelda-hyrule-ui/#/mobile)
 - **组件文档：** [全部 83 个组件](https://chaos-xxl.github.io/zelda-hyrule-ui/#/docs)——实时预览、代码示例和 Props 表格
+- **效果展示：** [真实界面示例](https://chaos-xxl.github.io/zelda-hyrule-ui/#/showcase)——标题屏、HUD、任务面板等完整场景
 
 ---
 

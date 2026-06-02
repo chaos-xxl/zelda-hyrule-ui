@@ -625,3 +625,205 @@ html, body {
     padding: 12px;
   }
 }
+
+
+/* ─── Showcase Page (宣传素材成品图) ──────────────────────────────────────── */
+
+.showcase-page {
+  background: #ffffff;
+  min-height: 100vh;
+  padding: 48px 24px;
+}
+
+.showcase-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.showcase-header h1 {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 36px;
+  color: #2a2d35;
+  margin-bottom: 8px;
+}
+
+.showcase-header p {
+  color: rgba(40, 45, 53, 0.55);
+  font-size: 14px;
+}
+
+/* Each shot is a self-contained framed scene, sized for clean screenshots */
+.showcase-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.showcase-shot {
+  position: relative;
+}
+
+.showcase-shot-label {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 13px;
+  color: rgba(40, 45, 53, 0.45);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* The actual capturable frame — fixed aspect ratio, rounded, clipped */
+.showcase-frame {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+}
+
+.showcase-frame-16x9 {
+  aspect-ratio: 16 / 9;
+}
+
+.showcase-frame-4x3 {
+  aspect-ratio: 4 / 3;
+}
+
+
+/* ─── Poster Page (品牌宣传海报) ──────────────────────────────────────────── */
+
+.poster-page {
+  background: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 48px 20px;
+}
+
+.poster-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+}
+
+.poster-block-label {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 12px;
+  color: rgba(40, 45, 53, 0.45);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* ── 21:9 横版头图（X / 公众号） ── */
+.poster-21x9 {
+  position: relative;
+  width: 1120px;
+  max-width: 100%;
+  aspect-ratio: 21 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+
+/* ── 1:1 分享卡（小红书 / 朋友圈） ── */
+.poster-1x1 {
+  position: relative;
+  width: 720px;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+
+.poster-bg {
+  position: absolute;
+  inset: 0;
+}
+
+/* 中央聚焦内容：克制，大标题为绝对重心 */
+.poster-focus {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 8%;
+}
+
+.poster-focus.center {
+  align-items: center;
+  text-align: center;
+  padding: 8%;
+}
+
+.poster-kicker {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #3CD3FC;
+  margin-bottom: 22px;
+}
+
+.poster-h1 {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  color: #E8E3D6;
+  line-height: 0.98;
+  letter-spacing: 0.02em;
+  margin: 0;
+  text-shadow: 0 0 32px rgba(0, 0, 0, 0.6), 0 0 22px rgba(60, 211, 252, 0.22);
+}
+
+.poster-21x9 .poster-h1 { font-size: 92px; }
+.poster-1x1 .poster-h1 { font-size: 76px; }
+
+.poster-sub {
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  color: rgba(233, 225, 209, 0.62);
+  margin-top: 22px;
+  max-width: 560px;
+  line-height: 1.5;
+}
+
+.poster-21x9 .poster-sub { font-size: 19px; }
+.poster-1x1 .poster-sub { font-size: 17px; }
+
+/* 细发丝分隔线 + 卖点行（克制，单行） */
+.poster-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(233, 225, 209, 0.7);
+}
+
+.poster-meta-row .dot {
+  width: 4px;
+  height: 4px;
+  background: #3CD3FC;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #4FC0FF;
+}
+
+.poster-caption {
+  font-size: 13px;
+  color: rgba(40, 45, 53, 0.5);
+  letter-spacing: 0.05em;
+  font-family: 'Roboto', sans-serif;
+}
