@@ -938,3 +938,336 @@ html, body {
   letter-spacing: 0.05em;
   font-family: 'Roboto', sans-serif;
 }
+
+/* ─── XHS Cards (小红书 3:4 配图) ─────────────────────────────────────────────
+   排版借鉴 guizang-social-card-skill 的瑞士手法：网格 / 单锚点色 / 极致字号对比 /
+   发丝线分隔 / 克制留白；视觉用塞尔达希卡风（深色 + 希卡蓝 + 扫描线 + Hylia Serif）。 */
+
+.xhs-card {
+  position: relative;
+  width: 780px;
+  max-width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+
+.xhs-body {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 72px 64px 60px;
+}
+
+.xhs-kicker {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #3CD3FC;
+  text-shadow: 0 0 10px rgba(60, 211, 252, 0.4);
+}
+
+.xhs-card .accent { color: #3CD3FC; }
+
+/* ── 卡 1：封面 ── */
+.xhs-cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 64px;
+}
+
+.xhs-cover-title {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 76px;
+  line-height: 1.04;
+  letter-spacing: 0.01em;
+  color: #E8E3D6;
+  margin: 26px 0 0;
+  text-shadow: 0 0 32px rgba(0, 0, 0, 0.6), 0 0 22px rgba(60, 211, 252, 0.22);
+}
+
+.xhs-cover-sub {
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.5;
+  color: rgba(233, 225, 209, 0.65);
+  margin: 28px 0 0;
+}
+
+.xhs-cover-foot {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 52px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(60, 211, 252, 0.2);
+}
+
+.xhs-cover-foot-text { display: flex; flex-direction: column; gap: 3px; }
+.xhs-cover-foot-text .name {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 20px; color: #E8E3D6; letter-spacing: 0.02em;
+}
+.xhs-cover-foot-text .ver {
+  font-family: 'Roboto', sans-serif; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.18em; color: #6FD49C;
+}
+
+/* ── 卡 2-4：内容页 ── */
+.xhs-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 72px 64px 60px;
+}
+
+.xhs-bignum-row {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-top: 36px;
+}
+
+.xhs-bignum {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 150px;
+  line-height: 0.8;
+  color: #E8E3D6;
+  text-shadow: 0 0 40px rgba(60, 211, 252, 0.3);
+}
+
+.xhs-bignum-unit {
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(233, 225, 209, 0.5);
+}
+
+.xhs-h2 {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 44px;
+  line-height: 1.16;
+  color: #E8E3D6;
+  margin: 32px 0 0;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 24px rgba(0, 0, 0, 0.5);
+}
+
+.xhs-h2.tight { margin-top: 24px; }
+
+.xhs-rows {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+}
+
+.xhs-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(60, 211, 252, 0.16);
+}
+.xhs-row:last-child { border-bottom: 1px solid rgba(60, 211, 252, 0.16); }
+.xhs-row .n { color: #3CD3FC; font-size: 18px; }
+.xhs-row p {
+  margin: 0; flex: 1;
+  font-family: 'Roboto', sans-serif; font-size: 21px; line-height: 1.4;
+  color: rgba(233, 225, 209, 0.82);
+}
+
+/* 更新卡：编号特性列表 */
+.xhs-features {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.xhs-feature {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 22px 0;
+  border-top: 1px solid rgba(60, 211, 252, 0.16);
+}
+.xhs-feature:last-child { border-bottom: 1px solid rgba(60, 211, 252, 0.16); }
+
+.xhs-feature-num {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 15px;
+  color: #3CD3FC;
+  letter-spacing: 0.08em;
+  min-width: 30px;
+}
+
+.xhs-feature-text .t {
+  font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 23px;
+  color: #E8E3D6; margin: 0 0 5px;
+}
+.xhs-feature-text .d {
+  font-family: 'Roboto', sans-serif; font-size: 16px; line-height: 1.4;
+  color: rgba(233, 225, 209, 0.55); margin: 0;
+}
+
+.xhs-foot-note {
+  margin-top: auto;
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: rgba(111, 212, 156, 0.85);
+}
+
+/* 怎么用卡：代码块 + CTA */
+.xhs-code {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px 30px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(60, 211, 252, 0.2);
+  border-radius: 8px;
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 19px;
+  color: #E8E3D6;
+  letter-spacing: 0.01em;
+}
+.xhs-code .comment { color: rgba(233, 225, 209, 0.4); font-size: 15px; }
+
+.xhs-cta {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(60, 211, 252, 0.2);
+}
+.xhs-cta p {
+  margin: 0;
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 21px;
+  line-height: 1.4;
+  color: rgba(233, 225, 209, 0.85);
+}
+
+/* ── 卡 5：真实组件展示墙 ── */
+.xhs-showcase {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.xhs-showcase-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 180px;
+  padding: 24px 16px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(60, 211, 252, 0.16);
+  border-radius: 10px;
+}
+
+.xhs-showcase-cell .cap {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: rgba(60, 211, 252, 0.7);
+}
+
+.xhs-icon-row { display: flex; gap: 8px; align-items: center; }
+
+/* ── 卡 6：before / after ── */
+.xhs-ba {
+  margin-top: 44px;
+  display: flex;
+  align-items: stretch;
+  gap: 18px;
+}
+
+.xhs-ba-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 28px 18px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(60, 211, 252, 0.16);
+}
+
+.xhs-ba-col.before { opacity: 0.7; }
+.xhs-ba-col .tag {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 12px; letter-spacing: 0.16em;
+  color: rgba(233, 225, 209, 0.5);
+}
+.xhs-ba-col.after .tag { color: #6FD49C; }
+.xhs-ba-col .glyphs {
+  font-size: 34px; line-height: 1.6; letter-spacing: 4px;
+  display: flex; align-items: center; flex: 1;
+  filter: grayscale(0.4);
+}
+.xhs-ba-col .comp { display: flex; align-items: center; flex: 1; transform: scale(0.92); }
+.xhs-ba-col .note {
+  margin: 0;
+  font-family: 'Roboto', sans-serif; font-size: 14px; text-align: center;
+  color: rgba(233, 225, 209, 0.6);
+}
+
+.xhs-ba-arrow {
+  display: flex; align-items: center;
+  font-size: 30px; color: #3CD3FC;
+  text-shadow: 0 0 10px rgba(60, 211, 252, 0.5);
+}
+
+/* ── 卡 7：覆盖范围网格 ── */
+.xhs-cat-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(60, 211, 252, 0.16);
+  border: 1px solid rgba(60, 211, 252, 0.16);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.xhs-cat {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 24px 26px;
+  background: rgba(10, 22, 34, 0.55);
+}
+
+.xhs-cat .n {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 42px;
+  line-height: 1;
+  color: #3CD3FC;
+  text-shadow: 0 0 18px rgba(60, 211, 252, 0.35);
+  min-width: 56px;
+}
+
+.xhs-cat .l {
+  font-family: 'Roboto', sans-serif;
+  font-size: 17px;
+  color: rgba(233, 225, 209, 0.78);
+}

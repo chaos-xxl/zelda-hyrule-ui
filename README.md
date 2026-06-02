@@ -23,6 +23,12 @@ A React UI component library inspired by *The Legend of Zelda: Breath of the Wil
 一套受《塞尔达传说：旷野之息》启发的 React UI 组件库。
 83 个组件，暗色主题 + 希卡之石辉光效果，附带 AI 可消费的设计规范。
 
+> [!IMPORTANT]
+> **Unofficial fan project · 非官方粉丝项目**
+> This is a free, non-commercial fan project for learning and demonstration only. It is **not affiliated with, endorsed by, or sponsored by Nintendo**. *The Legend of Zelda*, *Breath of the Wild*, the Triforce, the Sheikah eye, and all related names and visual elements are trademarks of **Nintendo Co., Ltd.** No copyrighted Nintendo game assets are redistributed here — the visual design originates from a community [CC BY 4.0 Figma kit](ATTRIBUTION.md). If you are a Nintendo rights holder with concerns, please open an issue and changes will be made promptly.
+>
+> 本项目为免费、非商用的粉丝创作，仅供学习与演示，**与任天堂无任何隶属、背书或赞助关系**。《塞尔达传说》《旷野之息》、三角力量、希卡之眼等相关名称与视觉元素均为**任天堂（Nintendo Co., Ltd.）的商标**。本仓库不再分发任天堂的受版权保护游戏素材——视觉设计来自社区 [CC BY 4.0 的 Figma 素材包](ATTRIBUTION.md)。如任天堂权利方有任何顾虑，请提 issue，我会第一时间处理。
+
 ![Showcase](docs/img/showcase.png)
 
 ### 🔗 Preview

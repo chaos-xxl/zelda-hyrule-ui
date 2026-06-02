@@ -36,6 +36,18 @@ This project satisfies the CC BY 4.0 attribution requirements by providing:
 
 > 本项目（代码层）以 MIT 许可发布；原始设计素材的 CC BY 4.0 许可继续适用于其视觉设计部分。两者并行不冲突。
 
+### ⚠️ 两层权利的重要区分 / Two Distinct Layers of Rights
+
+CC BY 4.0 **只覆盖 Hunter Paramore 本人创作的设计表达**。它**不能、也没有**授权任天堂的底层知识产权——三角力量、希卡之眼、Zelda 标题字形等标志性元素的源头是任天堂，不在任何第三方 CC 许可的授权范围内。因此：
+
+- ✅ **著作权层**：通过对 Hunter 的 CC BY 4.0 署名已合规
+- ⚠️ **商标 + 游戏 IP 层**：《塞尔达传说》《旷野之息》及相关名称、标志、角色仍是任天堂的商标与 IP，CC BY 4.0 对此无能为力——本项目以"非官方、非商用粉丝创作"的定位来处理这一层（见下方 Trademark Notice）
+
+CC BY 4.0 **only covers the design expression authored by Hunter Paramore**. It does **not** (and cannot) grant any rights to Nintendo's underlying intellectual property. Iconic elements such as the Triforce, the Sheikah eye, and the Zelda title lettering originate from Nintendo and fall outside what any third party can license under Creative Commons. Therefore:
+
+- ✅ **Copyright layer**: satisfied via CC BY 4.0 attribution to Hunter Paramore
+- ⚠️ **Trademark + game-IP layer**: *The Legend of Zelda*, *Breath of the Wild*, and related names/logos/characters remain Nintendo trademarks and IP, which CC BY 4.0 cannot grant — this project addresses that layer purely through its **unofficial, non-commercial fan-project** posture (see Trademark Notice below)
+
 ## What This Project Does
 
 `zelda-hyrule-ui` packages the visual language defined in Hunter Paramore's Figma file as production-ready React components. Every SVG path, color value, and structural pattern was exported directly from the original work. This project adds:

@@ -1,7 +1,7 @@
 {
   "name": "zelda-hyrule-ui",
   "version": "0.1.1",
-  "description": "A React UI component library inspired by The Legend of Zelda: Breath of the Wild",
+  "description": "An unofficial, non-commercial fan-made React UI component library inspired by the art style of The Legend of Zelda: Breath of the Wild. Not affiliated with or endorsed by Nintendo.",
   "type": "module",
   "main": "dist/cjs/index.cjs",
   "module": "dist/es/index.js",

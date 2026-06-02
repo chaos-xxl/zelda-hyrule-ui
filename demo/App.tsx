@@ -1598,10 +1598,13 @@ const LandingPage: React.FC = () => (
         zelda-hyrule-ui
       </p>
       <p style={{ fontSize: 13, color: 'rgba(233,225,209,0.4)', marginBottom: 8 }}>
-        MIT License — Fan creation for learning purposes only.
+        MIT License — Unofficial, non-commercial fan project for learning only.
+      </p>
+      <p style={{ fontSize: 12, color: 'rgba(233,225,209,0.35)', marginBottom: 6 }}>
+        Not affiliated with, endorsed by, or sponsored by Nintendo. All Zelda trademarks © Nintendo.
       </p>
       <p style={{ fontSize: 12, color: 'rgba(233,225,209,0.35)', marginBottom: 24 }}>
-        粉丝创作仅供学习 · 所有塞尔达相关商标归任天堂所有
+        非官方粉丝创作，仅供学习 · 与任天堂无任何关联 · 所有塞尔达相关商标归任天堂所有
       </p>
       <div className="landing-buttons">
         <Button variant="sheikah" size="small" onClick={() => window.open('https://github.com/chaos-xxl/zelda-hyrule-ui')}>
@@ -1897,8 +1900,8 @@ const MobilePage: React.FC = () => (
 
       {/* Footer */}
       <div className="mobile-footer">
-        <p>MIT License · Fan creation for learning purposes only</p>
-        <p>粉丝创作仅供学习 · 商标归任天堂所有</p>
+        <p>MIT License · Unofficial fan project for learning only</p>
+        <p>非官方粉丝创作仅供学习 · 与任天堂无关联 · 商标归任天堂所有</p>
       </div>
     </div>
   </div>
@@ -2257,15 +2260,215 @@ const PosterPage: React.FC = () => (
   </div>
 )
 
+// ─── XHS Page (小红书 3:4 配图) ──────────────────────────────────────────────
+// 排版逻辑借鉴 guizang-social-card-skill 的瑞士国际主义手法：
+// 网格 / 单锚点色（希卡蓝）/ 极致字号对比 / 发丝线 / 克制留白；视觉用塞尔达希卡风。
+
+const XhsCard: React.FC<{ label: string; children: React.ReactNode; scan?: number }> = ({ label, children, scan = 0.07 }) => (
+  <div>
+    <div className="poster-block-label">{label}</div>
+    <div className="xhs-card">
+      <div className="poster-bg">
+        <SheikahBackground color="darkBlue">
+          <SheikahScanlines animated opacity={scan} />
+        </SheikahBackground>
+      </div>
+      <div className="xhs-body">{children}</div>
+    </div>
+  </div>
+)
+
+const XhsPage: React.FC = () => (
+  <div className="poster-page">
+    <div className="poster-stack">
+
+      {/* ═══ 卡 1：封面 ═══ */}
+      <XhsCard label="XHS 1 / 8 — Cover">
+        <div className="xhs-cover">
+          <div className="xhs-kicker">开源项目 · 持续更新</div>
+          <h1 className="xhs-cover-title">我把《塞尔达》<br />的 UI 做成了<br /><span className="accent">组件库</span></h1>
+          <p className="xhs-cover-sub">《旷野之息》的希卡之石界面，<br />现在是 83 个 React 组件</p>
+          <div className="xhs-cover-foot">
+            <SheikahSymbol size={48} outline={false} />
+            <div className="xhs-cover-foot-text">
+              <span className="name">zelda-hyrule-ui</span>
+              <span className="ver">v0.2 UPDATE</span>
+            </div>
+          </div>
+        </div>
+      </XhsCard>
+
+      {/* ═══ 卡 2：这是什么 ═══ */}
+      <XhsCard label="XHS 2 / 8 — What">
+        <div className="xhs-content">
+          <div className="xhs-kicker">01 / 这是什么</div>
+          <div className="xhs-bignum-row">
+            <span className="xhs-bignum">83</span>
+            <span className="xhs-bignum-unit">Components</span>
+          </div>
+          <h2 className="xhs-h2">一套《旷野之息》风格的<br />React 组件库</h2>
+          <div className="xhs-rows">
+            <div className="xhs-row"><span className="n">—</span><p>HUD / 菜单 / 对话 / 地图 / 任务 全覆盖</p></div>
+            <div className="xhs-row"><span className="n">—</span><p>所有 SVG 从 Figma 社区原稿逐节点精确导出</p></div>
+            <div className="xhs-row"><span className="n">—</span><p>内置 AI Skill，丢个链接给 Cursor 就能用</p></div>
+          </div>
+        </div>
+      </XhsCard>
+
+      {/* ═══ 卡 3：本次更新 ═══ */}
+      <XhsCard label="XHS 3 / 8 — Update">
+        <div className="xhs-content">
+          <div className="xhs-kicker">02 / 本次更新</div>
+          <h2 className="xhs-h2 tight">6 个组件做了<br /><span className="accent">节点级精确还原</span></h2>
+          <div className="xhs-features">
+            <div className="xhs-feature">
+              <span className="xhs-feature-num">01</span>
+              <div className="xhs-feature-text">
+                <p className="t">图鉴分类 · 符文 · 标题装饰</p>
+                <p className="d">告别近似 emoji，换成 Figma 真实图标</p>
+              </div>
+            </div>
+            <div className="xhs-feature">
+              <span className="xhs-feature-num">02</span>
+              <div className="xhs-feature-text">
+                <p className="t">14 个增益效果图标</p>
+                <p className="d">连图标配色都对齐了游戏原版</p>
+              </div>
+            </div>
+            <div className="xhs-feature">
+              <span className="xhs-feature-num">03</span>
+              <div className="xhs-feature-text">
+                <p className="t">菜单分类 · 任务类型图标</p>
+                <p className="d">补齐剩余半成品，全部精确</p>
+              </div>
+            </div>
+          </div>
+          <div className="xhs-foot-note">本次新增 21 个 Figma 精确 SVG 素材</div>
+        </div>
+      </XhsCard>
+
+      {/* ═══ 卡 4：怎么用 ═══ */}
+      <XhsCard label="XHS 4 / 8 — How">
+        <div className="xhs-content">
+          <div className="xhs-kicker">03 / 怎么用</div>
+          <h2 className="xhs-h2">把链接丢给 AI<br />说一句<span className="accent">「用塞尔达风格做」</span></h2>
+          <div className="xhs-code">
+            <span className="comment"># 安装组件库</span>
+            <span><span className="accent">npm i</span> zelda-hyrule-ui</span>
+            <span className="comment"># 或把仓库链接 + SKILL.md 丢给 Cursor / Claude</span>
+          </div>
+          <div className="xhs-cta">
+            <SheikahSymbol size={40} outline={false} />
+            <p>github.com/chaos-xxl/<br /><span className="accent">zelda-hyrule-ui</span></p>
+          </div>
+        </div>
+      </XhsCard>
+
+      {/* ═══ 卡 5：真实组件展示墙 ═══ */}
+      <XhsCard label="XHS 5 / 8 — Showcase">
+        <div className="xhs-content">
+          <div className="xhs-kicker">本次升级的组件 · 真机渲染</div>
+          <h2 className="xhs-h2 tight">不是截图<br />是<span className="accent">能跑的组件</span></h2>
+          <div className="xhs-showcase">
+            <div className="xhs-showcase-cell">
+              <SheikahRune activeRune="magnesis" />
+              <span className="cap">SheikahRune</span>
+            </div>
+            <div className="xhs-showcase-cell">
+              <SheikahCompendiumFilters activeFilter="creatures" />
+              <span className="cap">CompendiumFilters</span>
+            </div>
+            <div className="xhs-showcase-cell">
+              <div className="xhs-icon-row">
+                <BonusEffectIcon icon="attackUp" arrow />
+                <BonusEffectIcon icon="fireResist" />
+                <BonusEffectIcon icon="speedUp" arrow />
+                <BonusEffectIcon icon="staminaUp" />
+              </div>
+              <span className="cap">BonusEffectIcon</span>
+            </div>
+            <div className="xhs-showcase-cell">
+              <MenuSections activeSection="weapons" />
+              <span className="cap">MenuSections</span>
+            </div>
+          </div>
+        </div>
+      </XhsCard>
+
+      {/* ═══ 卡 6：before → after 还原对比 ═══ */}
+      <XhsCard label="XHS 6 / 8 — Before / After">
+        <div className="xhs-content">
+          <div className="xhs-kicker">为什么要重做</div>
+          <h2 className="xhs-h2 tight">从「差不多」<br />到<span className="accent">「就是它」</span></h2>
+          <div className="xhs-ba">
+            <div className="xhs-ba-col before">
+              <span className="tag">BEFORE</span>
+              <div className="glyphs">🐾 👹 🌿 ⚔ 💎</div>
+              <p className="note">emoji / 近似图形凑数</p>
+            </div>
+            <div className="xhs-ba-arrow">→</div>
+            <div className="xhs-ba-col after">
+              <span className="tag">AFTER</span>
+              <div className="comp"><SheikahCompendiumFilters activeFilter="materials" /></div>
+              <p className="note">Figma 节点级精确 SVG</p>
+            </div>
+          </div>
+          <div className="xhs-foot-note">逐节点导出 · 保留游戏原版配色与辉光</div>
+        </div>
+      </XhsCard>
+
+      {/* ═══ 卡 7：覆盖什么 ═══ */}
+      <XhsCard label="XHS 7 / 8 — Coverage">
+        <div className="xhs-content">
+          <div className="xhs-kicker">83 个组件 · 覆盖范围</div>
+          <h2 className="xhs-h2 tight">整套游戏 UI<br />都给你<span className="accent">搭好了</span></h2>
+          <div className="xhs-cat-grid">
+            <div className="xhs-cat"><span className="n">14</span><span className="l">HUD 抬头显示</span></div>
+            <div className="xhs-cat"><span className="n">11</span><span className="l">菜单 / 物品栏</span></div>
+            <div className="xhs-cat"><span className="n">8</span><span className="l">对话系统</span></div>
+            <div className="xhs-cat"><span className="n">9</span><span className="l">地图标记</span></div>
+            <div className="xhs-cat"><span className="n">7</span><span className="l">任务追踪</span></div>
+            <div className="xhs-cat"><span className="n">34</span><span className="l">标题 / 装饰 / 其他</span></div>
+          </div>
+          <div className="xhs-foot-note">HUD · 菜单 · 对话 · 地图 · 任务 · 希卡之石 · 战斗 · 商店</div>
+        </div>
+      </XhsCard>
+
+      {/* ═══ 卡 8：适合谁 / 收尾 ═══ */}
+      <XhsCard label="XHS 8 / 8 — Closing">
+        <div className="xhs-cover">
+          <div className="xhs-kicker">谁会喜欢</div>
+          <h2 className="xhs-h2" style={{ marginTop: 24 }}>如果你也<br /><span className="accent">既玩塞尔达<br />又写前端</span></h2>
+          <div className="xhs-rows" style={{ marginTop: 36 }}>
+            <div className="xhs-row"><span className="n">→</span><p>想做个有游戏感的个人项目 / 作品集</p></div>
+            <div className="xhs-row"><span className="n">→</span><p>给 AI 一个明确的设计语言去生成页面</p></div>
+            <div className="xhs-row"><span className="n">→</span><p>纯粹喜欢《旷野之息》这套 UI 美学</p></div>
+          </div>
+          <div className="xhs-cover-foot">
+            <SheikahSymbol size={44} outline={false} />
+            <div className="xhs-cover-foot-text">
+              <span className="name">⭐ Star 一下不迷路</span>
+              <span className="ver">github.com/chaos-xxl/zelda-hyrule-ui</span>
+            </div>
+          </div>
+        </div>
+      </XhsCard>
+
+    </div>
+    <p className="poster-caption">github.com/chaos-xxl/zelda-hyrule-ui · npm i zelda-hyrule-ui</p>
+  </div>
+)
+
 // ─── App with Hash Routing ───────────────────────────────────────────────────
 
 const App: React.FC = () => {
-  const [page, setPage] = useState<'landing' | 'docs' | 'mobile' | 'showcase' | 'poster'>(() => {
+  const [page, setPage] = useState<'landing' | 'docs' | 'mobile' | 'showcase' | 'poster' | 'xhs'>(() => {
     const hash = window.location.hash
     if (hash === '#/docs') return 'docs'
     if (hash === '#/mobile') return 'mobile'
     if (hash === '#/showcase') return 'showcase'
     if (hash === '#/poster') return 'poster'
+    if (hash === '#/xhs') return 'xhs'
     return 'landing'
   })
 
@@ -2276,6 +2479,7 @@ const App: React.FC = () => {
       else if (hash === '#/mobile') setPage('mobile')
       else if (hash === '#/showcase') setPage('showcase')
       else if (hash === '#/poster') setPage('poster')
+      else if (hash === '#/xhs') setPage('xhs')
       else setPage('landing')
     }
     window.addEventListener('hashchange', onHashChange)
@@ -2286,6 +2490,7 @@ const App: React.FC = () => {
   if (page === 'mobile') return <MobilePage />
   if (page === 'showcase') return <ShowcasePage />
   if (page === 'poster') return <PosterPage />
+  if (page === 'xhs') return <XhsPage />
   return <LandingPage />
 }
 
