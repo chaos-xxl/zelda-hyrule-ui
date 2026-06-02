@@ -70,9 +70,11 @@
 #### BonusEffectIcon
 ```css
 /* 容器 */ size: 50px; display: inline-flex; align-items: center; justify-content: center;
-/* 符号 */ font-size: 24px;
-/* 箭头 */ position: absolute; top: 2px; right: 2px; font-size: 10px;
-/* 15 种效果颜色见源码 */
+/* 图标 */ 76% SVG <img> (从 Figma node 6:305 精确导出，保留游戏原色)
+/* 箭头 */ position: absolute; top: 4px; right: 4px; 10×8px 白色三角 (arrow=true 时显示)
+/* 15 种效果 */ attackUp/criticalHit(白剑) defenseUp(白盾) speedUp(蓝) heatResist(红) coldResist(青)
+   electricResist(品红) quietUp(紫) fireResist(红) durabilityUp(蓝盾) longThrow(白) climbSpeedUp(白)
+   swimSpeedUp(青) bonusHeart(黄心) staminaUp(绿轮)
 ```
 
 #### RupeeType
@@ -121,7 +123,7 @@
 /* 每项 */ 50×50px; padding: 8px; background: transparent; border: none; cursor: pointer;
 /* active 态 */ ::after 底部 2px 线, background: #E2DED3;
 /* 图标 fill */ active: #E2DED3, inactive: rgba(226,222,211,0.4)
-/* 7 种图标 SVG path 见源码 */
+/* 7 种图标 SVG path 从 Figma node 8:466~8:472 精确导出 (weapons/bows/shields/clothing/materials/food/special) */
 ```
 
 #### ItemBG
@@ -260,6 +262,7 @@
 /* 容器 */ max-width: 640px; height: 90px; background: rgba(0,0,0,0.8); border-radius: 4px; padding: 0 20px 0 100px;
 /* 内层边框 */ inset: 3px; border: 1px solid rgba(255,255,255,0.2); border-radius: 2px;
 /* 图标 */ 77×77px; border-radius: 50%; left: 18px; top: 6px;
+  4 种类型 SVG 从 Figma node 191:18381/18382/18609/18775 精确导出 (main 三角力量 / side 对话气泡 / shrine 希卡之眼菱形 / memory 胶片格)
   main: box-shadow 0 0 23px rgba(255,234,46,0.5)
   side/shrine: box-shadow 0 0 23px rgba(84,192,253,0.5)
 /* 标题 */ font: Roboto 38px/700 italic; color: #E2DED3;
