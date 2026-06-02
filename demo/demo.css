@@ -743,6 +743,117 @@ html, body {
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
 }
 
+/* ── 3:4 卖点 one-pager（README / 小红书竖版） ── */
+.poster-3x4 {
+  position: relative;
+  width: 780px;
+  max-width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+
+.poster-onepage {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 64px 60px 52px;
+}
+
+.poster-onepage-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.poster-onepage-title {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 58px;
+  color: #E8E3D6;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin: 18px 0 14px;
+  text-shadow: 0 0 28px rgba(0, 0, 0, 0.6), 0 0 20px rgba(60, 211, 252, 0.22);
+}
+
+.poster-onepage-sub {
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  font-size: 17px;
+  color: rgba(233, 225, 209, 0.6);
+  line-height: 1.5;
+  max-width: 460px;
+}
+
+/* 卖点列表：发丝线分隔，无卡片无阴影（瑞士风手法） */
+.poster-features {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+}
+
+.poster-feature {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(60, 211, 252, 0.16);
+}
+
+.poster-feature:last-child {
+  border-bottom: 1px solid rgba(60, 211, 252, 0.16);
+}
+
+.poster-feature-num {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 13px;
+  color: #3CD3FC;
+  letter-spacing: 0.1em;
+  min-width: 28px;
+}
+
+.poster-feature-text {
+  flex: 1;
+}
+
+.poster-feature-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  color: #E8E3D6;
+  margin: 0 0 3px;
+}
+
+.poster-feature-desc {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: rgba(233, 225, 209, 0.55);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.poster-onepage-foot {
+  margin-top: auto;
+  padding-top: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 14px;
+  color: rgba(233, 225, 209, 0.75);
+  letter-spacing: 0.04em;
+}
+
+.poster-onepage-foot .accent {
+  color: #6FD49C;
+}
+
+
 .poster-bg {
   position: absolute;
   inset: 0;

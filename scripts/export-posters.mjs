@@ -20,6 +20,8 @@ await page.waitForTimeout(1500)
 const targets = [
   { selector: '.poster-21x9', file: 'share-card-21x9.png' },
   { selector: '.poster-1x1', file: 'share-card-1x1.png' },
+  { selector: '.poster-3x4:not(.poster-3x4-zh)', file: 'feature-onepager-3x4.png' },
+  { selector: '.poster-3x4-zh', file: 'feature-onepager-3x4-zh.png' },
 ]
 
 for (const { selector, file } of targets) {

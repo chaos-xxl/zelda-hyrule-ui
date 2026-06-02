@@ -2129,6 +2129,128 @@ const PosterPage: React.FC = () => (
         </div>
       </div>
 
+      {/* ═══ 3:4 卖点 one-pager（README / 竖版） ═══ */}
+      <div>
+        <div className="poster-block-label">3:4 — Feature One-Pager</div>
+        <div className="poster-3x4">
+          <div className="poster-bg">
+            <SheikahBackground color="darkBlue">
+              <SheikahScanlines animated opacity={0.07} />
+            </SheikahBackground>
+          </div>
+          <div className="poster-onepage">
+            {/* 头部：标题区 */}
+            <div className="poster-onepage-head">
+              <SheikahSymbol size={72} outline={false} />
+              <h1 className="poster-onepage-title">zelda-hyrule-ui</h1>
+              <p className="poster-onepage-sub">
+                A React UI component library in the style of<br />
+                The Legend of Zelda: Breath of the Wild
+              </p>
+            </div>
+
+            {/* 卖点列表 */}
+            <div className="poster-features">
+              <div className="poster-feature">
+                <span className="poster-feature-num">01</span>
+                <div className="poster-feature-text">
+                  <p className="poster-feature-title">83 Components</p>
+                  <p className="poster-feature-desc">Full coverage of the BOTW UI Kit — HUD, menus, dialogs, maps, quests &amp; more</p>
+                </div>
+              </div>
+              <div className="poster-feature">
+                <span className="poster-feature-num">02</span>
+                <div className="poster-feature-text">
+                  <p className="poster-feature-title">Figma-Precise SVG</p>
+                  <p className="poster-feature-desc">Every path exported node-by-node from the community Figma source</p>
+                </div>
+              </div>
+              <div className="poster-feature">
+                <span className="poster-feature-num">03</span>
+                <div className="poster-feature-text">
+                  <p className="poster-feature-title">AI-Ready</p>
+                  <p className="poster-feature-desc">Drop SKILL.md into Cursor and say &quot;build in Zelda style&quot;</p>
+                </div>
+              </div>
+              <div className="poster-feature">
+                <span className="poster-feature-num">04</span>
+                <div className="poster-feature-text">
+                  <p className="poster-feature-title">TypeScript &amp; Lightweight</p>
+                  <p className="poster-feature-desc">Full type definitions · ~115KB ESM · tree-shakeable</p>
+                </div>
+              </div>
+            </div>
+
+            {/* 底部：安装命令 */}
+            <div className="poster-onepage-foot">
+              <span className="accent">npm i</span>
+              <span>zelda-hyrule-ui</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ═══ 3:4 卖点 one-pager 中文版 ═══ */}
+      <div>
+        <div className="poster-block-label">3:4 — Feature One-Pager (中文)</div>
+        <div className="poster-3x4 poster-3x4-zh">
+          <div className="poster-bg">
+            <SheikahBackground color="darkBlue">
+              <SheikahScanlines animated opacity={0.07} />
+            </SheikahBackground>
+          </div>
+          <div className="poster-onepage">
+            {/* 头部：标题区 */}
+            <div className="poster-onepage-head">
+              <SheikahSymbol size={72} outline={false} />
+              <h1 className="poster-onepage-title">zelda-hyrule-ui</h1>
+              <p className="poster-onepage-sub">
+                一套受《塞尔达传说：旷野之息》启发的<br />
+                React UI 组件库
+              </p>
+            </div>
+
+            {/* 卖点列表 */}
+            <div className="poster-features">
+              <div className="poster-feature">
+                <span className="poster-feature-num">01</span>
+                <div className="poster-feature-text">
+                  <p className="poster-feature-title">83 个组件</p>
+                  <p className="poster-feature-desc">完整覆盖 BOTW UI Kit——HUD、菜单、对话、地图、任务等</p>
+                </div>
+              </div>
+              <div className="poster-feature">
+                <span className="poster-feature-num">02</span>
+                <div className="poster-feature-text">
+                  <p className="poster-feature-title">Figma 像素级还原</p>
+                  <p className="poster-feature-desc">所有 SVG 从 Figma 社区原稿逐节点精确导出</p>
+                </div>
+              </div>
+              <div className="poster-feature">
+                <span className="poster-feature-num">03</span>
+                <div className="poster-feature-text">
+                  <p className="poster-feature-title">AI 友好</p>
+                  <p className="poster-feature-desc">把 SKILL.md 丢给 Cursor，说一句&quot;用塞尔达风格做&quot;</p>
+                </div>
+              </div>
+              <div className="poster-feature">
+                <span className="poster-feature-num">04</span>
+                <div className="poster-feature-text">
+                  <p className="poster-feature-title">TypeScript &amp; 轻量</p>
+                  <p className="poster-feature-desc">完整类型定义 · ~115KB ESM · 支持摇树优化</p>
+                </div>
+              </div>
+            </div>
+
+            {/* 底部：安装命令 */}
+            <div className="poster-onepage-foot">
+              <span className="accent">npm i</span>
+              <span>zelda-hyrule-ui</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <p className="poster-caption">github.com/chaos-xxl/zelda-hyrule-ui · npm i zelda-hyrule-ui</p>

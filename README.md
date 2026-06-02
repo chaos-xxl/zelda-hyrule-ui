@@ -41,6 +41,17 @@ A React UI component library inspired by *The Legend of Zelda: Breath of the Wil
 
 ---
 
+## Highlights / 核心卖点
+
+<table>
+<tr>
+<td width="50%"><img src="docs/img/feature-onepager.png" alt="Feature overview (English)" /></td>
+<td width="50%"><img src="docs/img/feature-onepager-zh.png" alt="核心卖点（中文）" /></td>
+</tr>
+</table>
+
+---
+
 ## Installation / 安装
 
 ```bash
