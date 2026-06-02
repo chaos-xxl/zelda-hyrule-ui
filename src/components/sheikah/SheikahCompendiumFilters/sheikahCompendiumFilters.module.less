@@ -6,4 +6,9 @@
   &:hover { border-color: rgba(60, 211, 252, 0.5); }
 }
 .active { border-color: #3CD3FC; box-shadow: 0 0 8px rgba(60, 211, 252, 0.4); background: rgba(60, 211, 252, 0.1); }
-.icon { font-size: 22px; }
+.icon {
+  width: 30px; height: 30px; object-fit: contain;
+  opacity: 0.55; transition: opacity 0.2s;
+}
+.filter:hover .icon { opacity: 0.8; }
+.active .icon { opacity: 1; }

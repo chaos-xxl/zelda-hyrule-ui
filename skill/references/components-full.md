@@ -396,7 +396,8 @@
 /* 每个符文 */ 70×70px; border-radius: 8px; border: 2px solid rgba(60,211,252,0.3); background: rgba(10,20,40,0.6);
 /* hover */ border-color: rgba(60,211,252,0.6); box-shadow: 0 0 6px rgba(60,211,252,0.3);
 /* active */ border-color: #3CD3FC; box-shadow: glow-sheikah; background: rgba(60,211,252,0.1);
-/* 图标 */ font-size: 28px; color: #3CD3FC;
+/* 图标 */ 40×40px SVG (从 Figma node 139:4 精确导出，保留游戏原色); filter: drop-shadow(0 0 4px rgba(79,192,255,0.5));
+/* 6 种符文 */ roundBomb / cubeBomb / magnesis / stasis / cryonis / camera
 ```
 
 #### SheikahCompendiumEntry
@@ -412,7 +413,7 @@
 ```css
 /* 容器 */ display: flex; flex-direction: column; align-items: center; gap: 8px;
 /* 标题行 */ display: flex; gap: 12px; align-items: center;
-/* 装饰 ◆ */ color: #3CD3FC; font-size: 8px; opacity: 0.6;
+/* 装饰 */ 22×20px SVG (从 Figma node 239:25636 Text Ornament Divider 精确导出); 右侧 transform: scaleX(-1) 镜像; opacity: 0.85;
 /* 标题 */ font: Roboto 22px/500 italic; color: #3CD3FC; letter-spacing: 0.05em;
 /* 描述 */ font: Roboto 16px/500 italic; color: rgba(60,211,252,0.6); max-width: 584px; line-height: 1.4;
 ```
@@ -422,7 +423,8 @@
 /* 容器 */ display: flex; gap: 16px; align-items: center; justify-content: center;
 /* 每个过滤器 */ 50×50px; border-radius: 50%; border: 2px solid rgba(60,211,252,0.2); background: rgba(10,20,40,0.6);
 /* active */ border-color: #3CD3FC; box-shadow: 0 0 8px rgba(60,211,252,0.4); background: rgba(60,211,252,0.1);
-/* 图标 */ font-size: 22px;
+/* 图标 */ 30×30px SVG (从 Figma node 260:27029 精确导出，自带希卡蓝辉光滤镜); opacity 0.55→0.8(hover)→1(active);
+/* 5 个分类 */ creatures / enemies / materials / weapons / treasure
 ```
 
 #### SheikahAlbumButton

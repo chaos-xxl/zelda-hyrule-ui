@@ -610,7 +610,7 @@ const PROPS_DATA: Record<string, PropDef[]> = {
     { name: 'animated', type: 'boolean', default: 'false', desc: 'Animate scanlines' },
   ],
   SheikahRune: [
-    { name: 'activeRune', type: "'roundBomb'|'magnesis'|'stasis'|'cryonis'|...", desc: 'Active rune' },
+    { name: 'activeRune', type: "'roundBomb'|'cubeBomb'|'magnesis'|'stasis'|'cryonis'|'camera'", desc: 'Active rune' },
   ],
   SheikahCompendiumEntry: [
     { name: 'revealed', type: 'boolean', default: 'false', desc: 'Entry discovered' },
