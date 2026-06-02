@@ -17,6 +17,18 @@ await page.goto(URL, { waitUntil: 'networkidle' })
 // Let scanline animation + fonts settle
 await page.waitForTimeout(1500)
 
+// Square off the rounded corners + drop shadow for export only.
+// (Rounded corners leave transparent triangles that look like white corners
+//  on GitHub's white background. Square edges screenshot cleanly.)
+await page.addStyleTag({
+  content: `
+    .poster-21x9, .poster-1x1, .poster-3x4 {
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+  `,
+})
+
 const targets = [
   { selector: '.poster-21x9', file: 'share-card-21x9.png' },
   { selector: '.poster-1x1', file: 'share-card-1x1.png' },
