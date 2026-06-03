@@ -326,7 +326,7 @@
 #### MapBeacon
 ```css
 /* 容器 */ width: 30px; height: flare ? 90px : 30px;
-/* 信标 SVG */ path 菱形, fill: [color]; circle cx=15 cy=12 r=4 fill white opacity 0.6;
+/* 信标针 */ 圆角方框 + 折角书签纹样，从 Figma node 151:3884 精确导出（可着色，单 fill var）; drop-shadow(0 0 5px [color])
 /* 光柱 */ width: 4px; background: linear-gradient(to top, [color], transparent); opacity: 0.7;
 /* 5 色 */ red: #FF4444, blue: #44AAFF, yellow: #FFDD44, green: #44DD88, pink: #FF88CC
 ```
@@ -334,7 +334,7 @@
 #### MapQuestMarker
 ```css
 /* 容器 */ size: 75px;
-/* 图标 */ hexagon stroke: #FCC413 strokeWidth: 2.5; center circle r=5 fill: #FCC413;
+/* 图标 */ 同心圆环靶标 SVG (从 Figma node 151:4900 精确导出，黄色 #FFF381 自带辉光滤镜)
 /* pulse 态 */ animation: scale 1→1.15→1, opacity 1→0.7→1, 2s infinite;
 ```
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import styles from './mapQuestMarker.module.less'
+import markerSvg from '../../../assets/svg/map-quest-marker.svg'
 
 export interface MapQuestMarkerProps {
   /** 是否脉冲动画 */
@@ -11,14 +12,15 @@ export interface MapQuestMarkerProps {
   style?: React.CSSProperties
 }
 
+/**
+ * 地图任务标记 — 同心圆环靶标，从 Figma node 151:4900 精确导出（自带黄色辉光滤镜）。
+ */
 const MapQuestMarker: React.FC<MapQuestMarkerProps> = ({ pulse = false, size = 75, className, style }) => (
   <div className={classNames(styles.container, { [styles.pulse]: pulse }, className)} style={{ width: size, height: size, ...style }}>
-    <svg viewBox="0 0 40 40" fill="none" className={styles.icon}>
-      <path d="M20 4L8 12V28L20 36L32 28V12L20 4Z" fill="none" stroke="#FCC413" strokeWidth="2.5" />
-      <circle cx="20" cy="20" r="5" fill="#FCC413" />
-    </svg>
+    <img src={markerSvg} alt="" className={styles.icon} />
   </div>
 )
 
 MapQuestMarker.displayName = 'MapQuestMarker'
 export default MapQuestMarker
+
