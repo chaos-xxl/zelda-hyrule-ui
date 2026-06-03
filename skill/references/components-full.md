@@ -293,7 +293,7 @@
 #### QuestNotification
 ```css
 /* 容器 */ display: inline-flex; align-items: center; gap: 4px;
-/* 图标 */ 26×26px; circle fill: #FCC413 opacity 0.8; 感叹号 fill: black;
+/* 图标 */ 26×26px 同心圆环靶标（复用 MapQuestMarker 的 Figma SVG，即任务列表右侧发光黄点）
 /* 标签 */ font: Roboto 26px/500 italic; color: #AAA79F;
 ```
 
@@ -357,8 +357,8 @@
 #### MapHeroLocation
 ```css
 /* 容器 */ 18×25px;
-/* 箭头 SVG */ path "M9 0L0 25L9 20L18 25L9 0Z" fill: #3CD3FC; filter: drop-shadow(0 0 4px rgba(60,211,252,0.6));
-/* 视野锥 */ border-left/right: 20px solid transparent; border-bottom: 40px solid rgba(60,211,252,0.1);
+/* 箭头 SVG */ 圆角风筝形（底部内凹），从 Figma node 160:53985 精确导出; fill: #FFE460（希卡黄）; filter: drop-shadow(0 0 6px #FFB904) drop-shadow(0 0 4px #FFDB7E)（金色辉光）
+/* 视野锥 */ border-left/right: 20px solid transparent; border-bottom: 40px solid rgba(255,228,96,0.12);
 ```
 
 #### MapGrid

@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import styles from './questNotification.module.less'
+import markerSvg from '../../../assets/svg/map-quest-marker.svg'
 
 export interface QuestNotificationProps {
   /** 是否显示标签文字 */
@@ -11,13 +12,14 @@ export interface QuestNotificationProps {
   style?: React.CSSProperties
 }
 
+/**
+ * 任务通知指示器 — 同心圆环靶标（与 MapQuestMarker 共用 Figma node 151:4900 导出的 SVG，
+ * 即任务列表项右侧那个发光黄点），取代原先手画的感叹号圆。
+ */
 const QuestNotification: React.FC<QuestNotificationProps> = ({ showLabel = false, label, className, style }) => (
   <div className={classNames(styles.container, className)} style={style}>
     <div className={styles.icon}>
-      <svg viewBox="0 0 26 26" fill="none" className={styles.iconSvg}>
-        <circle cx="13" cy="13" r="12" fill="#FCC413" opacity="0.8" />
-        <path d="M12 7H14V15H12V7ZM12 17H14V19H12V17Z" fill="black" />
-      </svg>
+      <img src={markerSvg} alt="" className={styles.iconSvg} />
     </div>
     {showLabel && label && <span className={styles.label}>{label}</span>}
   </div>
@@ -25,3 +27,4 @@ const QuestNotification: React.FC<QuestNotificationProps> = ({ showLabel = false
 
 QuestNotification.displayName = 'QuestNotification'
 export default QuestNotification
+

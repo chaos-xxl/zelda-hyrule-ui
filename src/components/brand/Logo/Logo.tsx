@@ -55,7 +55,8 @@ const Logo: React.FC<LogoProps> = ({
             fill="currentColor"
             fillOpacity={0.7}
           />
-          {/* Stylized text placeholder */}
+          {/* Stylized wordmark — deliberately NOT the official Zelda logo artwork
+              (trademark-safe; see ATTRIBUTION.md). Generic serif lettering only. */}
           <text
             x="100"
             y="58"

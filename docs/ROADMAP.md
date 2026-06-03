@@ -22,7 +22,7 @@
 
 | 事项 | 说明 | 详细文档 |
 |------|------|---------|
-| 组件高精度还原 | 把 emoji/近似图形的组件逐批换成 Figma 节点级精确 SVG。已完成两波（6 个组件、21 个 SVG）。剩余 LOW 精度组件待续。 | 见下方「组件质量」区 |
+| （空）| 当前无进行中事项 | — |
 
 ---
 
@@ -62,7 +62,7 @@
 
 | 事项 | 优先级 | 说明 |
 |------|--------|------|
-| 第三波高精度还原（🚧 进行中） | 🟡 P2 | 已修：RupeeType（7切面宝石）/ RupeeCounter（复用）/ QuestTypeIcon + QuestListItem（共用 questIcons）/ MapQuestMarker（环形靶标）/ MapBeacon（方框书签针）/ AttackDefenseValues（复用 MenuSections 剑盾）。**剩余待评估**：QuestNotification（感叹号，边界）、MapHeroLocation（箭头，Figma 可能也很简单）、Logo（三角力量；"ZELDA"文字占位——出于 IP 顾虑刻意不还原官方 logo 美术）。 |
+| 第三波高精度还原 ✅ | 🟡 P2 | 已完成 9 个组件：RupeeType（7切面宝石）/ RupeeCounter（复用）/ QuestTypeIcon + QuestListItem（共用 questIcons）/ MapQuestMarker（环形靶标）/ MapBeacon（方框书签针）/ AttackDefenseValues（复用剑盾）/ MapHeroLocation（风筝箭头改希卡黄+金辉光）/ QuestNotification（改用环形靶标）。Logo 三角力量保留（"ZELDA"文字刻意不还原官方 logo 美术——IP 安全）。 |
 | 全量组件审计复查 | 🔵 P3 💡 | 定期重跑一次精度审计（HIGH/MEDIUM/LOW 分级），看整体水位。已知精确的勿动：WeatherIcon/Sensor/LoadingHeart/StatusHealing/MapIcon/TitleOrnament（inline 但是 Figma 复杂贝塞尔）。 |
 | 补齐未实现组件 | 🔵 P3 | Figma 里还有组件没做成 React。是否要 100% 覆盖待定。 |
 
@@ -97,6 +97,7 @@
 
 | 事项 | 说明 | 关联文档 |
 |------|------|---------|
+| 组件高精度还原 第三波 | 9 个手画近似组件升级到 Figma 节点级：卢比宝石(7切面)/卢比计数/任务类型图标/任务列表(共用 questIcons)/地图任务标记(环形靶标)/地图信标(书签针)/攻防图标(剑盾)/英雄位置(风筝箭头)/任务通知(环形靶标)。Logo 三角力量保留，"ZELDA"文字 IP 安全不还原。 | `ROADMAP.md` C 区 |
 | 移动端适配 P1（任务1+2） | 任务1：修复 docs 页手机溢出（FitScale 缩放 + min-width:0 容器约束 + tap 目标 79→12）。任务2：用归藏瑞士方法论重排 MobilePage 框架（KPI 大字报 + 自动编号 + 章节标记）。新增 `audit-mobile.mjs` QA 工具。 | `ROADMAP.md`（移动端两任务） |
 | 排版互操作桥接（路径 A） | 新建 `layout-bridge.md`，token 覆盖映射 + 退化方案；SKILL/README 更新。骨+皮，保持 MIT。 | `LAYOUT_INTEGRATION_PLAN.md` |
 | Nintendo IP/商标合规加固 | README banner、npm 描述、demo 页脚、ATTRIBUTION 两层权利澄清。 | `ATTRIBUTION.md` |
