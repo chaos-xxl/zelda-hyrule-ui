@@ -840,13 +840,68 @@ const PropsTable: React.FC<{ componentName: string }> = ({ componentName }) => {
 
 // ─── Demo Section Renderer ───────────────────────────────────────────────────
 
+/**
+ * Measures the natural width of its content and scales it DOWN to fit the
+ * container when it would otherwise overflow (e.g. a 910px Dialog on a 360px
+ * phone). On desktop, content fits so scale stays 1 — zero visual change.
+ * This replaces the old "horizontal scroll inside the card" mobile hack:
+ * a component showcase should never make the user swipe sideways to see a demo.
+ */
+const FitScale: React.FC<{ children: React.ReactNode; align?: 'center' | 'start' }> = ({ children, align = 'center' }) => {
+  const containerRef = React.useRef<HTMLDivElement>(null)
+  const innerRef = React.useRef<HTMLDivElement>(null)
+  const [scale, setScale] = React.useState(1)
+  const [boxHeight, setBoxHeight] = React.useState<number | undefined>(undefined)
+
+  React.useEffect(() => {
+    const measure = () => {
+      const cw = containerRef.current?.offsetWidth ?? 0
+      const nw = innerRef.current?.scrollWidth ?? 0
+      const nh = innerRef.current?.offsetHeight ?? 0
+      if (!cw || !nw) return
+      const s = Math.min(1, cw / nw)
+      setScale(s)
+      setBoxHeight(nh * s)
+    }
+    measure()
+    const ro = new ResizeObserver(measure)
+    if (containerRef.current) ro.observe(containerRef.current)
+    if (innerRef.current) ro.observe(innerRef.current)
+    // fonts/images settling
+    const t = setTimeout(measure, 400)
+    return () => { ro.disconnect(); clearTimeout(t) }
+  }, [children])
+
+  return (
+    <div
+      ref={containerRef}
+      style={{ width: '100%', height: boxHeight, overflow: 'hidden', display: 'flex', justifyContent: align === 'center' ? 'center' : 'flex-start' }}
+    >
+      <div
+        ref={innerRef}
+        style={{
+          display: 'inline-flex',
+          flexWrap: 'wrap',
+          gap: 16,
+          alignItems: 'center',
+          justifyContent: align === 'center' ? 'center' : 'flex-start',
+          transform: `scale(${scale})`,
+          transformOrigin: align === 'center' ? 'top center' : 'top left',
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  )
+}
+
 const DemoSection: React.FC<{ id: string; title: string; children: React.ReactNode }> = ({ id, title, children }) => (
   <section id={`section-${id}`} className="docs-demo-section">
     <h3 className="docs-demo-title">
       {title} {COMPONENT_ZH[title] && <span className="docs-demo-title-zh">{COMPONENT_ZH[title]}</span>}
     </h3>
     <div className="docs-demo-card">
-      <div className="docs-demo-card-inner">{children}</div>
+      <FitScale>{children}</FitScale>
     </div>
     <CodeExample componentName={title} />
     <PropsTable componentName={title} />
@@ -904,6 +959,7 @@ const DocsPage: React.FC = () => {
             {cat.components.map((comp) => (
               <button
                 key={comp}
+                className="docs-nav-link"
                 style={{
                   display: 'block', padding: '8px 20px', color: '#E9E1D1',
                   fontSize: 13, cursor: 'pointer',

@@ -27,6 +27,10 @@ html, body {
   margin-left: 260px;
   padding: 32px 40px;
   min-height: 100vh;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* Mobile menu toggle */
@@ -250,6 +254,8 @@ html, body {
 
 .doc-section {
   margin-top: 16px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .doc-section-badge {
@@ -272,6 +278,7 @@ html, body {
   border-radius: 0 6px 6px 6px;
   padding: 24px 28px;
   overflow-x: auto;
+  max-width: 100%;
 }
 
 .doc-code-block pre {
@@ -487,6 +494,8 @@ html, body {
 
 .docs-demo-section {
   margin-bottom: 56px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .docs-demo-title {
@@ -514,12 +523,8 @@ html, body {
   overflow: hidden;
 }
 
-.docs-demo-card-inner {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  flex-wrap: wrap;
-}
+/* Demo content layout now handled by the <FitScale> wrapper (auto down-scales
+   wide components to fit narrow screens instead of horizontal scrolling). */
 
 /* ─── Docs Page Mobile Responsive ─────────────────────────────────────────── */
 
@@ -541,23 +546,16 @@ html, body {
     margin-left: 6px;
   }
 
-  /* Demo card on mobile: less padding, allow horizontal scroll */
+  /* Demo card on mobile: less padding. Content auto-scales via <FitScale>,
+     so no horizontal scroll needed. */
   .docs-demo-card {
-    padding: 14px;
+    padding: 16px 14px;
   }
 
-  .docs-demo-card-inner {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    gap: 12px;
-    /* Prevent flex children from shrinking */
-    justify-content: flex-start;
-  }
-
-  .docs-demo-card-inner > * {
-    flex-shrink: 0;
+  /* Sidebar nav links: comfortable tap height (≥44px) on touch screens */
+  .docs-nav-link {
+    padding: 12px 20px !important;
+    font-size: 15px !important;
   }
 
   /* Code block adjustments */
