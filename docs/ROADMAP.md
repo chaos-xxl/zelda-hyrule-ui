@@ -62,8 +62,8 @@
 
 | 事项 | 优先级 | 说明 |
 |------|--------|------|
-| 第三波 + 后续高精度还原 | 🟡 P2 | 把剩余 LOW 精度组件（用近似 SVG path 的）逐批升级到 Figma 节点级。**这是 Reddit "AI slop" 教训的核心整改方向。** |
-| 全量组件审计复查 | 🔵 P3 💡 | 定期重跑一次精度审计（HIGH/MEDIUM/LOW 分级），看整体水位。 |
+| 第三波高精度还原（🚧 进行中） | 🟡 P2 | 已修：RupeeType（7切面宝石）/ RupeeCounter（复用）/ QuestTypeIcon + QuestListItem（共用 questIcons）/ MapQuestMarker（环形靶标）/ MapBeacon（方框书签针）/ AttackDefenseValues（复用 MenuSections 剑盾）。**剩余待评估**：QuestNotification（感叹号，边界）、MapHeroLocation（箭头，Figma 可能也很简单）、Logo（三角力量；"ZELDA"文字占位——出于 IP 顾虑刻意不还原官方 logo 美术）。 |
+| 全量组件审计复查 | 🔵 P3 💡 | 定期重跑一次精度审计（HIGH/MEDIUM/LOW 分级），看整体水位。已知精确的勿动：WeatherIcon/Sensor/LoadingHeart/StatusHealing/MapIcon/TitleOrnament（inline 但是 Figma 复杂贝塞尔）。 |
 | 补齐未实现组件 | 🔵 P3 | Figma 里还有组件没做成 React。是否要 100% 覆盖待定。 |
 
 ### D. 推广 / 增长
