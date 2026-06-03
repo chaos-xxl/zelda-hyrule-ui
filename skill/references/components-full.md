@@ -16,7 +16,7 @@
 #### RupeeCounter
 ```css
 /* 容器 */ display: inline-flex; align-items: center; gap: 13px; filter: drop-shadow(-2px 2px 5px rgba(0,0,0,0.15));
-/* 卢比图标 */ 25×46px SVG 渐变菱形
+/* 卢比图标 */ 复用 <RupeeType size={40}>（Figma 精确宝石几何，避免维护第二套）
 /* 数字 */ font: Roboto 32px/500 italic; color: #E9E1D1; letter-spacing: 0.96px;
 ```
 
@@ -80,7 +80,8 @@
 #### RupeeType
 ```css
 /* 容器 */ 25×46px 比例; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3));
-/* SVG 菱形 */ 4 面渐变 + 中间高光
+/* 宝石几何 */ 从 Figma node 3:213 精确重建——纵向六边形宝石 7 切面（尖顶/尖底 + 中央主面 + 上下左右切角），左上打光的 3D 切割感
+/* 着色 */ light/dark 双色渐变（4 个 facet 渐变：l亮/c中央/m中/d暗）
 /* 6 色 */ green: #4CAF50/#173515, blue: #42A5F5/#0D2B5C, red: #EF5350/#5C1414, purple: #AB47BC/#3A0C5C, silver: #BDBDBD/#424242, gold: #FFD54F/#5C4A14
 ```
 
@@ -286,7 +287,7 @@
 /* 容器 */ size: 77px; border-radius: 50%;
 /* 辉光 */ box-shadow: 0 0 23px [color], 0 0 18px black;
 /* 颜色 */ main: #FFD700, side: #3CD3FC, shrine: #3CD3FC, memory: #FCC413
-/* 图标 SVG */ width: 60%; height: 60%;
+/* 图标 */ 与 QuestListItem 共用 questIcons（Figma node 191:18381/18382/18609/18775 精确导出）
 ```
 
 #### QuestNotification

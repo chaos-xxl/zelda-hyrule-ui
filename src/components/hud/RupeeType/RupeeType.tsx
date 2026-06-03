@@ -25,43 +25,59 @@ const RUPEE_COLORS: Record<RupeeVariant, { light: string; dark: string }> = {
   gold: { light: '#FFD54F', dark: '#5C4A14' },
 }
 
+/**
+ * 卢比宝石 — 几何从 Figma node 3:213 (Rupee Types) 精确重建：
+ * 纵向六边形宝石的 7 个切面（尖顶/尖底 + 中央主面 + 上下左右切角），
+ * 按原图打光分配明暗（左上最亮 → 右下最暗），营造 3D 切割感。
+ * 保留 light/dark 双色渐变以支持 6 种颜色着色。
+ */
+const RupeeIcon: React.FC<{ color: RupeeVariant; id: string }> = ({ color, id }) => {
+  const { light, dark } = RUPEE_COLORS[color]
+  return (
+    <svg width="100%" height="100%" viewBox="0 0 25 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* 右侧切角（暗） */}
+      <path d="M25 10.86L18.75 15.97V30.03L25 35.14V10.86Z" fill={`url(#${id}-d)`} />
+      {/* 左侧切角（中） */}
+      <path d="M0 10.86L6.25 15.97V30.03L0 35.14V10.86Z" fill={`url(#${id}-m)`} />
+      {/* 右上切面（暗） */}
+      <path d="M12.5 0L25 10.86L18.75 15.97L12.5 10.86V0Z" fill={`url(#${id}-d)`} />
+      {/* 左上切面（亮，主高光） */}
+      <path d="M12.5 0L0 10.86L6.25 15.97L12.5 10.86V0Z" fill={`url(#${id}-l)`} />
+      {/* 右下切面（中） */}
+      <path d="M12.5 46L25 35.14L18.75 30.03L12.5 35.14V46Z" fill={`url(#${id}-m)`} />
+      {/* 左下切面（暗） */}
+      <path d="M12.5 46L0 35.14L6.25 30.03L12.5 35.14V46Z" fill={`url(#${id}-d)`} />
+      {/* 中央主面（亮） */}
+      <path d="M12.5 10.86L18.75 15.97V30.03L12.5 35.14L6.25 30.03V15.97L12.5 10.86Z" fill={`url(#${id}-c)`} />
+      <defs>
+        <linearGradient id={`${id}-l`} x1="6" y1="0" x2="10" y2="16" gradientUnits="userSpaceOnUse">
+          <stop stopColor={light} />
+          <stop offset="1" stopColor={light} stopOpacity="0.75" />
+        </linearGradient>
+        <linearGradient id={`${id}-c`} x1="12.5" y1="10.86" x2="12.5" y2="35.14" gradientUnits="userSpaceOnUse">
+          <stop stopColor={light} />
+          <stop offset="1" stopColor={dark} />
+        </linearGradient>
+        <linearGradient id={`${id}-m`} x1="3" y1="10" x2="3" y2="35" gradientUnits="userSpaceOnUse">
+          <stop stopColor={light} stopOpacity="0.6" />
+          <stop offset="1" stopColor={dark} />
+        </linearGradient>
+        <linearGradient id={`${id}-d`} x1="21" y1="10" x2="21" y2="35" gradientUnits="userSpaceOnUse">
+          <stop stopColor={dark} />
+          <stop offset="1" stopColor={dark} />
+        </linearGradient>
+      </defs>
+    </svg>
+  )
+}
+
 const RupeeType: React.FC<RupeeTypeProps> = ({ type, size = 46, className, style }) => {
-  const { light, dark } = RUPEE_COLORS[type]
   const width = size * (25 / 46)
   const id = `rupee-type-${type}`
 
   return (
     <div className={classNames(styles.container, className)} style={{ width, height: size, ...style }}>
-      <svg width={width} height={size} viewBox="0 0 25 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* 上右 */}
-        <path d="M12.5 0L25 16L12.5 24L12.5 0Z" fill={`url(#${id}-1)`} />
-        {/* 上左 */}
-        <path d="M12.5 0L0 16L12.5 24L12.5 0Z" fill={`url(#${id}-2)`} />
-        {/* 下右 */}
-        <path d="M12.5 46L25 30L12.5 22L12.5 46Z" fill={`url(#${id}-3)`} />
-        {/* 下左 */}
-        <path d="M12.5 46L0 30L12.5 22L12.5 46Z" fill={`url(#${id}-4)`} />
-        {/* 中间高光 */}
-        <path d="M0 16L12.5 24L25 16L25 30L12.5 22L0 30Z" fill={light} opacity="0.6" />
-        <defs>
-          <linearGradient id={`${id}-1`} x1="18" y1="0" x2="18" y2="24" gradientUnits="userSpaceOnUse">
-            <stop stopColor={light} />
-            <stop offset="1" stopColor={dark} />
-          </linearGradient>
-          <linearGradient id={`${id}-2`} x1="6" y1="0" x2="6" y2="24" gradientUnits="userSpaceOnUse">
-            <stop stopColor={dark} />
-            <stop offset="1" stopColor={light} stopOpacity="0.7" />
-          </linearGradient>
-          <linearGradient id={`${id}-3`} x1="18" y1="22" x2="18" y2="46" gradientUnits="userSpaceOnUse">
-            <stop stopColor={dark} />
-            <stop offset="1" stopColor={light} stopOpacity="0.5" />
-          </linearGradient>
-          <linearGradient id={`${id}-4`} x1="6" y1="22" x2="6" y2="46" gradientUnits="userSpaceOnUse">
-            <stop stopColor={light} stopOpacity="0.7" />
-            <stop offset="1" stopColor={dark} />
-          </linearGradient>
-        </defs>
-      </svg>
+      <RupeeIcon color={type} id={id} />
     </div>
   )
 }
