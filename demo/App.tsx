@@ -1726,14 +1726,24 @@ const MobileSectionHeader: React.FC<{ en: string; zh?: string }> = ({ en, zh }) 
   </div>
 )
 
+/** 章节分隔标记（瑞士手法：发丝线 + 单锚点色 mono 标签，取代随机分隔线） */
+const MobileChapter: React.FC<{ label: string }> = ({ label }) => (
+  <div className="mobile-chapter"><span>{label}</span></div>
+)
+
 const MobilePage: React.FC = () => (
   <div className="mobile-page">
-    {/* Hero */}
+    {/* Hero — KPI 大字报（瑞士手法：把核心钩子「83」做成视觉重心） */}
     <div className="mobile-hero">
-      <SheikahSymbol size={56} outline={false} />
+      <div className="mobile-hero-scan" aria-hidden="true" />
+      <SheikahSymbol size={46} outline={false} />
       <h1>zelda-hyrule-ui</h1>
-      <p className="mobile-hero-tagline">83 React components · BOTW style</p>
-      <p className="mobile-hero-tagline-zh">塞尔达旷野之息风格 · 83 个 React 组件</p>
+      <p className="mobile-hero-tagline">A React UI library in the style of Breath of the Wild</p>
+      <p className="mobile-hero-tagline-zh">塞尔达旷野之息风格 · React 组件库</p>
+      <div className="mobile-hero-kpi">
+        <span className="num">83</span>
+        <span className="unit">Components<br />个组件</span>
+      </div>
       <div className="mobile-header-buttons">
         <Button variant="sheikah" size="small" onClick={() => window.open('https://github.com/chaos-xxl/zelda-hyrule-ui')}>GitHub</Button>
         <Button variant="primary" size="small" onClick={() => window.open('https://www.npmjs.com/package/zelda-hyrule-ui')}>npm</Button>
@@ -1820,7 +1830,7 @@ const MobilePage: React.FC = () => (
         </div>
       </section>
 
-      <div className="mobile-divider"><Divider variant="golden" /></div>
+      <div className="mobile-divider"><MobileChapter label="Menus · Titles · Dialog / 菜单 · 标题 · 对话" /></div>
 
       {/* Wide components — auto-scaled to fit */}
       <section className="mobile-section">
@@ -1860,7 +1870,7 @@ const MobilePage: React.FC = () => (
         </div>
       </section>
 
-      <div className="mobile-divider"><Divider variant="ornament" /></div>
+      <div className="mobile-divider"><MobileChapter label="Controls · Map · Menu / 控制 · 地图 · 物品" /></div>
 
       <section className="mobile-section">
         <MobileSectionHeader en="Buttons" zh="按钮" />
@@ -1903,7 +1913,7 @@ const MobilePage: React.FC = () => (
         </div>
       </section>
 
-      <div className="mobile-divider"><Divider variant="sheikah" /></div>
+      <div className="mobile-divider"><MobileChapter label="Battle · Sheikah · Settings / 战斗 · 希卡 · 设置" /></div>
 
       <section className="mobile-section">
         <MobileSectionHeader en="Menu" zh="菜单" />

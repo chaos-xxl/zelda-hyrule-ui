@@ -33,7 +33,7 @@
 | 验证排版互操作（路径 A） | 🟢 P1 | 实测一次完整流程（如"用塞尔达风做 3 页 PPT"），看 Agent 能否正确走 `layout-bridge.md`。这是检验排版方案有没有真落地的唯一办法。 |
 | 移动端 Demo 适配（拆成两个任务，见下） | 🟢 P1 | **游戏主题库最怕之一：移动端稀烂。** 开发者 90% 在手机上刷 GitHub/Twitter/Reddit，Live Demo 第一印象常发生在手机上。移动端问题分两层，必须分开治： |
 | └ 任务 1 · 组件级适配 + 响应式（**真痛点，自研**） | 🟢 P1 🚧 | BOTW 组件按主机大屏设计（对话框原宽 910px！），小屏放不下。**已有 `AutoFit`（`transform: scale` 按 designWidth 等比缩放）机制，归藏帮不了这层。** 要审：AutoFit 覆盖够不够 / 触摸目标大小 / 横向溢出 / 各屏宽（320/375/390/414）断点。**这是"移动端稀烂"的主因（约占 70%），先做。** |
-| └ 任务 2 · 页面框架重排（**可借归藏方法论，路径 A**） | 🟡 P2 | 用归藏瑞士排版思路（hero/非hero 节奏、留白、字号层级、中文降一档）让 `MobilePage` 整页更精致。约占 30%。归藏只帮"网页框架排版"，不帮"组件塞进小屏"。 |
+| └ 任务 2 · 页面框架重排（**借归藏方法论，路径 A**）✅ | 🟡 P2 | 已完成：用归藏瑞士排版思路重排 `MobilePage` 框架——hero 升级为 KPI 大字报（「83」做成 88px 视觉重心 + 扫描线）、section 用 CSS counter 自动编号（01–20）、随机分隔线统一成单锚点希卡蓝章节标记。借方法论不抄代码，保持 MIT。 |
 | 继续高精度还原第三波 | 🟡 P2 | 审计剩余 LOW 精度组件，再挑一批做节点级还原。每做一批 = 一次更新发帖素材。 |
 
 ---
@@ -97,6 +97,7 @@
 
 | 事项 | 说明 | 关联文档 |
 |------|------|---------|
+| 移动端适配 P1（任务1+2） | 任务1：修复 docs 页手机溢出（FitScale 缩放 + min-width:0 容器约束 + tap 目标 79→12）。任务2：用归藏瑞士方法论重排 MobilePage 框架（KPI 大字报 + 自动编号 + 章节标记）。新增 `audit-mobile.mjs` QA 工具。 | `ROADMAP.md`（移动端两任务） |
 | 排版互操作桥接（路径 A） | 新建 `layout-bridge.md`，token 覆盖映射 + 退化方案；SKILL/README 更新。骨+皮，保持 MIT。 | `LAYOUT_INTEGRATION_PLAN.md` |
 | Nintendo IP/商标合规加固 | README banner、npm 描述、demo 页脚、ATTRIBUTION 两层权利澄清。 | `ATTRIBUTION.md` |
 | 组件高精度还原 第二波 | BonusEffectIcon(14图标) / MenuSections / QuestListItem 升级到精确 SVG，保留游戏原色。 | — |

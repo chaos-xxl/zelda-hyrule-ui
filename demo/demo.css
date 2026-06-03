@@ -368,15 +368,28 @@ html, body {
 .mobile-hero {
   position: relative;
   text-align: center;
-  padding: 40px 20px 32px;
+  padding: 44px 20px 36px;
   overflow: hidden;
+  background: linear-gradient(180deg, rgba(10,22,34,0.55), rgba(102,100,93,0) 80%);
+  border-bottom: 1px solid rgba(60, 211, 252, 0.16);
 }
+
+/* 扫描线纹理（希卡视觉，瑞士留白上叠塞尔达皮） */
+.mobile-hero-scan {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(60,211,252,0.04) 2px, rgba(60,211,252,0.04) 3px);
+  mix-blend-mode: overlay;
+}
+
+.mobile-hero > * { position: relative; z-index: 1; }
 
 .mobile-hero h1 {
   font-family: 'Hylia Serif', 'Cinzel', serif;
   font-size: 28px;
   color: #E2DED3;
-  margin: 14px 0 6px;
+  margin: 12px 0 8px;
   letter-spacing: 0.04em;
   text-shadow: 0 0 14px rgba(0, 0, 0, 0.5);
 }
@@ -384,13 +397,42 @@ html, body {
 .mobile-hero-tagline {
   font-size: 13px;
   color: rgba(233, 225, 209, 0.65);
-  margin-bottom: 4px;
+  margin-bottom: 3px;
+  padding: 0 12px;
 }
 
 .mobile-hero-tagline-zh {
   font-size: 12px;
   color: rgba(233, 225, 209, 0.5);
-  margin-bottom: 18px;
+  margin-bottom: 22px;
+}
+
+/* KPI 大字报：把核心钩子「83」做成视觉重心（瑞士极致字号对比 + 希卡蓝辉光） */
+.mobile-hero-kpi {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 0 4px;
+}
+
+.mobile-hero-kpi .num {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 88px;
+  line-height: 0.8;
+  color: #3CD3FC;
+  text-shadow: 0 0 24px rgba(60, 211, 252, 0.35);
+}
+
+.mobile-hero-kpi .unit {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: left;
+  color: rgba(233, 225, 209, 0.55);
+  line-height: 1.3;
 }
 
 .mobile-header-buttons {
@@ -404,24 +446,37 @@ html, body {
   padding: 0 16px 32px;
   max-width: 100vw;
   box-sizing: border-box;
+  /* 瑞士手法：CSS counter 给每个 section 自动编号，零维护 */
+  counter-reset: msec;
 }
 
 .mobile-section {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .mobile-section-header {
   display: flex;
   align-items: baseline;
   gap: 8px;
-  margin-bottom: 10px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid rgba(60, 211, 252, 0.15);
+  margin-bottom: 12px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(60, 211, 252, 0.16);
+}
+
+/* 自动编号：01 02 03 …（瑞士国际主义的 mono 序号节奏） */
+.mobile-section-header::before {
+  counter-increment: msec;
+  content: counter(msec, decimal-leading-zero);
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 12px;
+  color: rgba(60, 211, 252, 0.55);
+  letter-spacing: 0.06em;
+  align-self: center;
 }
 
 .mobile-section-en {
   font-family: 'Hylia Serif', 'Cinzel', serif;
-  font-size: 14px;
+  font-size: 15px;
   color: #3CD3FC;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -430,6 +485,7 @@ html, body {
 .mobile-section-zh {
   font-size: 12px;
   color: rgba(233, 225, 209, 0.55);
+  margin-left: auto;
 }
 
 /* Compact card — for small components that already fit */
@@ -437,10 +493,10 @@ html, body {
   background: rgba(0, 0, 0, 0.28);
   border: 1px solid rgba(233, 225, 209, 0.06);
   border-radius: 8px;
-  padding: 16px 12px;
+  padding: 18px 12px;
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
   justify-content: center;
 }
@@ -450,11 +506,11 @@ html, body {
   background: rgba(0, 0, 0, 0.28);
   border: 1px solid rgba(233, 225, 209, 0.06);
   border-radius: 8px;
-  padding: 16px 12px;
+  padding: 18px 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
 }
 
@@ -465,9 +521,32 @@ html, body {
   width: 100%;
 }
 
+/* 章节分隔（瑞士手法：居中 mono 标签 + 两侧发丝线，单锚点希卡蓝） */
 .mobile-divider {
-  margin: 28px 0;
-  opacity: 0.6;
+  margin: 36px 0 30px;
+}
+
+.mobile-chapter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: rgba(60, 211, 252, 0.7);
+}
+
+.mobile-chapter::before,
+.mobile-chapter::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(60, 211, 252, 0.18);
+}
+
+.mobile-chapter span {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .mobile-footer {
