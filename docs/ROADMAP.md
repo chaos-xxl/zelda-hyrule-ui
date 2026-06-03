@@ -116,8 +116,8 @@
 | 决策 | 原因 |
 |------|------|
 | ❌ 不改项目名（保留 `zelda-hyrule-ui`） | 保推广连续性。已知代价：商标暴露面大，靠"非官方+非商用"姿态缓解。 |
-| ❌ 不 fork 合并归藏代码 | 归藏是 AGPL，合并会让本项目被迫转 AGPL，摧毁组件库的可被采用性。只做互操作。 |
-| ❌ 不转 AGPL | 对"想被广泛 import"的组件库等于自杀。坚持 MIT。 |
+| ❌ 不 fork 合并归藏代码 | 归藏是 AGPL，合并会让本项目被迫转 AGPL，摧毁组件库的可被采用性。只做互操作（路径 A）。 |
+| ❌ 不转 AGPL | 已封档复盘：star 是唯一 KPI，而 license 对 star 权重≈0；转 AGPL 在 star KPI 下性价比为负。详见 `LAYOUT_INTEGRATION_PLAN.md` §11。坚持 MIT。 |
 | ❌ 不商业化 | 这是 Nintendo IP "粉丝创作"叙事能站住的前提。 |
 | ⚠️ 高精度还原必须 Figma 节点级 | 绝不用 emoji/近似图形。这是 Reddit "AI slop" 的教训。 |
 
