@@ -789,6 +789,54 @@ function highlightCode(code: string): React.ReactNode[] {
 
 // ─── Code Example Component ──────────────────────────────────────────────────
 
+const CopyButton: React.FC<{ text: string }> = ({ text }) => {
+  const [copied, setCopied] = React.useState(false)
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(text)
+    } catch {
+      // Fallback for non-secure contexts / older browsers
+      const ta = document.createElement('textarea')
+      ta.value = text
+      ta.style.position = 'fixed'
+      ta.style.opacity = '0'
+      document.body.appendChild(ta)
+      ta.select()
+      try { document.execCommand('copy') } catch { /* noop */ }
+      document.body.removeChild(ta)
+    }
+    setCopied(true)
+    window.setTimeout(() => setCopied(false), 1600)
+  }
+
+  return (
+    <button
+      type="button"
+      className={`doc-copy-btn${copied ? ' is-copied' : ''}`}
+      onClick={handleCopy}
+      aria-label={copied ? 'Copied' : 'Copy code'}
+    >
+      {copied ? (
+        <>
+          <svg viewBox="0 0 16 16" width="13" height="13" fill="none" aria-hidden="true">
+            <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Copied
+        </>
+      ) : (
+        <>
+          <svg viewBox="0 0 16 16" width="13" height="13" fill="none" aria-hidden="true">
+            <rect x="5.5" y="5.5" width="8" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
+            <path d="M3.5 10.5H2.5C2.5 10.5 2.5 2.5 2.5 2.5C2.5 2.5 10.5 2.5 10.5 2.5V3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Copy
+        </>
+      )}
+    </button>
+  )
+}
+
 const CodeExample: React.FC<{ componentName: string }> = ({ componentName }) => {
   const code = CODE_EXAMPLES[componentName]
   if (!code) return null
@@ -797,6 +845,7 @@ const CodeExample: React.FC<{ componentName: string }> = ({ componentName }) => 
     <div className="doc-section">
       <div className="doc-section-badge">Usage</div>
       <div className="doc-code-block">
+        <CopyButton text={code} />
         <pre>{highlightCode(code)}</pre>
       </div>
     </div>

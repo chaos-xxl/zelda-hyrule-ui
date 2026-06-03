@@ -55,7 +55,7 @@
 | 事项 | 优先级 | 说明 |
 |------|--------|------|
 | 移动端 Demo 适配（任务 1 自研 + 任务 2 借归藏） | 🟢 P1 | 见「🔜 计划中」的两任务拆分。痛点 70% 是组件级适配（自研 AutoFit，归藏帮不了），30% 是页面框架（可借归藏方法论）。**先做任务 1。** |
-| Usage Snippet 加「一键复制」按钮 | 🟡 P2 | **现状：`#/docs` 每个组件已有 Usage 代码块**（展示 `import { HealthBar } from 'zelda-hyrule-ui'`），但要手动选中复制。**只差** copy-to-clipboard 按钮。小改进，别当大工程。防"中看不中用"的印象。 |
+| Usage Snippet 加「一键复制」按钮 ✅ | 🟡 P2 | 已完成：`#/docs` 每个组件 Usage 代码块右上角加了一键复制按钮（clipboard API + execCommand 兜底，Copy→Copied→自动复位，希卡蓝 hover/focus 态）。67 个代码块全覆盖。 |
 | A11y 无障碍体系化 | 🟡 P2 | **现状：已有零散基础**（Modal `role=dialog`、Toast `role=alert`、多个组件有 `aria-label`/`aria-pressed`，还有 `references/accessibility.md`）。需：①全组件审一遍补齐缺失 `aria-label`（尤其纯图标按钮）；②确认键盘 Tab + 希卡蓝 focus-visible 焦点环真生效；③跑 axe/lighthouse a11y 扫描拿分数。**在 r/reactjs 这是"玩具 vs 专业库"分水岭，做完可作宣传卖点。** |
 
 ### C. 组件质量 / 还原度
@@ -80,7 +80,7 @@
 
 | 事项 | 优先级 | 说明 |
 |------|--------|------|
-| npm 发布新版本 | 🟢 P1 🔒 | 两波组件升级后还没发版。需先 `npm login`（之前 401 失败）。发版前 bump version + 打 tag。 |
+| npm 发布新版本 ✅ | 🟢 P1 | 已发 **0.2.0**（线上 latest）；git tag v0.2.0 + GitHub Release 都已建。下次发版提醒：2FA 可用 Automation token 免 OTP。 |
 | README 持续打磨 | 🟡 P2 | Reddit 反馈"文档写得糟"。已优化一轮，持续改进。 |
 | 合规姿态维护 | 🟢 P1 | 已加 Nintendo 非官方声明（README banner + npm 描述 + 页脚 + ATTRIBUTION 两层权利）。**铁律：永不商业化**，收到 takedown 立即配合。 |
 
@@ -97,6 +97,8 @@
 
 | 事项 | 说明 | 关联文档 |
 |------|------|---------|
+| Usage 一键复制按钮 | `#/docs` 67 个代码块加复制按钮（clipboard + 兜底，Copy→Copied 反馈）。提"专业库"转化信号。 | `ROADMAP.md` B 区 |
+| v0.2.0 发布 | npm publish 0.2.0（线上 latest）+ git tag + GitHub Release（中英 release notes）。 | GitHub Releases |
 | 组件高精度还原 第三波 | 9 个手画近似组件升级到 Figma 节点级：卢比宝石(7切面)/卢比计数/任务类型图标/任务列表(共用 questIcons)/地图任务标记(环形靶标)/地图信标(书签针)/攻防图标(剑盾)/英雄位置(风筝箭头)/任务通知(环形靶标)。Logo 三角力量保留，"ZELDA"文字 IP 安全不还原。 | `ROADMAP.md` C 区 |
 | 移动端适配 P1（任务1+2） | 任务1：修复 docs 页手机溢出（FitScale 缩放 + min-width:0 容器约束 + tap 目标 79→12）。任务2：用归藏瑞士方法论重排 MobilePage 框架（KPI 大字报 + 自动编号 + 章节标记）。新增 `audit-mobile.mjs` QA 工具。 | `ROADMAP.md`（移动端两任务） |
 | 排版互操作桥接（路径 A） | 新建 `layout-bridge.md`，token 覆盖映射 + 退化方案；SKILL/README 更新。骨+皮，保持 MIT。 | `LAYOUT_INTEGRATION_PLAN.md` |

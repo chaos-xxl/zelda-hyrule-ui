@@ -273,12 +273,51 @@ html, body {
 }
 
 .doc-code-block {
+  position: relative;
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(60, 211, 252, 0.12);
   border-radius: 0 6px 6px 6px;
-  padding: 24px 28px;
+  padding: 44px 28px 24px;
   overflow-x: auto;
   max-width: 100%;
+}
+
+/* 一键复制按钮 */
+.doc-copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 11.5px;
+  line-height: 1;
+  color: rgba(233, 225, 209, 0.7);
+  background: rgba(10, 20, 40, 0.7);
+  border: 1px solid rgba(60, 211, 252, 0.25);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  backdrop-filter: blur(4px);
+}
+
+.doc-copy-btn:hover {
+  color: #3CD3FC;
+  border-color: rgba(60, 211, 252, 0.6);
+  box-shadow: 0 0 8px rgba(60, 211, 252, 0.25);
+}
+
+.doc-copy-btn:focus-visible {
+  outline: 2px solid #3CD3FC;
+  outline-offset: 2px;
+}
+
+.doc-copy-btn.is-copied {
+  color: #6FD49C;
+  border-color: rgba(111, 212, 156, 0.5);
 }
 
 .doc-code-block pre {
@@ -644,7 +683,13 @@ html, body {
   }
 
   .doc-code-block {
-    padding: 14px 16px;
+    padding: 40px 16px 14px;
+  }
+
+  /* Copy button: comfortable tap size on touch screens */
+  .doc-copy-btn {
+    padding: 8px 12px;
+    font-size: 12px;
   }
 
   .doc-code-block pre {
