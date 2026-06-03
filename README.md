@@ -159,6 +159,10 @@ The simplest way to use this library with AI:
 
    或者安装包后参考 `AI_USAGE.md` 获取完整 API
 
+4. **For PPT / social-card layouts**: pair with a dedicated layout skill (e.g. guizang's PPT / social-card skills) and let the AI apply the Zelda skin on top — see [`skill/references/layout-bridge.md`](skill/references/layout-bridge.md). (Interop only; their AGPL code is never merged here — this project stays MIT.)
+
+   **做 PPT / 图文排版**：可配合专门的排版 skill（如归藏的 PPT / 图文 skill），让 AI 在其版式上套塞尔达皮——见 [`skill/references/layout-bridge.md`](skill/references/layout-bridge.md)。（仅互操作，不合并其 AGPL 代码，本项目保持 MIT。）
+
 ### AI Documentation Files / AI 文档
 
 | File | For | Purpose |
@@ -166,12 +170,14 @@ The simplest way to use this library with AI:
 | [`skill/SKILL.md`](skill/SKILL.md) | Cursor / Copilot | Routing-layer skill (progressive disclosure) — design rules + load-on-demand `references/` for pixel-level specs |
 | [`AI_USAGE.md`](AI_USAGE.md) | AI assistants | Complete API reference — all props, types, defaults |
 | [`DESIGN_PROMPT.md`](DESIGN_PROMPT.md) | v0 / Figma AI / MJ | One-click design generation prompts |
+| [`skill/references/layout-bridge.md`](skill/references/layout-bridge.md) | Cursor / Claude Code | Layout interop — pair with a layout skill to make Zelda-style PPT / 图文 / 封面 (skin-over-skeleton) |
 
 | 文件 | 面向 | 用途 |
 |------|-----|---------|
 | [`skill/SKILL.md`](skill/SKILL.md) | Cursor / Copilot | 路由层 skill（渐进披露）——设计铁律 + 按需加载的 `references/` 像素级规范 |
 | [`AI_USAGE.md`](AI_USAGE.md) | AI 编程助手 | 完整 API 手册——所有 props、类型、默认值 |
 | [`DESIGN_PROMPT.md`](DESIGN_PROMPT.md) | v0 / Figma AI / MJ | 一键设计生成提示词 |
+| [`skill/references/layout-bridge.md`](skill/references/layout-bridge.md) | Cursor / Claude Code | 排版互操作——配合排版 skill 做塞尔达风 PPT / 图文 / 封面（骨 + 皮） |
 
 ---
 

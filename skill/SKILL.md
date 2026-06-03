@@ -82,6 +82,7 @@ export default function App() {
 | 当前任务 | 加载文件 |
 |---------|---------|
 | 做完整页面 / 整体风格（网页、PPT、应用界面） | `references/ui-cases.md` + `references/recipes.md` |
+| 做 PPT / 网页 PPT / 小红书图文 / 封面海报（信息排版） | `references/layout-bridge.md` |
 | 需要某个区块的组件组合（如导航栏、卡片列表、HUD overlay） | `references/recipes.md` |
 | 需要某组件的精确样式（颜色、尺寸、阴影、动画） | `references/components-full.md` |
 | 需要 8 个核心组件的深度示例 | `references/components-core.md` |
@@ -289,3 +290,4 @@ export default function App() {
 | `references/theming.md` | 主题定制（3 种路径） |
 | `references/accessibility.md` | 无障碍（ARIA / 对比度 / 焦点环） |
 | `references/svg-paths.md` | 高频 SVG path 数据索引 |
+| `references/layout-bridge.md` | 排版互操作桥接——做 PPT / 图文 / 封面时，配合归藏排版 skill 换塞尔达皮（骨 + 皮） |
