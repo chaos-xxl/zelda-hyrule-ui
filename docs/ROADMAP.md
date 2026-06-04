@@ -97,6 +97,7 @@
 
 | 事项 | 说明 | 关联文档 |
 |------|------|---------|
+| SKILL.md 加「塞尔达味道命门组件」一节 | 在路由层（必读层）拎出 5 个风味担当组件（SheikahBackground+Scanlines / SheikahSymbol / Illustration / Logo / Divider），讲清优先级、典型场景、关键 props，加「风味起手式」骨架 + 5 条使用规则。补上"组件优先级"这层之前缺失的指引。同时复核 Logo-Full/Logo-Mark 两个 Figma 节点：确认是官方商标 logo，维持安全替代版不还原。 | `skill/SKILL.md` |
 | A11y 无障碍体系化 | 装饰 SVG 全加 `aria-hidden`(34处)；图标按钮补 `aria-label`+`aria-pressed`；div 可点击组件用 `interactiveProps()` 补 `role=button`+键盘激活；11 个交互组件加 `:focus-visible` 焦点环；Modal 加 Escape 关闭。新增 `audit-a11y.mjs` QA 工具 + `src/utils/a11y.ts`。 | `skill/references/accessibility.md` |
 | docs 展示覆盖核查 | 用 `audit-docs-coverage.mjs` 比对 导出 vs 侧边栏 vs DemoSection，发现 7 个组件"做了但 docs 找不到"(Illustration + LoadingIcon/LoadingHeart/HorseSpur/QuickSelector/ModalTutorial/MapGrid)，全部补上侧边栏+中文名+示例+props+展示区。现 74 个非 screen 组件 100% 有文档。 | `scripts/audit-docs-coverage.mjs` |
 | 完整业务 demo：登录页 | `#/showcase` 新增 SHOT 06 登录页（用 SheikahBackground/Symbol/Button/ActionSet + 双层边框输入框拼成真实可用界面）。回击"中看不中用(没真实业务组件)"的批评，也是发帖素材。 | `demo/App.tsx` ShowcasePage |

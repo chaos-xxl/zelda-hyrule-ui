@@ -21,6 +21,7 @@
 - Reference 加载路由（你该读哪个文件）
 - Design Token 速查（最高频的色 / 字）
 - 设计铁律 8 条（硬约束）
+- 塞尔达味道命门组件（优先用哪几个组件）
 - 禁止模式与正确示例（护栏）
 
 ---
@@ -158,6 +159,48 @@ export default function App() {
 6. **禁止冷色** — 不用冷蓝（`#0066ff`）、冷灰（`#666`）。所有灰色带暖色调。唯一的蓝色是希卡蓝 `#3CD3FC`。
 7. **SVG 优先** — **小图标和装饰**（按钮里的图标、心心、箭头等）使用 inline SVG（`<svg><path>`），保证矢量清晰、可用 `currentColor` 着色。**大尺寸装饰图**（如 `Illustration` 组件里的剑、回忆花，~30-160KB）可用 `<img src>` 引入 SVG URL，避免拖慢首屏。判断标准：可着色 / 需动画 → inline；纯展示大图 → `<img>`。
 8. **焦点色** — focus-visible 用希卡蓝 `#3CD3FC`（outline: 2px solid）。禁止浏览器默认蓝色焦点环。
+
+---
+
+## 🗝️ 塞尔达味道命门组件（先用这几个）
+
+不是所有组件权重相等。下面 5 个（组）是**"塞尔达味道"的主要来源**——它们决定一个界面"一眼像不像塞尔达"。**做任何塞尔达风格页面，先想这几个怎么用，再去拼别的功能组件。** 用对了事半功倍，缺了它们就算配色对、字体对，也只是"暗色 UI"而不是"塞尔达 UI"。
+
+| 组件 | 为什么是味道命门 | 典型场景 | 关键 props |
+|------|----------------|---------|-----------|
+| `SheikahBackground` + `SheikahScanlines` | 暗色科技感面板 + CRT 扫描线，**最强希卡氛围底座** | 几乎所有页面的最外层容器 | `color="darkBlue"`/`"blueGrey"`；`animated` + `opacity={0.08~0.15}` |
+| `SheikahSymbol` | 希卡之眼标志，**一眼认出是塞尔达的视觉锚点** | 标题屏、加载页、空状态、装饰锚点 | `size`（默认 380）、`outline`（默认 true） |
+| `Illustration` | 大尺寸游戏美术（剑 / 卢比 / 希卡之石 / 回忆花），**留白区氛围拉满** | 页面或区块背景、PPT 背景、hero 区 | `illustration="sword"\|"rupee"\|"slate"\|"memories"`；`opacity={0.3~0.6}` |
+| `Logo` | 品牌锚点（**用我们的安全替代版，不是官方商标 logo**） | 标题屏、页头 | `variant="full"\|"mark"`、`width` |
+| `Divider` | 希卡 / 金色分隔纹样，比普通线更"塞尔达" | 区块之间的分隔 | `variant="sheikah"\|"golden"\|"ornament"\|"subtle"` |
+
+### 风味起手式（任何塞尔达页面的默认骨架）
+
+```tsx
+import { SheikahBackground, SheikahScanlines, SheikahSymbol, Illustration } from 'zelda-hyrule-ui'
+
+// 1. 永远先用 SheikahBackground + Scanlines 打底（味道地基）
+<SheikahBackground color="darkBlue">
+  <SheikahScanlines animated opacity={0.1} />
+
+  {/* 2. 大留白区放 Illustration 做背景氛围（opacity 压低，别抢内容） */}
+  <Illustration illustration="sword" opacity={0.35} />
+
+  {/* 3. 视觉焦点 / 标题区放 SheikahSymbol 做锚点 */}
+  <div style={{ position: 'relative', zIndex: 1 }}>
+    <SheikahSymbol size={120} />
+    {/* ...你的功能组件（HUD / 对话 / 按钮等）放这里 */}
+  </div>
+</SheikahBackground>
+```
+
+### 命门组件使用规则
+
+1. **底座优先**：塞尔达页面**先铺 `SheikahBackground` + `SheikahScanlines`**，再考虑放功能组件。这是味道地基，跳过它直接堆功能组件 = 不够味。
+2. **锚点点睛**：每个主要视图至少有一个 `SheikahSymbol` 或 `Illustration` 当视觉锚点，让人一眼锁定"这是塞尔达"。
+3. **Illustration 永远当背景**：`opacity` 压到 `0.3~0.6`，放在内容**下层**（内容套 `position: relative; zIndex: 1`），它是氛围不是主角，别让它抢可读性。
+4. **扫描线要克制**：`SheikahScanlines` 的 `opacity` 控制在 `0.08~0.15`，高了像电视坏了。`animated` 适合加载 / 标题屏，信息密集页可以静态。
+5. **Logo 用安全替代版**：`Logo` 组件是力量三角 + 通用衬线字，**刻意不还原官方商标 logo 美术**（IP 安全，见 `ATTRIBUTION.md`）。不要试图换成官方 logo 图。
 
 ---
 
