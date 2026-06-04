@@ -26,12 +26,12 @@ const StatusHealing: React.FC<StatusHealingProps> = ({ type, className, style })
   return (
     <div className={classNames(styles.container, className)} style={style}>
       {isStamina ? (
-        <svg width="30" height="30" viewBox="0 0 60.75 60.75" fill="none">
+        <svg aria-hidden="true" width="30" height="30" viewBox="0 0 60.75 60.75" fill="none">
           <path d="M60.75 30.375C60.75 47.1506 47.1506 60.75 30.375 60.75C13.5994 60.75 0 47.1506 0 30.375C0 13.5994 13.5994 0 30.375 0C47.1506 0 60.75 13.5994 60.75 30.375ZM19.7438 30.375C19.7438 36.2465 24.5035 41.0062 30.375 41.0062C36.2465 41.0062 41.0062 36.2465 41.0062 30.375C41.0062 24.5035 36.2465 19.7438 30.375 19.7438C24.5035 19.7438 19.7438 24.5035 19.7438 30.375Z" fill="#13FF59" />
         </svg>
       ) : (
         Array.from({ length: Math.min(count, 6) }, (_, i) => (
-          <svg key={i} width="24" height="20" viewBox="0 0 24.18 21.75" fill="none">
+          <svg aria-hidden="true" key={i} width="24" height="20" viewBox="0 0 24.18 21.75" fill="none">
             <path d={HEART_PATH} fill={isBonus ? '#FFE465' : '#F1362F'} />
           </svg>
         ))

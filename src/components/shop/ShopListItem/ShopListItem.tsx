@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import styles from './shopListItem.module.less'
+import { interactiveProps } from '../../../utils/a11y'
 
 export interface ShopListItemProps {
   /** 物品名称 */
@@ -16,7 +17,7 @@ export interface ShopListItemProps {
 }
 
 const ShopListItem: React.FC<ShopListItemProps> = ({ name, price, hovered = false, onClick, className, style }) => (
-  <div className={classNames(styles.container, { [styles.hovered]: hovered }, className)} style={style} onClick={onClick}>
+  <div className={classNames(styles.container, { [styles.hovered]: hovered }, className)} style={style} {...interactiveProps(onClick)}>
     <div className={styles.innerBorder} />
     <span className={styles.name}>{name}</span>
     <span className={styles.price}>{price}</span>

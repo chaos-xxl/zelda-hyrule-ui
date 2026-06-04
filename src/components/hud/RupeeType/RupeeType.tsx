@@ -34,7 +34,7 @@ const RUPEE_COLORS: Record<RupeeVariant, { light: string; dark: string }> = {
 const RupeeIcon: React.FC<{ color: RupeeVariant; id: string }> = ({ color, id }) => {
   const { light, dark } = RUPEE_COLORS[color]
   return (
-    <svg width="100%" height="100%" viewBox="0 0 25 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg aria-hidden="true" width="100%" height="100%" viewBox="0 0 25 46" fill="none" xmlns="http://www.w3.org/2000/svg">
       {/* 右侧切角（暗） */}
       <path d="M25 10.86L18.75 15.97V30.03L25 35.14V10.86Z" fill={`url(#${id}-d)`} />
       {/* 左侧切角（中） */}

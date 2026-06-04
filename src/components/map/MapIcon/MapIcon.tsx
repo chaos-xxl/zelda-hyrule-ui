@@ -29,7 +29,7 @@ const MapIcon: React.FC<MapIconProps> = ({ icon, size = 50, className, style }) 
   const { path, viewBox, fill } = ICON_DATA[icon]
   return (
     <div className={classNames(styles.container, className)} style={{ width: size, height: size, ...style }}>
-      <svg viewBox={viewBox} fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.icon}>
+      <svg aria-hidden="true" viewBox={viewBox} fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.icon}>
         <path d={path} fill={fill} />
       </svg>
     </div>

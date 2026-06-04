@@ -47,7 +47,7 @@ const StaminaWheel: React.FC<StaminaWheelProps> = ({
       style={{ width: size, height: size, ...style }}
     >
       {/* 轨道（黑色半透明环） */}
-      <svg
+      <svg aria-hidden="true"
         className={styles.track}
         viewBox="0 0 60.75 60.75"
         fill="none"
@@ -67,7 +67,7 @@ const StaminaWheel: React.FC<StaminaWheelProps> = ({
           WebkitMaskImage: `conic-gradient(from -90deg, black ${angle}deg, transparent ${angle}deg)`,
         }}
       >
-        <svg
+        <svg aria-hidden="true"
           className={styles.wheel}
           viewBox="0 0 60.75 60.75"
           fill="none"

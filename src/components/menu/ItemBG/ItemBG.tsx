@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import styles from './itemBG.module.less'
+import { interactiveProps } from '../../../utils/a11y'
 
 export type ItemBGState = 'empty' | 'filled' | 'selected' | 'equipped' | 'sheikahSelect'
 
@@ -21,7 +22,7 @@ export interface ItemBGProps {
 
 /** 角落装饰 SVG（12×12px，精确还原 Figma） */
 const CornerSVG: React.FC<{ rotation: number }> = ({ rotation }) => (
-  <svg
+  <svg aria-hidden="true"
     width="12"
     height="12"
     viewBox="0 0 12 12"
@@ -47,7 +48,7 @@ const ItemBG: React.FC<ItemBGProps> = ({
     <div
       className={classNames(styles.container, styles[state], className)}
       style={{ width: size, height: size, ...style }}
-      onClick={onClick}
+      {...interactiveProps(onClick)}
     >
       {/* 内层边框 */}
       <div className={styles.innerBorder} />

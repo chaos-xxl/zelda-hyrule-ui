@@ -22,7 +22,7 @@ const HeartIcon: React.FC<{ type: 'filled' | 'empty' | 'bonus' }> = ({ type }) =
   const fill = type === 'filled' ? '#F1362F' : type === 'bonus' ? '#FFE465' : '#363930'
 
   return (
-    <svg width="30" height="24" viewBox="0 0 24.18 21.75" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg aria-hidden="true" width="30" height="24" viewBox="0 0 24.18 21.75" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d={HEART_PATH} fill={fill} />
     </svg>
   )

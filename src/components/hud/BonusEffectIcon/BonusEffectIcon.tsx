@@ -53,7 +53,7 @@ const BonusEffectIcon: React.FC<BonusEffectIconProps> = ({ icon, arrow = false, 
     <div className={classNames(styles.container, className)} style={{ width: size, height: size, ...style }}>
       <img src={EFFECT_ICONS[icon]} alt="" className={styles.icon} />
       {arrow && (
-        <svg viewBox="0 0 10 8" fill="none" className={styles.arrow}>
+        <svg aria-hidden="true" viewBox="0 0 10 8" fill="none" className={styles.arrow}>
           <path d="M5 0L10 8H0L5 0Z" fill="white" />
         </svg>
       )}

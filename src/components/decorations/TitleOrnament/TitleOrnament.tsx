@@ -18,7 +18,7 @@ const ORNAMENT_PATH = 'M31.451 9.13059C30.8963 7.24598 29.2323 5.86136 27.2117 5
 
 const TitleOrnament: React.FC<TitleOrnamentProps> = ({ side = 'left', scale = 1, className, style }) => (
   <div className={classNames(styles.container, className)} style={{ transform: `scale(${scale})`, ...style }}>
-    <svg
+    <svg aria-hidden="true"
       width="50"
       height="25"
       viewBox="0 0 49.95 25.01"

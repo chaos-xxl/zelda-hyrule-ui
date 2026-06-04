@@ -29,7 +29,7 @@ const MapBeacon: React.FC<MapBeaconProps> = ({ color, flare = false, size = 30, 
     <div className={classNames(styles.container, { [styles.flare]: flare }, className)} style={{ width: size, height: flare ? size * 3 : size, ...style }}>
       {flare && <div className={styles.beam} style={{ background: `linear-gradient(to top, ${hex}, transparent)` }} />}
       {/* 信标针：圆角方框 + 折角书签纹样，从 Figma node 151:3884 精确导出（可着色） */}
-      <svg viewBox="0 0 60 60" fill="none" className={styles.pin} style={{ filter: `drop-shadow(0 0 5px ${hex})` }}>
+      <svg aria-hidden="true" viewBox="0 0 60 60" fill="none" className={styles.pin} style={{ filter: `drop-shadow(0 0 5px ${hex})` }}>
         <path
           fillRule="evenodd"
           clipRule="evenodd"

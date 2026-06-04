@@ -31,9 +31,9 @@ const ModalTutorial: React.FC<ModalTutorialProps> = ({
     <div className={classNames(styles.overlay, className)} style={style}>
       <div className={styles.modal}>
         <p className={styles.text}>{text}</p>
-        <button className={styles.continueBtn} onClick={onContinue}>
+        <button className={styles.continueBtn} onClick={onContinue} type="button">
           <span>{continueLabel}</span>
-          <svg
+          <svg aria-hidden="true"
             className={styles.arrow}
             viewBox="0 0 12 12"
             fill="none"

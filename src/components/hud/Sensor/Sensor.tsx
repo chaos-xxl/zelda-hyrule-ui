@@ -26,10 +26,10 @@ const Sensor: React.FC<SensorProps> = ({ active = true, plus = false, size = 50,
 
   return (
     <div className={classNames(styles.container, { [styles.active]: active }, className)} style={{ width: size, height: size, ...style }}>
-      <svg viewBox="0 0 50 50" fill="none" className={styles.bg}>
+      <svg aria-hidden="true" viewBox="0 0 50 50" fill="none" className={styles.bg}>
         <circle cx="25" cy="25" r="25" fill="black" fillOpacity="0.8" />
       </svg>
-      <svg viewBox="0 0 34 37" fill="none" className={styles.icon}>
+      <svg aria-hidden="true" viewBox="0 0 34 37" fill="none" className={styles.icon}>
         {SENSOR_PATHS.map((d, i) => (
           <path key={i} d={d} fill={color} />
         ))}

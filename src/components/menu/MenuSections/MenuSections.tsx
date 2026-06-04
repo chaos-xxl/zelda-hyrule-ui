@@ -63,10 +63,13 @@ const MenuSections: React.FC<MenuSectionsProps> = ({
         return (
           <button
             key={section}
+            type="button"
             className={classNames(styles.item, { [styles.active]: isActive })}
             onClick={() => onSelect?.(section)}
+            aria-label={section}
+            aria-pressed={isActive}
           >
-            <svg viewBox={viewBox} fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.icon}>
+            <svg aria-hidden="true" viewBox={viewBox} fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.icon}>
               <path d={path} fill={isActive ? '#E2DED3' : 'rgba(226,222,211,0.4)'} />
             </svg>
           </button>

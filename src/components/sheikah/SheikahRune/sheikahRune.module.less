@@ -4,6 +4,7 @@
   background: rgba(10, 20, 40, 0.6); display: flex; align-items: center; justify-content: center;
   cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   &:hover { border-color: rgba(60, 211, 252, 0.6); box-shadow: 0 0 6px rgba(60, 211, 252, 0.3); }
+  &:focus-visible { outline: 2px solid #3CD3FC; outline-offset: 2px; }
 }
 .active { border-color: #3CD3FC; box-shadow: 0 0 10px #4FC0FF, 0 1px 11px #0A8DD7; background: rgba(60, 211, 252, 0.1); }
 .icon {

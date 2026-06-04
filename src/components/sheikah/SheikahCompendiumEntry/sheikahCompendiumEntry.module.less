@@ -6,6 +6,7 @@
   cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .innerBorder { position: absolute; inset: 3px; border: 1px solid rgba(60, 211, 252, 0.2); border-radius: 2px; pointer-events: none; transition: border-color 0.25s; }
+.container:focus-visible { outline: 2px solid #3CD3FC; outline-offset: 2px; }
 .hovered .innerBorder { border-color: #3CD3FC; }
 .hovered { box-shadow: 0 0 8px #4FC0FF; }
 .image { width: 80%; height: 80%; display: flex; align-items: center; justify-content: center; }

@@ -33,7 +33,7 @@ const Logo: React.FC<LogoProps> = ({
   return (
     <div className={cls} style={{ width: w, height: h, ...style }}>
       {variant === 'full' ? (
-        <svg
+        <svg aria-hidden="true"
           className={styles.svg}
           viewBox="0 0 200 80"
           fill="none"
@@ -85,7 +85,7 @@ const Logo: React.FC<LogoProps> = ({
           </text>
         </svg>
       ) : (
-        <svg
+        <svg aria-hidden="true"
           className={styles.svg}
           viewBox="0 0 48 48"
           fill="none"

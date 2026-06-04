@@ -41,6 +41,15 @@ const Modal: React.FC<ModalProps> = ({
     return () => { document.body.style.overflow = '' }
   }, [open])
 
+  useEffect(() => {
+    if (!open || !onClose) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [open, onClose])
+
   if (!open) return null
 
   const handleMaskClick = () => {

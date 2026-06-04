@@ -16,7 +16,7 @@ export interface MapCursorProps {
 const MapCursor: React.FC<MapCursorProps> = ({ rightSide = true, action = false, locationName = 'Location', className, style }) => (
   <div className={classNames(styles.container, { [styles.right]: rightSide }, className)} style={style}>
     <div className={styles.cursor}>
-      <svg viewBox="0 0 20 20" fill="none" className={styles.crosshair}>
+      <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className={styles.crosshair}>
         <circle cx="10" cy="10" r="8" stroke="#E2DED3" strokeWidth="1.5" fill="none" />
         <line x1="10" y1="2" x2="10" y2="6" stroke="#E2DED3" strokeWidth="1.5" />
         <line x1="10" y1="14" x2="10" y2="18" stroke="#E2DED3" strokeWidth="1.5" />

@@ -6,6 +6,7 @@
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .innerBorder { position: absolute; inset: 3px; border: 1px solid rgba(60, 211, 252, 0.2); border-radius: 2px; pointer-events: none; transition: border-color 0.25s; }
+.button:focus-visible { outline: 2px solid #3CD3FC; outline-offset: 2px; }
 .selected .innerBorder { border-color: #3CD3FC; }
 .selected { box-shadow: 0 0 8px rgba(60, 211, 252, 0.3); }
 .label { position: relative; font-family: 'Roboto', sans-serif; font-size: 24px; font-weight: 500; font-style: italic; color: #3CD3FC; }

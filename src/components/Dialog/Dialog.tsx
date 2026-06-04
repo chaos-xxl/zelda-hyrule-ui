@@ -20,7 +20,7 @@ const Dialog: React.FC<DialogProps> = ({ type = 'speech', speaker, children, sho
     </svg>
     {speaker && <div className={styles.speaker}>{speaker}</div>}
     <div className={styles.content}>{children}</div>
-    {showContinue && <span className={styles.continueArrow} aria-hidden="true"><svg width="40" height="26" viewBox="0 0 38 25.4" fill="none"><path d="M19 25.4L0 6.4L6.4 0L19 12.6L31.6 0L38 6.4L19 25.4Z" fill="rgba(226,222,211,0.5)" /></svg></span>}
+    {showContinue && <span className={styles.continueArrow} aria-hidden="true"><svg aria-hidden="true" width="40" height="26" viewBox="0 0 38 25.4" fill="none"><path d="M19 25.4L0 6.4L6.4 0L19 12.6L31.6 0L38 6.4L19 25.4Z" fill="rgba(226,222,211,0.5)" /></svg></span>}
   </div>
 )
 

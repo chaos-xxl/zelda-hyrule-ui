@@ -28,7 +28,7 @@ const MapGrid: React.FC<MapGridProps> = ({
 
   return (
     <div className={cls} style={style}>
-      <svg
+      <svg aria-hidden="true"
         className={styles.svg}
         viewBox={`0 0 ${columns * 100} ${rows * 100}`}
         fill="none"

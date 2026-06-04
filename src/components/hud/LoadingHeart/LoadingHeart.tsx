@@ -13,7 +13,7 @@ const HEART_PATH = 'M21.7675 12.7969L12.1037 21.7487L2.05872 11.598C-0.686241 8.
 
 const LoadingHeart: React.FC<LoadingHeartProps> = ({ shown = true, className, style }) => (
   <div className={classNames(styles.container, { [styles.hidden]: !shown }, className)} style={style}>
-    <svg width="24" height="20" viewBox="0 0 24.18 21.75" fill="none">
+    <svg aria-hidden="true" width="24" height="20" viewBox="0 0 24.18 21.75" fill="none">
       <path d={HEART_PATH} fill={shown ? '#F1362F' : '#363930'} />
     </svg>
   </div>

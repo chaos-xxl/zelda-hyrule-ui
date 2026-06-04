@@ -25,7 +25,7 @@ const AimingReticle: React.FC<AimingReticleProps> = ({
 
   return (
     <div className={cls} style={{ width: size, height: size, ...style }}>
-      <svg
+      <svg aria-hidden="true"
         className={styles.icon}
         viewBox="0 0 64 64"
         fill="none"

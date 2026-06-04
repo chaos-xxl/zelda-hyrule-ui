@@ -2,15 +2,40 @@
 
 > Reference for `skill/SKILL.md`. 组件库已内置的 ARIA 属性、a11y 检查清单、焦点环规范、对比度数据。
 
-组件库已为以下组件添加 ARIA 属性，二次封装时保留即可：
+## 已内置的无障碍保障（v0.2.1+）
+
+组件库已系统化处理以下三层无障碍，二次封装时保留即可：
+
+### 1. ARIA 语义
 
 | 组件 | ARIA 属性 |
 |------|----------|
-| Modal | `role="dialog"`, `aria-modal="true"`, `aria-labelledby` |
+| Modal | `role="dialog"`, `aria-modal="true"`, `aria-labelledby`，按 `Escape` 关闭，关闭按钮 `aria-label="Close"` |
 | Toast | `role="alert"`, `aria-live="polite"` |
 | Dialog | `role="region"`, `aria-label={speaker}` |
 | SettingsToggle | `role="group"`, 箭头按钮 `aria-label` |
+| MenuSections | 每个分类按钮 `aria-label` + `aria-pressed`（图标按钮） |
+| NumberInput | ▲▼ 按钮 `aria-label="Increase/Decrease"` |
 | Button | 继承 `React.ButtonHTMLAttributes`，可传任意 `aria-*` |
+
+### 2. 装饰性 SVG 全部 `aria-hidden="true"`
+
+库内所有 inline `<svg>` 图标（34 处）均标记 `aria-hidden="true"`，符合图标库行业标准（Lucide/Heroicons 默认隐藏 SVG，由交互容器承载可访问名）。装饰图标不会污染屏幕阅读器输出。
+
+### 3. 键盘可达 + 可见焦点环
+
+- 所有原生 `<button>` 类组件（Button / ModalButton / DialogChoice / SheikahRune / SheikahCompendiumFilters / SheikahAlbumButton / NumberInput / SettingsToggle / MenuSections / Modal 三按钮 / ModalTutorial）均有 `:focus-visible` 希卡蓝焦点环。
+- 用 `<div>` 实现的可点击组件（QuestListItem / ShopListItem / ItemBG / SheikahCompendiumEntry），当传入 `onClick` 时，通过 `interactiveProps()` 工具自动补齐 `role="button"` + `tabIndex={0}` + Enter/Space 键盘激活 + 焦点环。未传 `onClick` 则保持非交互、不进 Tab 序列。
+
+```tsx
+// src/utils/a11y.ts — 给 div/span 实现的可点击元素补齐键盘无障碍
+import { interactiveProps } from '../../../utils/a11y'
+<div {...interactiveProps(onClick)} className={...}>...</div>
+```
+
+### A11y 自查
+
+跑 `node scripts/audit-a11y.mjs` 扫描全量组件，检查图标按钮缺 `aria-label`、`div` 挂 `onClick` 缺 `role`、`svg` 缺 `aria-hidden`、`img` 缺 `alt`。
 
 ### AI 生成代码时的 a11y 检查
 

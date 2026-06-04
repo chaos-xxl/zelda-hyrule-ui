@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import styles from './sheikahCompendiumEntry.module.less'
+import { interactiveProps } from '../../../utils/a11y'
 
 export interface SheikahCompendiumEntryProps {
   /** 是否已发现 */
@@ -20,7 +21,7 @@ export interface SheikahCompendiumEntryProps {
 const SheikahCompendiumEntry: React.FC<SheikahCompendiumEntryProps> = ({
   revealed = false, hovered = false, image, number, onClick, className, style,
 }) => (
-  <div className={classNames(styles.container, { [styles.revealed]: revealed, [styles.hovered]: hovered }, className)} style={style} onClick={onClick}>
+  <div className={classNames(styles.container, { [styles.revealed]: revealed, [styles.hovered]: hovered }, className)} style={style} {...interactiveProps(onClick)}>
     <div className={styles.innerBorder} />
     {revealed && image ? <div className={styles.image}>{image}</div> : <span className={styles.unknown}>?</span>}
     {number !== undefined && <span className={styles.number}>{String(number).padStart(3, '0')}</span>}

@@ -15,7 +15,7 @@ const DialogFloating: React.FC<DialogFloatingProps> = ({ text, type = 'dialog', 
   <div className={classNames(styles.container, styles[type], className)} style={style}>
     {type === 'dialog' ? (
       <>
-        <svg viewBox="0 0 310 70" fill="none" className={styles.bg} preserveAspectRatio="none">
+        <svg aria-hidden="true" viewBox="0 0 310 70" fill="none" className={styles.bg} preserveAspectRatio="none">
           <path fillRule="evenodd" clipRule="evenodd" d={FLOATING_BG_PATH} fill="black" fillOpacity="0.5" />
         </svg>
         <span className={styles.text}>{text}</span>

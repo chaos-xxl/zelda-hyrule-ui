@@ -51,7 +51,7 @@ const WeatherIcon: React.FC<WeatherIconProps> = ({
       className={classNames(styles.container, { [styles.glowing]: glowing }, className)}
       style={{ width: size, height: size, ...style }}
     >
-      <svg
+      <svg aria-hidden="true"
         viewBox={viewBox}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

@@ -17,9 +17,9 @@ export interface NumberInputProps {
 
 const NumberInput: React.FC<NumberInputProps> = ({ value, min = 1, max = 99, onChange, className, style }) => (
   <div className={classNames(styles.container, className)} style={style}>
-    <button className={styles.btn} onClick={() => onChange?.(Math.max(min, value - 1))}>▼</button>
+    <button type="button" className={styles.btn} onClick={() => onChange?.(Math.max(min, value - 1))} aria-label="Decrease">▼</button>
     <span className={styles.value}>{value}</span>
-    <button className={styles.btn} onClick={() => onChange?.(Math.min(max, value + 1))}>▲</button>
+    <button type="button" className={styles.btn} onClick={() => onChange?.(Math.min(max, value + 1))} aria-label="Increase">▲</button>
   </div>
 )
 

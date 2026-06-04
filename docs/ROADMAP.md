@@ -56,7 +56,7 @@
 |------|--------|------|
 | 移动端 Demo 适配（任务 1 自研 + 任务 2 借归藏） | 🟢 P1 | 见「🔜 计划中」的两任务拆分。痛点 70% 是组件级适配（自研 AutoFit，归藏帮不了），30% 是页面框架（可借归藏方法论）。**先做任务 1。** |
 | Usage Snippet 加「一键复制」按钮 ✅ | 🟡 P2 | 已完成：`#/docs` 每个组件 Usage 代码块右上角加了一键复制按钮（clipboard API + execCommand 兜底，Copy→Copied→自动复位，希卡蓝 hover/focus 态）。67 个代码块全覆盖。 |
-| A11y 无障碍体系化 | 🟡 P2 | **现状：已有零散基础**（Modal `role=dialog`、Toast `role=alert`、多个组件有 `aria-label`/`aria-pressed`，还有 `references/accessibility.md`）。需：①全组件审一遍补齐缺失 `aria-label`（尤其纯图标按钮）；②确认键盘 Tab + 希卡蓝 focus-visible 焦点环真生效；③跑 axe/lighthouse a11y 扫描拿分数。**在 r/reactjs 这是"玩具 vs 专业库"分水岭，做完可作宣传卖点。** |
+| A11y 无障碍体系化 ✅ | 🟡 P2 | 已完成：①装饰性 SVG 全部加 `aria-hidden`（34 处，codemod 一次性处理）；②图标按钮补 `aria-label`（MenuSections/NumberInput），MenuSections 加 `aria-pressed`；③用 div 实现的可点击组件（QuestListItem/ShopListItem/ItemBG/SheikahCompendiumEntry）通过新建 `src/utils/a11y.ts` 的 `interactiveProps()` 补齐 `role=button`+`tabIndex`+Enter/Space 键盘激活；④全部交互组件加 `:focus-visible` 希卡蓝焦点环（11 个组件）；⑤Modal 加 Escape 关闭。新增 `scripts/audit-a11y.mjs` 长期 QA 工具。**可作 r/reactjs 宣传卖点。** |
 
 ### C. 组件质量 / 还原度
 
@@ -97,6 +97,7 @@
 
 | 事项 | 说明 | 关联文档 |
 |------|------|---------|
+| A11y 无障碍体系化 | 装饰 SVG 全加 `aria-hidden`(34处)；图标按钮补 `aria-label`+`aria-pressed`；div 可点击组件用 `interactiveProps()` 补 `role=button`+键盘激活；11 个交互组件加 `:focus-visible` 焦点环；Modal 加 Escape 关闭。新增 `audit-a11y.mjs` QA 工具 + `src/utils/a11y.ts`。 | `skill/references/accessibility.md` |
 | docs 展示覆盖核查 | 用 `audit-docs-coverage.mjs` 比对 导出 vs 侧边栏 vs DemoSection，发现 7 个组件"做了但 docs 找不到"(Illustration + LoadingIcon/LoadingHeart/HorseSpur/QuickSelector/ModalTutorial/MapGrid)，全部补上侧边栏+中文名+示例+props+展示区。现 74 个非 screen 组件 100% 有文档。 | `scripts/audit-docs-coverage.mjs` |
 | 完整业务 demo：登录页 | `#/showcase` 新增 SHOT 06 登录页（用 SheikahBackground/Symbol/Button/ActionSet + 双层边框输入框拼成真实可用界面）。回击"中看不中用(没真实业务组件)"的批评，也是发帖素材。 | `demo/App.tsx` ShowcasePage |
 | Usage 一键复制按钮 | `#/docs` 67 个代码块加复制按钮（clipboard + 兜底，Copy→Copied 反馈）。提"专业库"转化信号。 | `ROADMAP.md` B 区 |
