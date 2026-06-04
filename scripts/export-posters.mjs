@@ -58,5 +58,17 @@ for (const el of xhsCards) {
   i++
 }
 
+// ── Milestone poster (#/milestone) — 朋友圈纪念海报 ──
+await page.goto(`${BASE}/#/milestone`, { waitUntil: 'networkidle' })
+await page.waitForTimeout(1500)
+await page.addStyleTag({ content: SQUARE_OFF })
+
+const milestoneEl = await page.$('.poster-milestone')
+if (milestoneEl) {
+  await milestoneEl.screenshot({ path: `${OUT_DIR}/milestone-100stars-3x4.png` })
+  const box = await milestoneEl.boundingBox()
+  console.log(`✓ milestone-100stars-3x4.png  (${Math.round(box.width * SCALE)}×${Math.round(box.height * SCALE)} px @ ${SCALE}x)`)
+}
+
 await browser.close()
 console.log(`\nSaved to ./${OUT_DIR}/`)
