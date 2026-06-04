@@ -86,7 +86,11 @@ Implementation via [zelda-hyrule-ui](https://github.com/chaos-xxl/zelda-hyrule-u
 
 *The Legend of Zelda*, *Breath of the Wild*, the Sheikah Slate iconography, the Triforce, and all related characters, names, and visual elements are trademarks of **Nintendo**. This project is a fan creation for learning and demonstration purposes, and is not affiliated with, endorsed by, or sponsored by Nintendo. Although the underlying design assets are CC BY 4.0 licensed, the Zelda/Nintendo trademarks and game IP remain the property of Nintendo — do not use this project in a way that implies official association or infringes Nintendo's rights.
 
+> **Downstream commercial-use disclaimer.** The MIT license applies to this project's **code only**; it cannot and does not grant any rights to Nintendo's trademarks or IP. The author distributes this project solely as a non-commercial fan work. Anyone who reuses it — especially for commercial purposes — does so at their own risk and bears sole responsibility for any resulting IP or trademark infringement. Such liability does not rest with the author.
+
 《塞尔达传说》、《旷野之息》、希卡之石图标、三角力量等所有相关角色、名称及视觉元素均为**任天堂**的商标。本项目为粉丝创作，仅供学习与演示用途，与任天堂无任何隶属、背书或赞助关系。尽管底层设计素材采用 CC BY 4.0 许可，塞尔达/任天堂的商标与游戏 IP 仍归任天堂所有——请勿以暗示官方关联或侵犯任天堂权利的方式使用本项目。
+
+> **下游商用免责说明。** MIT 许可仅适用于本项目的**代码部分**，它不能也没有授予任何任天堂商标或 IP 的权利。作者仅以"非商用粉丝创作"的身份分发本项目。任何人复用本项目——尤其是用于商业用途——均属风险自负，由此产生的 IP 或商标侵权责任由使用者自行承担，与作者无关。
 
 ## Other Acknowledgments
 

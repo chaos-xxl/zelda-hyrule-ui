@@ -27,7 +27,11 @@ A React UI component library inspired by *The Legend of Zelda: Breath of the Wil
 > **Unofficial fan project · 非官方粉丝项目**
 > This is a free, non-commercial fan project for learning and demonstration only. It is **not affiliated with, endorsed by, or sponsored by Nintendo**. *The Legend of Zelda*, *Breath of the Wild*, the Triforce, the Sheikah eye, and all related names and visual elements are trademarks of **Nintendo Co., Ltd.** No copyrighted Nintendo game assets are redistributed here — the visual design originates from a community [CC BY 4.0 Figma kit](ATTRIBUTION.md). If you are a Nintendo rights holder with concerns, please open an issue and changes will be made promptly.
 >
+> The MIT license covers **this project's code only**. It does not grant any rights to Nintendo's trademarks or IP. If you reuse this project — especially for any commercial purpose — you do so at your own risk and are solely responsible for any IP/trademark infringement; such liability does not rest with the author.
+>
 > 本项目为免费、非商用的粉丝创作，仅供学习与演示，**与任天堂无任何隶属、背书或赞助关系**。《塞尔达传说》《旷野之息》、三角力量、希卡之眼等相关名称与视觉元素均为**任天堂（Nintendo Co., Ltd.）的商标**。本仓库不再分发任天堂的受版权保护游戏素材——视觉设计来自社区 [CC BY 4.0 的 Figma 素材包](ATTRIBUTION.md)。如任天堂权利方有任何顾虑，请提 issue，我会第一时间处理。
+>
+> MIT 许可仅覆盖**本项目的代码**，不授予任何任天堂商标或 IP 的权利。任何人复用本项目——尤其是用于商业用途——风险自负，由此产生的 IP／商标侵权责任由使用者自行承担，与作者无关。
 
 ![Showcase](docs/img/showcase.png)
 
