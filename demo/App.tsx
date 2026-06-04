@@ -45,7 +45,7 @@ const CATEGORIES: CategoryDef[] = [
   { id: 'battle', label: 'Battle', labelZh: '战斗', components: ['ItemEnchantment', 'StatusHealing', 'AimingReticle', 'AttackDefenseValues'] },
   { id: 'shop', label: 'Shop', labelZh: '商店', components: ['ShopListItem', 'ShopPriceQuantity', 'NumberInput'] },
   { id: 'settings', label: 'Settings', labelZh: '设置', components: ['SettingsToggle'] },
-  { id: 'decorations', label: 'Decorations', labelZh: '装饰', components: ['TitleOrnament', 'DirectionalArrow', 'Starburst', 'TextOrnamentCorner', 'TimerOrnament', 'Logo'] },
+  { id: 'decorations', label: 'Decorations', labelZh: '装饰', components: ['TitleOrnament', 'DirectionalArrow', 'Starburst', 'TextOrnamentCorner', 'TimerOrnament', 'Illustration', 'Logo'] },
 ]
 
 // ─── Component Chinese Names ─────────────────────────────────────────────────
@@ -71,7 +71,7 @@ const COMPONENT_ZH: Record<string, string> = {
   ShopListItem: '商品列表', ShopPriceQuantity: '价格数量', NumberInput: '数字输入',
   SettingsToggle: '设置开关',
   TitleOrnament: '标题装饰', DirectionalArrow: '方向箭头', Starburst: '星芒',
-  TextOrnamentCorner: '角落装饰', TimerOrnament: '计时装饰', Logo: '标志',
+  TextOrnamentCorner: '角落装饰', TimerOrnament: '计时装饰', Illustration: '装饰插画', Logo: '标志',
 }
 
 // ─── Code Examples ───────────────────────────────────────────────────────────
@@ -419,6 +419,21 @@ function App() {
   TimerOrnament: `import { TimerOrnament } from 'zelda-hyrule-ui'
 
 <TimerOrnament side="left" />`,
+  Illustration: `import { Illustration } from 'zelda-hyrule-ui'
+
+// 4 large decorative illustrations — great as
+// section backgrounds / whitespace accents
+<Illustration illustration="sword" opacity={0.6} />
+
+// As a faint full-bleed background:
+<div style={{ position: 'relative' }}>
+  <Illustration
+    illustration="slate"
+    opacity={0.08}
+    style={{ position: 'absolute', inset: 0 }}
+  />
+  {/* your content above */}
+</div>`,
   Logo: `import { Logo } from 'zelda-hyrule-ui'
 
 <Logo variant="mark" width={40} />
@@ -703,6 +718,10 @@ const PROPS_DATA: Record<string, PropDef[]> = {
   ],
   TimerOrnament: [
     { name: 'side', type: "'left'|'right'", desc: 'Ornament side' },
+  ],
+  Illustration: [
+    { name: 'illustration', type: "'sword'|'rupee'|'slate'|'memories'", desc: 'Illustration variant' },
+    { name: 'opacity', type: 'number', default: '0.6', desc: 'Opacity (0–1), lower for backgrounds' },
   ],
   Logo: [
     { name: 'variant', type: "'mark'|'full'", desc: 'Logo variant' },
@@ -1470,6 +1489,18 @@ const DocsPage: React.FC = () => {
             <DemoSection id="timerornament" title="TimerOrnament">
               <TimerOrnament side="left" />
               <TimerOrnament side="right" />
+            </DemoSection>
+            <DemoSection id="illustration" title="Illustration">
+              <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', justifyContent: 'center', background: 'rgba(10,20,40,0.5)', padding: 20, borderRadius: 8 }}>
+                {(['sword', 'rupee', 'slate', 'memories'] as const).map((v) => (
+                  <div key={v} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+                    <div style={{ position: 'relative', width: 120, height: 160 }}>
+                      <Illustration illustration={v} opacity={0.85} style={{ position: 'absolute', inset: 0 }} />
+                    </div>
+                    <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: 12, color: 'rgba(60,211,252,0.7)' }}>{v}</span>
+                  </div>
+                ))}
+              </div>
             </DemoSection>
             <DemoSection id="logo" title="Logo">
               <Logo variant="mark" width={40} />
