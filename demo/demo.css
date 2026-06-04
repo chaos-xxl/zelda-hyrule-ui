@@ -813,6 +813,59 @@ html, body {
   aspect-ratio: 4 / 3;
 }
 
+/* ── Showcase 登录页（双层边框 + 希卡蓝，复用库的视觉模式） ── */
+.showcase-login-card {
+  position: relative;
+  width: 340px;
+  max-width: 100%;
+  padding: 36px 34px;
+  background: rgba(10, 20, 40, 0.78);
+  border-radius: 8px;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.5), 0 0 12px rgba(60, 211, 252, 0.15);
+}
+
+.showcase-login-inner {
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(60, 211, 252, 0.3);
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.showcase-field {
+  display: block;
+  width: 100%;
+}
+
+.showcase-field-label {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  color: rgba(233, 225, 209, 0.55);
+  margin-bottom: 5px;
+}
+
+.showcase-input {
+  position: relative;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(60, 211, 252, 0.25);
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(233, 225, 209, 0.85);
+}
+
+.showcase-input span {
+  opacity: 0.85;
+}
+
 
 /* ─── Poster Page (品牌宣传海报) ──────────────────────────────────────────── */
 

@@ -2179,6 +2179,51 @@ const ShowcasePage: React.FC = () => (
         </SheikahBackground>
       </ShowcaseShot>
 
+      {/* ═══ SHOT 6: 登录页（真实业务场景） ═══ */}
+      <ShowcaseShot label="06 — Login Screen" ratio="16x9">
+        <SheikahBackground color="darkBlue">
+          <SheikahScanlines animated opacity={0.07} />
+          <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 40 }}>
+            {/* 登录卡片：双层边框（库的核心视觉模式） */}
+            <div className="showcase-login-card">
+              <div className="showcase-login-inner" />
+              <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <SheikahSymbol size={56} outline={false} />
+                <h2 style={{ fontFamily: "'Hylia Serif', serif", fontSize: 30, color: '#E8E3D6', margin: '14px 0 4px', letterSpacing: '0.04em' }}>
+                  Welcome Back
+                </h2>
+                <p style={{ fontSize: 14, fontStyle: 'italic', color: 'rgba(233,225,209,0.55)', margin: '0 0 26px' }}>
+                  Sign in to continue your adventure
+                </p>
+
+                {/* 输入框：复用双层边框模式 */}
+                <label className="showcase-field">
+                  <span className="showcase-field-label">Email</span>
+                  <div className="showcase-input"><span>link@hyrule.com</span></div>
+                </label>
+                <label className="showcase-field" style={{ marginTop: 14 }}>
+                  <span className="showcase-field-label">Password</span>
+                  <div className="showcase-input"><span>••••••••••</span></div>
+                </label>
+
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', margin: '16px 0 22px' }}>
+                  <span style={{ fontSize: 13, fontStyle: 'italic', color: 'rgba(60,211,252,0.7)' }}>Forgot password?</span>
+                </div>
+
+                <Button variant="sheikah" style={{ width: '100%' }}>Sign In</Button>
+                <div style={{ marginTop: 12, width: '100%' }}>
+                  <Button variant="ghost" size="small" style={{ width: '100%' }}>Create Account</Button>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* 底部按键提示 */}
+          <div style={{ position: 'absolute', bottom: 24, right: 32 }}>
+            <ActionSet actions={[{ button: 'A', label: 'Confirm' }, { button: 'B', label: 'Back' }]} />
+          </div>
+        </SheikahBackground>
+      </ShowcaseShot>
+
     </div>
   </div>
 )

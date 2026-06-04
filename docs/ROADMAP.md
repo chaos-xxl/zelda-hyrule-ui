@@ -97,6 +97,7 @@
 
 | 事项 | 说明 | 关联文档 |
 |------|------|---------|
+| 完整业务 demo：登录页 | `#/showcase` 新增 SHOT 06 登录页（用 SheikahBackground/Symbol/Button/ActionSet + 双层边框输入框拼成真实可用界面）。回击"中看不中用(没真实业务组件)"的批评，也是发帖素材。 | `demo/App.tsx` ShowcasePage |
 | Usage 一键复制按钮 | `#/docs` 67 个代码块加复制按钮（clipboard + 兜底，Copy→Copied 反馈）。提"专业库"转化信号。 | `ROADMAP.md` B 区 |
 | v0.2.0 发布 | npm publish 0.2.0（线上 latest）+ git tag + GitHub Release（中英 release notes）。 | GitHub Releases |
 | 组件高精度还原 第三波 | 9 个手画近似组件升级到 Figma 节点级：卢比宝石(7切面)/卢比计数/任务类型图标/任务列表(共用 questIcons)/地图任务标记(环形靶标)/地图信标(书签针)/攻防图标(剑盾)/英雄位置(风筝箭头)/任务通知(环形靶标)。Logo 三角力量保留，"ZELDA"文字 IP 安全不还原。 | `ROADMAP.md` C 区 |
