@@ -59,7 +59,19 @@ for (const el of xhsCards) {
 }
 
 // ── Milestone poster (#/milestone) — 朋友圈纪念海报 ──
-await page.goto(`${BASE}/#/milestone`, { waitUntil: 'networkidle' })
+// 导出时拉一次 GitHub 实时 star / fork 数，注入海报（#/milestone?stars=NNN&forks=NNN）
+let stars = '142', forks = '18'
+try {
+  const res = await fetch('https://api.github.com/repos/chaos-xxl/zelda-hyrule-ui')
+  const data = await res.json()
+  if (data.stargazers_count != null) stars = String(data.stargazers_count)
+  if (data.forks_count != null) forks = String(data.forks_count)
+  console.log(`  (live: ${stars} stars, ${forks} forks)`)
+} catch {
+  console.warn('  (GitHub API unreachable — using defaults 142 / 18)')
+}
+
+await page.goto(`${BASE}/#/milestone?stars=${stars}&forks=${forks}`, { waitUntil: 'networkidle' })
 await page.waitForTimeout(1500)
 await page.addStyleTag({ content: SQUARE_OFF })
 

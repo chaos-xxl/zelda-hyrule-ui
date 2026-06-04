@@ -2741,75 +2741,92 @@ const XhsPage: React.FC = () => (
 // 复用塞尔达命门组件（SheikahBackground + Scanlines + SheikahSymbol），
 // KPI 大字报手法（「100+」做成视觉重心），瑞士风发丝线 + 单锚点希卡蓝。
 
-const MilestonePage: React.FC = () => (
-  <div className="poster-page">
-    <div className="poster-stack">
+const MilestonePage: React.FC = () => {
+  // 实时星数：默认 142，导出脚本可通过 URL 参数注入最新值（#/milestone?stars=NNN）
+  const params = new URLSearchParams(window.location.hash.split('?')[1] || '')
+  const stars = params.get('stars') || '142'
+  const forks = params.get('forks') || '18'
 
-      <div>
-        <div className="poster-block-label">3:4 — Milestone (朋友圈纪念)</div>
-        <div className="poster-3x4 poster-milestone">
-          <div className="poster-bg">
-            <SheikahBackground color="darkBlue">
-              <SheikahScanlines animated opacity={0.08} />
-            </SheikahBackground>
-          </div>
-          {/* 背景大尺寸希卡之眼，作氛围锚点 */}
-          <div className="ms-eye">
-            <SheikahSymbol size={420} outline={false} />
-          </div>
+  return (
+    <div className="poster-page">
+      <div className="poster-stack">
 
-          <div className="ms-content">
-            {/* 头部 */}
-            <div className="ms-head">
-              <div className="ms-kicker">A MILESTONE · 里程碑</div>
-              <h1 className="ms-project">zelda-hyrule-ui</h1>
+        <div>
+          <div className="poster-block-label">3:4 — Milestone (朋友圈纪念)</div>
+          <div className="poster-3x4 poster-milestone">
+            <div className="poster-bg">
+              <SheikahBackground color="darkBlue">
+                <SheikahScanlines animated opacity={0.08} />
+              </SheikahBackground>
+            </div>
+            {/* 背景大尺寸希卡之眼，作氛围锚点 */}
+            <div className="ms-eye">
+              <SheikahSymbol size={420} outline={false} />
             </div>
 
-            {/* KPI 大字报：100+ stars 为绝对重心 */}
-            <div className="ms-kpi">
-              <div className="ms-kpi-num">100<span className="plus">+</span></div>
-              <div className="ms-kpi-label">GitHub Stars</div>
-              <div className="ms-kpi-sub">我的第一个 star 破百的开源项目</div>
-            </div>
+            <div className="ms-content">
+              {/* 头部 */}
+              <div className="ms-head">
+                <div className="ms-kicker">A MILESTONE · 里程碑</div>
+                <h1 className="ms-project">zelda-hyrule-ui</h1>
+              </div>
 
-            {/* 两个成就：发丝线分隔 */}
-            <div className="ms-achievements">
-              <div className="ms-ach">
-                <span className="ms-ach-icon">★</span>
-                <div className="ms-ach-text">
-                  <p className="ms-ach-title">首次突破 100 Stars</p>
-                  <p className="ms-ach-desc">First open-source project to cross 100 ⭐</p>
+              {/* KPI 大字报：142 stars 为重心（缩小后不压全局） */}
+              <div className="ms-kpi">
+                <div className="ms-kpi-num">{stars}</div>
+                <div className="ms-kpi-label">GitHub Stars</div>
+                <div className="ms-kpi-sub">我的第一个 star 破百的开源项目</div>
+              </div>
+
+              {/* 三个里程碑：瑞士风发丝线分隔 + 编号网格 */}
+              <div className="ms-achievements">
+                <div className="ms-ach">
+                  <span className="ms-ach-num">01</span>
+                  <div className="ms-ach-text">
+                    <p className="ms-ach-title">{stars} Stars · 首次破百</p>
+                    <p className="ms-ach-desc">First open-source project to cross 100 ⭐</p>
+                  </div>
+                  <span className="ms-ach-glyph">★</span>
+                </div>
+                <div className="ms-ach">
+                  <span className="ms-ach-num">02</span>
+                  <div className="ms-ach-text">
+                    <p className="ms-ach-title">第一个 Issue</p>
+                    <p className="ms-ach-desc">First community issue — someone cared enough to ask</p>
+                  </div>
+                  <span className="ms-ach-glyph">✦</span>
+                </div>
+                <div className="ms-ach">
+                  <span className="ms-ach-num">03</span>
+                  <div className="ms-ach-text">
+                    <p className="ms-ach-title">{forks} Forks</p>
+                    <p className="ms-ach-desc">People starting to build on top of it</p>
+                  </div>
+                  <span className="ms-ach-glyph">◆</span>
                 </div>
               </div>
-              <div className="ms-ach">
-                <span className="ms-ach-icon">✦</span>
-                <div className="ms-ach-text">
-                  <p className="ms-ach-title">收到第一个 Issue</p>
-                  <p className="ms-ach-desc">First community issue — someone cared enough to ask</p>
-                </div>
-              </div>
-            </div>
 
-            {/* 收尾签名 */}
-            <div className="ms-foot">
-              <div className="ms-foot-line" />
-              <p className="ms-foot-quote">&quot;Chaos is a ladder.&quot;</p>
-              <p className="ms-foot-meta">github.com/chaos-xxl/zelda-hyrule-ui</p>
+              {/* 收尾签名 */}
+              <div className="ms-foot">
+                <div className="ms-foot-line" />
+                <p className="ms-foot-quote">&quot;Chaos is a ladder.&quot;</p>
+                <p className="ms-foot-meta">github.com/chaos-xxl/zelda-hyrule-ui</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
+      </div>
+      <p className="poster-caption">朋友圈纪念海报 · 第一个破百开源项目</p>
     </div>
-    <p className="poster-caption">朋友圈纪念海报 · 第一个破百开源项目</p>
-  </div>
-)
+  )
+}
 
 // ─── App with Hash Routing ───────────────────────────────────────────────────
 
 const App: React.FC = () => {
   const [page, setPage] = useState<'landing' | 'docs' | 'mobile' | 'showcase' | 'poster' | 'xhs' | 'milestone'>(() => {
-    const hash = window.location.hash
+    const hash = window.location.hash.split('?')[0]
     if (hash === '#/docs') return 'docs'
     if (hash === '#/mobile') return 'mobile'
     if (hash === '#/showcase') return 'showcase'
@@ -2821,7 +2838,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const onHashChange = () => {
-      const hash = window.location.hash
+      const hash = window.location.hash.split('?')[0]
       if (hash === '#/docs') setPage('docs')
       else if (hash === '#/mobile') setPage('mobile')
       else if (hash === '#/showcase') setPage('showcase')

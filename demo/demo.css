@@ -1072,34 +1072,28 @@ html, body {
   text-shadow: 0 0 28px rgba(0, 0, 0, 0.6), 0 0 18px rgba(60, 211, 252, 0.22);
 }
 
-/* KPI 大字报：100+ 为绝对视觉重心 */
+/* KPI 大字报：142 为重心（缩小后不压全局） */
 .ms-kpi {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 48px;
 }
 
 .ms-kpi-num {
   font-family: 'Hylia Serif', 'Cinzel', serif;
-  font-size: 180px;
-  line-height: 0.92;
+  font-size: 116px;
+  line-height: 0.95;
   color: #E8E3D6;
-  text-shadow: 0 0 40px rgba(60, 211, 252, 0.45), 0 0 16px rgba(60, 211, 252, 0.3);
-}
-
-.ms-kpi-num .plus {
-  color: #3CD3FC;
-  font-size: 96px;
-  vertical-align: super;
+  text-shadow: 0 0 36px rgba(60, 211, 252, 0.45), 0 0 14px rgba(60, 211, 252, 0.3);
 }
 
 .ms-kpi-label {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  font-size: 22px;
-  letter-spacing: 0.28em;
+  font-size: 18px;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: #3CD3FC;
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 .ms-kpi-sub {
@@ -1110,9 +1104,9 @@ html, body {
   margin-top: 14px;
 }
 
-/* 两个成就：发丝线分隔 */
+/* 三个里程碑：瑞士风编号 + 发丝线 + 右侧符号 */
 .ms-achievements {
-  margin-top: 40px;
+  margin-top: 44px;
   display: flex;
   flex-direction: column;
 }
@@ -1120,8 +1114,8 @@ html, body {
 .ms-ach {
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 20px 2px;
+  gap: 20px;
+  padding: 19px 2px;
   border-top: 1px solid rgba(60, 211, 252, 0.16);
 }
 
@@ -1129,18 +1123,22 @@ html, body {
   border-bottom: 1px solid rgba(60, 211, 252, 0.16);
 }
 
-.ms-ach-icon {
-  font-size: 24px;
+.ms-ach-num {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 13px;
   color: #3CD3FC;
-  min-width: 30px;
-  text-align: center;
-  text-shadow: 0 0 12px rgba(60, 211, 252, 0.6);
+  letter-spacing: 0.1em;
+  min-width: 26px;
+}
+
+.ms-ach-text {
+  flex: 1;
 }
 
 .ms-ach-title {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  font-size: 19px;
+  font-size: 20px;
   color: #E8E3D6;
   margin: 0 0 3px;
 }
@@ -1153,32 +1151,41 @@ html, body {
   margin: 0;
 }
 
+.ms-ach-glyph {
+  font-size: 22px;
+  color: #3CD3FC;
+  text-shadow: 0 0 12px rgba(60, 211, 252, 0.6);
+  margin-left: 8px;
+}
+
 .ms-foot {
   margin-top: auto;
-  padding-top: 32px;
+  padding-top: 34px;
   text-align: center;
 }
 
 .ms-foot-line {
-  width: 60px;
+  width: 64px;
   height: 1px;
   background: linear-gradient(90deg, transparent, #3CD3FC, transparent);
-  margin: 0 auto 18px;
+  margin: 0 auto 22px;
 }
 
 .ms-foot-quote {
   font-family: 'Hylia Serif', 'Cinzel', serif;
-  font-size: 20px;
+  font-size: 32px;
   font-style: italic;
-  color: rgba(233, 225, 209, 0.85);
-  margin: 0 0 10px;
+  color: #E8E3D6;
+  letter-spacing: 0.01em;
+  margin: 0 0 14px;
+  text-shadow: 0 0 24px rgba(60, 211, 252, 0.25);
 }
 
 .ms-foot-meta {
   font-family: 'Roboto Mono', 'SF Mono', monospace;
-  font-size: 13px;
-  letter-spacing: 0.04em;
-  color: rgba(233, 225, 209, 0.5);
+  font-size: 17px;
+  letter-spacing: 0.03em;
+  color: rgba(233, 225, 209, 0.7);
   margin: 0;
 }
 
