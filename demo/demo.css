@@ -1072,36 +1072,37 @@ html, body {
   text-shadow: 0 0 28px rgba(0, 0, 0, 0.6), 0 0 18px rgba(60, 211, 252, 0.22);
 }
 
-/* KPI 大字报：142 为重心（缩小后不压全局） */
-.ms-kpi {
-  text-align: center;
-  margin-top: 48px;
-}
-
-.ms-kpi-num {
-  font-family: 'Hylia Serif', 'Cinzel', serif;
-  font-size: 116px;
-  line-height: 0.95;
-  color: #E8E3D6;
-  text-shadow: 0 0 36px rgba(60, 211, 252, 0.45), 0 0 14px rgba(60, 211, 252, 0.3);
-}
-
-.ms-kpi-label {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #3CD3FC;
-  margin-top: 10px;
-}
-
-.ms-kpi-sub {
+.ms-tagline {
   font-family: 'Roboto', sans-serif;
   font-style: italic;
-  font-size: 16px;
+  font-size: 17px;
   color: rgba(233, 225, 209, 0.6);
-  margin-top: 14px;
+  margin: 12px 0 0;
+}
+
+/* 真实 GitHub 截图：双层边框 + 希卡辉光 */
+.ms-shot {
+  position: relative;
+  margin-top: 40px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(60, 211, 252, 0.35),
+              0 12px 36px rgba(0, 0, 0, 0.55),
+              0 0 22px rgba(60, 211, 252, 0.25);
+}
+
+.ms-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ms-shot-border {
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(60, 211, 252, 0.4);
+  border-radius: 3px;
+  pointer-events: none;
 }
 
 /* 三个里程碑：瑞士风编号 + 发丝线 + 右侧符号 */

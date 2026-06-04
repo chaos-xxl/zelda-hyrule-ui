@@ -21,6 +21,7 @@ import {
 } from '../src'
 import '../src/styles/global.less'
 import './demo.css'
+import milestoneGithubImg from './assets/milestone-github.png'
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -2769,13 +2770,13 @@ const MilestonePage: React.FC = () => {
               <div className="ms-head">
                 <div className="ms-kicker">A MILESTONE · 里程碑</div>
                 <h1 className="ms-project">zelda-hyrule-ui</h1>
+                <p className="ms-tagline">我的第一个 star 破百的开源项目</p>
               </div>
 
-              {/* KPI 大字报：142 stars 为重心（缩小后不压全局） */}
-              <div className="ms-kpi">
-                <div className="ms-kpi-num">{stars}</div>
-                <div className="ms-kpi-label">GitHub Stars</div>
-                <div className="ms-kpi-sub">我的第一个 star 破百的开源项目</div>
+              {/* 真实 GitHub 截图，双层边框 + 希卡辉光 */}
+              <div className="ms-shot">
+                <img src={milestoneGithubImg} alt="GitHub repository showing 142 stars" />
+                <div className="ms-shot-border" />
               </div>
 
               {/* 三个里程碑：瑞士风发丝线分隔 + 编号网格 */}
