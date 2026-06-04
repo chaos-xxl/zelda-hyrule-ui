@@ -97,6 +97,7 @@
 
 | 事项 | 说明 | 关联文档 |
 |------|------|---------|
+| docs 展示覆盖核查 | 用 `audit-docs-coverage.mjs` 比对 导出 vs 侧边栏 vs DemoSection，发现 7 个组件"做了但 docs 找不到"(Illustration + LoadingIcon/LoadingHeart/HorseSpur/QuickSelector/ModalTutorial/MapGrid)，全部补上侧边栏+中文名+示例+props+展示区。现 74 个非 screen 组件 100% 有文档。 | `scripts/audit-docs-coverage.mjs` |
 | 完整业务 demo：登录页 | `#/showcase` 新增 SHOT 06 登录页（用 SheikahBackground/Symbol/Button/ActionSet + 双层边框输入框拼成真实可用界面）。回击"中看不中用(没真实业务组件)"的批评，也是发帖素材。 | `demo/App.tsx` ShowcasePage |
 | Usage 一键复制按钮 | `#/docs` 67 个代码块加复制按钮（clipboard + 兜底，Copy→Copied 反馈）。提"专业库"转化信号。 | `ROADMAP.md` B 区 |
 | v0.2.0 发布 | npm publish 0.2.0（线上 latest）+ git tag + GitHub Release（中英 release notes）。 | GitHub Releases |

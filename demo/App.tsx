@@ -4,12 +4,13 @@ import {
   HealthBar, StaminaWheel, WeatherIcon, RupeeCounter, DivineBeast,
   SheikahAbility, RupeeType, Temperature, SoundMeter, Sensor,
   EffectDuration, BonusEffectIcon,
-  MenuSections, ItemBG, Pagination, ModalButton, Scrollbar, ModalTimer, StatsStack,
+  LoadingIcon, LoadingHeart, HorseSpur, QuickSelector,
+  MenuSections, ItemBG, Pagination, ModalButton, Scrollbar, ModalTimer, StatsStack, ModalTutorial,
   TitleLocation, TitleQuest, TitleShrine, TitleLocationLarge, TitlePointOfInterest,
   DialogChoice, DialogFloating,
   QuestListItem, QuestDescription, QuestTypeIcon, QuestNotification,
   ControllerButton, ActionSet,
-  MapIcon, MapBeacon, MapQuestMarker, MapLocationName, MapCursor, MapHeroLocation,
+  MapIcon, MapBeacon, MapQuestMarker, MapLocationName, MapCursor, MapHeroLocation, MapGrid,
   SheikahSymbol, SheikahBackground, SheikahScanlines, SheikahRune,
   SheikahCompendiumEntry, SheikahTextTitle, SheikahCompendiumFilters, SheikahAlbumButton,
   ItemEnchantment, StatusHealing, AimingReticle, AttackDefenseValues,
@@ -33,13 +34,13 @@ interface CategoryDef {
 // ─── Categories ──────────────────────────────────────────────────────────────
 
 const CATEGORIES: CategoryDef[] = [
-  { id: 'hud', label: 'HUD', labelZh: '抬头显示', components: ['HealthBar', 'StaminaWheel', 'WeatherIcon', 'RupeeCounter', 'DivineBeast', 'SheikahAbility', 'RupeeType', 'Temperature', 'SoundMeter', 'Sensor', 'EffectDuration', 'BonusEffectIcon'] },
-  { id: 'menu', label: 'Menu', labelZh: '菜单', components: ['MenuSections', 'ItemBG', 'Pagination', 'ModalButton', 'Scrollbar', 'ModalTimer', 'StatsStack'] },
+  { id: 'hud', label: 'HUD', labelZh: '抬头显示', components: ['HealthBar', 'StaminaWheel', 'WeatherIcon', 'RupeeCounter', 'DivineBeast', 'SheikahAbility', 'RupeeType', 'Temperature', 'SoundMeter', 'Sensor', 'EffectDuration', 'BonusEffectIcon', 'LoadingIcon', 'LoadingHeart', 'HorseSpur', 'QuickSelector'] },
+  { id: 'menu', label: 'Menu', labelZh: '菜单', components: ['MenuSections', 'ItemBG', 'Pagination', 'ModalButton', 'Scrollbar', 'ModalTimer', 'StatsStack', 'ModalTutorial'] },
   { id: 'titles', label: 'Titles', labelZh: '标题', components: ['TitleLocation', 'TitleQuest', 'TitleShrine', 'TitleLocationLarge', 'TitlePointOfInterest'] },
   { id: 'dialog', label: 'Dialog', labelZh: '对话框', components: ['Dialog', 'DialogChoice', 'DialogFloating'] },
   { id: 'quest', label: 'Quest', labelZh: '任务', components: ['QuestListItem', 'QuestDescription', 'QuestTypeIcon', 'QuestNotification'] },
   { id: 'controls', label: 'Controls', labelZh: '控制器', components: ['ControllerButton', 'ActionSet'] },
-  { id: 'map', label: 'Map', labelZh: '地图', components: ['MapIcon', 'MapBeacon', 'MapQuestMarker', 'MapLocationName', 'MapCursor', 'MapHeroLocation'] },
+  { id: 'map', label: 'Map', labelZh: '地图', components: ['MapIcon', 'MapBeacon', 'MapQuestMarker', 'MapLocationName', 'MapCursor', 'MapHeroLocation', 'MapGrid'] },
   { id: 'sheikah', label: 'Sheikah', labelZh: '希卡之石', components: ['SheikahSymbol', 'SheikahBackground', 'SheikahScanlines', 'SheikahRune', 'SheikahCompendiumEntry', 'SheikahTextTitle', 'SheikahCompendiumFilters', 'SheikahAlbumButton'] },
   { id: 'common', label: 'Common', labelZh: '通用', components: ['Button', 'Card', 'Modal', 'Divider', 'Loading', 'Toast'] },
   { id: 'battle', label: 'Battle', labelZh: '战斗', components: ['ItemEnchantment', 'StatusHealing', 'AimingReticle', 'AttackDefenseValues'] },
@@ -54,15 +55,16 @@ const COMPONENT_ZH: Record<string, string> = {
   HealthBar: '生命条', StaminaWheel: '精力轮', WeatherIcon: '天气图标', RupeeCounter: '卢比计数',
   DivineBeast: '神兽', SheikahAbility: '希卡能力', RupeeType: '卢比类型', Temperature: '温度计',
   SoundMeter: '声音探测', Sensor: '感应器', EffectDuration: '效果时长', BonusEffectIcon: '增益图标',
+  LoadingIcon: '加载图标', LoadingHeart: '加载心', HorseSpur: '马匹冲刺', QuickSelector: '快速选择',
   MenuSections: '菜单分类', ItemBG: '物品格子', Pagination: '分页', ModalButton: '弹窗按钮',
-  Scrollbar: '滚动条', ModalTimer: '弹窗计时', StatsStack: '属性面板',
+  Scrollbar: '滚动条', ModalTimer: '弹窗计时', StatsStack: '属性面板', ModalTutorial: '教程弹窗',
   TitleLocation: '地点标题', TitleQuest: '任务标题', TitleShrine: '神庙标题',
   TitleLocationLarge: '大号地点', TitlePointOfInterest: '兴趣点',
   Dialog: '对话框', DialogChoice: '对话选项', DialogFloating: '浮动气泡',
   QuestListItem: '任务列表', QuestDescription: '任务描述', QuestTypeIcon: '任务图标', QuestNotification: '任务通知',
   ControllerButton: '控制按钮', ActionSet: '操作提示',
   MapIcon: '地图图标', MapBeacon: '地图信标', MapQuestMarker: '任务标记',
-  MapLocationName: '地点名称', MapCursor: '地图光标', MapHeroLocation: '英雄位置',
+  MapLocationName: '地点名称', MapCursor: '地图光标', MapHeroLocation: '英雄位置', MapGrid: '地图网格',
   SheikahSymbol: '希卡符号', SheikahBackground: '希卡背景', SheikahScanlines: '扫描线',
   SheikahRune: '希卡符文', SheikahCompendiumEntry: '图鉴条目', SheikahTextTitle: '希卡标题',
   SheikahCompendiumFilters: '图鉴过滤', SheikahAlbumButton: '相册按钮',
@@ -150,6 +152,21 @@ const CODE_EXAMPLES: Record<string, string> = {
   BonusEffectIcon: `import { BonusEffectIcon } from 'zelda-hyrule-ui'
 
 <BonusEffectIcon icon="attackUp" arrow />`,
+  LoadingIcon: `import { LoadingIcon } from 'zelda-hyrule-ui'
+
+<LoadingIcon icon="shrine" />
+<LoadingIcon icon="korok" showQuantity quantity={42} />`,
+  LoadingHeart: `import { LoadingHeart } from 'zelda-hyrule-ui'
+
+<LoadingHeart shown />
+<LoadingHeart shown={false} />`,
+  HorseSpur: `import { HorseSpur } from 'zelda-hyrule-ui'
+
+<HorseSpur type="normal" />
+<HorseSpur type="ancient" used />`,
+  QuickSelector: `import { QuickSelector } from 'zelda-hyrule-ui'
+
+<QuickSelector />`,
   MenuSections: `import { MenuSections } from 'zelda-hyrule-ui'
 
 <MenuSections activeSection="weapons" />`,
@@ -175,6 +192,12 @@ const CODE_EXAMPLES: Record<string, string> = {
 
 <StatsStack type="weapon" value={32} />
 <StatsStack type="armor" value={24} comparison={28} />`,
+  ModalTutorial: `import { ModalTutorial } from 'zelda-hyrule-ui'
+
+<ModalTutorial
+  text="Press A to pick up items. Hold to throw."
+  continueLabel="Got it"
+/>`,
   TitleLocation: `import { TitleLocation } from 'zelda-hyrule-ui'
 
 <TitleLocation name="Hateno Village" />`,
@@ -278,6 +301,10 @@ const CODE_EXAMPLES: Record<string, string> = {
   MapHeroLocation: `import { MapHeroLocation } from 'zelda-hyrule-ui'
 
 <MapHeroLocation rotation={0} vision />`,
+  MapGrid: `import { MapGrid } from 'zelda-hyrule-ui'
+
+<MapGrid variant="small" columns={8} rows={8} />
+<MapGrid variant="large" columns={4} rows={4} />`,
   SheikahSymbol: `import { SheikahSymbol } from 'zelda-hyrule-ui'
 
 <SheikahSymbol size={60} outline={false} />`,
@@ -496,6 +523,23 @@ const PROPS_DATA: Record<string, PropDef[]> = {
     { name: 'icon', type: "'attackUp'|'defenseUp'|'speedUp'|...", desc: 'Effect type' },
     { name: 'arrow', type: 'boolean', default: 'false', desc: 'Show arrow indicator' },
   ],
+  LoadingIcon: [
+    { name: 'icon', type: "'shrine'|'orb'|'rupee'|'korok'|'stamina'", desc: 'Icon type' },
+    { name: 'showQuantity', type: 'boolean', default: 'false', desc: 'Show quantity number' },
+    { name: 'quantity', type: 'number', desc: 'Quantity to display' },
+    { name: 'size', type: 'number', default: '40', desc: 'Size in px' },
+  ],
+  LoadingHeart: [
+    { name: 'shown', type: 'boolean', default: 'true', desc: 'Filled (red) vs hidden (dark)' },
+  ],
+  HorseSpur: [
+    { name: 'type', type: "'normal'|'ancient'|'endura'", default: "'normal'", desc: 'Spur type' },
+    { name: 'used', type: 'boolean', default: 'false', desc: 'Used (dimmed) state' },
+    { name: 'size', type: 'number', default: '84', desc: 'Size in px' },
+  ],
+  QuickSelector: [
+    { name: 'type', type: "'weapons'|'bow'", default: "'weapons'", desc: 'Selector type' },
+  ],
   MenuSections: [
     { name: 'activeSection', type: "'weapons'|'bows'|'shields'|'clothing'|...", desc: 'Active tab' },
   ],
@@ -525,6 +569,12 @@ const PROPS_DATA: Record<string, PropDef[]> = {
     { name: 'value', type: 'number', desc: 'Current value' },
     { name: 'comparison', type: 'number', desc: 'Comparison value (optional)' },
     { name: 'trait', type: 'string', desc: 'Bonus trait text' },
+  ],
+  ModalTutorial: [
+    { name: 'text', type: 'string', desc: 'Tutorial body text' },
+    { name: 'continueLabel', type: 'string', default: "'Continue'", desc: 'Continue button label' },
+    { name: 'visible', type: 'boolean', default: 'true', desc: 'Visibility' },
+    { name: 'onContinue', type: '() => void', desc: 'Continue callback' },
   ],
   TitleLocation: [
     { name: 'name', type: 'string', desc: 'Location name' },
@@ -611,6 +661,11 @@ const PROPS_DATA: Record<string, PropDef[]> = {
   MapHeroLocation: [
     { name: 'rotation', type: 'number', default: '0', desc: 'Rotation in degrees' },
     { name: 'vision', type: 'boolean', default: 'false', desc: 'Show vision cone' },
+  ],
+  MapGrid: [
+    { name: 'variant', type: "'small'|'large'", default: "'small'", desc: 'Line weight' },
+    { name: 'columns', type: 'number', default: '8', desc: 'Column count' },
+    { name: 'rows', type: 'number', default: '8', desc: 'Row count' },
   ],
   SheikahSymbol: [
     { name: 'size', type: 'number', default: '60', desc: 'Size in px' },
@@ -1128,6 +1183,23 @@ const DocsPage: React.FC = () => {
               <BonusEffectIcon icon="coldResist" />
               <BonusEffectIcon icon="heatResist" />
             </DemoSection>
+            <DemoSection id="loadingicon" title="LoadingIcon">
+              <LoadingIcon icon="shrine" />
+              <LoadingIcon icon="korok" showQuantity quantity={42} />
+              <LoadingIcon icon="rupee" showQuantity quantity={999} />
+            </DemoSection>
+            <DemoSection id="loadingheart" title="LoadingHeart">
+              <LoadingHeart shown />
+              <LoadingHeart shown={false} />
+            </DemoSection>
+            <DemoSection id="horsespur" title="HorseSpur">
+              <HorseSpur type="normal" />
+              <HorseSpur type="ancient" />
+              <HorseSpur type="endura" used />
+            </DemoSection>
+            <DemoSection id="quickselector" title="QuickSelector">
+              <QuickSelector />
+            </DemoSection>
           </div>
         </div>
 
@@ -1168,6 +1240,12 @@ const DocsPage: React.FC = () => {
               <StatsStack type="weapon" value={32} />
               <StatsStack type="armor" value={24} comparison={28} />
               <StatsStack type="shield" value={18} trait="Durability Up" />
+            </DemoSection>
+            <DemoSection id="modaltutorial" title="ModalTutorial">
+              {/* transform 让内部 position:fixed 的 overlay 相对此容器定位，把全屏弹窗收进卡片内 */}
+              <div style={{ position: 'relative', width: 460, maxWidth: '100%', height: 220, overflow: 'hidden', borderRadius: 6, transform: 'translateZ(0)', background: 'rgba(10,20,40,0.4)' }}>
+                <ModalTutorial text="Press A to pick up items. Hold to throw them at enemies." continueLabel="Got it" />
+              </div>
             </DemoSection>
           </div>
         </div>
@@ -1310,6 +1388,14 @@ const DocsPage: React.FC = () => {
               <MapHeroLocation rotation={0} vision />
               <MapHeroLocation rotation={90} />
               <MapHeroLocation rotation={225} vision />
+            </DemoSection>
+            <DemoSection id="mapgrid" title="MapGrid">
+              <div style={{ position: 'relative', width: 200, height: 150, background: 'rgba(10,20,40,0.6)', color: '#3CD3FC', borderRadius: 4, overflow: 'hidden' }}>
+                <MapGrid variant="small" columns={8} rows={6} />
+              </div>
+              <div style={{ position: 'relative', width: 200, height: 150, background: 'rgba(10,20,40,0.6)', color: '#3CD3FC', borderRadius: 4, overflow: 'hidden' }}>
+                <MapGrid variant="large" columns={4} rows={3} />
+              </div>
             </DemoSection>
           </div>
         </div>
