@@ -2564,7 +2564,7 @@ const XhsPage: React.FC = () => (
       <XhsCard label="XHS 1 / 8 — Cover">
         <div className="xhs-cover">
           <div className="xhs-kicker">开源项目 · 持续更新</div>
-          <h1 className="xhs-cover-title">我把《塞尔达》<br />的 UI 做成了<br /><span className="accent">组件库</span></h1>
+          <h1 className="xhs-cover-title">我把《塞尔达》<br />的 UI 做成了<br /><span className="accent">Skill</span></h1>
           <p className="xhs-cover-sub">《旷野之息》的希卡之石界面，<br />现在是 83 个 React 组件</p>
           <div className="xhs-cover-foot">
             <SheikahSymbol size={48} outline={false} />
