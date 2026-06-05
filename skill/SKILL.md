@@ -17,6 +17,7 @@
 详细规范不在本文件里，而是拆分到了 `references/` 目录。**你应该根据当前任务，只加载需要的 1-2 个 reference 文件，不要一次性全部读取**（这是为了节省 context，详见下方「Reference 加载路由」）。
 
 本文件保留：
+- 如何获取与使用（路径甲装包 / 路径乙让 AI 现写）
 - 30 秒快速开始（起手式）
 - Reference 加载路由（你该读哪个文件）
 - Design Token 速查（最高频的色 / 字）
@@ -26,9 +27,50 @@
 
 ---
 
+## 📥 如何获取与使用（重要 · 先读这节）
+
+本 skill 文件本身就是**完整的设计规范**（配色、字体、尺寸、CSS、关键 SVG path）。基于此，有**两种用法**：
+
+### 路径甲 · 装组件库（用现成组件，最省事）
+
+```bash
+npm i zelda-hyrule-ui
+# 国内网络：走 npm 官方源即可（不经过 GitHub）。如慢，配镜像：
+# npm i zelda-hyrule-ui --registry=https://registry.npmmirror.com
+```
+
+```tsx
+import { HealthBar } from 'zelda-hyrule-ui'
+import 'zelda-hyrule-ui/style'
+```
+
+- 装包走的是 **npm 源，不是 GitHub**，国内无代理也能装。
+- 83 个组件 + 全部 SVG/PNG 素材都在包里，开箱即用。
+
+### 路径乙 · 让 AI 照规范现写（零依赖，不联网也能用）
+
+把本 skill 的 md 文件喂给 AI（Cursor / Claude 等），直接说"用塞尔达风格做个 X"。AI 会照 `references/components-full.md` 等规范，**当场写出**等效的组件代码。
+
+- **不需要装包、不需要联网、不需要访问 GitHub** —— 文件在手就能用。
+- 适合：只想要某几个组件、不想引入依赖、或网络受限的场景。
+
+### ⚠️ 哪些组件"路径乙"还原不了，必须走路径甲
+
+绝大多数组件是纯 CSS + inline SVG，AI 照规范能 1:1 现写。但下面这些组件依赖**具体的 SVG/PNG 素材文件**（复杂矢量图，AI 无法凭文字规范画出），**必须装 npm 包（路径甲）或从仓库取素材**：
+
+> `Illustration`（剑/卢比/希卡之石/回忆花插画）、`DivineBeast`（4 神兽图腾）、`SheikahSymbol`（希卡之眼）、`SheikahBackground`（背景纹理）、`SheikahRune` / `SheikahAbility`（符文/异能图标）、`SheikahCompendiumFilters`、`SheikahTextTitle`、`SoundMeter`、`Temperature`、`QuickSelector`、`LoadingIcon`、`HorseSpur`、`BonusEffectIcon`、`MapQuestMarker` / `QuestNotification`、`Starburst`、`DirectionalArrow`、`TextOrnamentCorner`、`TimerOrnament`
+
+这些素材在 npm 包的 `dist/` 里，或仓库 `src/assets/`。走路径乙时若用到它们，提示用户装包或单独取对应 SVG。
+
+### 在线 demo / 文档
+
+在线预览站托管在 GitHub Pages，国内访问可能需要代理。但**使用本 skill 不需要访问 GitHub** —— 路径甲走 npm，路径乙只用本地文件。
+
+---
+
 ## 🚀 30 秒快速开始
 
-最常用的 import + 一段可运行的 JSX。直接复制就能跑。
+最常用的 import + 一段可运行的 JSX。直接复制就能跑（前提：已 `npm i zelda-hyrule-ui`，见上方路径甲）。
 
 ```tsx
 import {
