@@ -134,6 +134,7 @@
 | 文档 | 内容 |
 |------|------|
 | `ROADMAP.md`（本文件） | 迭代计划 / 想法池（持续更新） |
+| `合规决策速查.md` | 版权 / IP / 开源协议决策单页总览（被质疑时引用） |
 | `LAYOUT_INTEGRATION_PLAN.md` | 排版能力集成（路径 A 已执行 / C 规划） |
 | `SKILL_REFACTOR_PLAN.md` | SKILL.md 拆分重构方案 |
 | `FULL_COMPONENT_PLAN.md` | 全量组件规划（Figma 对应表） |
