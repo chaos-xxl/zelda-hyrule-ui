@@ -2823,10 +2823,130 @@ const MilestonePage: React.FC = () => {
   )
 }
 
+// ─── Launch Page (官方曝光首发组图 6 张) ──────────────────────────────────────
+// 面向"第一次见到项目的陌生人"：第一印象帖，不是更新帖。
+// 复用 XhsCard（塞尔达皮 + 归藏瑞士排版骨架），但文案全部改为首印逻辑。
+
+const LaunchPage: React.FC = () => (
+  <div className="poster-page">
+    <div className="poster-stack">
+
+      {/* ═══ 图 1：封面（最强钩子） ═══ */}
+      <XhsCard label="LAUNCH 1 / 6 — Cover">
+        <div className="xhs-cover">
+          <div className="xhs-kicker">开源 · 免费 · 非官方粉丝创作</div>
+          <h1 className="xhs-cover-title">我把《塞尔达》<br />的 UI 做成了<br /><span className="accent">开源项目</span></h1>
+          <p className="xhs-cover-sub">《旷野之息》的希卡之石界面，<br />变成了能直接用的 React 组件 + AI 规范</p>
+          <div className="xhs-cover-foot">
+            <SheikahSymbol size={48} outline={false} />
+            <div className="xhs-cover-foot-text">
+              <span className="name">zelda-hyrule-ui</span>
+              <span className="ver">FREE · OPEN SOURCE</span>
+            </div>
+          </div>
+        </div>
+      </XhsCard>
+
+      {/* ═══ 图 2：这是什么（两层用法，降低理解门槛） ═══ */}
+      <XhsCard label="LAUNCH 2 / 6 — What">
+        <div className="xhs-content">
+          <div className="xhs-kicker">01 / 这是什么</div>
+          <div className="xhs-bignum-row">
+            <span className="xhs-bignum">83</span>
+            <span className="xhs-bignum-unit">Components</span>
+          </div>
+          <h2 className="xhs-h2 tight">一套《旷野之息》<br />风格的 <span className="accent">UI 工具箱</span></h2>
+          <div className="xhs-rows">
+            <div className="xhs-row"><span className="n">1</span><p>组件库：83 个现成组件，前端直接 import 用</p></div>
+            <div className="xhs-row"><span className="n">2</span><p>AI 规范：丢给 Cursor / Claude 就能生成对味界面</p></div>
+          </div>
+          <div className="xhs-foot-note">写代码、做 PPT、做图文 —— 同一套塞尔达味道</div>
+        </div>
+      </XhsCard>
+
+      {/* ═══ 图 3：怎么用（戳 AI 时代爽点） ═══ */}
+      <XhsCard label="LAUNCH 3 / 6 — How">
+        <div className="xhs-content">
+          <div className="xhs-kicker">02 / 怎么用</div>
+          <h2 className="xhs-h2">把链接丢给 AI<br />说一句<span className="accent">「用塞尔达风格做」</span></h2>
+          <div className="xhs-code">
+            <span className="comment"># 方式一：装组件库</span>
+            <span><span className="accent">npm i</span> zelda-hyrule-ui</span>
+            <span className="comment"># 方式二：把 SKILL.md 丢给 Cursor / Claude</span>
+            <span>“用塞尔达风格做个登录页”</span>
+          </div>
+          <div className="xhs-foot-note">AI 会自动套用配色 / 字体 / 双层边框规则</div>
+        </div>
+      </XhsCard>
+
+      {/* ═══ 图 4：精确还原（区别于 AI slop） ═══ */}
+      <XhsCard label="LAUNCH 4 / 6 — Before / After">
+        <div className="xhs-content">
+          <div className="xhs-kicker">03 / 为什么不一样</div>
+          <h2 className="xhs-h2 tight">从「差不多」<br />到<span className="accent">「就是它」</span></h2>
+          <div className="xhs-ba">
+            <div className="xhs-ba-col before">
+              <span className="tag">别家</span>
+              <div className="glyphs">🐾 👹 🌿 ⚔ 💎</div>
+              <p className="note">emoji / 近似图形凑数</p>
+            </div>
+            <div className="xhs-ba-arrow">→</div>
+            <div className="xhs-ba-col after">
+              <span className="tag">这里</span>
+              <div className="comp"><SheikahCompendiumFilters activeFilter="materials" /></div>
+              <p className="note">Figma 原稿逐节点还原</p>
+            </div>
+          </div>
+          <div className="xhs-foot-note">每个 SVG 都对齐游戏原版配色与辉光，不是 AI 糊弄</div>
+        </div>
+      </XhsCard>
+
+      {/* ═══ 图 5：覆盖什么（体现体量） ═══ */}
+      <XhsCard label="LAUNCH 5 / 6 — Coverage">
+        <div className="xhs-content">
+          <div className="xhs-kicker">04 / 覆盖范围</div>
+          <h2 className="xhs-h2 tight">整套游戏 UI<br />都给你<span className="accent">搭好了</span></h2>
+          <div className="xhs-cat-grid">
+            <div className="xhs-cat"><span className="n">14</span><span className="l">HUD 抬头显示</span></div>
+            <div className="xhs-cat"><span className="n">11</span><span className="l">菜单 / 物品栏</span></div>
+            <div className="xhs-cat"><span className="n">8</span><span className="l">对话系统</span></div>
+            <div className="xhs-cat"><span className="n">9</span><span className="l">地图标记</span></div>
+            <div className="xhs-cat"><span className="n">7</span><span className="l">任务追踪</span></div>
+            <div className="xhs-cat"><span className="n">34</span><span className="l">标题 / 装饰 / 战斗</span></div>
+          </div>
+          <div className="xhs-foot-note">键盘可达 · 焦点环 · 移动端适配 · TypeScript 全类型</div>
+        </div>
+      </XhsCard>
+
+      {/* ═══ 图 6：收尾 / 适合谁（CTA） ═══ */}
+      <XhsCard label="LAUNCH 6 / 6 — Closing">
+        <div className="xhs-cover">
+          <div className="xhs-kicker">谁会喜欢</div>
+          <h2 className="xhs-h2" style={{ marginTop: 24 }}>如果你也<br /><span className="accent">既玩塞尔达<br />又写前端</span></h2>
+          <div className="xhs-rows" style={{ marginTop: 36 }}>
+            <div className="xhs-row"><span className="n">→</span><p>想做个有游戏感的项目 / 作品集</p></div>
+            <div className="xhs-row"><span className="n">→</span><p>给 AI 一个明确的设计语言去生成界面</p></div>
+            <div className="xhs-row"><span className="n">→</span><p>纯粹喜欢《旷野之息》这套 UI 美学</p></div>
+          </div>
+          <div className="xhs-cover-foot">
+            <SheikahSymbol size={44} outline={false} />
+            <div className="xhs-cover-foot-text">
+              <span className="name">⭐ GitHub 搜 zelda-hyrule-ui</span>
+              <span className="ver">FREE · MIT · 非官方粉丝创作</span>
+            </div>
+          </div>
+        </div>
+      </XhsCard>
+
+    </div>
+    <p className="poster-caption">官方曝光首发组图 · github.com/chaos-xxl/zelda-hyrule-ui</p>
+  </div>
+)
+
 // ─── App with Hash Routing ───────────────────────────────────────────────────
 
 const App: React.FC = () => {
-  const [page, setPage] = useState<'landing' | 'docs' | 'mobile' | 'showcase' | 'poster' | 'xhs' | 'milestone'>(() => {
+  const [page, setPage] = useState<'landing' | 'docs' | 'mobile' | 'showcase' | 'poster' | 'xhs' | 'milestone' | 'launch'>(() => {
     const hash = window.location.hash.split('?')[0]
     if (hash === '#/docs') return 'docs'
     if (hash === '#/mobile') return 'mobile'
@@ -2834,6 +2954,7 @@ const App: React.FC = () => {
     if (hash === '#/poster') return 'poster'
     if (hash === '#/xhs') return 'xhs'
     if (hash === '#/milestone') return 'milestone'
+    if (hash === '#/launch') return 'launch'
     return 'landing'
   })
 
@@ -2846,6 +2967,7 @@ const App: React.FC = () => {
       else if (hash === '#/poster') setPage('poster')
       else if (hash === '#/xhs') setPage('xhs')
       else if (hash === '#/milestone') setPage('milestone')
+      else if (hash === '#/launch') setPage('launch')
       else setPage('landing')
     }
     window.addEventListener('hashchange', onHashChange)
@@ -2858,6 +2980,7 @@ const App: React.FC = () => {
   if (page === 'poster') return <PosterPage />
   if (page === 'xhs') return <XhsPage />
   if (page === 'milestone') return <MilestonePage />
+  if (page === 'launch') return <LaunchPage />
   return <LandingPage />
 }
 

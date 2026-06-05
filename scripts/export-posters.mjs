@@ -82,5 +82,20 @@ if (milestoneEl) {
   console.log(`✓ milestone-100stars-3x4.png  (${Math.round(box.width * SCALE)}×${Math.round(box.height * SCALE)} px @ ${SCALE}x)`)
 }
 
+// ── Launch set (#/launch) — 官方曝光首发 6 张组图 ──
+await page.goto(`${BASE}/#/launch`, { waitUntil: 'networkidle' })
+await page.waitForTimeout(1500)
+await page.addStyleTag({ content: SQUARE_OFF })
+
+const launchCards = await page.$$('.xhs-card')
+let li = 1
+for (const el of launchCards) {
+  const file = `launch-${li}.png`
+  await el.screenshot({ path: `${OUT_DIR}/${file}` })
+  const box = await el.boundingBox()
+  console.log(`✓ ${file}  (${Math.round(box.width * SCALE)}×${Math.round(box.height * SCALE)} px @ ${SCALE}x)`)
+  li++
+}
+
 await browser.close()
 console.log(`\nSaved to ./${OUT_DIR}/`)
