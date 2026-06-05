@@ -1190,6 +1190,247 @@ html, body {
   margin: 0;
 }
 
+/* ═══════════════════════════════════════════════
+   Launch 组图（官方曝光首发）— 全新 .lc-* 视觉系统
+   方向 C 封面大特写 + 方向 A 真实组件铺满
+   ═══════════════════════════════════════════════ */
+
+.lc-card {
+  position: relative;
+  width: 780px;
+  max-width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+
+.lc-body {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 56px;
+}
+
+/* ── 通用头部 ── */
+.lc-head {
+  flex-shrink: 0;
+}
+
+.lc-kicker {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 15px;
+  letter-spacing: 0.26em;
+  color: #3CD3FC;
+  text-transform: uppercase;
+}
+
+.lc-title {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 46px;
+  line-height: 1.12;
+  color: #E8E3D6;
+  margin: 16px 0 0;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 24px rgba(0, 0, 0, 0.5);
+}
+
+.lc-title .accent {
+  color: #3CD3FC;
+  text-shadow: 0 0 18px rgba(60, 211, 252, 0.5);
+}
+
+/* ── 组件舞台：真实组件铺满的居中区 ── */
+.lc-stage {
+  flex: 1;
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.lc-stage.column {
+  gap: 24px;
+}
+
+.lc-cap {
+  flex-shrink: 0;
+  margin: 0;
+  text-align: center;
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: rgba(233, 225, 209, 0.5);
+}
+
+/* ── 图1 封面：满屏希卡之眼大特写 ── */
+.lc-cover {
+  position: absolute;
+  inset: 0;
+}
+
+.lc-cover-eye {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -58%);
+  opacity: 0.9;
+  filter: drop-shadow(0 0 60px rgba(60, 211, 252, 0.4));
+}
+
+.lc-cover-text {
+  position: absolute;
+  left: 56px;
+  right: 56px;
+  bottom: 64px;
+  z-index: 3;
+}
+
+.lc-cover-kicker {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 16px;
+  letter-spacing: 0.3em;
+  color: #3CD3FC;
+}
+
+.lc-cover-title {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 76px;
+  line-height: 1.05;
+  color: #E8E3D6;
+  margin: 18px 0 16px;
+  text-shadow: 0 0 32px rgba(0, 0, 0, 0.7), 0 0 24px rgba(60, 211, 252, 0.28);
+}
+
+.lc-cover-sub {
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  font-size: 21px;
+  color: rgba(233, 225, 209, 0.72);
+  margin: 0;
+}
+
+/* ── 图2 HUD ── */
+.lc-hud-hearts {
+  transform: scale(1.15);
+}
+
+.lc-hud-row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.lc-hud-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.lc-hud-beasts {
+  display: flex;
+  gap: 28px;
+}
+
+/* ── 图4 菜单 / 物品栏 ── */
+.lc-menu-sections {
+  transform: scale(1.2);
+  margin-bottom: 16px;
+}
+
+.lc-item-grid {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 20px;
+  justify-content: center;
+}
+
+/* ── 图5 地图 ── */
+.lc-map-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 48px;
+  min-height: 200px;
+}
+
+.lc-map-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.lc-map-cell span {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 13px;
+  color: rgba(233, 225, 209, 0.5);
+}
+
+.lc-rune {
+  margin-top: 16px;
+}
+
+/* ── 图6 收尾 ── */
+.lc-closing {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 56px;
+  gap: 22px;
+}
+
+.lc-closing-title {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 52px;
+  line-height: 1.12;
+  color: #E8E3D6;
+  margin: 8px 0 0;
+  text-shadow: 0 0 28px rgba(60, 211, 252, 0.3);
+}
+
+.lc-closing-sub {
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  font-size: 19px;
+  color: rgba(233, 225, 209, 0.7);
+  margin: 0;
+}
+
+.lc-closing-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  padding: 14px 28px;
+  border: 1px solid rgba(60, 211, 252, 0.4);
+  border-radius: 6px;
+  background: rgba(60, 211, 252, 0.08);
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+  color: #E8E3D6;
+  box-shadow: 0 0 16px rgba(60, 211, 252, 0.2);
+}
+
+.lc-closing-cta .star { font-size: 24px; }
+.lc-closing-cta b { color: #3CD3FC; font-weight: 700; }
+
+.lc-closing-note {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: rgba(233, 225, 209, 0.45);
+  margin: 6px 0 0;
+}
+
 
 .poster-bg {
   position: absolute;

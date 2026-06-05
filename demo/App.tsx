@@ -2824,119 +2824,133 @@ const MilestonePage: React.FC = () => {
 }
 
 // ─── Launch Page (官方曝光首发组图 6 张) ──────────────────────────────────────
-// 面向"第一次见到项目的陌生人"：第一印象帖，不是更新帖。
-// 复用 XhsCard（塞尔达皮 + 归藏瑞士排版骨架），但文案全部改为首印逻辑。
+// 视觉策略：方向 C 封面（满屏希卡之眼大特写）+ 方向 A 内容（真实组件铺满）。
+// 用全新的 .lc-* 视觉系统，与 .xhs-* 文字卡明显区分；大量真实组件当主角。
+
+const LaunchCard: React.FC<{ idx: string; children: React.ReactNode; scan?: number }> = ({ idx, children, scan = 0.06 }) => (
+  <div>
+    <div className="poster-block-label">{idx}</div>
+    <div className="lc-card">
+      <div className="poster-bg">
+        <SheikahBackground color="darkBlue">
+          <SheikahScanlines animated opacity={scan} />
+        </SheikahBackground>
+      </div>
+      <div className="lc-body">{children}</div>
+    </div>
+  </div>
+)
 
 const LaunchPage: React.FC = () => (
   <div className="poster-page">
     <div className="poster-stack">
 
-      {/* ═══ 图 1：封面（最强钩子） ═══ */}
-      <XhsCard label="LAUNCH 1 / 6 — Cover">
-        <div className="xhs-cover">
-          <div className="xhs-kicker">开源 · 免费 · 非官方粉丝创作</div>
-          <h1 className="xhs-cover-title">我把《塞尔达》<br />的 UI 做成了<br /><span className="accent">开源项目</span></h1>
-          <p className="xhs-cover-sub">《旷野之息》的希卡之石界面，<br />变成了能直接用的 React 组件 + AI 规范</p>
-          <div className="xhs-cover-foot">
-            <SheikahSymbol size={48} outline={false} />
-            <div className="xhs-cover-foot-text">
-              <span className="name">zelda-hyrule-ui</span>
-              <span className="ver">FREE · OPEN SOURCE</span>
+      {/* ═══ 图 1：封面 — 满屏希卡之眼大特写（方向 C） ═══ */}
+      <LaunchCard idx="LAUNCH 1 / 6 — Cover" scan={0.08}>
+        <div className="lc-cover">
+          <div className="lc-cover-eye">
+            <SheikahSymbol size={460} outline={false} />
+          </div>
+          <div className="lc-cover-text">
+            <div className="lc-cover-kicker">OPEN SOURCE · REACT UI</div>
+            <h1 className="lc-cover-title">把《塞尔达》<br />搬进你的代码</h1>
+            <p className="lc-cover-sub">《旷野之息》希卡之石界面 · 83 个组件</p>
+          </div>
+        </div>
+      </LaunchCard>
+
+      {/* ═══ 图 2：真实 HUD（方向 A — 组件铺满） ═══ */}
+      <LaunchCard idx="LAUNCH 2 / 6 — HUD">
+        <div className="lc-head">
+          <span className="lc-kicker">01 / 真机渲染</span>
+          <h2 className="lc-title">不是截图，是<span className="accent">能跑的组件</span></h2>
+        </div>
+        <div className="lc-stage">
+          <div className="lc-hud-hearts"><HealthBar current={10} max={13} bonus={3} /></div>
+          <div className="lc-hud-row">
+            <StaminaWheel value={0.7} size={88} />
+            <div className="lc-hud-col">
+              <RupeeCounter amount={13878} />
+              <Temperature value="hot" />
             </div>
           </div>
+          <div className="lc-hud-beasts">
+            <DivineBeast beast="ruta" charges={2} />
+            <DivineBeast beast="medoh" charges={1} />
+            <DivineBeast beast="rudania" charges={3} />
+          </div>
         </div>
-      </XhsCard>
+        <p className="lc-cap">HealthBar · StaminaWheel · RupeeCounter · DivineBeast</p>
+      </LaunchCard>
 
-      {/* ═══ 图 2：这是什么（两层用法，降低理解门槛） ═══ */}
-      <XhsCard label="LAUNCH 2 / 6 — What">
-        <div className="xhs-content">
-          <div className="xhs-kicker">01 / 这是什么</div>
-          <div className="xhs-bignum-row">
-            <span className="xhs-bignum">83</span>
-            <span className="xhs-bignum-unit">Components</span>
-          </div>
-          <h2 className="xhs-h2 tight">一套《旷野之息》<br />风格的 <span className="accent">UI 工具箱</span></h2>
-          <div className="xhs-rows">
-            <div className="xhs-row"><span className="n">1</span><p>组件库：83 个现成组件，前端直接 import 用</p></div>
-            <div className="xhs-row"><span className="n">2</span><p>AI 规范：丢给 Cursor / Claude 就能生成对味界面</p></div>
-          </div>
-          <div className="xhs-foot-note">写代码、做 PPT、做图文 —— 同一套塞尔达味道</div>
+      {/* ═══ 图 3：对话系统（方向 A） ═══ */}
+      <LaunchCard idx="LAUNCH 3 / 6 — Dialog">
+        <div className="lc-head">
+          <span className="lc-kicker">02 / 对话系统</span>
+          <h2 className="lc-title">连<span className="accent">分支选择</span>都还原了</h2>
         </div>
-      </XhsCard>
+        <div className="lc-stage column">
+          <Dialog type="speech" speaker="Old Man" showContinue>
+            It&apos;s dangerous to go alone. Take this sword — and these components.
+          </Dialog>
+          <DialogChoice
+            options={[{ label: 'Take it', value: 'a' }, { label: 'Maybe later', value: 'b' }]}
+            selectedIndex={0}
+          />
+        </div>
+        <p className="lc-cap">Dialog · DialogChoice · DialogFloating</p>
+      </LaunchCard>
 
-      {/* ═══ 图 3：怎么用（戳 AI 时代爽点） ═══ */}
-      <XhsCard label="LAUNCH 3 / 6 — How">
-        <div className="xhs-content">
-          <div className="xhs-kicker">02 / 怎么用</div>
-          <h2 className="xhs-h2">把链接丢给 AI<br />说一句<span className="accent">「用塞尔达风格做」</span></h2>
-          <div className="xhs-code">
-            <span className="comment"># 方式一：装组件库</span>
-            <span><span className="accent">npm i</span> zelda-hyrule-ui</span>
-            <span className="comment"># 方式二：把 SKILL.md 丢给 Cursor / Claude</span>
-            <span>“用塞尔达风格做个登录页”</span>
-          </div>
-          <div className="xhs-foot-note">AI 会自动套用配色 / 字体 / 双层边框规则</div>
+      {/* ═══ 图 4：菜单 / 物品栏（方向 A） ═══ */}
+      <LaunchCard idx="LAUNCH 4 / 6 — Menu">
+        <div className="lc-head">
+          <span className="lc-kicker">03 / 菜单 · 物品栏</span>
+          <h2 className="lc-title">整套<span className="accent">库存界面</span>都给你</h2>
         </div>
-      </XhsCard>
+        <div className="lc-stage">
+          <div className="lc-menu-sections"><MenuSections activeSection="weapons" /></div>
+          <div className="lc-item-grid">
+            <ItemBG state="selected" size={96}><AttackDefenseValues type="attack" value={32} /></ItemBG>
+            <ItemBG state="filled" size={96}><SheikahAbility ability="magnesis" /></ItemBG>
+            <ItemBG state="filled" size={96}><BonusEffectIcon icon="attackUp" arrow /></ItemBG>
+            <ItemBG state="equipped" size={96}><RupeeType type="gold" /></ItemBG>
+            <ItemBG state="filled" size={96}><StatusHealing type="3Hearts" /></ItemBG>
+            <ItemBG state="empty" size={96} />
+          </div>
+        </div>
+        <p className="lc-cap">MenuSections · ItemBG · SheikahAbility · 等 11 个</p>
+      </LaunchCard>
 
-      {/* ═══ 图 4：精确还原（区别于 AI slop） ═══ */}
-      <XhsCard label="LAUNCH 4 / 6 — Before / After">
-        <div className="xhs-content">
-          <div className="xhs-kicker">03 / 为什么不一样</div>
-          <h2 className="xhs-h2 tight">从「差不多」<br />到<span className="accent">「就是它」</span></h2>
-          <div className="xhs-ba">
-            <div className="xhs-ba-col before">
-              <span className="tag">别家</span>
-              <div className="glyphs">🐾 👹 🌿 ⚔ 💎</div>
-              <p className="note">emoji / 近似图形凑数</p>
-            </div>
-            <div className="xhs-ba-arrow">→</div>
-            <div className="xhs-ba-col after">
-              <span className="tag">这里</span>
-              <div className="comp"><SheikahCompendiumFilters activeFilter="materials" /></div>
-              <p className="note">Figma 原稿逐节点还原</p>
-            </div>
-          </div>
-          <div className="xhs-foot-note">每个 SVG 都对齐游戏原版配色与辉光，不是 AI 糊弄</div>
+      {/* ═══ 图 5：地图 / 希卡之石（方向 A） ═══ */}
+      <LaunchCard idx="LAUNCH 5 / 6 — Map & Sheikah">
+        <div className="lc-head">
+          <span className="lc-kicker">04 / 地图 · 希卡之石</span>
+          <h2 className="lc-title">标记 · 信标 · <span className="accent">符文</span></h2>
         </div>
-      </XhsCard>
+        <div className="lc-stage">
+          <div className="lc-map-row">
+            <div className="lc-map-cell"><MapBeacon color="blue" flare /><span>Beacon</span></div>
+            <div className="lc-map-cell"><MapQuestMarker pulse size={64} /><span>QuestMarker</span></div>
+            <div className="lc-map-cell"><MapBeacon color="yellow" /><span>Beacon</span></div>
+          </div>
+          <div className="lc-rune"><SheikahRune activeRune="magnesis" /></div>
+        </div>
+        <p className="lc-cap">MapBeacon · MapQuestMarker · SheikahRune · 等 17 个</p>
+      </LaunchCard>
 
-      {/* ═══ 图 5：覆盖什么（体现体量） ═══ */}
-      <XhsCard label="LAUNCH 5 / 6 — Coverage">
-        <div className="xhs-content">
-          <div className="xhs-kicker">04 / 覆盖范围</div>
-          <h2 className="xhs-h2 tight">整套游戏 UI<br />都给你<span className="accent">搭好了</span></h2>
-          <div className="xhs-cat-grid">
-            <div className="xhs-cat"><span className="n">14</span><span className="l">HUD 抬头显示</span></div>
-            <div className="xhs-cat"><span className="n">11</span><span className="l">菜单 / 物品栏</span></div>
-            <div className="xhs-cat"><span className="n">8</span><span className="l">对话系统</span></div>
-            <div className="xhs-cat"><span className="n">9</span><span className="l">地图标记</span></div>
-            <div className="xhs-cat"><span className="n">7</span><span className="l">任务追踪</span></div>
-            <div className="xhs-cat"><span className="n">34</span><span className="l">标题 / 装饰 / 战斗</span></div>
+      {/* ═══ 图 6：收尾 / CTA ═══ */}
+      <LaunchCard idx="LAUNCH 6 / 6 — Closing" scan={0.08}>
+        <div className="lc-closing">
+          <SheikahSymbol size={150} outline={false} />
+          <h2 className="lc-closing-title">既玩塞尔达<br />又写前端？</h2>
+          <p className="lc-closing-sub">83 个组件 · 免费开源 · 丢给 AI 就能用</p>
+          <div className="lc-closing-cta">
+            <span className="star">⭐</span>
+            <span>GitHub 搜 <b>zelda-hyrule-ui</b></span>
           </div>
-          <div className="xhs-foot-note">键盘可达 · 焦点环 · 移动端适配 · TypeScript 全类型</div>
+          <p className="lc-closing-note">FREE · MIT · 非官方粉丝创作</p>
         </div>
-      </XhsCard>
-
-      {/* ═══ 图 6：收尾 / 适合谁（CTA） ═══ */}
-      <XhsCard label="LAUNCH 6 / 6 — Closing">
-        <div className="xhs-cover">
-          <div className="xhs-kicker">谁会喜欢</div>
-          <h2 className="xhs-h2" style={{ marginTop: 24 }}>如果你也<br /><span className="accent">既玩塞尔达<br />又写前端</span></h2>
-          <div className="xhs-rows" style={{ marginTop: 36 }}>
-            <div className="xhs-row"><span className="n">→</span><p>想做个有游戏感的项目 / 作品集</p></div>
-            <div className="xhs-row"><span className="n">→</span><p>给 AI 一个明确的设计语言去生成界面</p></div>
-            <div className="xhs-row"><span className="n">→</span><p>纯粹喜欢《旷野之息》这套 UI 美学</p></div>
-          </div>
-          <div className="xhs-cover-foot">
-            <SheikahSymbol size={44} outline={false} />
-            <div className="xhs-cover-foot-text">
-              <span className="name">⭐ GitHub 搜 zelda-hyrule-ui</span>
-              <span className="ver">FREE · MIT · 非官方粉丝创作</span>
-            </div>
-          </div>
-        </div>
-      </XhsCard>
+      </LaunchCard>
 
     </div>
     <p className="poster-caption">官方曝光首发组图 · github.com/chaos-xxl/zelda-hyrule-ui</p>
