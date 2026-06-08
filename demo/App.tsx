@@ -2364,8 +2364,16 @@ const ShowcasePage: React.FC = () => (
                   <span className="sw-ticker">VOO</span>
                   <span className="sw-desc">S&amp;P 500 ETF</span>
                 </div>
-                <svg className="sw-spark up" viewBox="0 0 64 24" preserveAspectRatio="none" aria-hidden="true">
-                  <polyline points="0,17 5,19 10,14 15,16 21,10 27,13 32,8 37,11 43,6 48,9 53,4 59,7 64,3" />
+                <svg className="sw-spark up" viewBox="0 0 80 32" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="sw-fill-up-1" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#6FD49C" stopOpacity="0.45" />
+                      <stop offset="100%" stopColor="#6FD49C" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <line className="sw-base" x1="0" y1="22" x2="80" y2="22" />
+                  <polygon className="sw-area" points="0,32 0,24 6,21 12,26 18,15 24,20 30,9 36,14 42,18 48,7 54,12 60,5 66,10 72,3 80,6 80,32" fill="url(#sw-fill-up-1)" />
+                  <polyline points="0,24 6,21 12,26 18,15 24,20 30,9 36,14 42,18 48,7 54,12 60,5 66,10 72,3 80,6" />
                 </svg>
                 <div className="sw-row-val">
                   <span className="sw-price">548.12</span>
@@ -2378,8 +2386,16 @@ const ShowcasePage: React.FC = () => (
                   <span className="sw-ticker">GOLD</span>
                   <span className="sw-desc">黄金现货</span>
                 </div>
-                <svg className="sw-spark up" viewBox="0 0 64 24" preserveAspectRatio="none" aria-hidden="true">
-                  <polyline points="0,15 5,11 10,16 15,12 21,17 27,9 32,13 37,7 43,12 48,6 53,10 59,5 64,6" />
+                <svg className="sw-spark up" viewBox="0 0 80 32" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="sw-fill-up-2" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#6FD49C" stopOpacity="0.45" />
+                      <stop offset="100%" stopColor="#6FD49C" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <line className="sw-base" x1="0" y1="20" x2="80" y2="20" />
+                  <polygon className="sw-area" points="0,32 0,18 6,23 12,12 18,19 24,8 30,16 36,6 42,13 48,4 54,11 60,14 66,5 72,9 80,3 80,32" fill="url(#sw-fill-up-2)" />
+                  <polyline points="0,18 6,23 12,12 18,19 24,8 30,16 36,6 42,13 48,4 54,11 60,14 66,5 72,9 80,3" />
                 </svg>
                 <div className="sw-row-val">
                   <span className="sw-price">2,068.40</span>
@@ -2392,8 +2408,16 @@ const ShowcasePage: React.FC = () => (
                   <span className="sw-ticker">NVDA</span>
                   <span className="sw-desc">英伟达</span>
                 </div>
-                <svg className="sw-spark down" viewBox="0 0 64 24" preserveAspectRatio="none" aria-hidden="true">
-                  <polyline points="0,5 5,8 10,4 15,10 21,7 27,14 32,9 37,15 43,11 48,18 53,13 59,20 64,21" />
+                <svg className="sw-spark down" viewBox="0 0 80 32" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="sw-fill-down-1" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#F15050" stopOpacity="0.45" />
+                      <stop offset="100%" stopColor="#F15050" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <line className="sw-base" x1="0" y1="12" x2="80" y2="12" />
+                  <polygon className="sw-area" points="0,32 0,6 6,11 12,4 18,13 24,9 30,18 36,12 42,21 48,16 54,25 60,19 66,27 72,22 80,29 80,32" fill="url(#sw-fill-down-1)" />
+                  <polyline points="0,6 6,11 12,4 18,13 24,9 30,18 36,12 42,21 48,16 54,25 60,19 66,27 72,22 80,29" />
                 </svg>
                 <div className="sw-row-val">
                   <span className="sw-price">132.05</span>

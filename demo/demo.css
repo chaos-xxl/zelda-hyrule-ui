@@ -913,7 +913,7 @@ html, body {
 /* 迷你走势线 */
 .sw-spark {
   flex: 1;
-  height: 22px;
+  height: 30px;
   min-width: 0;
 }
 
@@ -922,6 +922,19 @@ html, body {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+/* 线下渐变填充面积 */
+.sw-area {
+  stroke: none;
+}
+
+/* 虚线基准线（昨收价） */
+.sw-base {
+  stroke: rgba(233, 225, 209, 0.22);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
   vector-effect: non-scaling-stroke;
 }
 
