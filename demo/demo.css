@@ -813,6 +813,153 @@ html, body {
   aspect-ratio: 4 / 3;
 }
 
+.showcase-frame-widget4x2 {
+  aspect-ratio: 2.1 / 1;
+}
+
+/* ── 4×2 股票桌面小组件（塞尔达希卡风） ── */
+.sw-widget {
+  position: absolute;
+  inset: 0;
+  margin: 18px;
+  background: rgba(8, 16, 30, 0.72);
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45), 0 0 18px rgba(60, 211, 252, 0.12);
+  display: flex;
+  flex-direction: column;
+  padding: 18px 22px;
+  overflow: hidden;
+}
+
+/* 双层边框：库的核心视觉特征 */
+.sw-inner-border {
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(60, 211, 252, 0.22);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.sw-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  margin-bottom: 12px;
+}
+
+.sw-head-left {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.sw-title {
+  font-family: 'Hylia Serif', 'Cinzel', serif;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  color: #E8E3D6;
+}
+
+.sw-time {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: rgba(60, 211, 252, 0.7);
+}
+
+.sw-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.sw-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 5px 0;
+  border-top: 1px solid rgba(60, 211, 252, 0.1);
+}
+
+.sw-row:first-child {
+  border-top: none;
+}
+
+.sw-row-name {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  width: 96px;
+  flex-shrink: 0;
+}
+
+.sw-ticker {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 17px;
+  color: #E8E3D6;
+  letter-spacing: 0.02em;
+}
+
+.sw-desc {
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  color: rgba(233, 225, 209, 0.45);
+}
+
+/* 迷你走势线 */
+.sw-spark {
+  flex: 1;
+  height: 22px;
+  min-width: 0;
+}
+
+.sw-spark polyline {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.sw-spark.up polyline {
+  stroke: #6FD49C;
+  filter: drop-shadow(0 0 3px rgba(111, 212, 156, 0.5));
+}
+
+.sw-spark.down polyline {
+  stroke: #F15050;
+  filter: drop-shadow(0 0 3px rgba(241, 80, 80, 0.5));
+}
+
+.sw-row-val {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  width: 86px;
+  flex-shrink: 0;
+}
+
+.sw-price {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 16px;
+  font-weight: 500;
+  color: #E9E1D1;
+}
+
+.sw-chg {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sw-chg.up { color: #6FD49C; }
+.sw-chg.down { color: #F15050; }
+
 /* ── Showcase 登录页（双层边框 + 希卡蓝，复用库的视觉模式） ── */
 .showcase-login-card {
   position: relative;

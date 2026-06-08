@@ -2142,7 +2142,7 @@ const MobilePage: React.FC = () => (
 
 // ─── Showcase Page (宣传素材成品图) ──────────────────────────────────────────
 
-const ShowcaseShot: React.FC<{ label: string; ratio?: '16x9' | '4x3'; children: React.ReactNode }> = ({ label, ratio = '16x9', children }) => (
+const ShowcaseShot: React.FC<{ label: string; ratio?: '16x9' | '4x3' | 'widget4x2'; children: React.ReactNode }> = ({ label, ratio = '16x9', children }) => (
   <div className="showcase-shot">
     <div className="showcase-shot-label">{label}</div>
     <div className={`showcase-frame showcase-frame-${ratio}`}>{children}</div>
@@ -2338,6 +2338,69 @@ const ShowcasePage: React.FC = () => (
           {/* 底部按键提示 */}
           <div style={{ position: 'absolute', bottom: 24, right: 32 }}>
             <ActionSet actions={[{ button: 'A', label: 'Confirm' }, { button: 'B', label: 'Back' }]} />
+          </div>
+        </SheikahBackground>
+      </ShowcaseShot>
+
+      {/* ═══ SHOT 7: 4×2 股票桌面小组件 ═══ */}
+      <ShowcaseShot label="07 — Stock Widget (4×2)" ratio="widget4x2">
+        <SheikahBackground color="darkBlue">
+          <SheikahScanlines opacity={0.06} />
+          <div className="sw-widget">
+            <div className="sw-inner-border" />
+            {/* 顶栏：标题 + 希卡之眼 + 时间 */}
+            <div className="sw-head">
+              <div className="sw-head-left">
+                <SheikahSymbol size={26} outline={false} />
+                <span className="sw-title">Watchlist</span>
+              </div>
+              <span className="sw-time">收盘 · 16:00 EST</span>
+            </div>
+
+            {/* 行情列表 */}
+            <div className="sw-list">
+              <div className="sw-row">
+                <div className="sw-row-name">
+                  <span className="sw-ticker">VOO</span>
+                  <span className="sw-desc">S&amp;P 500 ETF</span>
+                </div>
+                <svg className="sw-spark up" viewBox="0 0 64 24" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline points="0,18 12,16 22,19 34,11 44,13 54,6 64,4" />
+                </svg>
+                <div className="sw-row-val">
+                  <span className="sw-price">548.12</span>
+                  <span className="sw-chg up">+1.24%</span>
+                </div>
+              </div>
+
+              <div className="sw-row">
+                <div className="sw-row-name">
+                  <span className="sw-ticker">GOLD</span>
+                  <span className="sw-desc">黄金现货</span>
+                </div>
+                <svg className="sw-spark up" viewBox="0 0 64 24" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline points="0,14 12,15 22,10 34,12 44,8 54,9 64,5" />
+                </svg>
+                <div className="sw-row-val">
+                  <span className="sw-price">2,068.40</span>
+                  <span className="sw-chg up">+0.62%</span>
+                </div>
+              </div>
+
+              <div className="sw-row">
+                <div className="sw-row-name">
+                  <span className="sw-ticker">NVDA</span>
+                  <span className="sw-desc">英伟达</span>
+                </div>
+                <svg className="sw-spark down" viewBox="0 0 64 24" preserveAspectRatio="none" aria-hidden="true">
+                  <polyline points="0,6 12,8 22,7 34,13 44,12 54,17 64,19" />
+                </svg>
+                <div className="sw-row-val">
+                  <span className="sw-price">132.05</span>
+                  <span className="sw-chg down">-2.18%</span>
+                </div>
+              </div>
+            </div>
           </div>
         </SheikahBackground>
       </ShowcaseShot>
