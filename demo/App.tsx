@@ -2365,7 +2365,7 @@ const ShowcasePage: React.FC = () => (
                   <span className="sw-desc">S&amp;P 500 ETF</span>
                 </div>
                 <svg className="sw-spark up" viewBox="0 0 64 24" preserveAspectRatio="none" aria-hidden="true">
-                  <polyline points="0,18 12,16 22,19 34,11 44,13 54,6 64,4" />
+                  <polyline points="0,17 5,19 10,14 15,16 21,10 27,13 32,8 37,11 43,6 48,9 53,4 59,7 64,3" />
                 </svg>
                 <div className="sw-row-val">
                   <span className="sw-price">548.12</span>
@@ -2379,7 +2379,7 @@ const ShowcasePage: React.FC = () => (
                   <span className="sw-desc">黄金现货</span>
                 </div>
                 <svg className="sw-spark up" viewBox="0 0 64 24" preserveAspectRatio="none" aria-hidden="true">
-                  <polyline points="0,14 12,15 22,10 34,12 44,8 54,9 64,5" />
+                  <polyline points="0,15 5,11 10,16 15,12 21,17 27,9 32,13 37,7 43,12 48,6 53,10 59,5 64,6" />
                 </svg>
                 <div className="sw-row-val">
                   <span className="sw-price">2,068.40</span>
@@ -2393,7 +2393,7 @@ const ShowcasePage: React.FC = () => (
                   <span className="sw-desc">英伟达</span>
                 </div>
                 <svg className="sw-spark down" viewBox="0 0 64 24" preserveAspectRatio="none" aria-hidden="true">
-                  <polyline points="0,6 12,8 22,7 34,13 44,12 54,17 64,19" />
+                  <polyline points="0,5 5,8 10,4 15,10 21,7 27,14 32,9 37,15 43,11 48,18 53,13 59,20 64,21" />
                 </svg>
                 <div className="sw-row-val">
                   <span className="sw-price">132.05</span>
