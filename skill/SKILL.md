@@ -132,7 +132,8 @@ export default function App() {
 | 需要完整设计 token（配色、字体、间距、动效） | `references/design-tokens.md` |
 | 需要理解"双层边框 / 希卡变体"等核心视觉模式 | `references/core-patterns.md` |
 | 查有哪些组件可用 | `references/component-list.md` |
-| 查某组件的 props / API / 合法取值 | `AI_USAGE.md`（不在本 skill 内） |
+| 查某组件的 props / 合法枚举值（**skill 内自带**） | `references/props-quickref.md` |
+| 查某组件的完整 props / API / 默认值（装包后） | `AI_USAGE.md`（随 npm 包发布，不在本 skill 内） |
 | 自己实现 / 扩展新组件 | `references/new-component.md` |
 | 主题换色 | `references/theming.md` |
 | 无障碍处理（ARIA、对比度、焦点） | `references/accessibility.md` |
@@ -149,6 +150,7 @@ export default function App() {
 - 不确定尺寸 → 默认 `middle`
 - 不确定颜色 → 文字用 `#E9E1D1`，强调用 `#3CD3FC`
 - 用户没说要不要双语 → 默认只英文，要中文时再加（默认双语会撑爆布局）
+- **拿不准某个组件的枚举值 → 查 `references/props-quickref.md`，别凭英文直觉猜**（如晴天是 `clear` 不是 `sunny`，尺寸是 `middle` 不是 `medium`）
 
 ---
 
@@ -369,6 +371,7 @@ import { SheikahBackground, SheikahScanlines, SheikahSymbol, Illustration } from
 | `references/components-core.md` | 8 个核心组件深度示例（Button / Card / Dialog / HealthBar / StaminaWheel / Modal / Divider / Loading） |
 | `references/components-full.md` | 全部 83 个组件的精确样式规范 |
 | `references/component-list.md` | 83 个组件的完整 export 清单 |
+| `references/props-quickref.md` | **props 合法枚举值速查**（防 AI 猜错值，skill 内自带，不装包也能查） |
 | `references/ui-cases.md` | 5 个完整界面案例（标题屏 / 暂停菜单 / 库存 / 对话 / 设置） |
 | `references/new-component.md` | 新组件文件结构模板 + 开发 checklist |
 | `references/demo-layout.md` | demo 页面布局精确规范 |
