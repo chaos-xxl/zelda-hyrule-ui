@@ -45,7 +45,7 @@
 | 6 | `SaveIndicator` | 13:944 | `state: '1'|'2'|'triforce'` | P3 |
 | 7 | `Sensor` | 13:1983 | `active: boolean`, `plus: boolean` | P2 |
 | 8 | `DivineBeast` | 61:155 | `beast: 'ruta'|'medoh'|'naboris'|'rudania'`, `recharging: boolean` | P1 |
-| 9 | `SheikahAbility` | 8:864 | `ability: 'roundBomb'|'cubeBomb'|'magnesis'|'stasis'|'cryonis'|'camera'|'masterCycle'`, `recharge: boolean`, `plus: boolean` | P1 |
+| 9 | `SheikahAbility` | 8:864 | `ability: 'roundBomb'|'cubeBomb'|'magnesis'|'stasis'|'cryonis'|'camera'`, `recharge: boolean`, `plus: boolean` | P1 |
 | 10 | `EffectDuration` | 34:2349 | `duration: number`, `maxDuration: number` | P2 |
 | 11 | `HorseSpur` | 34:2551 | `type: 'normal'|'ancient'|'endura'`, `used: boolean` | P3 |
 | 12 | `QuickSelector` | 13:723 | `type: 'bow'|'weapons'`, `items: Item[]`, `selectedIndex: number` | P2 |

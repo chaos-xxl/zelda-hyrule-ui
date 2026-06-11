@@ -9,7 +9,7 @@ import stasisSvg from '../../../assets/svg/ability-stasis.svg'
 import cryonisSvg from '../../../assets/svg/ability-cryonis.svg'
 import magnesisSvg from '../../../assets/svg/ability-magnesis.svg'
 
-export type AbilityType = 'roundBomb' | 'cubeBomb' | 'magnesis' | 'stasis' | 'cryonis' | 'camera' | 'masterCycle'
+export type AbilityType = 'roundBomb' | 'cubeBomb' | 'magnesis' | 'stasis' | 'cryonis' | 'camera'
 
 export interface SheikahAbilityProps {
   ability: AbilityType
@@ -28,17 +28,15 @@ const ABILITY_SVGS: Record<AbilityType, string> = {
   stasis: stasisSvg,
   cryonis: cryonisSvg,
   camera: cameraSvg,
-  masterCycle: roundBombSvg, // 注：Master Cycle Zero（DLC 摩托）无专属图标，暂回退 roundBomb
 }
 
 const ABILITY_PLUS_SVGS: Record<AbilityType, string> = {
   roundBomb: roundBombPlusSvg,
-  cubeBomb: roundBombPlusSvg,
+  cubeBomb: cubeBombSvg,
   magnesis: magnesisSvg,
   stasis: stasisSvg,
   cryonis: cryonisSvg,
   camera: cameraSvg,
-  masterCycle: roundBombPlusSvg, // 同上，无专属图标
 }
 
 const SheikahAbility: React.FC<SheikahAbilityProps> = ({

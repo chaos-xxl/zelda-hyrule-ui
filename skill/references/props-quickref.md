@@ -20,7 +20,7 @@
 | `RupeeType` | `type` | `green` \| `blue` \| `red` \| `purple` \| `silver` \| `gold` | — |
 | `DivineBeast` | `beast`（必填） | `ruta` \| `medoh` \| `naboris` \| `rudania` | 水/风/雷/火 |
 | `DivineBeast` | `charges`（number）`recharging`（bool） | — | — |
-| `SheikahAbility` | `ability`（必填） | `roundBomb` \| `cubeBomb` \| `magnesis` \| `stasis` \| `cryonis` \| `camera` \| `masterCycle` | `plus` 加强态 |
+| `SheikahAbility` | `ability`（必填） | `roundBomb` \| `cubeBomb` \| `magnesis` \| `stasis` \| `cryonis` \| `camera` | `plus` 加强态 |
 | `Temperature` | `value`（必填） | `regular` \| `cold` \| `hot` | — |
 | `SoundMeter` | `level` | `low` \| `high` | — |
 | `BonusEffectIcon` | `icon`（必填） | `attackUp` \| `defenseUp` \| `speedUp` \| `heatResist` \| `coldResist` \| `electricResist` \| `quietUp` \| `fireResist` \| `durabilityUp` \| `criticalHit` \| `longThrow` \| `climbSpeedUp` \| `swimSpeedUp` \| `bonusHeart` \| `staminaUp` | `arrow` 显示箭头 |
