@@ -1,8 +1,10 @@
-# zelda-hyrule-ui · AI Usage Guide (v0.1.0)
+# zelda-hyrule-ui · AI Usage Guide
 
-> FOR AI CODE ASSISTANTS: This file is the canonical, machine-readable reference for generating code
-> that uses `zelda-hyrule-ui`. Prefer this file over any other source. Every prop / import / default below is
-> copied verbatim from source. Do NOT invent props.
+> FOR AI CODE ASSISTANTS: This file is a machine-readable API reference for `zelda-hyrule-ui`.
+> It covers the **8 core components in depth** (props / imports / defaults, copied verbatim from source).
+> The library has **83 components total** — for the full set, their valid prop enums, and pixel-level
+> specs, also consult `skill/references/props-quickref.md` and `skill/references/components-full.md`.
+> Do NOT invent props: if a prop isn't documented here, check those skill files before guessing.
 
 ## 0. Setup (once per project)
 
@@ -30,7 +32,10 @@ react-dom  >= 17.0.0
 Global aesthetics preset (dark theme + Sheikah glow + double-border structure) is
 applied via `zelda-hyrule-ui/style`.
 
-## 1. Full API (8 components — Phase 0)
+## 1. Core API (8 components — in depth)
+
+> These 8 are documented exhaustively below. For the other 75 components, see
+> `skill/references/props-quickref.md` (valid prop enums) and `skill/references/components-full.md`.
 
 All named exports from `zelda-hyrule-ui`:
 

@@ -23,6 +23,9 @@ export default defineConfig({
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
+        // 'use client' 指令：让 Next.js App Router 用户能直接 import 用了 hooks 的组件
+        // （Toast/Modal 等），不必自己包一层客户端边界。
+        banner: `'use client';`,
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',

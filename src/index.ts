@@ -2,6 +2,9 @@
 // zelda-hyrule-ui - Component Exports
 // ============================================
 
+// 全局字体声明（随包发布，确保标题字体 Hylia Serif 可用）
+import './styles/fonts.less'
+
 // --- Common Components ---
 export { default as Button } from './components/Button'
 export { default as Card } from './components/Card'

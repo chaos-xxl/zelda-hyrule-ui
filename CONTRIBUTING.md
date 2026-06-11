@@ -37,7 +37,7 @@ docs/             # Project documentation
 - Sheikah blue (#3CD3FC) for glows and focus
 - Roboto Medium Italic for body text
 - Hylia Serif for titles
-- All SVG inline (no img src)
+- Simple icons inline (`<svg><path>`, colorable via `currentColor`); large/complex art imported as assets (`import x from './…svg'`, externalized by lib-assets)
 
 ## Scripts
 

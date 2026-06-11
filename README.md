@@ -172,14 +172,14 @@ The simplest way to use this library with AI:
 | File | For | Purpose |
 |------|-----|---------|
 | [`skill/SKILL.md`](skill/SKILL.md) | Cursor / Copilot | Routing-layer skill (progressive disclosure) — design rules + load-on-demand `references/` for pixel-level specs |
-| [`AI_USAGE.md`](AI_USAGE.md) | AI assistants | Complete API reference — all props, types, defaults |
+| [`AI_USAGE.md`](AI_USAGE.md) | AI assistants | Core API reference — 8 core components in depth; full 83-component enums in `skill/references/` |
 | [`DESIGN_PROMPT.md`](DESIGN_PROMPT.md) | v0 / Figma AI / MJ | One-click design generation prompts |
 | [`skill/references/layout-bridge.md`](skill/references/layout-bridge.md) | Cursor / Claude Code | Layout interop — pair with a layout skill to make Zelda-style PPT / 图文 / 封面 (skin-over-skeleton) |
 
 | 文件 | 面向 | 用途 |
 |------|-----|---------|
 | [`skill/SKILL.md`](skill/SKILL.md) | Cursor / Copilot | 路由层 skill（渐进披露）——设计铁律 + 按需加载的 `references/` 像素级规范 |
-| [`AI_USAGE.md`](AI_USAGE.md) | AI 编程助手 | 完整 API 手册——所有 props、类型、默认值 |
+| [`AI_USAGE.md`](AI_USAGE.md) | AI 编程助手 | 核心 API 手册——8 个核心组件详解；全部 83 组件枚举值见 `skill/references/` |
 | [`DESIGN_PROMPT.md`](DESIGN_PROMPT.md) | v0 / Figma AI / MJ | 一键设计生成提示词 |
 | [`skill/references/layout-bridge.md`](skill/references/layout-bridge.md) | Cursor / Claude Code | 排版互操作——配合排版 skill 做塞尔达风 PPT / 图文 / 封面（骨 + 皮） |
 
@@ -221,7 +221,7 @@ The simplest way to use this library with AI:
 | Main Tan | `#E2DED3` | Borders, titles |
 | Text Main | `#E9E1D1` | Body text (warm white) |
 | Dark BG | `#66645D` | Page background |
-| Deep Dark | `#1A1A2E` | Sheikah Slate panels |
+| Sheikah Panel | `rgba(10,20,40,0.85)` | Sheikah Slate panels |
 
 | 变量 | 值 | 用途 |
 |------|-----|------|
@@ -231,7 +231,7 @@ The simplest way to use this library with AI:
 | 米色 | `#E2DED3` | 边框、标题 |
 | 主文字 | `#E9E1D1` | 正文（暖白） |
 | 深色背景 | `#66645D` | 页面背景 |
-| 深暗色 | `#1A1A2E` | 希卡之石面板 |
+| 希卡面板 | `rgba(10,20,40,0.85)` | 希卡之石面板 |
 
 ---
 
@@ -244,7 +244,7 @@ The simplest way to use this library with AI:
 | Styling | Less Modules (`zelda-[local]-[hash:5]` scoped names) |
 | Assets | SVGs exported from Figma, externalized via `@laynezh/vite-plugin-lib-assets` |
 | Fonts | Hylia Serif + Cinzel + Roboto |
-| Bundle | ~115KB ESM, tree-shakeable |
+| Bundle | ~120KB ESM, tree-shakeable |
 
 ---
 
@@ -289,6 +289,12 @@ If you use this library or the original UI kit, please credit Hunter Paramore.
 
 ## License / 许可证
 
-MIT — For learning and personal use only. This is a fan-creation project. All Zelda-related trademarks belong to Nintendo.
+**Code: [MIT](LICENSE).** The MIT license grants full rights to use, modify, and redistribute the **code**, including commercially.
+
+However, this project's visuals are inspired by Nintendo IP. The MIT license does **not** grant any rights to Nintendo's trademarks or game IP. Because of that, **commercial use is strongly discouraged** — this is a non-commercial fan creation, and any use touching the Zelda/Nintendo IP (especially commercial) is at your own risk and your own responsibility. See [`ATTRIBUTION.md`](ATTRIBUTION.md) for the full two-layer rights breakdown (CC BY 4.0 assets + Nintendo trademark layer).
+
+**代码：[MIT](LICENSE)。** MIT 授予对**代码**的使用、修改、再分发权利（含商用）。
+
+但本项目视觉受任天堂 IP 启发，MIT **不**授予任何任天堂商标或游戏 IP 的权利。因此**强烈不建议商用**——这是非商用粉丝创作，任何涉及塞尔达/任天堂 IP 的使用（尤其商用）风险与责任由使用者自负。完整的两层权利说明见 [`ATTRIBUTION.md`](ATTRIBUTION.md)（CC BY 4.0 素材层 + 任天堂商标层）。
 
 MIT — 仅供学习和个人使用。本项目为粉丝创作，所有塞尔达相关商标归任天堂所有。
