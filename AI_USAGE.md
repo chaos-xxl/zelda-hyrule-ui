@@ -25,8 +25,8 @@ Fonts: Hylia Serif is bundled. Roboto must be loaded via Google Fonts:
 
 Peer requirements:
 ```
-react      >= 17.0.0
-react-dom  >= 17.0.0
+react      >= 18.0.0
+react-dom  >= 18.0.0
 ```
 
 Global aesthetics preset (dark theme + Sheikah glow + double-border structure) is
