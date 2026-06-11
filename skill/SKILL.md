@@ -29,42 +29,54 @@
 
 ## 📥 如何获取与使用（重要 · 先读这节）
 
-本 skill 文件本身就是**完整的设计规范**（配色、字体、尺寸、CSS、关键 SVG path）。基于此，有**两种用法**：
+本 skill 文件本身就是**完整的设计规范**（配色、字体、尺寸、CSS、关键 SVG path）。基于此，有**三种用法**（见下）。
+
+### 🛑 兜底总则（最高硬约束，任何路径都适用）
+
+> **标志性素材（希卡之眼 / 神兽 / 插画 / 天气图标等）和 Hylia Serif 字体，必须使用项目导出的真实文件。如果当前环境取不到真实文件，停下来告诉用户"这个素材/字体需要从 npm 包或仓库获取"，并给出确切路径——绝不允许手绘、近似、用 emoji 或退化字体（如只用 Cinzel）静默替代。宁可先放占位、留 TODO，也不要交付一个"看起来差不多"的假素材。**
+>
+> 原因：本项目的核心价值就是"逐节点精确还原、不是 AI slop"。一个手画的希卡之眼 / 一个 Cinzel 标题，会当场摧毁这个信任。**"看起来像"不等于"是它"。**
+>
+> 真实文件位置：字体 `HyliaSerif.ttf`、SVG `sheikah-symbol.svg` 等 —— 装包后在 `node_modules/zelda-hyrule-ui/dist/files/`；clone 仓库则在 `src/assets/`。高频 inline path（天气/心形/菜单等）直接见 `references/svg-paths.md`（已含真实 path data）。
 
 ### 路径甲 · 装组件库（用现成组件，最省事）
 
 ```bash
-npm i zelda-hyrule-ui
-# 国内网络：走 npm 官方源即可（不经过 GitHub）。如慢，配镜像：
-# npm i zelda-hyrule-ui --registry=https://registry.npmmirror.com
+npm i zelda-hyrule-ui   # 国内慢可加 --registry=https://registry.npmmirror.com
 ```
 
 ```tsx
 import { HealthBar } from 'zelda-hyrule-ui'
-import 'zelda-hyrule-ui/style'
+import 'zelda-hyrule-ui/style'   // 含真实 Hylia Serif @font-face（0.2.1+ 已打进包）
 ```
 
-- 装包走的是 **npm 源，不是 GitHub**，国内无代理也能装。
-- 83 个组件 + 全部 SVG/PNG 素材都在包里，开箱即用。
+- 装包走 **npm 源，不是 GitHub**，国内无代理也能装。
+- 83 个组件 + 全部 SVG/PNG 素材 + Hylia Serif 字体都在包里，开箱即用，**字体无需任何手动加载**。
 
-### 路径乙 · 让 AI 照规范现写（零依赖，不联网也能用）
+### 路径乙 · 让 AI 照规范现写 React（零依赖，不联网）
 
-把本 skill 的 md 文件喂给 AI（Cursor / Claude 等），直接说"用塞尔达风格做个 X"。AI 会照 `references/components-full.md` 等规范，**当场写出**等效的组件代码。
+把 skill md 喂给 AI，说"用塞尔达风格做个 X"，AI 照 `references/components-full.md` 现写组件代码。适合只要某几个组件、不想引依赖。**遇到标志性素材时按"兜底总则"处理。**
 
-- **不需要装包、不需要联网、不需要访问 GitHub** —— 文件在手就能用。
-- 适合：只想要某几个组件、不想引入依赖、或网络受限的场景。
+### 路径丙 · 纯 HTML / 非 React（无构建、单文件）
 
-### ⚠️ 哪些组件"路径乙"还原不了，必须走路径甲
+用户说"先用 HTML""不要 React"时走这条。骨架照 `references/design-tokens.md` 的 `:root` CSS 变量块 + `core-patterns.md` 的双层边框。**素材与字体严格按"兜底总则"：**
 
-绝大多数组件是纯 CSS + inline SVG，AI 照规范能 1:1 现写。但下面这些组件依赖**具体的 SVG/PNG 素材文件**（复杂矢量图，AI 无法凭文字规范画出），**必须装 npm 包（路径甲）或从仓库取素材**：
+- **字体**：把真实 `HyliaSerif.ttf` 取出来，用 base64 内联 `@font-face`（`src: url('data:font/ttf;base64,....')`），保证单文件可移植。**不要只写 Cinzel 兜底就交付。**
+- **标志性 SVG**（希卡之眼等）：取真实 `.svg` 文件，base64 成 `data:image/svg+xml;base64,...` 用 `<img>` 引入，或直接内联其 `<path>`。**不要手画。**
+- **高频 inline 图标**（天气/心形/菜单）：直接用 `references/svg-paths.md` 里的真实 path data。
 
-> `Illustration`（剑/卢比/希卡之石/回忆花插画）、`DivineBeast`（4 神兽图腾）、`SheikahSymbol`（希卡之眼）、`SheikahBackground`（背景纹理）、`SheikahRune` / `SheikahAbility`（符文/异能图标）、`SheikahCompendiumFilters`、`SheikahTextTitle`、`SoundMeter`、`Temperature`、`QuickSelector`、`LoadingIcon`、`HorseSpur`、`BonusEffectIcon`、`MapQuestMarker` / `QuestNotification`、`Starburst`、`DirectionalArrow`、`TextOrnamentCorner`、`TimerOrnament`
+### ⚠️ 必须用真实素材、禁止现画的组件清单
 
-这些素材在 npm 包的 `dist/` 里，或仓库 `src/assets/`。走路径乙时若用到它们，提示用户装包或单独取对应 SVG。
+下面这些依赖**具体导出的 SVG/PNG 文件**，AI **禁止**凭文字规范手绘或近似（违反"兜底总则"）：
+
+> `SheikahSymbol`（希卡之眼）、`Illustration`（剑/卢比/希卡之石/回忆花）、`DivineBeast`（4 神兽）、`SheikahBackground`（背景纹理）、`SheikahRune` / `SheikahAbility`、`SheikahCompendiumFilters`、`SheikahTextTitle`、`SoundMeter`、`QuickSelector`、`LoadingIcon`、`HorseSpur`、`Starburst`、`DirectionalArrow`、`TextOrnamentCorner`、`TimerOrnament`、`MapQuestMarker` / `QuestNotification`
+
+取不到这些文件时，**停下来告诉用户去哪取（见兜底总则的路径），不要交付近似物**。
+（注：`WeatherIcon`、`Temperature`、`BonusEffectIcon` 等是 inline path 组件，真实 path 见 `references/svg-paths.md`，直接抄即可。）
 
 ### 在线 demo / 文档
 
-在线预览站托管在 GitHub Pages，国内访问可能需要代理。但**使用本 skill 不需要访问 GitHub** —— 路径甲走 npm，路径乙只用本地文件。
+预览站在 GitHub Pages，国内可能需代理。但**使用本 skill 不需要访问 GitHub**。
 
 ---
 
@@ -201,7 +213,7 @@ export default function App() {
 4. **Italic 正文** — 对话/按钮/正文使用 Roboto Medium Italic。标题用 Hylia Serif（normal）。
 5. **禁止纯白** — 文字用暖白 `#E9E1D1`，边框用米色 `#E2DED3`。禁止 `#FFFFFF` 或 `#000000` 作为文字色。
 6. **禁止冷色** — 不用冷蓝（`#0066ff`）、冷灰（`#666`）。所有灰色带暖色调。唯一的蓝色是希卡蓝 `#3CD3FC`。
-7. **SVG 优先** — **小图标和装饰**（按钮里的图标、心心、箭头等）使用 inline SVG（`<svg><path>`），保证矢量清晰、可用 `currentColor` 着色。**大尺寸装饰图**（如 `Illustration` 组件里的剑、回忆花，~30-160KB）可用 `<img src>` 引入 SVG URL，避免拖慢首屏。判断标准：可着色 / 需动画 → inline；纯展示大图 → `<img>`。
+7. **SVG 优先** — **小图标和装饰**（按钮里的图标、心心、箭头等）使用 inline SVG（`<svg><path>`），保证矢量清晰、可用 `currentColor` 着色。**大尺寸装饰图**（如 `Illustration` 组件里的剑、回忆花，~30-160KB）可用 `<img src>` 引入 SVG URL，避免拖慢首屏。判断标准：可着色 / 需动画 → inline；纯展示大图 → `<img>`。**⚠️ 但 inline 的 `d` 必须用真实导出的 path（见 `references/svg-paths.md`），绝不自己发明/手画 path——见「兜底总则」。**
 8. **焦点色** — focus-visible 用希卡蓝 `#3CD3FC`（outline: 2px solid）。禁止浏览器默认蓝色焦点环。
 
 ---

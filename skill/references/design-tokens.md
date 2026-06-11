@@ -78,20 +78,23 @@
 
 加载方式：
 
+**装包用户（路径甲）**：`import 'zelda-hyrule-ui/style'` 即可——**Hylia Serif 已随包发布**（0.2.1+，`dist/index.css` 自带 `@font-face`，ttf 在 `dist/files/`），无需任何手动加载。Roboto 仍需 Google Fonts：
+
 ```html
-<!-- index.html <head> 中 -->
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet" />
 ```
+
+**纯 HTML / 非装包用户（路径丙）**：Cinzel 只是**应急兜底，不可作为正式交付的标题字体**。必须内联真实 Hylia Serif（从 `node_modules/zelda-hyrule-ui/dist/files/HyliaSerif.*.ttf` 或仓库 `src/assets/fonts/HyliaSerif.ttf` 取，base64 内联，单文件可移植）：
 
 ```css
 @font-face {
   font-family: 'Hylia Serif';
-  src: url('/src/assets/fonts/HyliaSerif.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+  src: url('data:font/ttf;base64,<把真实 HyliaSerif.ttf base64 后贴这里>') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
 }
 ```
+
+⚠️ 取不到 ttf 时，按 SKILL.md「兜底总则」**停下来告诉用户去哪取**，不要默默只留 Cinzel 就交付（那会让标题不是塞尔达味道）。Google Fonts 的 Cinzel `<link>` 仅在拿不到真字体的临时预览时用。
 
 字重分级：
 
