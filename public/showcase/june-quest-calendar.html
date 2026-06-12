@@ -424,6 +424,182 @@ footer a:hover { text-decoration: underline; }
   .hud { margin-left: 0; }
   .dialog { padding: 28px 40px 36px; }
 }
+
+/* ============ Interactive layer：Quest Log modal / toast / rewards ============ */
+.cell[data-day], .arow[data-day] { cursor: pointer; }
+.chip.done > span { text-decoration: line-through; opacity: 0.5; }
+.chip.done svg { opacity: 0.4; filter: none !important; }
+footer .ftr-hint { color: var(--text-yellow); letter-spacing: 0.06em; }
+
+.qmodal { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 18px; }
+.qmodal[hidden] { display: none; }
+.qmodal-mask { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(3px); }
+.qmodal-panel {
+  position: relative;
+  width: min(560px, 100%);
+  max-height: min(84vh, 660px);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-sheikah-panel);
+  border-radius: 8px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6), 0 0 18px rgba(60, 211, 252, 0.25);
+  overflow: hidden;
+}
+/* 双层边框（希卡蓝变体）— 与 .slate 同语法 */
+.qmodal-panel::after {
+  content: '';
+  position: absolute; inset: 3px;
+  border: 1px solid rgba(60, 211, 252, 0.4);
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 3;
+}
+.qm-head { display: flex; align-items: center; gap: 14px; padding: 18px 20px 12px; border-bottom: 1px solid var(--border-inner); }
+.qm-date { flex: none; text-align: center; }
+.qm-num { display: block; font-family: var(--font-title); font-style: normal; font-size: 34px; color: var(--zelda-tan); line-height: 1; }
+.qm-wd { display: block; font-size: 9px; font-style: normal; letter-spacing: 0.2em; color: var(--text-muted); margin-top: 3px; }
+.qm-head h2 {
+  flex: 1;
+  font-family: var(--font-title);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--zelda-tan);
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 14px rgba(60, 211, 252, 0.35);
+}
+.qm-wx { width: 22px; height: 24px; flex: none; }
+.qm-wx svg { width: 100%; height: 100%; filter: drop-shadow(0 0 6px rgba(201, 250, 255, 0.7)); }
+.qm-close { background: none; border: none; color: var(--text-muted); font-size: 17px; cursor: pointer; padding: 4px 9px; border-radius: 4px; font-style: normal; }
+.qm-close:hover { color: var(--sheikah-blue); }
+
+.qm-list { padding: 14px 20px 6px; overflow-y: auto; flex: 1; scrollbar-width: thin; scrollbar-color: rgba(60,211,252,0.35) transparent; }
+.qm-none { font-size: 12.5px; color: var(--text-muted); padding: 4px 2px 12px; }
+.qm-quest {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border-radius: 4px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: box-shadow 0.25s var(--ease);
+}
+.qm-quest::after {
+  content: '';
+  position: absolute; inset: 3px;
+  border: 1px solid var(--border-inner);
+  border-radius: 2px;
+  pointer-events: none;
+  transition: border-color 0.25s var(--ease);
+}
+.qm-quest:hover { box-shadow: 0 0 8px var(--sheikah-glow); }
+.qm-quest:hover::after { border-color: var(--sheikah-blue); }
+.qm-quest > svg { width: 18px; height: 18px; flex: none; }
+.qm-quest .t { color: var(--text-muted); font-style: normal; font-size: 11px; margin-right: 6px; }
+.qm-quest .txt { flex: 1; min-width: 0; }
+.qm-quest.main .txt { color: var(--text-yellow); font-weight: 700; }
+.qm-quest.memory .txt { color: var(--effect-orange); }
+.qm-quest.rupee .txt { color: var(--text-green); }
+.qm-quest .st { flex: none; font-family: var(--font-title); font-style: normal; font-size: 10px; letter-spacing: 0.14em; color: var(--text-muted); }
+.qm-quest.done .st { color: var(--effect-orange); text-shadow: 0 0 8px rgba(252, 196, 19, 0.6); }
+.qm-quest.done .txt { text-decoration: line-through; opacity: 0.5; }
+.qm-quest.done > svg { opacity: 0.4; }
+.qm-del { flex: none; background: none; border: none; color: var(--text-muted); font: inherit; font-size: 13px; font-style: normal; cursor: pointer; padding: 2px 7px; border-radius: 3px; }
+.qm-del:hover { color: var(--text-red); }
+
+.qm-form { padding: 4px 20px 14px; border-top: 1px solid var(--border-inner); }
+.qm-kinds { display: flex; gap: 6px; margin: 12px 0 10px; flex-wrap: wrap; }
+.qm-kind { position: relative; }
+.qm-kind input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.qm-kind span {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 10.5px; font-style: normal;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  padding: 5px 9px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.qm-kind svg { width: 13px; height: 13px; }
+.qm-kind input:checked + span { border-color: var(--sheikah-blue); color: var(--text-main); box-shadow: 0 0 8px rgba(79, 192, 255, 0.45); }
+.qm-kind input:focus-visible + span { outline: 2px solid var(--sheikah-blue); outline-offset: 2px; }
+.qm-row { display: flex; gap: 8px; }
+.qm-row input {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-inner);
+  border-radius: 4px;
+  color: var(--text-main);
+  font: inherit;
+  font-size: 13px;
+  padding: 8px 10px;
+  color-scheme: dark;
+}
+.qm-row input[type="time"] { flex: none; width: 100px; }
+.qm-row input[type="text"] { flex: 1; min-width: 0; }
+.qm-row input::placeholder { color: var(--text-muted); }
+/* 金色确认按钮 — 与 today-badge 同梯度（effect-orange 系） */
+.qm-add {
+  flex: none;
+  font: inherit; font-size: 13px; font-weight: 700; font-style: italic;
+  color: #1a1a14;
+  background: linear-gradient(180deg, #FFE465, var(--effect-orange));
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(252, 196, 19, 0.45);
+  transition: box-shadow 0.2s var(--ease);
+}
+.qm-add:hover { box-shadow: 0 0 16px rgba(252, 196, 19, 0.8); }
+.qm-hint { padding: 0 20px 16px; font-size: 10.5px; color: var(--text-muted); }
+
+/* QUEST COMPLETE toast（QuestNotification 语义：主线徽记 + 金字） */
+.qtoast {
+  position: fixed;
+  top: 26px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(0, 0, 0, 0.78);
+  border-radius: 4px;
+  padding: 10px 22px;
+  pointer-events: none;
+  max-width: calc(100vw - 32px);
+  animation: toast-in 2.3s var(--ease) forwards;
+}
+.qtoast[hidden] { display: none; }
+.qtoast::after { content: ''; position: absolute; inset: 3px; border: 1px solid rgba(252, 196, 19, 0.5); border-radius: 2px; }
+.qtoast svg { width: 27px; height: 16px; flex: none; filter: drop-shadow(0 0 5px var(--quest-main-glow)); }
+.qtoast .tt { font-family: var(--font-title); font-style: normal; font-size: 13px; letter-spacing: 0.18em; color: var(--text-yellow); text-shadow: 0 0 10px rgba(255, 234, 46, 0.5); white-space: nowrap; }
+.qtoast .ts { font-size: 11.5px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@keyframes toast-in {
+  0% { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+  8%, 82% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+}
+.hud .amount { display: inline-block; }
+.amount.bump { animation: rupee-bump 0.45s var(--ease); }
+@keyframes rupee-bump {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.25); color: #FFE465; }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 720px) {
+  .qmodal { padding: 0; align-items: flex-end; }
+  .qmodal-panel { width: 100%; max-height: 86vh; border-radius: 8px 8px 0 0; }
+  .qm-row input[type="time"] { width: 86px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .qtoast { animation: none; }
+  .amount.bump { animation: none; }
+}
+
 </style>
 </head>
 <body>
@@ -450,7 +626,7 @@ footer a:hover { text-decoration: underline; }
         <div class="sub">HYRULE UNIVERSITY · CS Year 3 · <b>Sheikah Slate — Scheduler Rune</b></div>
       </div>
 
-      <div class="hud" aria-label="Status: energy 4 of 5 hearts, stamina 65%, wallet 1,240 rupees, weather clear">
+      <div class="hud" aria-label="Status: energy 4 of 5 hearts, stamina 65 percent, rupee wallet, weather clear">
         <div class="hud-group" title="Energy (one all-nighter down)">
           <div class="hearts" id="hearts" aria-hidden="true"></div>
         </div>
@@ -458,7 +634,7 @@ footer a:hover { text-decoration: underline; }
           <div class="stamina-wheel" id="stamina" style="--ang: 234deg" aria-hidden="true"></div>
         </div>
         <div class="hud-group hud-rupee" title="Monthly budget remaining" aria-hidden="true">
-          <span id="rupee-gem"></span><span class="amount">1,240</span>
+          <span id="rupee-gem"></span><span class="amount" id="rupee-amount">1,240</span>
         </div>
         <div class="hud-group wx" title="Today: clear" id="hud-wx" aria-hidden="true"></div>
       </div>
@@ -501,12 +677,37 @@ footer a:hover { text-decoration: underline; }
     </div>
 
     <footer>
+      <span class="ftr-hint">&#10038; Tap any day to open its Quest Log — add quests, clear them, earn rupees &#10038;</span><br/>
       Built with the <a href="https://github.com/chaos-xxl/zelda-hyrule-ui">zelda-hyrule-ui</a> skill ·
       UI design from the <a href="https://www.figma.com/community/file/965825767811358609">Zelda BOTW UI Kit</a> by Hunter Paramore (CC BY 4.0) ·
       Unofficial fan creation — all Zelda trademarks belong to Nintendo
     </footer>
   </div>
 </div>
+
+<!-- ============ Day Quest Log (modal) ============ -->
+<div class="qmodal" id="qmodal" hidden>
+  <div class="qmodal-mask" data-close aria-hidden="true"></div>
+  <div class="qmodal-panel" role="dialog" aria-modal="true" aria-labelledby="qm-title">
+    <div class="qm-head">
+      <div class="qm-date"><span class="qm-num" id="qm-num"></span><span class="qm-wd" id="qm-wd"></span></div>
+      <h2 id="qm-title">Quest Log &middot; June</h2>
+      <span class="qm-wx" id="qm-wx" aria-hidden="true"></span>
+      <button class="qm-close" data-close aria-label="Close quest log">&#10005;</button>
+    </div>
+    <div class="qm-list" id="qm-list"></div>
+    <form class="qm-form" id="qm-form">
+      <div class="qm-kinds" id="qm-kinds" role="radiogroup" aria-label="Quest type"></div>
+      <div class="qm-row">
+        <input type="time" id="qm-time" aria-label="Time (optional)" />
+        <input type="text" id="qm-text" maxlength="48" placeholder="New quest&hellip;" aria-label="Quest title" required />
+        <button type="submit" class="qm-add">Accept</button>
+      </div>
+    </form>
+    <div class="qm-hint">Click a quest to clear it (+rupees) &middot; &#10005; removes your own quests &middot; saved in this browser only</div>
+  </div>
+</div>
+<div class="qtoast" id="qtoast" hidden aria-live="polite"></div>
 
 <script>
 /* =====================================================================
@@ -635,43 +836,204 @@ const oneoff = {
 /* 7-day forecast strip (current week only — the Slate sensor has limits) */
 const forecast = { 8: 'cloudy', 9: 'clear', 10: 'rain', 11: 'clear', 12: 'clear', 13: 'storm', 14: 'cloudy' };
 
-/* ============ Grid render ============ */
-const grid = document.getElementById('grid');
+/* ============ Interactive layer ============
+   Click any day -> Quest Log modal (view / add / complete / remove).
+   Custom quests & completions persist in localStorage.
+   Clearing quests earns rupees in the HUD counter. */
+
 const WD_NAME = ['', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
-let agendaHtml = '';
 const DAYS = 30, FIRST_WD = 1; /* June 1 2026 = Monday */
-let html = '';
-for (let d = 1; d <= DAYS; d++) {
-  const wd = ((FIRST_WD - 1 + d - 1) % 7) + 1;
-  let events = (recurring[wd] || []).slice();
+const weekdayOf = d => ((FIRST_WD - 1 + d - 1) % 7) + 1;
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+/* — persisted state — */
+const STORE_KEY = 'june-quest-calendar-v2';
+let state = { custom: {}, done: [] };
+try {
+  const s = JSON.parse(localStorage.getItem(STORE_KEY) || 'null');
+  if (s && s.custom && typeof s.custom === 'object' && Array.isArray(s.done)) state = s;
+} catch (e) { /* corrupted storage -> start fresh */ }
+const save = () => { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) { /* private mode */ } };
+const isDone = id => state.done.includes(id);
+const REWARD = { main: 50, shrine: 30, side: 10, memory: 10, stamina: 10, rupee: 10 };
+
+/* merge built-in schedule + custom quests for one day, with stable ids */
+function dayEvents(d) {
+  let events = (recurring[weekdayOf(d)] || []).map((e, i) => ({ ...e, id: d + ':r' + i }));
   const o = oneoff[d];
-  if (o) { if (o.replace) events = []; events = events.concat(o.add); }
+  if (o) { if (o.replace) events = []; events = events.concat(o.add.map((e, i) => ({ ...e, id: d + ':o' + i }))); }
+  events = events.concat((state.custom[d] || []).map(e => ({ ...e, custom: true })));
   events.sort((a, b) => (a.t || '99').localeCompare(b.t || '99'));
-
-  const cls = ['cell'];
-  if (wd >= 6) cls.push('wknd');
-  if (d === TODAY) cls.push('today');
-  if (d < TODAY) cls.push('past');
-
-  const wx = forecast[d] ? `<span class="wx-mini" title="${forecast[d]}">${wxSvg(forecast[d])}</span>` : '';
-  const badge = d === TODAY ? '<span class="today-badge">TODAY</span>' : '';
-  const chips = events.map(e =>
-    `<div class="chip ${e.k}">${ICON[e.k]}<span>${e.t ? `<span class="t">${e.t}</span> ` : ''}${e.s}</span></div>`
-  ).join('');
-
-  html += `<div class="${cls.join(' ')}"${d === TODAY ? ' aria-current="date"' : ''}>${badge}<div class="dnum">${d}${wx}</div>${chips}</div>`;
-
-  /* agenda row (mobile) — same data, list layout */
-  const acls = ['arow'];
-  if (wd >= 6) acls.push('wknd');
-  if (d === TODAY) acls.push('today');
-  if (d < TODAY) acls.push('past');
-  agendaHtml += `<div class="${acls.join(' ')}"${d === TODAY ? ' aria-current="date"' : ''}>${d === TODAY ? '<span class="today-badge">TODAY</span>' : ''}<div class="adate"><span class="n">${d}</span><span class="w">${WD_NAME[wd]}</span>${wx}</div><div class="achips">${chips || '<span class="none">No quests — rest day</span>'}</div></div>`;
+  return events;
 }
-/* trailing empties to square off week 5 */
-for (let i = 0; i < 5; i++) html += '<div class="cell empty" aria-hidden="true"></div>';
-grid.innerHTML = html;
-document.getElementById('agenda').innerHTML = agendaHtml;
+
+/* — HUD rupees = base + quest rewards — */
+const RUPEE_BASE = 1240;
+const rupeeEl = document.getElementById('rupee-amount');
+function renderRupees(bump) {
+  let sum = 0;
+  for (let d = 1; d <= DAYS; d++) for (const e of dayEvents(d)) if (isDone(e.id)) sum += REWARD[e.k] || 10;
+  rupeeEl.textContent = (RUPEE_BASE + sum).toLocaleString('en-US');
+  if (bump) { rupeeEl.classList.remove('bump'); void rupeeEl.offsetWidth; rupeeEl.classList.add('bump'); }
+}
+
+/* ============ Grid + agenda render ============ */
+const grid = document.getElementById('grid');
+const agendaEl = document.getElementById('agenda');
+const chipHtml = e =>
+  `<div class="chip ${e.k}${isDone(e.id) ? ' done' : ''}">${ICON[e.k]}<span>${e.t ? `<span class="t">${esc(e.t)}</span> ` : ''}${esc(e.s)}</span></div>`;
+
+function render() {
+  let html = '', agendaHtml = '';
+  for (let d = 1; d <= DAYS; d++) {
+    const wd = weekdayOf(d);
+    const events = dayEvents(d);
+    const wx = forecast[d] ? `<span class="wx-mini" title="${forecast[d]}">${wxSvg(forecast[d])}</span>` : '';
+    const badge = d === TODAY ? '<span class="today-badge">TODAY</span>' : '';
+    const chips = events.map(chipHtml).join('');
+    const aria = `Open quest log: June ${d}, ${events.length} quest${events.length === 1 ? '' : 's'}`;
+    const attrs = ` role="button" tabindex="0" data-day="${d}" aria-haspopup="dialog" aria-label="${aria}"${d === TODAY ? ' aria-current="date"' : ''}`;
+
+    const cls = ['cell'];
+    if (wd >= 6) cls.push('wknd');
+    if (d === TODAY) cls.push('today');
+    if (d < TODAY) cls.push('past');
+    html += `<div class="${cls.join(' ')}"${attrs}>${badge}<div class="dnum">${d}${wx}</div>${chips}</div>`;
+
+    const acls = ['arow'];
+    if (wd >= 6) acls.push('wknd');
+    if (d === TODAY) acls.push('today');
+    if (d < TODAY) acls.push('past');
+    agendaHtml += `<div class="${acls.join(' ')}"${attrs}>${badge}<div class="adate"><span class="n">${d}</span><span class="w">${WD_NAME[wd]}</span>${wx}</div><div class="achips">${chips || '<span class="none">No quests — rest day</span>'}</div></div>`;
+  }
+  /* trailing empties to square off week 5 */
+  for (let i = 0; i < 5; i++) html += '<div class="cell empty" aria-hidden="true"></div>';
+  grid.innerHTML = html;
+  agendaEl.innerHTML = agendaHtml;
+}
+
+/* ============ Quest Log modal ============ */
+const modal = document.getElementById('qmodal');
+const qmList = document.getElementById('qm-list');
+let openDayNum = null, lastFocus = null;
+
+const KIND_LABEL = { main: 'Main', side: 'Side', shrine: 'Shrine', memory: 'Memory', stamina: 'Training', rupee: 'Rupees' };
+document.getElementById('qm-kinds').innerHTML = Object.keys(KIND_LABEL).map(k =>
+  `<label class="qm-kind"><input type="radio" name="qk" value="${k}"${k === 'side' ? ' checked' : ''} /><span>${ICON[k]}${KIND_LABEL[k]}</span></label>`
+).join('');
+
+function renderModalList() {
+  const events = dayEvents(openDayNum);
+  qmList.innerHTML = events.length ? events.map(e => `
+    <div class="qm-quest ${e.k}${isDone(e.id) ? ' done' : ''}" role="button" tabindex="0" data-id="${e.id}" aria-pressed="${isDone(e.id)}" aria-label="${isDone(e.id) ? 'Completed: ' : ''}${esc(e.s)}">
+      ${ICON[e.k]}
+      <span class="txt">${e.t ? `<span class="t">${esc(e.t)}</span>` : ''}${esc(e.s)}</span>
+      ${e.custom ? `<button type="button" class="qm-del" data-del="${e.id}" aria-label="Remove quest: ${esc(e.s)}">&#10005;</button>` : ''}
+      <span class="st">${isDone(e.id) ? '&#10038; CLEARED' : 'OPEN'}</span>
+    </div>`).join('')
+    : '<div class="qm-none">No quests — a rare free day in Hyrule. Add one below.</div>';
+}
+
+function openDay(d) {
+  openDayNum = d;
+  lastFocus = document.activeElement;
+  document.getElementById('qm-num').textContent = d;
+  document.getElementById('qm-wd').textContent = WD_NAME[weekdayOf(d)];
+  document.getElementById('qm-wx').innerHTML = forecast[d] ? wxSvg(forecast[d]) : '';
+  renderModalList();
+  modal.hidden = false;
+  document.body.style.overflow = 'hidden';
+  document.querySelector('.qm-close').focus();
+}
+function closeModal() {
+  modal.hidden = true;
+  openDayNum = null;
+  document.body.style.overflow = '';
+  if (lastFocus && lastFocus.focus) lastFocus.focus();
+}
+
+/* — QUEST COMPLETE toast (QuestNotification semantics) — */
+const toast = document.getElementById('qtoast');
+let toastTimer = null;
+function showToast(kind, text) {
+  toast.innerHTML = `${ICON[kind]}<span class="tt">QUEST COMPLETE</span><span class="ts">${esc(text)}</span>`;
+  toast.hidden = false;
+  toast.style.animation = 'none'; void toast.offsetWidth; toast.style.animation = '';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { toast.hidden = true; }, 2300);
+}
+
+function toggleDone(id) {
+  const i = state.done.indexOf(id);
+  const completing = i < 0;
+  if (completing) state.done.push(id); else state.done.splice(i, 1);
+  save();
+  render();
+  if (openDayNum != null) renderModalList();
+  renderRupees(completing);
+  if (completing && openDayNum != null) {
+    const e = dayEvents(openDayNum).find(x => x.id === id);
+    if (e) showToast(e.k, `${e.s} · +${REWARD[e.k] || 10} rupees`);
+  }
+}
+
+/* — event wiring (delegation) — */
+document.addEventListener('click', ev => {
+  const del = ev.target.closest('[data-del]');
+  if (del) {
+    const id = del.dataset.del, d = openDayNum;
+    state.custom[d] = (state.custom[d] || []).filter(e => e.id !== id);
+    if (!state.custom[d].length) delete state.custom[d];
+    const di = state.done.indexOf(id);
+    if (di >= 0) state.done.splice(di, 1);
+    save(); render(); renderModalList(); renderRupees();
+    return;
+  }
+  const q = ev.target.closest('.qm-quest');
+  if (q) { toggleDone(q.dataset.id); return; }
+  if (ev.target.closest('[data-close]')) { closeModal(); return; }
+  const day = ev.target.closest('[data-day]');
+  if (day) openDay(+day.dataset.day);
+});
+
+document.addEventListener('keydown', ev => {
+  if (ev.key === 'Escape' && !modal.hidden) { closeModal(); return; }
+  if (ev.key !== 'Enter' && ev.key !== ' ') return;
+  const t = ev.target;
+  if (!t || !t.matches) return;
+  if (t.matches('.qm-quest')) { ev.preventDefault(); toggleDone(t.dataset.id); }
+  else if (t.matches('[data-day]')) { ev.preventDefault(); openDay(+t.dataset.day); }
+});
+
+/* light focus trap inside the modal */
+modal.addEventListener('keydown', ev => {
+  if (ev.key !== 'Tab') return;
+  const items = modal.querySelectorAll('button, input, [tabindex="0"]');
+  if (!items.length) return;
+  const first = items[0], last = items[items.length - 1];
+  if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+  else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+});
+
+/* add-quest form */
+document.getElementById('qm-form').addEventListener('submit', ev => {
+  ev.preventDefault();
+  if (openDayNum == null) return;
+  const textEl = document.getElementById('qm-text');
+  const s = textEl.value.trim();
+  if (!s) return;
+  const k = document.querySelector('#qm-kinds input:checked').value;
+  const t = document.getElementById('qm-time').value;
+  (state.custom[openDayNum] = state.custom[openDayNum] || []).push({ id: openDayNum + ':c' + Date.now(), k, t, s });
+  save();
+  textEl.value = '';
+  document.getElementById('qm-time').value = '';
+  render(); renderModalList(); renderRupees();
+  textEl.focus();
+});
+
+render();
+renderRupees();
 </script>
 </body>
 </html>
