@@ -145,6 +145,25 @@ import { SheikahBackground, SheikahScanlines, SheikahTextTitle } from 'zelda-hyr
 
 ---
 
+## 🗓️ Showcase / 实战案例
+
+**June Quest Calendar** — a student-life calendar built from the skill alone:
+**single HTML file, zero dependencies, no React, no build step.**
+Real embedded Hylia Serif, Figma-exact SVG paths, BOTW quest taxonomy as the
+calendar's semantic system. Responsive: month grid on desktop, agenda view on mobile.
+
+**June Quest Calendar** — 仅凭 skill 产出的学生日程表：**单 HTML 文件、零依赖、
+无 React、无构建**。内嵌真实 Hylia Serif 字体、Figma 逐节点导出的 SVG path、
+用 BOTW 任务分类法做日程语义系统。响应式：桌面月格视图，移动端 agenda 视图。
+
+[**▶ Live demo / 在线体验**](https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/june-quest-calendar.html)
+
+| Desktop | Mobile |
+| :---: | :---: |
+| <img src="docs/showcase/calendar-desktop.png" width="560" alt="Desktop month grid" /> | <img src="docs/showcase/calendar-mobile.png" width="200" alt="Mobile agenda view" /> |
+
+---
+
 ## For AI Users / AI 用户指南
 
 The simplest way to use this library with AI:
@@ -182,25 +201,6 @@ The simplest way to use this library with AI:
 | [`AI_USAGE.md`](AI_USAGE.md) | AI 编程助手 | 核心 API 手册——8 个核心组件详解；全部 83 组件枚举值见 `skill/references/` |
 | [`DESIGN_PROMPT.md`](DESIGN_PROMPT.md) | v0 / Figma AI / MJ | 一键设计生成提示词 |
 | [`skill/references/layout-bridge.md`](skill/references/layout-bridge.md) | Cursor / Claude Code | 排版互操作——配合排版 skill 做塞尔达风 PPT / 图文 / 封面（骨 + 皮） |
-
----
-
-## 🗓️ Showcase / 实战案例
-
-**June Quest Calendar** — a student-life calendar built from the skill alone:
-**single HTML file, zero dependencies, no React, no build step.**
-Real embedded Hylia Serif, Figma-exact SVG paths, BOTW quest taxonomy as the
-calendar's semantic system. Responsive: month grid on desktop, agenda view on mobile.
-
-**June Quest Calendar** — 仅凭 skill 产出的学生日程表：**单 HTML 文件、零依赖、
-无 React、无构建**。内嵌真实 Hylia Serif 字体、Figma 逐节点导出的 SVG path、
-用 BOTW 任务分类法做日程语义系统。响应式：桌面月格视图，移动端 agenda 视图。
-
-[**▶ Live demo / 在线体验**](https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/june-quest-calendar.html)
-
-| Desktop | Mobile |
-| :---: | :---: |
-| <img src="docs/showcase/calendar-desktop.png" width="560" alt="Desktop month grid" /> | <img src="docs/showcase/calendar-mobile.png" width="200" alt="Mobile agenda view" /> |
 
 ---
 
