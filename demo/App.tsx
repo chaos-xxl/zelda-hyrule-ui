@@ -18,8 +18,8 @@ import {
   SettingsToggle,
   TitleOrnament, DirectionalArrow, Starburst, TextOrnamentCorner, TimerOrnament, Logo,
   Illustration,
-} from '../src'
-import '../src/styles/global.less'
+} from '../packages/react/src'
+import '@core/styles/global.less'
 import './demo.css'
 import milestoneGithubImg from './assets/milestone-github.png'
 

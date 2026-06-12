@@ -1,0 +1,75 @@
+
+// 精确还原 Figma node 26:845
+// 任务标题：副标题 + 大字任务名 + 完成标记
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.questIcon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(60, 211, 252, 0.3);
+}
+
+.questLabel {
+  font-family: @font-body;
+  font-size: 27px;
+  font-weight: @font-weight-medium;
+  font-style: italic;
+  color: @text-color-main;
+  white-space: nowrap;
+}
+
+.nameWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 0 5px;
+  width: 100%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 246, 196, 0.2);
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+}
+
+.name {
+  font-family: @font-title;
+  font-size: 80px;
+  font-weight: @font-weight-regular;
+  font-style: normal;
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 126, 0.3));
+}
+
+.complete {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.completeBadge {
+  font-family: @font-title;
+  font-size: 36px;
+  font-weight: @font-weight-regular;
+  color: @text-color-main;
+  letter-spacing: 0.1em;
+  margin-top: 8px;
+}

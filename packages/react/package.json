@@ -1,0 +1,60 @@
+{
+  "name": "zelda-hyrule-ui",
+  "version": "0.4.0",
+  "description": "An unofficial, non-commercial fan-made React UI component library inspired by the art style of The Legend of Zelda: Breath of the Wild. Not affiliated with or endorsed by Nintendo.",
+  "type": "module",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/es/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/es/index.js",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./style": "./dist/index.css",
+    "./dist/index.css": "./dist/index.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "AI_USAGE.md"
+  ],
+  "sideEffects": [
+    "**/*.css",
+    "**/*.less"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chaos-xxl/zelda-hyrule-ui",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/chaos-xxl/zelda-hyrule-ui#readme",
+  "bugs": {
+    "url": "https://github.com/chaos-xxl/zelda-hyrule-ui/issues"
+  },
+  "author": "Chaos",
+  "license": "MIT",
+  "scripts": {
+    "build": "vite build && tsc --project tsconfig.build.json --emitDeclarationOnly && node ../../scripts/strip-types-side-effects.mjs dist/types/index.d.ts",
+    "prepublishOnly": "npm run build && cp ../../README.md ../../AI_USAGE.md ."
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "dependencies": {
+    "classnames": "^2.5.1"
+  },
+  "keywords": [
+    "react",
+    "component-library",
+    "ui",
+    "typescript",
+    "zelda",
+    "botw",
+    "hyrule",
+    "sheikah",
+    "game-ui"
+  ]
+}

@@ -1,0 +1,137 @@
+
+.container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  aspect-ratio: 16 / 9;
+  background: #0f1a1e;
+  overflow: hidden;
+  display: flex;
+  font-family: @font-body;
+  color: @text-color-main;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid @border-color;
+    pointer-events: none;
+    z-index: 2;
+  }
+}
+
+.mapArea {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mapGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(60, 211, 252, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(60, 211, 252, 0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.mapIcons {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.mapCursor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.cursorInner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid @sheikah-blue;
+  border-radius: @radius-round;
+  box-shadow: @glow-blue;
+  animation: cursorPulse 2s ease-in-out infinite;
+}
+
+@keyframes cursorPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 4px @sheikah-blue-glow;
+  }
+  50% {
+    box-shadow: 0 0 12px @sheikah-blue-glow, 0 0 20px rgba(60, 211, 252, 0.3);
+  }
+}
+
+.infoPanel {
+  position: absolute;
+  top: @spacing-xl;
+  left: @spacing-xl;
+  display: flex;
+  flex-direction: column;
+  gap: @spacing-xs;
+  z-index: 1;
+}
+
+.locationName {
+  font-family: @font-title;
+  font-size: 18px;
+  color: @text-color-main;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+  min-height: 24px;
+}
+
+.coordinates {
+  font-size: 12px;
+  font-style: italic;
+  color: @sheikah-blue;
+  min-height: 16px;
+}
+
+.toolbar {
+  position: absolute;
+  top: 50%;
+  right: @spacing-xl;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: @spacing-md;
+  z-index: 1;
+}
+
+.toolButton {
+  width: 40px;
+  height: 40px;
+  border-radius: @radius-round;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid @border-color-sheikah;
+  cursor: pointer;
+  transition: all @motion-duration-fast @motion-ease;
+
+  &:hover {
+    background: rgba(60, 211, 252, 0.15);
+    box-shadow: @glow-blue;
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: @spacing-lg;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: @spacing-xl;
+  z-index: 1;
+}

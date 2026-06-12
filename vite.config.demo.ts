@@ -13,7 +13,7 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         javascriptEnabled: true,
-        additionalData: `@import "${resolve(__dirname, 'src/styles/variables.less')}";`,
+        additionalData: `@import "${resolve(__dirname, 'packages/core/styles/variables.less')}";`,
       },
     },
     modules: {
@@ -23,7 +23,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
+      '@': resolve(__dirname, 'packages/react/src'),
+      '@core': resolve(__dirname, 'packages/core'),
     },
   },
 })

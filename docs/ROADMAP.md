@@ -31,8 +31,9 @@
 | 事项 | 优先级 | 说明 |
 |------|--------|------|
 | Vue 版 · 阶段 0：占名 + 需求验证 ✅ | 🟢 P1 | 已完成（2026-06-12）：占位包 [`zelda-hyrule-ui-vue@0.0.1`](https://www.npmjs.com/package/zelda-hyrule-ui-vue) 已发布（npm 描述带非官方声明）；置顶 issue [#2](https://github.com/chaos-xxl/zelda-hyrule-ui/issues/2) 已开。**当前在等验证信号：5–10 个 👍 或第二条独立请求，达标即启动阶段 2/3。** 详见 `VUE_VERSION_PLAN.md`。 |
-| Vue 版 · 阶段 1：monorepo 重构 | 🟢 P1 | 抽 `packages/core`（tokens + 素材 + 字体单源）+ pnpm workspace。**不依赖 Vue 验证结果，独立有价值**——顺带治好"字体/素材该归谁"的历史问题。1–2 天。 |
-| Vue 版 · 阶段 2/3：MVP + 全量移植 | 🟡 P2 🔒 | **触发条件：置顶 issue 5–10 个 👍 或第二条独立请求。** MVP（8 核心 + 3 味道命门）2–3 个周末；全量 83 组件约 1.5–2 个月业余。props 与 React 1:1 对齐是铁律（skill 双倍杠杆）。验证不达标退中间档：只发 core 包。详见 `VUE_VERSION_PLAN.md`。 |
+| Vue 版 · 阶段 1：monorepo 重构 ✅ | 🟢 P1 | 已完成（2026-06-12）：npm workspaces（非 pnpm，沿用现有 npm 流程），`packages/core`（tokens+素材+字体单源）+ `packages/react`（包名不变）。**产物与重构前逐字节一致**（227/228，唯一差异是顺手修掉 d.ts 里的 less 死 import）。 |
+| Vue 版 · 阶段 2：MVP 11 组件 ✅ | 🟢 P1 | 已完成（2026-06-12）：`packages/vue` 真实构建（vite+plugin-vue+dts），8 核心 + 3 味道命门，SFC 复用 react 包同一份 .module.less（`@react` 别名，样式零分叉），Modal 用 Teleport+useId（peer vue>=3.5）。playground 全组件目检通过。**待发版 0.1.0（需 npm 登录）。** |
+| Vue 版 · 阶段 3：全量移植 | 🟡 P2 🔒 | **触发条件：置顶 issue #2 攒 5–10 个 👍 或第二条独立请求。** 剩余 72 个组件约 1.5–2 个月业余。props 与 React 1:1 对齐是铁律（skill 双倍杠杆）。详见 `VUE_VERSION_PLAN.md`。 |
 | 验证排版互操作（路径 A） | 🟢 P1 | 实测一次完整流程（如"用塞尔达风做 3 页 PPT"），看 Agent 能否正确走 `layout-bridge.md`。这是检验排版方案有没有真落地的唯一办法。 |
 | 移动端 Demo 适配（拆成两个任务，见下） | 🟢 P1 | **游戏主题库最怕之一：移动端稀烂。** 开发者 90% 在手机上刷 GitHub/Twitter/Reddit，Live Demo 第一印象常发生在手机上。移动端问题分两层，必须分开治： |
 | └ 任务 1 · 组件级适配 + 响应式（**真痛点，自研**） | 🟢 P1 🚧 | BOTW 组件按主机大屏设计（对话框原宽 910px！），小屏放不下。**已有 `AutoFit`（`transform: scale` 按 designWidth 等比缩放）机制，归藏帮不了这层。** 要审：AutoFit 覆盖够不够 / 触摸目标大小 / 横向溢出 / 各屏宽（320/375/390/414）断点。**这是"移动端稀烂"的主因（约占 70%），先做。** |

@@ -1,0 +1,46 @@
+
+// 精确还原 Figma node 3:353
+// 90x90px，内部 inset 16.25%
+// 注意：去掉了 blur(0.5px)，在屏幕上会导致模糊
+
+.container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.track {
+  position: absolute;
+  inset: 16.25%;
+  width: 67.5%;
+  height: 67.5%;
+}
+
+.wheelWrapper {
+  position: absolute;
+  inset: 16.25%;
+  width: 67.5%;
+  height: 67.5%;
+  border-radius: 50%;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 4px rgba(19, 255, 89, 0.6));
+}
+
+.bonus .wheel {
+  filter: hue-rotate(-80deg) saturate(1.5) drop-shadow(0 0 4px rgba(255, 228, 96, 0.6));
+}
+
+.depleted .wheel {
+  filter: hue-rotate(220deg) saturate(2) drop-shadow(0 0 4px rgba(241, 80, 80, 0.6));
+  animation: stamina-flash 0.8s ease-in-out infinite;
+}
+
+@keyframes stamina-flash {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}

@@ -1,0 +1,3 @@
+# prepublishOnly 从仓库根复制进来的发布文件（单源在仓库根，勿提交副本）
+README.md
+AI_USAGE.md

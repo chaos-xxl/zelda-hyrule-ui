@@ -1,15 +1,32 @@
 {
   "name": "zelda-hyrule-ui-vue",
-  "version": "0.0.1",
-  "description": "PLACEHOLDER — Vue 3 port of zelda-hyrule-ui, in development. An unofficial, non-commercial fan-made Vue UI component library inspired by the art style of The Legend of Zelda: Breath of the Wild. Not affiliated with or endorsed by Nintendo.",
-  "main": "index.cjs",
+  "version": "0.1.0",
+  "description": "An unofficial, non-commercial fan-made Vue 3 UI component library inspired by the art style of The Legend of Zelda: Breath of the Wild. Not affiliated with or endorsed by Nintendo.",
+  "type": "module",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/es/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/es/index.js",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./style": "./dist/index.css",
+    "./dist/index.css": "./dist/index.css"
+  },
   "files": [
-    "index.cjs",
+    "dist",
     "README.md"
+  ],
+  "sideEffects": [
+    "**/*.css",
+    "**/*.less"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/chaos-xxl/zelda-hyrule-ui"
+    "url": "https://github.com/chaos-xxl/zelda-hyrule-ui",
+    "directory": "packages/vue"
   },
   "homepage": "https://github.com/chaos-xxl/zelda-hyrule-ui#readme",
   "bugs": {
@@ -17,6 +34,15 @@
   },
   "author": "Chaos",
   "license": "MIT",
+  "scripts": {
+    "dev": "vite --config vite.config.dev.ts",
+    "build": "vite build && node ../../scripts/strip-types-side-effects.mjs dist/types/index.d.ts",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "vue": ">=3.5.0"
+  },
   "keywords": [
     "vue",
     "vue3",
