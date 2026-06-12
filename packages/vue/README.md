@@ -1,26 +1,56 @@
 # zelda-hyrule-ui-vue
 
-> 🚧 **Placeholder release — Vue 3 port in development. / 占位发布——Vue 3 版本开发中。**
+The official **Vue 3 port** of [**zelda-hyrule-ui**](https://github.com/chaos-xxl/zelda-hyrule-ui) —
+a UI component library inspired by *The Legend of Zelda: Breath of the Wild*.
+Dark theme, Sheikah glow effects, pixel-identical to the React version (same design
+tokens, same Less modules, same Figma-exact SVG assets, real Hylia Serif bundled).
 
-This package reserves the name for the official **Vue 3 port** of
-[**zelda-hyrule-ui**](https://github.com/chaos-xxl/zelda-hyrule-ui) — a React UI component
-library inspired by *The Legend of Zelda: Breath of the Wild* (83 components, dark theme,
-Sheikah glow effects, AI-consumable design specs).
+[**zelda-hyrule-ui**](https://github.com/chaos-xxl/zelda-hyrule-ui)（塞尔达旷野之息风格组件库）的官方
+**Vue 3 移植版**。与 React 版共享同一份设计 token / Less 样式 / Figma 逐节点导出的 SVG 素材，视觉像素级一致。
 
-本包为 [**zelda-hyrule-ui**](https://github.com/chaos-xxl/zelda-hyrule-ui)（塞尔达旷野之息风格
-React 组件库）官方 **Vue 3 移植版**的占位发布。
-
-## Status / 状态
-
-- ✅ Plan finalized: [docs/VUE_VERSION_PLAN.md](https://github.com/chaos-xxl/zelda-hyrule-ui/blob/main/docs/VUE_VERSION_PLAN.md)
-- 🔁 Props API will be **1:1 identical** to the React version / Props API 与 React 版 **1:1 对齐**
-- 🗳️ Want it sooner? **👍 the interest issue** in the main repo / 想催更？去主仓库的需求收集 issue 点 👍
-
-## Use the React version today / 现在就能用的 React 版
+## Install / 安装
 
 ```bash
-npm i zelda-hyrule-ui
+npm i zelda-hyrule-ui-vue
 ```
+
+Requires `vue >= 3.5`.
+
+## Usage / 使用
+
+```vue
+<script setup lang="ts">
+import { HealthBar, Button, SheikahBackground, SheikahScanlines } from 'zelda-hyrule-ui-vue'
+import 'zelda-hyrule-ui-vue/style'
+</script>
+
+<template>
+  <SheikahBackground color="darkBlue">
+    <SheikahScanlines animated :opacity="0.1" />
+    <HealthBar :current="10" :max="13" :bonus="3" />
+    <Button variant="sheikah">Activate</Button>
+  </SheikahBackground>
+</template>
+```
+
+## Components (MVP) / 当前组件集
+
+`Button` · `Card` · `Dialog` · `Modal` · `Divider` · `Loading` · `HealthBar` ·
+`StaminaWheel` · `SheikahBackground` · `SheikahScanlines` · `SheikahSymbol`
+
+Props are **1:1 identical** to the React version — same names, same enums, same defaults.
+Differences are Vue idioms only: callbacks are emits (`onClose` → `@close`), `children`/`icon`/`footer`
+are slots, and `class`/`style` fall through natively.
+
+Props 与 React 版 **1:1 对齐**——同名、同枚举、同默认值。区别仅为 Vue 语法：回调转 emit
+（`onClose` → `@close`），`children`/`icon`/`footer` 转 slot，`class`/`style` 原生透传。
+
+The remaining components are being ported — track progress and vote at
+[issue #2](https://github.com/chaos-xxl/zelda-hyrule-ui/issues/2).
+Full docs / design specs: [main repository](https://github.com/chaos-xxl/zelda-hyrule-ui).
+
+其余组件移植中——进度与催更见 [issue #2](https://github.com/chaos-xxl/zelda-hyrule-ui/issues/2)。
+完整文档 / 设计规范见[主仓库](https://github.com/chaos-xxl/zelda-hyrule-ui)。
 
 ---
 

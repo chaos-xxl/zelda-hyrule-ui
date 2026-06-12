@@ -84,8 +84,19 @@ calendar's semantic system. Responsive: month grid on desktop, agenda view on mo
 ## Installation / 安装
 
 ```bash
+# React
 npm install zelda-hyrule-ui
+
+# Vue 3 (official port — MVP component set, props 1:1 with React)
+# Vue 3 官方移植版——MVP 组件集，props 与 React 版 1:1 对齐
+npm install zelda-hyrule-ui-vue
 ```
+
+> 🟢 **Vue users:** [`zelda-hyrule-ui-vue`](https://www.npmjs.com/package/zelda-hyrule-ui-vue) ships 11 components
+> (Button / Card / Dialog / Modal / Divider / Loading / HealthBar / StaminaWheel + SheikahBackground / SheikahScanlines / SheikahSymbol)
+> sharing the exact same design tokens, Less modules, and Figma-exact assets — pixel-identical to React.
+> The rest are being ported: vote / track at [#2](https://github.com/chaos-xxl/zelda-hyrule-ui/issues/2).
+> Usage mapping: [`skill/references/vue-usage.md`](skill/references/vue-usage.md) · Package docs: [`packages/vue/README.md`](packages/vue/README.md)
 
 ---
 

@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "vue-playground",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev:vue"],
+      "port": 5173
+    },
+    {
+      "name": "react-demo",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 5174
+    }
+  ]
+}

@@ -36,7 +36,7 @@
   "author": "Chaos",
   "license": "MIT",
   "scripts": {
-    "build": "vite build && tsc --project tsconfig.build.json --emitDeclarationOnly && node ../../scripts/strip-types-side-effects.mjs",
+    "build": "vite build && tsc --project tsconfig.build.json --emitDeclarationOnly && node ../../scripts/strip-types-side-effects.mjs dist/types/index.d.ts",
     "prepublishOnly": "npm run build && cp ../../README.md ../../AI_USAGE.md ."
   },
   "peerDependencies": {

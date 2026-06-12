@@ -37,7 +37,7 @@
 >
 > 原因：本项目的核心价值就是"逐节点精确还原、不是 AI slop"。一个手画的希卡之眼 / 一个 Cinzel 标题，会当场摧毁这个信任。**"看起来像"不等于"是它"。**
 >
-> 真实文件位置：字体 `HyliaSerif.ttf`、SVG `sheikah-symbol.svg` 等 —— 装包后在 `node_modules/zelda-hyrule-ui/dist/files/`；clone 仓库则在 `src/assets/`。高频 inline path（天气/心形/菜单等）直接见 `references/svg-paths.md`（已含真实 path data）。
+> 真实文件位置：字体 `HyliaSerif.ttf`、SVG `sheikah-symbol.svg` 等 —— 装包后在 `node_modules/zelda-hyrule-ui/dist/files/`（Vue 包同理：`node_modules/zelda-hyrule-ui-vue/dist/files/`）；clone 仓库则在 `packages/core/assets/`。高频 inline path（天气/心形/菜单等）直接见 `references/svg-paths.md`（已含真实 path data）。
 
 ### 路径甲 · 装组件库（用现成组件，最省事）
 
@@ -52,6 +52,7 @@ import 'zelda-hyrule-ui/style'   // 含真实 Hylia Serif @font-face（0.2.1+ �
 
 - 装包走 **npm 源，不是 GitHub**，国内无代理也能装。
 - 83 个组件 + 全部 SVG/PNG 素材 + Hylia Serif 字体都在包里，开箱即用，**字体无需任何手动加载**。
+- **项目是 Vue 3？** 装 `zelda-hyrule-ui-vue`（官方 Vue 移植版，MVP 组件集，props 与 React 版 1:1）。用法映射见 `references/vue-usage.md`。Vue 包没有的组件按路径乙现写。
 
 ### 路径乙 · 让 AI 照规范现写 React（零依赖，不联网）
 
@@ -147,6 +148,7 @@ export default function App() {
 | 需要理解"双层边框 / 希卡变体"等核心视觉模式 | `references/core-patterns.md` |
 | 查有哪些组件可用 | `references/component-list.md` |
 | 查某组件的 props / 合法枚举值（**skill 内自带**） | `references/props-quickref.md` |
+| 项目用 Vue 3（装 `zelda-hyrule-ui-vue` / React→Vue 语法映射） | `references/vue-usage.md` |
 | 查某组件的完整 props / API / 默认值（装包后） | `AI_USAGE.md`（随 npm 包发布，不在本 skill 内） |
 | 自己实现 / 扩展新组件 | `references/new-component.md` |
 | 主题换色 | `references/theming.md` |

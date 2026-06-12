@@ -16,6 +16,8 @@
   "scripts": {
     "dev": "vite --config vite.config.demo.ts",
     "build": "npm run build --workspace zelda-hyrule-ui",
+    "build:vue": "npm run build --workspace zelda-hyrule-ui-vue",
+    "dev:vue": "npm run dev --workspace zelda-hyrule-ui-vue",
     "build:demo": "vite build --config vite.config.demo.ts",
     "deploy": "npm run build:demo && gh-pages -d demo-dist"
   },
@@ -25,6 +27,7 @@
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
+    "@vitejs/plugin-vue": "^6.0.7",
     "gh-pages": "^6.3.0",
     "glob": "^11.0.1",
     "less": "^4.2.1",
@@ -33,6 +36,8 @@
     "react-dom": "^18.3.1",
     "typescript": "^5.7.3",
     "vite": "^6.0.0",
-    "vite-plugin-dts": "^4.5.4"
+    "vite-plugin-dts": "^4.5.4",
+    "vue": "^3.5.38",
+    "vue-tsc": "^3.3.4"
   }
 }
