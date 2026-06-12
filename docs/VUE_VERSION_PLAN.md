@@ -116,7 +116,7 @@ React 版 Modal 刚做了 portal + focus management + `useId`；Vue 侧对应物
 
 **验收**：`zelda-hyrule-ui` 重新 build 后产物与迁移前一致；demo 站正常跑。
 
-### 阶段 2 · Vue 基建 + MVP（2–3 个周末，🔒 验证达标后启动）
+### 阶段 2 · Vue 基建 + MVP ✅（已完成并发版 0.1.0，2026-06-12）
 
 | 步骤 | 内容 |
 |------|------|
@@ -140,20 +140,50 @@ React 版 Modal 刚做了 portal + focus management + `useId`；Vue 侧对应物
 
 **验收**：MVP 11 个组件与 React 版并排目检一致；props 名/枚举/默认值经脚本比对 1:1。
 
-### 阶段 3 · 全量移植（1.5–2 个月业余时间，🔒 跟随阶段 2）
+### 阶段 3 · 全量移植（1.5–2 个月业余时间，🔒 等 issue #2 信号达标）
 
-| 类型 | 数量 | 单个成本 | 说明 |
-|------|------|---------|------|
-| 纯展示型组件 | ~70 | 15–30 分钟 | AI 翻译 + 人工校验。**本项目有完整 props 规范和样式规范，AI 翻译正确率显著高于平均——skill 第一次反哺自己** |
-| 有状态交互组件 | ~10 | ~1 小时 | Modal / Toast / NumberInput / QuickSelector / SettingsToggle / MenuSections / Pagination / DialogChoice 等。顺带把此前审计出的 Toast 定时器问题在 Vue 版一步到位写对 |
+> 现状（2026-06-12）：**已移植 11 / 83，剩 72**。
+> 已完成：Button / Card / Dialog / Modal / Divider / Loading / HealthBar / StaminaWheel + SheikahBackground / SheikahScanlines / SheikahSymbol。
+>
+> ⏳ **启动门槛仍然有效**：issue #2 攒 5–10 个 👍 或第二条独立请求。MVP 已上线引流，等真信号，别白扔业余时间。
 
-配套动作：
-- `skill/SKILL.md` 路由表加一行 Vue；`references/` 加 `vue-usage.md`（映射表 + 起手式 SFC 版）
-- `AI_USAGE.md` 保持 React 语法为正典，Vue 包里附带映射节
-- **Demo 站先不做 Vue 交互版**（README 标注用法即可，省 1–2 周）；Vue demo 进 Backlog
-- 发版节奏：每移植完一个分类 = 一个 minor 版本 = 一条更新发帖素材（延续现有推广节奏）
+#### 3.1 分批发版计划（每批 = 一个 minor 版本 = 一条更新发帖素材）
 
-**验收**：83 组件全量；对齐矩阵 100%；skill 路由含 Vue 路径。
+批次按"视觉辨识度优先 + 同类打包 + 有状态的集中处理 + 组合件最后"排：
+
+| 版本 | 批次内容 | 数量 | 备注 |
+|------|---------|------|------|
+| **0.2.0** | HUD 14 个：WeatherIcon / RupeeCounter / DivineBeast / SheikahAbility / RupeeType / Temperature / SoundMeter / Sensor / EffectDuration / BonusEffectIcon / LoadingIcon / HorseSpur / QuickSelector / LoadingHeart | 14 | 最大类 + 最有辨识度，发帖效果最好。QuickSelector 有状态（~1h），其余纯展示 |
+| **0.3.0** | Dialog 补全 2（DialogChoice / DialogFloating）+ Quest 4 + Titles 5 | 11 | DialogChoice 有选中态 |
+| **0.4.0** | Sheikah 补全 5（SheikahRune / SheikahCompendiumEntry / SheikahTextTitle / SheikahCompendiumFilters / SheikahAlbumButton）+ Map 7 | 12 | 纯展示为主 |
+| **0.5.0** | Menu 8（MenuSections / ItemBG / Pagination / ModalButton / Scrollbar / ModalTimer / StatsStack / ModalTutorial）+ Controls 2 | 10 | 有状态集中区：MenuSections（aria-pressed）/ Pagination / Scrollbar |
+| **0.6.0** | Shop 3（含 NumberInput）+ Settings 1（SettingsToggle）+ Battle 4 + Toast | 9 | 第二个有状态集中区：NumberInput 要做 `v-model`（对应 React 的 value/onChange）；Toast 注意定时器清理 |
+| **0.7.0** | Decorations 6 + Brand 1（Logo） | 7 | 全纯展示，最快的一批 |
+| **0.8.0** | Screens 9（MenuScreen / QuestScreen / LoadingScreen / TitleScreen / GameOverScreen / SystemScreen / ShopScreen / SheikahMapScreen / QuickSelectorScreen） | 9 | 组合件，依赖前面全部批次，**必须最后** |
+
+合计 72。节奏参考：纯展示 15–30 分钟/个，有状态 ~1 小时/个；一批 ≈ 1–2 个周末。
+
+**插队规则**：issue #2 留言点名的组件，提进下一批，呼声高的优先（上线通知里已公开承诺）。批次表相应顺延，不必重排版本号。
+
+#### 3.2 每个组件的固定动作（照做即可，勿省步骤）
+
+1. `packages/vue/src/components/<同 react 目录>/<Name>.vue` + `index.ts`——SFC + `<script setup lang="ts">`，样式 `import styles from '@react/components/.../xxx.module.less'`（**绝不复制 less**），素材走 `@core/assets`
+2. props 与 React 版 **1:1**（同名/同枚举/同默认值）；差异仅限映射表：回调→emit、ReactNode prop→具名 slot、`className`/`style`→原生透传（不声明 prop）
+3. `src/index.ts` 加导出（组件 + 类型）
+4. `dev/App.vue` playground 加目检用例，与 React demo 并排对比
+5. `skill/references/vue-usage.md` 的「当前组件集」清单同步
+
+#### 3.3 每批发版的固定动作（对照 `发版检查清单.md` 的 Vue 版）
+
+1. `npm run build:vue` + `npm run typecheck -w zelda-hyrule-ui-vue` 零报错；抽查 dist（index.css 含 @font-face、types 无 .less 泄漏）
+2. bump `packages/vue/package.json` minor 版本
+3. README 对齐矩阵更新（哪个版本对齐到哪些组件）；`packages/vue/README.md` 组件清单同步
+4. PR 合并进 main（不直推）
+5. `npm publish`（**需作者本人 OTP**）→ `npm view zelda-hyrule-ui-vue version` 验证
+6. `git tag vue-vX.Y.0` + GitHub Release（中英双语）
+7. issue #2 发进度评论（已发组件 + 下批预告）；可感知的批次发一条社媒更新
+
+**阶段 3 总验收**：83 组件全量、对齐矩阵 100%、`vue-usage.md` 清单与包一致，最终版本号到 0.8.0 后评估是否定 1.0.0（宣布 full parity）。
 
 ---
 
@@ -197,24 +227,24 @@ npm i @zelda-hyrule/core   # 或 zelda-hyrule-core
 
 ---
 
-## 七、执行顺序总览
+## 七、执行顺序总览（含当前进度）
 
 ```
-今天        阶段 0：占名 + 置顶 issue（半天）
+✅ 阶段 0：占名 + 置顶 issue            （2026-06-12 完成，0.0.1 占位包 + issue #2）
+✅ 阶段 1：monorepo 重构                （2026-06-12 完成，产物与基线逐字节一致）
+✅ 阶段 2：MVP 11 组件 + 发版 0.1.0     （2026-06-12 完成，npm latest + Release + issue 通知）
             │
-任意时间    阶段 1：monorepo 重构（1–2 天，独立有价值，可先做）
+⏳ 等 issue #2 信号（5–10 个 👍 或第二条独立请求）
             │
-   ┌────────┴────────┐
-验证达标          验证不达标
-   │                 │
-阶段 2：MVP       中间档：只发 core 包（1 天）
-（2–3 周末）          │
-   │              （继续观察 core 下载量）
-阶段 3：全量
-（1.5–2 月业余）
+🔒 阶段 3：剩余 72 个，按 §3.1 批次表走
+   0.2.0 HUD(14) → 0.3.0 Dialog+Quest+Titles(11) → 0.4.0 Sheikah+Map(12)
+   → 0.5.0 Menu+Controls(10) → 0.6.0 Shop+Settings+Battle+Toast(9)
+   → 0.7.0 Decorations+Brand(7) → 0.8.0 Screens(9) → 评估 1.0.0（full parity）
 ```
+
+**后续操作守则**：做阶段 3 的任何一批，直接按 §3.1 批次表 + §3.2 组件动作 + §3.3 发版动作执行，不需要重新讨论方案；点单组件按"插队规则"提前。
 
 ---
 
-**文档版本**：v1.0（2026-06-12 创建）
-**维护方式**：阶段推进时更新状态；决策变化先改本文件，再同步 `ROADMAP.md`。
+**文档版本**：v1.1（2026-06-12 创建；同日更新阶段 0–2 完成状态 + 阶段 3 分批施工图）
+**维护方式**：阶段推进时更新状态；决策变化先改本文件，再同步 `ROADMAP.md`。每发一批，把 §3.1 表中对应行打 ✅。
