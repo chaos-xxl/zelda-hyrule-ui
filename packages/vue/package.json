@@ -1,0 +1,32 @@
+{
+  "name": "zelda-hyrule-ui-vue",
+  "version": "0.0.1",
+  "description": "PLACEHOLDER — Vue 3 port of zelda-hyrule-ui, in development. An unofficial, non-commercial fan-made Vue UI component library inspired by the art style of The Legend of Zelda: Breath of the Wild. Not affiliated with or endorsed by Nintendo.",
+  "main": "index.cjs",
+  "files": [
+    "index.cjs",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chaos-xxl/zelda-hyrule-ui"
+  },
+  "homepage": "https://github.com/chaos-xxl/zelda-hyrule-ui#readme",
+  "bugs": {
+    "url": "https://github.com/chaos-xxl/zelda-hyrule-ui/issues"
+  },
+  "author": "Chaos",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "vue3",
+    "component-library",
+    "ui",
+    "typescript",
+    "zelda",
+    "botw",
+    "hyrule",
+    "sheikah",
+    "game-ui"
+  ]
+}
