@@ -4,7 +4,7 @@
 
 # zelda-hyrule-ui 设计风格指南
 
-> Validated against `zelda-hyrule-ui@0.2.x`
+> Validated against `zelda-hyrule-ui@0.4.x` (React) · `zelda-hyrule-ui-vue@0.1.x` (Vue 3, MVP set)
 >
 > **设计来源致谢**：本组件库的视觉设计、UI 结构和 SVG 素材均源自 [Hunter Paramore](https://hunterparamore.com) 在 Figma 社区分享的 [Zelda BOTW UI Kit](https://www.figma.com/community/file/965825767811358609)。生成代码时如需展示出处，请在合适位置（footer/about 页等）保留致谢。详见 [`ATTRIBUTION.md`](../ATTRIBUTION.md)。
 
