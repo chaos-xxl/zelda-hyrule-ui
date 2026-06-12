@@ -185,6 +185,25 @@ The simplest way to use this library with AI:
 
 ---
 
+## 🗓️ Showcase / 实战案例
+
+**June Quest Calendar** — a student-life calendar built from the skill alone:
+**single HTML file, zero dependencies, no React, no build step.**
+Real embedded Hylia Serif, Figma-exact SVG paths, BOTW quest taxonomy as the
+calendar's semantic system. Responsive: month grid on desktop, agenda view on mobile.
+
+**June Quest Calendar** — 仅凭 skill 产出的学生日程表：**单 HTML 文件、零依赖、
+无 React、无构建**。内嵌真实 Hylia Serif 字体、Figma 逐节点导出的 SVG path、
+用 BOTW 任务分类法做日程语义系统。响应式：桌面月格视图，移动端 agenda 视图。
+
+[**▶ Live demo / 在线体验**](https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/june-quest-calendar.html)
+
+| Desktop | Mobile |
+| :---: | :---: |
+| <img src="docs/showcase/calendar-desktop.png" width="560" alt="Desktop month grid" /> | <img src="docs/showcase/calendar-mobile.png" width="200" alt="Mobile agenda view" /> |
+
+---
+
 ## Components (83) / 组件
 
 | Category | Count | Components |

@@ -65,6 +65,8 @@ import 'zelda-hyrule-ui/style'   // 含真实 Hylia Serif @font-face（0.2.1+ �
 - **标志性 SVG**（希卡之眼等）：取真实 `.svg` 文件，base64 成 `data:image/svg+xml;base64,...` 用 `<img>` 引入，或直接内联其 `<path>`。**不要手画。**
 - **高频 inline 图标**（天气/心形/菜单）：直接用 `references/svg-paths.md` 里的真实 path data。
 
+> 📐 **参考实现**：`public/showcase/june-quest-calendar.html` 是一个完整的"路径丙"活样板——单文件、零依赖、内嵌真实 Hylia Serif（base64）、用真实 SVG path、桌面/移动端响应式。走纯 HTML 路径时可逐行参考它。
+
 ### ⚠️ 必须用真实素材、禁止现画的组件清单
 
 下面这些依赖**具体导出的 SVG/PNG 文件**，AI **禁止**凭文字规范手绘或近似（违反"兜底总则"）：
