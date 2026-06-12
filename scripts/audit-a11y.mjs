@@ -14,7 +14,7 @@ import { readdirSync, readFileSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const ROOT = fileURLToPath(new URL('../src/components', import.meta.url))
+const ROOT = fileURLToPath(new URL('../packages/react/src/components', import.meta.url))
 
 function walk(dir) {
   const out = []

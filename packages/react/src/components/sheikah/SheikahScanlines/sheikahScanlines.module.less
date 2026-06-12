@@ -1,0 +1,27 @@
+
+// 精确还原 Figma node 151:4062
+// 扫描线效果，mix-blend-mode overlay，blur 1.5px
+
+.container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(60, 211, 252, 0.03) 1px,
+    rgba(60, 211, 252, 0.03) 2px
+  );
+  filter: blur(0.5px);
+}
+
+.animated {
+  animation: scan-move 8s linear infinite;
+}
+
+@keyframes scan-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 200px; }
+}

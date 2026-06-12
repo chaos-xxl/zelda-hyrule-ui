@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs'
 
-const index = readFileSync('src/index.ts', 'utf8')
+const index = readFileSync('packages/react/src/index.ts', 'utf8')
 const app = readFileSync('demo/App.tsx', 'utf8')
 
 // 1. Exported components (export { default as X })

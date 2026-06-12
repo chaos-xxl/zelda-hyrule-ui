@@ -1,0 +1,166 @@
+
+// 精确还原 Figma node 6:1646 的按钮样式
+// 双层结构：外层 rgba(0,0,0,0.6) 背景 + 内层 rgba(226,222,211,0.3) 边框
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all @motion-duration-base @motion-ease;
+  font-family: @font-body;
+  font-weight: @font-weight-medium;
+  font-style: italic;
+  color: @zelda-tan;
+  letter-spacing: 0.01em;
+  line-height: 1;
+
+  // 内层边框
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid rgba(226, 222, 211, 0.3);
+    border-radius: 2px;
+    pointer-events: none;
+    transition: border-color @motion-duration-base @motion-ease;
+  }
+
+  &:hover:not(.disabled) {
+    background: rgba(0, 0, 0, 0.75);
+    &::after {
+      border-color: rgba(226, 222, 211, 0.6);
+    }
+  }
+
+  &:active:not(.disabled) {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: 2px solid @sheikah-blue;
+    outline-offset: 2px;
+  }
+}
+
+// ---- Sizes ----
+.small {
+  height: 50px;
+  padding: 0 24px;
+  font-size: 20px;
+}
+
+.middle {
+  height: 75px;
+  padding: 0 32px;
+  font-size: 30px;
+}
+
+.large {
+  height: 90px;
+  padding: 0 40px;
+  font-size: 36px;
+}
+
+// ---- Variants ----
+.primary {
+  // 默认样式就是 primary（Figma 中的标准按钮）
+}
+
+.sheikah {
+  background: rgba(10, 20, 40, 0.8);
+
+  &::after {
+    border-color: rgba(60, 211, 252, 0.4);
+  }
+
+  &:hover:not(.disabled) {
+    background: rgba(10, 20, 40, 0.9);
+    box-shadow: @glow-blue;
+    &::after {
+      border-color: @sheikah-blue;
+    }
+  }
+}
+
+.ghost {
+  background: transparent;
+
+  &::after {
+    border-color: transparent;
+  }
+
+  &:hover:not(.disabled) {
+    background: rgba(0, 0, 0, 0.4);
+    &::after {
+      border-color: rgba(226, 222, 211, 0.3);
+    }
+  }
+}
+
+.danger {
+  &::after {
+    border-color: rgba(241, 80, 80, 0.4);
+  }
+
+  &:hover:not(.disabled) {
+    &::after {
+      border-color: @text-color-red;
+    }
+    box-shadow: 0 0 8px rgba(241, 80, 80, 0.3);
+  }
+}
+
+.selected {
+  background: rgba(226, 222, 211, 0.12);
+  box-shadow: @glow-hover;
+
+  &::after {
+    border-color: @zelda-tan;
+  }
+}
+
+// ---- States ----
+.block {
+  display: flex;
+  width: 100%;
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.loading {
+  cursor: wait;
+}
+
+// ---- Inner Elements ----
+.icon {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.content {
+  display: inline-flex;
+  align-items: center;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: @radius-round;
+  animation: hyrule-spin 0.6s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes hyrule-spin {
+  to { transform: rotate(360deg); }
+}
