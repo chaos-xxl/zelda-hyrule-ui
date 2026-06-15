@@ -70,6 +70,7 @@ import 'zelda-hyrule-ui/style'   // 含真实 Hylia Serif @font-face（0.2.1+ �
 > - `june-quest-calendar.html` — 学生日程表 + 可交互 Quest Log 弹窗（点日期查看/增删/完成日程）
 > - `finals-boss-rush.html` — 把复习做成打 Boss（敌人血条 + 学习扣血 + stagger/vanquish + HUD 状态映射）
 > - `daily-shrine-tracker.html` — 习惯打卡（月度热力图 + 连续天数 + 集精神球换心之容器，4 球 = 1 心，BOTW 真实机制映射）
+> - `shrine-focus-timer.html` — 专注番茄钟（StaminaWheel 做倒计时环：专注耗精力/休息回复，完成一个点亮神庙 + 攒精神球换心之容器）
 
 ### ⚠️ 必须用真实素材、禁止现画的组件清单
 

@@ -23,6 +23,7 @@ const PAGES = [
   { file: 'finals-boss-rush.html', thumb: 'boss-rush.png', og: 'finals-boss-rush-og.png' },
   { file: 'june-quest-calendar.html', thumb: 'calendar.png', og: 'june-quest-calendar-og.png' },
   { file: 'daily-shrine-tracker.html', thumb: 'shrine-tracker.png', og: 'daily-shrine-tracker-og.png' },
+  { file: 'shrine-focus-timer.html', thumb: 'focus-timer.png', og: 'shrine-focus-timer-og.png' },
 ]
 
 // ── 1. favicon from the real Sheikah eye ──────────────────────────────────────
