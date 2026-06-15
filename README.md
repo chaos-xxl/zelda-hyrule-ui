@@ -75,7 +75,7 @@ Turn exam revision into a boss fight<br/>把期末复习做成打 Boss
 </td>
 <td align="center" width="50%" valign="top">
 <a href="https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/june-quest-calendar.html"><img src="docs/showcase/calendar.png" width="100%" alt="June Quest Calendar" /></a><br/>
-<a href="https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/june-quest-calendar.html"><b>June Quest Calendar</b></a><br/>
+<a href="https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/june-quest-calendar.html"><b>June Quest Calendar</b></a> · <a href="https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/june-quest-calendar.html?lang=zh">中文</a><br/>
 Student calendar with an interactive Quest Log<br/>学生日程表 + 可交互任务面板
 </td>
 </tr>
