@@ -71,6 +71,17 @@ calendar's semantic system. Responsive: month grid on desktop, agenda view on mo
 | :---: | :---: |
 | <img src="docs/showcase/calendar-desktop.png" width="560" alt="Desktop month grid" /> | <img src="docs/showcase/calendar-mobile.png" width="200" alt="Mobile agenda view" /> |
 
+**Finals Boss Rush** — turn exam revision into a BOTW boss fight: each course is a
+boss with a red enemy health bar, logging study hours deals damage, clear its HP before
+exam day to vanquish it. Hearts = boss containers won, stamina wheel = revision progress,
+rupees = focus earned. Same single-file / zero-dependency / no-build recipe; persists in localStorage.
+
+**Finals Boss Rush** — 把期末复习做成《旷野之息》打 Boss：每门课是一个 Boss，有红色敌人血条，
+记录学习时长就是砍 Boss 血，考试日前清空血条即可击杀。心心=击杀获得的心之容器、精力轮=复习进度、
+卢比=专注值。同样单文件、零依赖、无构建，进度存 localStorage。
+
+[**▶ Live demo / 在线体验**](https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/finals-boss-rush.html)
+
 ---
 
 ## Installation / 安装
