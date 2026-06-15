@@ -79,6 +79,14 @@ Turn exam revision into a boss fight<br/>把期末复习做成打 Boss
 Student calendar with an interactive Quest Log<br/>学生日程表 + 可交互任务面板
 </td>
 </tr>
+<tr>
+<td align="center" width="50%" valign="top">
+<a href="https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/daily-shrine-tracker.html"><img src="docs/showcase/shrine-tracker.png" width="100%" alt="Daily Shrine Tracker" /></a><br/>
+<a href="https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/daily-shrine-tracker.html"><b>Daily Shrine Tracker</b></a> · <a href="https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/daily-shrine-tracker.html?lang=zh">中文</a><br/>
+Habit tracker — 4 Spirit Orbs = 1 Heart Container<br/>习惯打卡，集精神球换心之容器
+</td>
+<td align="center" width="50%" valign="top"></td>
+</tr>
 </table>
 
 ---
