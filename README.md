@@ -56,31 +56,30 @@ A React UI component library inspired by *The Legend of Zelda: Breath of the Wil
 
 ## 🗓️ Showcase / 实战案例
 
-**June Quest Calendar** — a student-life calendar built from the skill alone:
-**single HTML file, zero dependencies, no React, no build step.**
-Real embedded Hylia Serif, Figma-exact SVG paths, BOTW quest taxonomy as the
-calendar's semantic system. Responsive: month grid on desktop, agenda view on mobile.
+Real-world demos built **from the skill alone** — each is a single HTML file: zero
+dependencies, no React, no build step, real embedded Hylia Serif + Figma-exact SVG paths.
 
-**June Quest Calendar** — 仅凭 skill 产出的学生日程表：**单 HTML 文件、零依赖、
-无 React、无构建**。内嵌真实 Hylia Serif 字体、Figma 逐节点导出的 SVG path、
-用 BOTW 任务分类法做日程语义系统。响应式：桌面月格视图，移动端 agenda 视图。
+仅凭 skill 产出的实战案例——每个都是单 HTML 文件：零依赖、无 React、无构建，
+内嵌真实 Hylia Serif 字体与 Figma 逐节点导出的 SVG path。
 
-[**▶ Live demo / 在线体验**](https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/june-quest-calendar.html)
-
-| Desktop | Mobile |
-| :---: | :---: |
-| <img src="docs/showcase/calendar-desktop.png" width="560" alt="Desktop month grid" /> | <img src="docs/showcase/calendar-mobile.png" width="200" alt="Mobile agenda view" /> |
-
-**Finals Boss Rush** — turn exam revision into a BOTW boss fight: each course is a
-boss with a red enemy health bar, logging study hours deals damage, clear its HP before
-exam day to vanquish it. Hearts = boss containers won, stamina wheel = revision progress,
-rupees = focus earned. Same single-file / zero-dependency / no-build recipe; persists in localStorage.
-
-**Finals Boss Rush** — 把期末复习做成《旷野之息》打 Boss：每门课是一个 Boss，有红色敌人血条，
-记录学习时长就是砍 Boss 血，考试日前清空血条即可击杀。心心=击杀获得的心之容器、精力轮=复习进度、
-卢比=专注值。同样单文件、零依赖、无构建，进度存 localStorage。
-
-[**▶ Live demo (EN)**](https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/finals-boss-rush.html) · [**▶ 在线体验（中文）**](https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/finals-boss-rush.html?lang=zh)
+<!-- Showcase grid · 2 columns (four-grid). To add a case: capture a thumbnail to
+     docs/showcase/<name>.png via scripts/shoot-showcase.mjs, then add a <td> cell.
+     When there are ~6+ cases, switch to 3 columns (nine-grid) — change width="50%"
+     to width="33%" and wrap every 3 cells in a new <tr>. -->
+<table>
+<tr>
+<td align="center" width="50%" valign="top">
+<a href="https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/finals-boss-rush.html"><img src="docs/showcase/boss-rush.png" width="100%" alt="Finals Boss Rush" /></a><br/>
+<a href="https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/finals-boss-rush.html"><b>Finals Boss Rush</b></a> · <a href="https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/finals-boss-rush.html?lang=zh">中文</a><br/>
+Turn exam revision into a boss fight<br/>把期末复习做成打 Boss
+</td>
+<td align="center" width="50%" valign="top">
+<a href="https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/june-quest-calendar.html"><img src="docs/showcase/calendar.png" width="100%" alt="June Quest Calendar" /></a><br/>
+<a href="https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/june-quest-calendar.html"><b>June Quest Calendar</b></a><br/>
+Student calendar with an interactive Quest Log<br/>学生日程表 + 可交互任务面板
+</td>
+</tr>
+</table>
 
 ---
 
