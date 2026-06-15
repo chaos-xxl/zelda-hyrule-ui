@@ -80,7 +80,7 @@ rupees = focus earned. Same single-file / zero-dependency / no-build recipe; per
 记录学习时长就是砍 Boss 血，考试日前清空血条即可击杀。心心=击杀获得的心之容器、精力轮=复习进度、
 卢比=专注值。同样单文件、零依赖、无构建，进度存 localStorage。
 
-[**▶ Live demo / 在线体验**](https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/finals-boss-rush.html)
+[**▶ Live demo (EN)**](https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/finals-boss-rush.html) · [**▶ 在线体验（中文）**](https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/finals-boss-rush.html?lang=zh)
 
 ---
 
