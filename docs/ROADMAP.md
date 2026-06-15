@@ -53,6 +53,7 @@
 | June Quest Calendar ✅ | — | 已上线（中英双语）。学生日程表 + 可交互 Quest Log 弹窗。`public/showcase/june-quest-calendar.html` |
 | Finals Boss Rush ✅ | — | 已上线（中英双语）。期末复习做成打 Boss（敌人血条/学习扣血/stagger/vanquish/HUD 映射）。`public/showcase/finals-boss-rush.html` |
 | Daily Shrine Tracker ✅ | — | 已上线（中英双语）。习惯打卡：月度热力图 + 连续天数 + 集精神球换心之容器（4 球 = 1 心，BOTW 真实机制）。和日历+Boss战凑成"学生自律三件套"。`public/showcase/daily-shrine-tracker.html` |
+| Shrine Focus Timer ✅ | — | 已上线（中英双语）。专注番茄钟：StaminaWheel 做倒计时环（专注耗精力/休息回复），完成一个点亮神庙 + 攒精神球换心之容器（与神庙打卡同机制）。`public/showcase/shrine-focus-timer.html` |
 | ~~塞尔达风简历~~ ❌ 否决 | — | **简历本质是严肃求职交付，塞尔达皮是减分项，没人会真用**——违反选题标准 ①。其想要的"自来水循环"价值改由"个人主页/Bento"承接（载体正确）。 |
 | 塞尔达风个人主页 / Bento | 🟢 P1 💡 | 继承简历想要的"自来水循环"（别人 fork 改成自己的），但载体换成个人主页——这种场景本就要彰显个性，最欢迎塞尔达皮。开发者受众，fork→star 转化最高。 |
 | 神庙/呀哈哈收集追踪器 | 🟡 P2 💡 | 用户自己勾选的收集进度板（ItemBG 格子矩阵 + 精力轮进度环）。**直击 r/zelda 真玩家，Reddit 发帖最对味。⚠️ 合规：只做空白追踪器，绝不内置神庙名/位置数据库（那是游戏内容数据）。** 1 个周末。 |
