@@ -66,9 +66,10 @@ import 'zelda-hyrule-ui/style'   // 含真实 Hylia Serif @font-face（0.2.1+ �
 - **标志性 SVG**（希卡之眼等）：取真实 `.svg` 文件，base64 成 `data:image/svg+xml;base64,...` 用 `<img>` 引入，或直接内联其 `<path>`。**不要手画。**
 - **高频 inline 图标**（天气/心形/菜单）：直接用 `references/svg-paths.md` 里的真实 path data。
 
-> 📐 **参考实现**：`public/showcase/` 下有两个完整的"路径丙"活样板，单文件、零依赖、内嵌真实 Hylia Serif（base64）、用真实 SVG path、响应式、localStorage 持久化——走纯 HTML 路径时可逐行参考：
+> 📐 **参考实现**：`public/showcase/` 下有三个完整的"路径丙"活样板，单文件、零依赖、内嵌真实 Hylia Serif（base64）、用真实 SVG path、响应式、localStorage 持久化、中英双语（i18n 切换 + `?lang=zh`）——走纯 HTML 路径时可逐行参考：
 > - `june-quest-calendar.html` — 学生日程表 + 可交互 Quest Log 弹窗（点日期查看/增删/完成日程）
 > - `finals-boss-rush.html` — 把复习做成打 Boss（敌人血条 + 学习扣血 + stagger/vanquish + HUD 状态映射）
+> - `daily-shrine-tracker.html` — 习惯打卡（月度热力图 + 连续天数 + 集精神球换心之容器，4 球 = 1 心，BOTW 真实机制映射）
 
 ### ⚠️ 必须用真实素材、禁止现画的组件清单
 

@@ -22,6 +22,7 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const PAGES = [
   { file: 'finals-boss-rush.html', thumb: 'boss-rush.png', og: 'finals-boss-rush-og.png' },
   { file: 'june-quest-calendar.html', thumb: 'calendar.png', og: 'june-quest-calendar-og.png' },
+  { file: 'daily-shrine-tracker.html', thumb: 'shrine-tracker.png', og: 'daily-shrine-tracker-og.png' },
 ]
 
 // ── 1. favicon from the real Sheikah eye ──────────────────────────────────────
