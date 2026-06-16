@@ -25,6 +25,17 @@ A React UI component library inspired by *The Legend of Zelda: Breath of the Wil
 
 > **Unofficial, non-commercial fan project — not affiliated with Nintendo.** 非官方、非商用粉丝创作，与任天堂无隶属关系。详见 [Disclaimer & License ↓](#disclaimer--license--声明与许可证)
 
+<div align="center">
+
+<a href="https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/shrine-focus-timer.html"><img src="docs/showcase/hero.gif" width="760" alt="Playable showcases: Focus Timer, Boss Rush, Habit Tracker, Quest Calendar" /></a>
+
+**▶ Playable demos / 在线可玩：** [Focus Timer](https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/shrine-focus-timer.html) · [Boss Rush](https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/finals-boss-rush.html) · [Habit Tracker](https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/daily-shrine-tracker.html) · [Quest Calendar](https://chaos-xxl.github.io/zelda-hyrule-ui/showcase/june-quest-calendar.html)
+<br/><sub>Each is a single HTML file — zero dependencies, no build, real embedded font + Figma-exact SVGs. 每个都是单 HTML 文件，零依赖、无构建。</sub>
+
+⭐ **Star it if you'd use it — 用得上就点个 star**
+
+</div>
+
 ![Showcase](docs/img/showcase.png)
 
 ### 🔗 Preview
