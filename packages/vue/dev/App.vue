@@ -8,10 +8,15 @@ import {
   HealthBar,
   Loading,
   Modal,
+  RupeeCounter,
+  RupeeType,
+  Sensor,
   SheikahBackground,
   SheikahScanlines,
   SheikahSymbol,
   StaminaWheel,
+  Temperature,
+  WeatherIcon,
 } from '../src'
 
 const modalOpen = ref(false)
@@ -47,6 +52,25 @@ const stamina = ref(0.75)
       <StaminaWheel :value="0.15" :size="70" />
       <StaminaWheel :value="0.6" :size="70" bonus />
       <input v-model.number="stamina" type="range" min="0" max="1" step="0.05" />
+    </section>
+
+    <!-- HUD icons (0.2.0 batch) -->
+    <section style="display: flex; gap: 28px; align-items: center; flex-wrap: wrap">
+      <WeatherIcon weather="clear" :size="34" />
+      <WeatherIcon weather="storm" :size="34" />
+      <WeatherIcon weather="rain" :size="34" />
+      <WeatherIcon weather="cloudy" :size="34" />
+      <RupeeType type="green" :size="44" />
+      <RupeeType type="blue" :size="44" />
+      <RupeeType type="gold" :size="44" />
+      <RupeeType type="purple" :size="44" />
+      <RupeeCounter :amount="1240" color="green" />
+      <Temperature value="regular" :size="46" />
+      <Temperature value="cold" :size="46" />
+      <Temperature value="hot" :size="46" />
+      <Sensor :active="true" />
+      <Sensor :active="false" />
+      <Sensor :active="true" plus />
     </section>
 
     <Divider variant="sheikah" style="margin: 32px 0" />
