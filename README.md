@@ -106,6 +106,28 @@ Pomodoro — the Stamina wheel counts down<br/>番茄钟，精力轮倒计时
 
 ---
 
+## 🌟 Usage Cases / 用户案例
+
+Projects built by the community with this library. Made something? Open a PR or issue — I'll add it here.
+
+社区用本库做出来的作品。你也做了？提个 PR 或 issue，我挂上来。
+
+<!-- Community cases · 2-col grid. To add one: drop a ~960px-wide thumbnail in
+     docs/showcase/cases/<name>.png and add a <td> cell (thumbnail → repo,
+     title + author, one-line bilingual blurb). -->
+<table>
+<tr>
+<td align="center" width="50%" valign="top">
+<a href="https://github.com/NightsVesa/myLibrary"><img src="docs/showcase/cases/mylibrary.png" width="100%" alt="myLibrary — Zelda-style knowledge base panel" /></a><br/>
+<a href="https://github.com/NightsVesa/myLibrary"><b>myLibrary</b></a> · by <a href="https://github.com/NightsVesa">@NightsVesa</a><br/>
+Desktop-pet knowledge base with a Sheikah-style Q&amp;A panel<br/>桌面宠物知识库，希卡风格的问答面板
+</td>
+<td align="center" width="50%" valign="top"></td>
+</tr>
+</table>
+
+---
+
 ## Installation / 安装
 
 ```bash
