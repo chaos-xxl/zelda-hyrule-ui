@@ -1,19 +1,28 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import {
+  BonusEffectIcon,
   Button,
   Card,
   Dialog,
   Divider,
+  DivineBeast,
+  EffectDuration,
   HealthBar,
+  HorseSpur,
   Loading,
+  LoadingHeart,
+  LoadingIcon,
   Modal,
+  QuickSelector,
   RupeeCounter,
   RupeeType,
   Sensor,
+  SheikahAbility,
   SheikahBackground,
   SheikahScanlines,
   SheikahSymbol,
+  SoundMeter,
   StaminaWheel,
   Temperature,
   WeatherIcon,
@@ -71,6 +80,34 @@ const stamina = ref(0.75)
       <Sensor :active="true" />
       <Sensor :active="false" />
       <Sensor :active="true" plus />
+    </section>
+
+    <!-- HUD batch 2 (rest of 0.2.0) -->
+    <section style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap">
+      <DivineBeast beast="ruta" :charges="2" />
+      <DivineBeast beast="rudania" recharging />
+      <SheikahAbility ability="magnesis" />
+      <SheikahAbility ability="stasis" plus />
+      <SheikahAbility ability="roundBomb" recharging />
+      <SoundMeter level="low" />
+      <SoundMeter level="high" />
+      <HorseSpur type="normal" />
+      <LoadingIcon icon="shrine" :show-quantity="true" :quantity="3" />
+      <QuickSelector />
+    </section>
+
+    <section style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap">
+      <BonusEffectIcon icon="attackUp" arrow />
+      <BonusEffectIcon icon="defenseUp" />
+      <BonusEffectIcon icon="heatResist" />
+      <BonusEffectIcon icon="coldResist" />
+      <BonusEffectIcon icon="speedUp" arrow />
+      <EffectDuration name="Attack Up" time-remaining="04:30" />
+      <span style="display: flex; gap: 4px">
+        <LoadingHeart :shown="true" />
+        <LoadingHeart :shown="true" />
+        <LoadingHeart :shown="false" />
+      </span>
     </section>
 
     <Divider variant="sheikah" style="margin: 32px 0" />
