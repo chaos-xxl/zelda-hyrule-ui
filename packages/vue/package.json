@@ -1,6 +1,6 @@
 {
   "name": "zelda-hyrule-ui-vue",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An unofficial, non-commercial fan-made Vue 3 UI component library inspired by the art style of The Legend of Zelda: Breath of the Wild. Not affiliated with or endorsed by Nintendo.",
   "type": "module",
   "main": "dist/cjs/index.cjs",

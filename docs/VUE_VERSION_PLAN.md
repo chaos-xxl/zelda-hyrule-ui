@@ -153,7 +153,7 @@ React 版 Modal 刚做了 portal + focus management + `useId`；Vue 侧对应物
 
 | 版本 | 批次内容 | 数量 | 备注 |
 |------|---------|------|------|
-| **0.2.0** | HUD 14 个：WeatherIcon / RupeeCounter / DivineBeast / SheikahAbility / RupeeType / Temperature / SoundMeter / Sensor / EffectDuration / BonusEffectIcon / LoadingIcon / HorseSpur / QuickSelector / LoadingHeart | 14 | 最大类 + 最有辨识度，发帖效果最好。QuickSelector 有状态（~1h），其余纯展示 |
+| **0.2.0** ✅ | HUD 14 个：WeatherIcon / RupeeCounter / DivineBeast / SheikahAbility / RupeeType / Temperature / SoundMeter / Sensor / EffectDuration / BonusEffectIcon / LoadingIcon / HorseSpur / QuickSelector / LoadingHeart | 14 | **已完成**（2026-06，分 batch1+batch2 两次 PR）。整个 HUD 类别 parity，Vue 共 25/83。全部纯展示（QuickSelector 实际也无状态）|
 | **0.3.0** | Dialog 补全 2（DialogChoice / DialogFloating）+ Quest 4 + Titles 5 | 11 | DialogChoice 有选中态 |
 | **0.4.0** | Sheikah 补全 5（SheikahRune / SheikahCompendiumEntry / SheikahTextTitle / SheikahCompendiumFilters / SheikahAlbumButton）+ Map 7 | 12 | 纯展示为主 |
 | **0.5.0** | Menu 8（MenuSections / ItemBG / Pagination / ModalButton / Scrollbar / ModalTimer / StatsStack / ModalTutorial）+ Controls 2 | 10 | 有状态集中区：MenuSections（aria-pressed）/ Pagination / Scrollbar |

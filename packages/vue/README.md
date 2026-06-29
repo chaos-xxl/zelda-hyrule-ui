@@ -33,10 +33,13 @@ import 'zelda-hyrule-ui-vue/style'
 </template>
 ```
 
-## Components (MVP) / 当前组件集
+## Components (25) / 当前组件集
 
-`Button` · `Card` · `Dialog` · `Modal` · `Divider` · `Loading` · `HealthBar` ·
-`StaminaWheel` · `SheikahBackground` · `SheikahScanlines` · `SheikahSymbol`
+**Common** — `Button` · `Card` · `Dialog` · `Modal` · `Divider` · `Loading`
+
+**HUD** (full category ✅) — `HealthBar` · `StaminaWheel` · `WeatherIcon` · `RupeeCounter` · `RupeeType` · `Temperature` · `Sensor` · `SoundMeter` · `DivineBeast` · `SheikahAbility` · `EffectDuration` · `BonusEffectIcon` · `LoadingIcon` · `LoadingHeart` · `HorseSpur` · `QuickSelector`
+
+**Sheikah** — `SheikahBackground` · `SheikahScanlines` · `SheikahSymbol`
 
 Props are **1:1 identical** to the React version — same names, same enums, same defaults.
 Differences are Vue idioms only: callbacks are emits (`onClose` → `@close`), `children`/`icon`/`footer`
@@ -45,11 +48,12 @@ are slots, and `class`/`style` fall through natively.
 Props 与 React 版 **1:1 对齐**——同名、同枚举、同默认值。区别仅为 Vue 语法：回调转 emit
 （`onClose` → `@close`），`children`/`icon`/`footer` 转 slot，`class`/`style` 原生透传。
 
-The remaining components are being ported — track progress and vote at
+The full HUD category landed in 0.2.0. The remaining categories (Menu, Map, Quest,
+Titles, Battle, …) are being ported — track progress and vote at
 [issue #2](https://github.com/chaos-xxl/zelda-hyrule-ui/issues/2).
 Full docs / design specs: [main repository](https://github.com/chaos-xxl/zelda-hyrule-ui).
 
-其余组件移植中——进度与催更见 [issue #2](https://github.com/chaos-xxl/zelda-hyrule-ui/issues/2)。
+0.2.0 补齐了整个 HUD 类别。其余类别（菜单 / 地图 / 任务 / 标题 / 战斗…）移植中——进度与催更见 [issue #2](https://github.com/chaos-xxl/zelda-hyrule-ui/issues/2)。
 完整文档 / 设计规范见[主仓库](https://github.com/chaos-xxl/zelda-hyrule-ui)。
 
 ---
