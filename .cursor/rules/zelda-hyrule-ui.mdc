@@ -1,0 +1,64 @@
+---
+description: Build UI in the style of The Legend of Zelda Breath of the Wild — dark Sheikah-slate theme, double borders, Sheikah-blue glow. Pairs with the zelda-hyrule-ui React library.
+globs: **/*.tsx, **/*.jsx, **/*.css, **/*.less, **/*.scss
+alwaysApply: false
+---
+
+# Zelda BOTW (Sheikah Slate) UI Style
+
+Generate interfaces in the visual language of *The Legend of Zelda: Breath of the Wild* —
+the Sheikah Slate aesthetic: dark, techy, with cyan glow. Backed by the open-source
+`zelda-hyrule-ui` library (83 components) and its full skill spec.
+
+- Library: `npm i zelda-hyrule-ui` then `import 'zelda-hyrule-ui/style'`
+- Full spec / all component props: https://github.com/chaos-xxl/zelda-hyrule-ui (see `skill/SKILL.md`)
+- Unofficial, non-commercial fan project. Not affiliated with Nintendo.
+
+## Design rules (hard constraints)
+
+1. **Dark first** — page bg `#66645D` or darker; containers `rgba(0,0,0,0.6)`. Never light/white backgrounds.
+2. **Double border** — every container/button uses an outer semi-transparent black bg + an inner
+   `::after` hairline border (inset 3px). This is THE signature look.
+3. **Glow, not flat highlight** — active/selected states use blue (`#4FC0FF`) or golden (`#FFB800`)
+   glow. No solid-color highlights, no default blue outlines.
+4. **Italic body** — dialogue/buttons/body use Roboto Medium Italic. Titles use Hylia Serif (normal).
+5. **No pure white/black text** — body `#E9E1D1` (warm white), borders `#E2DED3` (tan). Never `#fff`/`#000`.
+6. **No cold colors** — no cold blue (`#0066ff`) or cold gray (`#666`). The only saturated color is
+   Sheikah blue `#3CD3FC`. All grays carry a warm tint.
+7. **Square-ish corners** — radius 4px (max 8px for cards). Not pill-shaped.
+8. **Focus ring** — `:focus-visible { outline: 2px solid #3CD3FC; outline-offset: 2px; }`.
+
+## Core tokens
+
+```
+--sheikah-blue: #3CD3FC;   --sheikah-blue-glow: #4FC0FF;   --sheikah-yellow: #FFE460;
+--text: #E9E1D1;   --tan: #E2DED3;   --page-bg: #66645D;   --panel: rgba(10,20,40,0.85);
+--effect-orange: #FCC413;   --red: #F15050;   --green: #6FD49C;
+--font-title: 'Hylia Serif', 'Cinzel', serif;   --font-body: 'Roboto', sans-serif; /* italic */
+```
+
+## Double-border pattern (copy this)
+
+```css
+.container {
+  background: rgba(0, 0, 0, 0.6);
+  position: relative;
+  border-radius: 4px;
+}
+.container::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(226, 222, 211, 0.3);
+  border-radius: 2px;
+  pointer-events: none;
+}
+```
+
+## Signature assets — never approximate
+
+The Sheikah eye, Divine Beast totems, large illustrations (Master Sword, rupee, etc.) and the
+Hylia Serif font are **exact exported files**. Do NOT hand-draw or approximate them, and do NOT
+fall back to Cinzel for a real deliverable. Get the real `.svg`/`.ttf` from the `zelda-hyrule-ui`
+package (`dist/files/`) or repo (`src/assets/`). If you can't obtain the real file, stop and tell
+the user where to get it — never silently substitute an approximation.
